@@ -19,6 +19,13 @@ const requestInfo = request => {
 try {
   const extension = join(directory, 'extension');
   await cp('dist', extension, {recursive: true});
+  // Synthetic-only diagnostic instrumentation in the temporary copy; shipped bundles stay redacted.
+  for (const name of ['background.js', 'offscreen.js']) {
+    const path = join(extension, name);
+    const original = await readFile(path, 'utf8');
+    assert.ok(original.includes('function safeError(error) {'));
+    await writeFile(path, original.replace('function safeError(error) {', 'function safeError(error) { console.error("Synthetic fixture failure:", error?.message);'));
+  }
   const manifest = JSON.parse(await readFile(join(extension, 'manifest.json'), 'utf8'));
   // Test-only fixed hosts avoid permission UI. Production permissions are unchanged.
   manifest.host_permissions = ['https://reader.example.com/*', 'https://api.openai.com/*'];

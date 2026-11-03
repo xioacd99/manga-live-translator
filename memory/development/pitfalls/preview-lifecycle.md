@@ -36,3 +36,7 @@ Chromium launch failed in the cloud host with socket creation denied, including 
 An isolated regression reproduced cancellation settling before asynchronous worker termination: the abort path cleared workerPromise, and a second cleanup saw no worker to await. A shared release promise now keeps the adapter busy until teardown completes. A module-level OCR queue spans account-specific pipelines so switching accounts cannot overlap old/new worker lifetimes.
 
 A separate reproduction showed an old RUN finalizer deleting a replacement job with the same request ID after reconfiguration. Cleanup now checks object identity before deletion; background fetch cleanup similarly checks controller identity. Late successful responses also pass a post-await generation fence before reaching content. These findings are covered by lifecycle tests, not inferred from the browser CI result.
+
+## Initial packaged-browser failure
+
+The Ubuntu 24.04 smoke reached the real extension UI but initial translation failed before any provider request. [Diagnostic run](https://github.com/xioacd99/manga-live-translator/actions/runs/41581043063) observed only the reader's image request; no background network request was visible. This narrows investigation to prefetch validation or background acquisition but does not prove the cause. Synthetic-only tracing is added to the temporary test bundle to expose the failing internal stage without weakening shipped error redaction or using real credentials.
