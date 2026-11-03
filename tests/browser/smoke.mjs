@@ -39,6 +39,18 @@ try {
   context.setDefaultTimeout(120000);
   worker = context.serviceWorkers()[0] || await context.waitForEvent('serviceworker');
   const id = new URL(worker.url()).host;
+  // Playwright context routing does not intercept this extension service worker's fetch.
+  // Substitute only the synthetic acquisition boundary; production validation and decoding still run.
+  await worker.evaluate(bytes => {
+    globalThis.__syntheticImageFetches = 0;
+    globalThis.fetch = async (url, options = {}) => {
+      options.signal?.throwIfAborted();
+      if (String(url) !== 'https://reader.example.com/page.png') throw new Error('Unexpected synthetic worker fetch');
+      if (options.credentials !== 'omit' || options.redirect !== 'error') throw new Error('Image fetch privacy options changed');
+      globalThis.__syntheticImageFetches++;
+      return new Response(new Uint8Array(bytes), {headers: {'content-type': 'image/bmp'}});
+    };
+  }, Array.from(createEnglishBitmap().imageBytes));
   context.on('page', page => page.on('pageerror', error => record(errors, sanitize(error.message))));
   context.on('console', message => {
     if (message.type() === 'error') record(consoleErrors, sanitize(message.text()));
@@ -188,7 +200,7 @@ try {
   assert.deepEqual(errors, []);
   await writeFile('artifacts/browser-smoke.json', JSON.stringify({
     browser: context.browser()?.version(), calls, warm, afterForget,
-    realLocalOCR: true, mockedProvider: true, productionManifestUnchanged: true,
+    realLocalOCR: true, mockedProvider: true, mockedImageAcquisition: true, productionManifestUnchanged: true,
     verified: ['warm completion', 'source correction', 'context invalidation', 'original toggle', 'forget and reconfigure'], errors, consoleErrors, network, routed,
   }, null, 2));
   console.log('Browser smoke passed: packaged OCR, mocked provider, warm cache, corrections, context, original toggle, forget/reconfigure.');

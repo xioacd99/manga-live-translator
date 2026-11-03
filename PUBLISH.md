@@ -6,6 +6,8 @@ Each entry describes the changes made, with additions, improvements, fixes, comp
 
 ## 2026-11-03 - v0.1.0
 
+- Corrected the browser test acquisition mock: extension service-worker fetches were not intercepted by Playwright context routes. The harness now injects only the synthetic image response at that boundary and checks privacy fetch options; production fetching and the shipped extension are unchanged.
+
 - Made synthetic service-worker failure diagnostics directly readable by the browser harness because worker console messages were absent from the context-level console stream.
 
 - Added synthetic-only browser failure tracing in the test temporary copy after CI confirmed an initial translation failure before any provider call. Production error redaction remains unchanged; browser acceptance is still pending.
