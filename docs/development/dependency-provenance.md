@@ -35,3 +35,13 @@ No paid request was made for tests. Mocked HTTP responses validate mapping and f
 The libtiff notice is from the GitHub mirror at the exact same pinned commit; the upstream submodule uses GitLab. OpenLibm includes permissive MIT/BSD/ISC/FDLIBM components and separately LGPL test files. The pinned [core build](https://github.com/naptha/tesseract.js-core/blob/v6.0.0/build-scripts/build-openlibm.sh) invokes `install-static`; the pinned [OpenLibm Makefile](https://github.com/JuliaMath/openlibm/blob/ae2d91698508701c83cab83714d42a1146dccf85/Makefile) builds library objects from src/architecture/bsdsrc, with LGPL test files under separate test targets. Those test files are not incorporated in this project. The complete upstream notice is retained to avoid deleting context.
 
 The minified worker additionally embeds buffer, ieee754, regenerator-runtime and zlib.js notices; these are retained with corresponding permissive license text. idb-keyval 6.3.0 uses Apache-2.0; its notice is from the matching upstream tag. Other npm license notices are copied unchanged from installed packages. Node-only transitive dependencies are not imported into the browser bundle by the Tesseract browser entry.
+
+## 预训练区域检测（2026-11-03 新增）
+
+当前默认区域检测替换旧亮色启发式，采用 [ogkalu/comic-text-and-bubble-detector](https://huggingface.co/ogkalu/comic-text-and-bubble-detector/tree/16e8a622f91fabc6b5b65c96d32d1183f8843546) 的 `detector-v4-s_int8.onnx`，11,120,765 字节，SHA-256 `5fe9e4f576e49d4e7e8b0e029d6d3cdc252abd4694113e1cae120e62c931ea79`。固定修订模型卡声明 Apache-2.0；训练数据未逐样本审计，不承诺所有原始图片权利均已清理。
+
+浏览器适配器独立实现，参考[固定修订上游输入输出约定](https://github.com/ogkalu2/comic-translate/blob/8977b91a4f7a40c3917c5a268e9e7d78e1d818da/modules/detection/rtdetr_v2_onnx.py)，不拷贝 ImageTrans 或 GPL/AGPL 实现。ImageTrans 仅作产品思路参考。
+
+`onnxruntime-web@1.23.2` 使用[官方源码版本](https://github.com/microsoft/onnxruntime/tree/v1.23.2)，主许可证 MIT，保留完整 `ThirdPartyNotices.txt`。本次只启用本地单线程 CPU/WASM，不启用 WebGPU，未测 Apple M4。运行时代码随扩展打包，模型由用户首次触发下载、完整校验后独立缓存；不上传漫画图片。详细缓存与数据边界见[预训练检测说明](pretrained-detector.md)。
+
+`extension/notices/comic-detector-Apache-2.0.txt` 原样下载自 Apache 官方全文；ONNX Runtime LICENSE 与 ThirdPartyNotices 原样下载自官方 v1.23.2。来源 URL 和文件哈希保存在 `comic-detector-attribution.txt`。完整声明保留不代表运行时启用了其列举的所有可选组件；未做从源码重建或二进制可复现审计。

@@ -5,3 +5,5 @@ The application source is MIT; bundled third-party code and weights retain their
 This software is based in part on the work of the Independent JPEG Group.
 
 OpenLibm upstream notices mention LGPL test files; those separate test files are not part of the static library build bundled here.
+
+预训练检测模型及 ONNX Runtime Web 1.23.2 的来源、固定版本、文件哈希和许可全文见 comic-detector-attribution.txt 及对应声明文件。运行时打包，模型由用户首次下载后缓存；两者均不改变原许可证。

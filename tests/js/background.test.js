@@ -16,7 +16,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
   let listener, permissionRemoved, tabRemoved;
   const id = 'test-extension';
   const chrome = {
-    runtime: { id, getURL: p => `chrome-extension://${id}/${p}`, onMessage: { addListener: fn => { listener = fn; } }, sendMessage: async message => { sent.push(message); return sendImpl ? sendImpl(message) : { ok: true, regions: [], translations: [] }; } },
+    runtime: { id, getURL: p => `chrome-extension://${id}/${p}`, onMessage: { addListener: fn => { listener = fn; } }, sendMessage: async message => { sent.push(message); const result = sendImpl ? await sendImpl(message) : { ok: true, regions: [], translations: [] }; return message.type === 'MODEL_STATUS' && result.model === undefined ? { ...result, model: { phase: 'ready' } } : result; } },
     storage: { session: {
       setAccessLevel: async value => { accesses.push(value); await storageGate; },
       get: async key => key === null ? structuredClone(store) : ({ [key]: structuredClone(store[key]) }),

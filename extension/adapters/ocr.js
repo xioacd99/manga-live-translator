@@ -41,7 +41,7 @@ function cropRectangles(config, width, height) {
   const crops = [];
   for (const region of config.regions) {
     const b = region?.bbox;
-    if (!b || ![b.x, b.y, b.width, b.height].every(Number.isInteger) || b.x < 0 || b.y < 0 || b.width < 1 || b.height < 1 || b.x + b.width > width || b.y + b.height > height || !Number.isFinite(region.confidence) || region.confidence < 0.5 || region.confidence > 1) return [];
+    if (!b || ![b.x, b.y, b.width, b.height].every(Number.isInteger) || b.x < 0 || b.y < 0 || b.width < 1 || b.height < 1 || b.x + b.width > width || b.y + b.height > height || !Number.isFinite(region.confidence) || region.confidence < 0.3 || region.confidence > 1) return [];
     if (!crops.some(c => c.left === b.x && c.top === b.y && c.width === b.width && c.height === b.height)) crops.push({ left: b.x, top: b.y, width: b.width, height: b.height });
   }
   // 重叠框也不能放大总计算预算，超额时直接回到一次整图。

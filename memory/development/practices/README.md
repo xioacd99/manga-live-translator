@@ -15,3 +15,5 @@ Record techniques supported by actual project experience, including when they ap
 - [双语 README 维护](bilingual-readme.md)：保持中文默认与英文入口同步，并避免将合成测试说成真实站点验证。
 
 - [区域准备的缓存与授权边界](region-preparation.md)
+
+- [预训练检测、本地下载与生命周期](pretrained-local-detector.md)

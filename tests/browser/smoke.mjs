@@ -1,4 +1,7 @@
 import {createBubbleBitmap} from '../fixtures/generated-bubble.js';
+import {createHash} from 'node:crypto';
+import {DETECTOR_MODEL} from '../../extension/model-store.js';
+import {PRETRAINED_DETECTOR_REVISION} from '../../extension/adapters/pretrained-regions.js';
 import {chromium} from 'playwright';
 import {readFile, writeFile, mkdir, cp, mkdtemp, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
@@ -6,9 +9,10 @@ import {join} from 'node:path';
 import assert from 'node:assert/strict';
 
 const directory = await mkdtemp(join(tmpdir(), 'manga-extension-smoke-'));
-let context, reader, options, worker;
+let context, reader, options, worker, popup;
 let phase = 'launch';
 let calls = 0;
+let cancelledDownloadProgress, unknownDownloadProgress, cachedModelReloadMs;
 const errors = [], providerInputs = [], network = [], routed = [], consoleErrors = [];
 const sanitize = value => String(value).replaceAll('synthetic-test-key-not-real', '[synthetic key redacted]').replace(/Bearer\s+[^\s"']+/gi, 'Bearer [redacted]').slice(0, 1000);
 const record = (list, item) => { if (list.length < 100) list.push(item); };
@@ -29,6 +33,12 @@ async function refreshProviderEvidence() {
 try {
   const extension = join(directory, 'extension');
   await cp('dist', extension, {recursive: true});
+  // CI 从固定官方地址下载测试权重；这里仅把校验后的真实文件放入临时测试扩展。
+  const modelBytes = await readFile(process.env.TEST_MODEL_PATH || '.test-models/detector.onnx');
+  assert.equal(modelBytes.length, DETECTOR_MODEL.bytes);
+  assert.equal(createHash('sha256').update(modelBytes).digest('hex'), DETECTOR_MODEL.sha256);
+  await writeFile(join(extension, 'synthetic-model.onnx'), modelBytes);
+  const panelBytes = await readFile('tests/fixtures/original-panel.png');
   // Instrument only the temporary copy. Neither shipped redaction nor actual OCR is replaced.
   for (const name of ['background.js', 'offscreen.js']) {
     const path = join(extension, name);
@@ -40,9 +50,17 @@ try {
     `);
     if (name === 'offscreen.js') {
       // 仅在临时测试副本中记录真实检测返回，不能以 OCR 成功推断检测命中。
+      const detectorCall = '() => detector.detect(input)';
+      assert.ok(original.includes(detectorCall));
+      original = original.replace(detectorCall, `async () => {
+        const began = performance.now();
+        const detected = await detector.detect(input);
+        await globalThis.__syntheticReport({kind:'detector-execution',width:input.width,height:input.height,regions:detected.regions,revision:detected.detectorRevision,adapterDurationMs:performance.now()-began});
+        return detected;
+      }`);
       const detectionReturn = /const byId = new Map\(\((\w+)\.translations/;
       assert.ok(detectionReturn.test(original));
-      original = original.replace(detectionReturn, (match, variable) => `await globalThis.__syntheticReport({kind:'detection',regions:${variable}.detection?.regions || []});
+      original = original.replace(detectionReturn, (match, variable) => `await globalThis.__syntheticReport({kind:'detection',regions:${variable}.detection?.regions || [],revision:${variable}.detection?.detectorRevision});
     ${match}`);
     }
     const prefix = name === 'background.js' ? `
@@ -60,6 +78,25 @@ try {
         globalThis.fetch = async (input, options = {}) => {
           const url = typeof input === 'string' ? input : input.url || String(input);
           options.signal?.throwIfAborted();
+          if (url === ${JSON.stringify(DETECTOR_MODEL.url)}) {
+            if (options.credentials !== 'omit' || options.referrerPolicy !== 'no-referrer') throw new Error('Model privacy contract changed');
+            const attempt = globalThis.__syntheticModelAttempts = (globalThis.__syntheticModelAttempts || 0) + 1;
+            await globalThis.__syntheticReport({kind:'model-fetch'});
+            const bytes = new Uint8Array(await (await nativeFetch(chrome.runtime.getURL('synthetic-model.onnx'))).arrayBuffer());
+            let offset = 0, stopped = false;
+            const stream = new ReadableStream({
+              async pull(controller) {
+                await new Promise(resolve => setTimeout(resolve, 80));
+                if (stopped) return;
+                if (options.signal?.aborted) { stopped = true; controller.error(new DOMException('Cancelled', 'AbortError')); return; }
+                if (offset === bytes.length) { controller.close(); return; }
+                const end = Math.min(offset + 262144, bytes.length);
+                controller.enqueue(bytes.slice(offset, end)); offset = end;
+              },
+              cancel() { stopped = true; },
+            });
+            return new Response(stream, {headers:{'content-type':'application/octet-stream',...(attempt === 1 ? {'content-length':String(bytes.length)} : {})}});
+          }
           if (url === 'https://api.openai.com/v1/chat/completions') {
             try {
               const body = JSON.parse(options.body);
@@ -86,7 +123,7 @@ try {
   }
   const manifest = JSON.parse(await readFile(join(extension, 'manifest.json'), 'utf8'));
   // Test-only fixed hosts avoid permission UI. Production permissions are unchanged.
-  manifest.host_permissions = ['https://reader.example.com/*', 'https://api.openai.com/*'];
+  manifest.host_permissions = ['https://reader.example.com/*', 'https://api.openai.com/*', 'https://huggingface.co/*', 'https://cas-bridge.xethub.hf.co/*'];
   await writeFile(join(extension, 'manifest.json'), JSON.stringify(manifest));
   context = await chromium.launchPersistentContext(join(directory, 'profile'), {
     headless: true, channel: 'chromium',
@@ -99,18 +136,18 @@ try {
   const id = new URL(worker.url()).host;
   // Playwright context routing does not intercept this extension service worker's fetch.
   // Substitute only the synthetic acquisition boundary; production validation and decoding still run.
-  await worker.evaluate(bytes => {
+  await worker.evaluate(({bytes, panelBytes}) => {
     globalThis.__syntheticImageFetches = 0;
     globalThis.__syntheticImageOrder = [];
     globalThis.fetch = async (url, options = {}) => {
       options.signal?.throwIfAborted();
-      if (!/^https:\/\/reader\.example\.com\/(?:page|near|rest|lazy)\.png$/.test(String(url))) throw new Error('Unexpected synthetic worker fetch');
+      if (!/^https:\/\/reader\.example\.com\/(?:page|near|rest|lazy|panel)\.png$/.test(String(url))) throw new Error('Unexpected synthetic worker fetch');
       if (options.credentials !== 'omit' || options.redirect !== 'error') throw new Error('Image fetch privacy options changed');
       globalThis.__syntheticImageFetches++;
       globalThis.__syntheticImageOrder.push(new URL(url).pathname);
-      return new Response(new Uint8Array(bytes), {headers: {'content-type': 'image/bmp'}});
+      return new Response(new Uint8Array(String(url).endsWith('/panel.png') ? panelBytes : bytes), {headers: {'content-type': String(url).endsWith('/panel.png') ? 'image/png' : 'image/bmp'}});
     };
-  }, Array.from(createBubbleBitmap().imageBytes));
+  }, {bytes: Array.from(createBubbleBitmap().imageBytes), panelBytes: Array.from(panelBytes)});
   context.on('page', page => page.on('pageerror', error => record(errors, sanitize(error.message))));
   context.on('console', message => {
     if (message.type() === 'error') record(consoleErrors, sanitize(message.text()));
@@ -128,7 +165,7 @@ try {
     record(routed, requestInfo(route.request()));
     if (url.origin === 'https://reader.example.com') {
       if (url.pathname.endsWith('.png')) {
-        await route.fulfill({contentType: 'image/bmp', body: createBubbleBitmap().imageBytes});
+        await route.fulfill({contentType: url.pathname === '/panel.png' ? 'image/png' : 'image/bmp', body: url.pathname === '/panel.png' ? panelBytes : createBubbleBitmap().imageBytes});
       } else {
         await route.fulfill({contentType: 'text/html', body: '<!doctype html><html><body><h1>Synthetic reader fixture</h1><img src="/page.png" width="800" height="300"></body></html>'});
       }
@@ -141,6 +178,34 @@ try {
       await route.abort('failed').catch(() => {});
     }
   });
+  phase = 'first model download progress and cancellation';
+  popup = await context.newPage();
+  await popup.goto(`chrome-extension://${id}/popup.html`);
+  await popup.locator('#modelDownload').waitFor();
+  await popup.waitForFunction(() => !document.getElementById('modelDownload').disabled);
+  await popup.locator('#modelDownload').click();
+  await popup.waitForFunction(() => document.getElementById('modelStatus').textContent.includes('%') && Number(document.getElementById('modelProgress').value) > 0);
+  cancelledDownloadProgress = await popup.evaluate(() => ({text:document.getElementById('modelStatus').textContent,loaded:document.getElementById('modelProgress').value,total:document.getElementById('modelProgress').max}));
+  assert.ok(cancelledDownloadProgress.loaded > 0 && cancelledDownloadProgress.loaded < DETECTOR_MODEL.bytes);
+  assert.equal(cancelledDownloadProgress.total, DETECTOR_MODEL.bytes);
+  await popup.locator('#modelCancel').click();
+  await popup.waitForFunction(() => document.getElementById('modelStatus').textContent.includes('已取消'));
+  assert.equal(await popup.locator('#modelDownload').isEnabled(), true);
+  phase = 'retry actual model download and local initialization';
+  await popup.locator('#modelDownload').click();
+  await popup.waitForFunction(() => document.getElementById('modelStatus').textContent.includes('大小未知'));
+  unknownDownloadProgress = await popup.evaluate(() => ({text:document.getElementById('modelStatus').textContent,indeterminate:!document.getElementById('modelProgress').hasAttribute('value')}));
+  assert.equal(unknownDownloadProgress.indeterminate, true);
+  await popup.waitForFunction(() => document.getElementById('modelStatus').textContent.includes('模型已就绪'));
+  assert.equal((await refreshProviderEvidence()).filter(entry => entry.kind === 'model-fetch').length, 2);
+  // 销毁推理上下文后重开，验证 IndexedDB 完整模型缓存，而非仅复用内存状态。
+  const cachedReloadStart = performance.now();
+  await worker.evaluate(async () => { await chrome.offscreen.closeDocument(); });
+  await popup.reload();
+  await popup.waitForFunction(() => document.getElementById('modelStatus').textContent.includes('模型已就绪'));
+  assert.equal((await refreshProviderEvidence()).filter(entry => entry.kind === 'model-fetch').length, 2, 'recreating the executor must reuse the verified persistent model without another download');
+  cachedModelReloadMs = performance.now() - cachedReloadStart;
+  await popup.close();
   phase = 'configure initial settings';
   options = await context.newPage();
   await options.goto(`chrome-extension://${id}/options.html`);
@@ -202,7 +267,7 @@ try {
   const withoutProvider = await metrics();
   assert.equal(withoutProvider.ocrCalls, 1);
   const detections = (await refreshProviderEvidence()).filter(entry => entry.kind === 'detection');
-  assert.ok(detections.some(entry => entry.regions.some(region => region.bbox.x === 22 && region.bbox.y === 17 && region.bbox.width === 736 && region.bbox.height === 126)), 'real local detector must locate the synthetic bubble');
+  assert.ok(detections.some(entry => entry.revision === PRETRAINED_DETECTOR_REVISION), 'local preparation must run the pinned pretrained detector, even when the simple bitmap has no detections');
   assert.equal(await reader.locator('.region').count(), 0);
   phase = 'local preparation with configured provider';
   await configure();
@@ -286,13 +351,30 @@ try {
   assert.equal(pausedGrant.paused, true);
   assert.equal(pausedGrant.prepareRemaining, 0);
   assert.deepEqual(await worker.evaluate(() => globalThis.__syntheticImageOrder), ['/page.png', '/near.png']);
+  phase = 'actual pretrained inference on original panel without translation';
+  await reader.reload();
+  await reader.locator('img').evaluate(image => { image.src = '/panel.png'; });
+  await reader.waitForFunction(() => document.images[0].complete && document.images[0].naturalWidth > 0);
+  const beforePanel = (await refreshProviderEvidence()).filter(entry => entry.kind === 'detection').length;
+  const beforePanelRuns = (await refreshProviderEvidence()).filter(entry => entry.kind === 'detector-execution').length;
+  const panelStarted = performance.now();
+  await enable({prepareEnabled: true, prepareBudget: 1});
+  await waitForPreparation();
+  const panelPreparationMs = performance.now() - panelStarted;
+  const panelExecutions = (await refreshProviderEvidence()).filter(entry => entry.kind === 'detector-execution').slice(beforePanelRuns);
+  assert.ok(panelExecutions.length > 0 && panelExecutions.every(entry => Number.isFinite(entry.adapterDurationMs) && entry.adapterDurationMs > 0));
+  const panelDetections = (await refreshProviderEvidence()).filter(entry => entry.kind === 'detection').slice(beforePanel);
+  assert.ok(panelDetections.some(entry => entry.revision === PRETRAINED_DETECTOR_REVISION && entry.regions.length > 0), 'the independently drawn panel must yield real model regions');
+  assert.equal(calls, 4, 'pretrained panel preparation must not call the provider');
   const offscreenDiagnostics = await refreshProviderEvidence();
   assert.deepEqual(offscreenDiagnostics.filter(entry => entry.kind === 'error'), [], 'Offscreen reported a synthetic-run failure');
   assert.deepEqual(errors, []);
   await writeFile('artifacts/browser-smoke.json', JSON.stringify({
     browser: context.browser()?.version(), calls, withoutProvider, prepared, warm, afterForget,
+    modelDownload: {mockedTransport:true,realPinnedWeights:true,sha256:DETECTOR_MODEL.sha256,bytes:DETECTOR_MODEL.bytes,cancelledDownloadProgress,unknownDownloadProgress,cachedModelReloadMs,networkAttempts:offscreenDiagnostics.filter(entry => entry.kind === 'model-fetch').length},
+    originalPanel: {source:'independently drawn synthetic panel',panelPreparationMs,executions:panelExecutions,timingScope:'adapterDurationMs includes image decode, preprocessing and model inference; preparation includes OCR. Single CI sample, not real manga performance.'},
     realLocalOCR: true, mockedProvider: true, mockedImageAcquisition: true, productionManifestUnchanged: true,
-    verified: ['local preparation without provider', 'local preparation with provider without LLM', 'visible-near priority and budget', 'pause and clear', 'warm completion', 'source correction', 'context invalidation', 'original toggle', 'forget and reconfigure'], errors, consoleErrors, network, routed,
+    verified: ['model download progress and cancellation', 'model retry and cached popup reload', 'real pretrained panel inference', 'local preparation without provider', 'local preparation with provider without LLM', 'visible-near priority and budget', 'pause and clear', 'warm completion', 'source correction', 'context invalidation', 'original toggle', 'forget and reconfigure'], errors, consoleErrors, network, routed,
   }, null, 2));
   console.log('Browser smoke passed: packaged OCR, mocked provider, warm cache, corrections, context, original toggle, forget/reconfigure.');
 } catch (error) {

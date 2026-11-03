@@ -2,6 +2,8 @@ import {preparationSettings} from './content/scheduler.js';
 const el = id => document.getElementById(id);
 const status = el('status');
 let tab, configured = false;
+let model = {phase: 'checking', loaded: 0, total: null}, pollingTimer, closed = false, polling = false;
+const modelBusy = new Set(['checking', 'downloading', 'verifying', 'loading', 'cancelling']);
 el('enable').disabled = true;
 async function send(message) {
   const response = await chrome.runtime.sendMessage(message);
@@ -9,6 +11,53 @@ async function send(message) {
   return response;
 }
 async function run(fn) { try { status.textContent = '处理中…'; await fn(); } catch (error) { status.textContent = error.message; } }
+// 只显示后台验证后的状态；已接收字节并不等于模型可用。
+function renderModel(next) {
+  model = next && typeof next === 'object' ? next : {phase: 'error', error: '模型状态无效，请重试。'};
+  const names = {idle: '尚未下载模型', checking: '正在检查本地模型', downloading: '正在下载模型', verifying: '正在校验模型完整性', loading: '正在加载本地模型', ready: '模型已就绪', error: '模型准备失败', cancelled: '模型准备已取消', cancelling: '正在取消模型准备'};
+  const phase = Object.hasOwn(names, model.phase) ? model.phase : 'error';
+  const loaded = Number.isSafeInteger(model.loaded) && model.loaded >= 0 ? model.loaded : 0;
+  const total = Number.isSafeInteger(model.total) && model.total > 0 ? model.total : null;
+  const bytes = total === null ? `${loaded.toLocaleString('zh-CN')} 字节，大小未知` : `${loaded.toLocaleString('zh-CN')} / ${total.toLocaleString('zh-CN')} 字节（${Math.min(100, Math.floor(loaded / total * 100))}%）`;
+  el('modelStatus').textContent = `${names[phase]}${phase === 'downloading' ? `：${bytes}` : ''}${phase === 'error' ? `：${String(model.error || '请重试或使用整图 OCR。').slice(0, 200)}` : ''}${phase === 'ready' ? '，可启用当前页面。' : ''}`;
+  const progress = el('modelProgress');
+  progress.hidden = !modelBusy.has(phase);
+  if (phase === 'downloading' && total !== null) { progress.max = total; progress.value = Math.min(loaded, total); }
+  else progress.removeAttribute('value');
+  el('modelDownload').disabled = modelBusy.has(phase);
+  el('modelDownload').textContent = ['error', 'cancelled'].includes(phase) ? '重试下载并准备模型' : phase === 'ready' ? '重新检查模型' : '下载并准备模型';
+  el('modelCancel').disabled = !modelBusy.has(phase) || phase === 'cancelling';
+}
+async function pollModel() {
+  if (closed || polling) return;
+  polling = true;
+  let timeout;
+  try {
+    const response = await Promise.race([send({type: 'MLT_UI_MODEL_STATUS'}), new Promise((_, reject) => { timeout = setTimeout(() => reject(new Error('读取模型状态超时，请重试。')), 10000); })]);
+    if (!closed) renderModel(response.model);
+  } catch (error) { if (!closed) renderModel({phase: 'error', error: error.message}); }
+  finally {
+    clearTimeout(timeout); polling = false;
+    if (!closed) pollingTimer = setTimeout(pollModel, 1000);
+  }
+}
+window.addEventListener('pagehide', () => { closed = true; clearTimeout(pollingTimer); }, {once: true});
+el('modelDownload').onclick = () => run(async () => {
+  // 首次下载权限必须在用户点击链内请求，不能先等待状态读取。
+  if (!await chrome.permissions.request({origins: ['https://huggingface.co/*', 'https://cas-bridge.xethub.hf.co/*']})) throw new Error('未授予模型下载来源权限，未开始下载。');
+  renderModel({phase: 'checking', loaded: 0, total: null});
+  try {
+    const response = await send({type: 'MLT_UI_MODEL_DOWNLOAD'});
+    if (response.model) renderModel(response.model);
+    status.textContent = '模型准备已开始，请查看下载进度。就绪后再启用当前页面。';
+  } catch (error) { renderModel({phase: 'error', error: error.message}); throw error; }
+});
+el('modelCancel').onclick = () => run(async () => {
+  const response = await send({type: 'MLT_UI_MODEL_CANCEL'});
+  renderModel(response.model || {phase: 'cancelled', loaded: model.loaded, total: model.total});
+  status.textContent = '已请求取消模型准备，可重试。';
+});
+void pollModel();
 const ready = Promise.all([chrome.tabs.query({active: true, currentWindow: true}), send({type: 'MLT_UI_STATUS'})]).then(([tabs, response]) => {
   tab = tabs[0]; configured = response.configured;
   el('config').textContent = configured ? `模型：${response.model}；目标语言：${response.targetLanguage}` : '尚未配置翻译服务，可独立启用本地准备。';
@@ -17,6 +66,7 @@ const ready = Promise.all([chrome.tabs.query({active: true, currentWindow: true}
 el('settings').onclick = () => chrome.runtime.openOptionsPage();
 el('enable').onclick = () => run(async () => {
   const settings = preparationSettings({prepareEnabled: el('prepare').checked, prepareBudget: Number(el('prepareBudget').value), remotePrefetchEnabled: el('remotePrefetch').checked, remotePrefetchBudget: Number(el('remoteBudget').value), detectorMode: el('wholeImage').checked ? 'whole-image' : 'regions'});
+  if (settings.detectorMode === 'regions' && model.phase !== 'ready') throw new Error('请先点击“下载并准备模型”，待模型就绪后再启用；或选择整图 OCR。');
   if (!configured && (el('auto').checked || settings.remotePrefetchEnabled)) throw new Error('请先配置翻译服务；本地准备不需要 API 密钥。');
   const origin = new URL(tab.url).origin;
   const imageOrigins = el('origins').value.split(/\n/).map(value => value.trim()).filter(Boolean);

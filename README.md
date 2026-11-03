@@ -16,7 +16,7 @@
 
 [合成浏览器集成测试](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987)已通过，使用真实打包的 OCR，并模拟图片获取与模型服务边界。真实网站和翻译质量仍待验证。
 
-实验性气泡区域 OCR 与有预算的当前页提前处理见 [Issue #2 实现说明](docs/development/issue-2.md)。预取默认关闭，检测不代表经过真实漫画质量验收。
+实验性区域检测已切换为预训练 RT-DETR：首次由用户触发下载约 11.1 MB 权重并缓存，之后本地 CPU/WASM 推理；运行时代码打包，模型不打包，不上传漫画图片。来源、隐私和已观察误检见[预训练检测说明](docs/development/pretrained-detector.md)。区域 OCR 与有预算的当前页提前处理见 [Issue #2 实现说明](docs/development/issue-2.md)。预取默认关闭，检测不代表经过真实漫画质量验收。
 
 ## 项目目标
 

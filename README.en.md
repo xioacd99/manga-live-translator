@@ -56,4 +56,4 @@ The project uses the [MIT License](LICENSE). You may use, modify, distribute, an
 
 ## Experimental page preparation
 
-See the [Chinese Issue #2 implementation guide](docs/development/issue-2.md) for conservative region OCR and bounded, opt-in page preparation. Prefetch is disabled by default. The heuristic detector is not a trained segmentation model; real-comic quality and M4 performance remain unverified.
+See the [Chinese Issue #2 implementation guide](docs/development/issue-2.md) for region OCR and bounded, opt-in page preparation. Prefetch is disabled by default. Region detection now uses a pretrained RT-DETR model with local CPU/WASM inference. The user initiates the first 11,120,765-byte model download; verified weights are cached locally, while runtime code is packaged with the extension. No comic images are uploaded for detection. See the [model, privacy, and evaluation notes](docs/development/pretrained-detector.md). Known synthetic false positives remain; real-comic quality and M4 performance are unverified.

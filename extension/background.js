@@ -28,6 +28,12 @@ async function handle(message,sender) {
   if(!message||typeof message!=='object')throw new Error('Invalid message.');
   if(message.type.startsWith('MLT_UI_')) {
     if(!trustedUi(sender))throw new Error('Trusted extension UI required.');
+    if(message.type==='MLT_UI_MODEL_STATUS')return callExecutor({type:'MODEL_STATUS'});
+    if(message.type==='MLT_UI_MODEL_CANCEL')return callExecutor({type:'MODEL_CANCEL'});
+    if(message.type==='MLT_UI_MODEL_DOWNLOAD'){
+      if(!await chrome.permissions.contains({origins:['https://huggingface.co/*','https://cas-bridge.xethub.hf.co/*']}))throw new Error('Grant model download host permissions first.');
+      return callExecutor({type:'MODEL_DOWNLOAD'});
+    }
     if(message.type==='MLT_UI_CONFIGURE') {
       const s=message.settings;
       if(!s||s.consent!==true||typeof s.apiKey!=='string'||s.apiKey.length<10||s.apiKey.length>512||typeof s.model!=='string'||!/^[\w.:-]{1,100}$/.test(s.model)||typeof s.targetLanguage!=='string'||s.targetLanguage.length>80)throw new Error('Check the settings and consent checkbox.');
@@ -46,6 +52,7 @@ async function handle(message,sender) {
     if(message.type==='MLT_UI_ENABLE') {
       const s=await settings(); const preparation=preparationSettings(message.settings);
       if(!s&&(message.auto===true||preparation.remotePrefetchEnabled))throw new Error('Configure the provider before remote translation.');
+      if(preparation.detectorMode!=='whole-image'){const status=await callExecutor({type:'MODEL_STATUS'});if(status.model?.phase!=='ready')throw new Error('Download and prepare the local detector first, or select whole-image OCR.');}
       const tab=await chrome.tabs.get(message.tabId); if(tab.incognito)throw new Error('Incognito is not supported.');
       const origin=publicHttpUrl(tab.url).origin;
       const imageOrigins=[origin,...(message.imageOrigins||[]).map(v=>publicHttpUrl(v).origin)];

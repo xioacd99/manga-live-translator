@@ -1,6 +1,6 @@
 # 区域准备的缓存与授权边界
 
-- 状态：open，实验性实现，真实漫画质量及设备验收未完成。
+- 状态：superseded（检测选择与默认补漏行为）；缓存和授权发现仍适用。参见[预训练检测、本地下载与生命周期](pretrained-local-detector.md)。
 - 日期：2026-11-03（Asia/Shanghai）。
 - 关联：[Issue #2](https://github.com/xioacd99/manga-live-translator/issues/2)。
 

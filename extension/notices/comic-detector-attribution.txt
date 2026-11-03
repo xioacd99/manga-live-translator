@@ -1,0 +1,37 @@
+预训练漫画区域检测与运行时声明
+
+记录日期：2026-11-03（Asia/Shanghai）。项目自行编写的浏览器适配器为 MIT；模型、运行时和第三方材料保留各自许可证，不改标为 MIT。
+
+模型作者/来源：ogkalu，https://huggingface.co/ogkalu/comic-text-and-bubble-detector
+固定修订：16e8a622f91fabc6b5b65c96d32d1183f8843546
+文件：detector-v4-s_int8.onnx（11,120,765 字节）
+SHA-256：5fe9e4f576e49d4e7e8b0e029d6d3cdc252abd4694113e1cae120e62c931ea79
+原始模型卡许可：Apache-2.0。
+模型卡：https://huggingface.co/ogkalu/comic-text-and-bubble-detector/blob/16e8a622f91fabc6b5b65c96d32d1183f8843546/README.md
+本项目不修改权重；权重在用户首次主动下载后缓存，不随扩展安装包提供。模型卡声明不是逐样本训练数据权利审计，本项目没有完成该审计。
+
+输入输出参考（独立实现浏览器适配器，无 ImageTrans/GPL/AGPL 代码拷贝）：
+https://github.com/ogkalu2/comic-translate/blob/8977b91a4f7a40c3917c5a268e9e7d78e1d818da/modules/detection/rtdetr_v2_onnx.py
+上游仓库许可证：
+https://github.com/ogkalu2/comic-translate/blob/8977b91a4f7a40c3917c5a268e9e7d78e1d818da/LICENSE
+
+运行时：ONNX Runtime Web 1.23.2，Microsoft Corporation，主许可证 MIT。
+源码：https://github.com/microsoft/onnxruntime/tree/v1.23.2
+完整第三方声明保留，不代表其所有可选组件均启用。本实现只启用 CPU/WASM；无源码重建或二进制可复现审计。
+
+以下文件为官方原文下载，未改写，许可和第三方版权声明以文件内容为准：
+
+comic-detector-Apache-2.0.txt
+来源：https://www.apache.org/licenses/LICENSE-2.0.txt
+字节数：11358
+SHA-256：cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+
+onnxruntime-1.23.2-LICENSE.txt
+来源：https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE
+字节数：1073
+SHA-256：2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c
+
+onnxruntime-1.23.2-ThirdPartyNotices.txt
+来源：https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/ThirdPartyNotices.txt
+字节数：326866
+SHA-256：e9e90971a8e75a9a8ac0c6412e29c1202d079998389915aa485f46c816c3b4cc

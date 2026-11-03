@@ -16,7 +16,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
   let listener, permissionRemoved, tabRemoved, tabUpdated;
   const id = 'test-extension';
   const chrome = {
-    runtime: { id, getURL: p => `chrome-extension://${id}/${p}`, onMessage: { addListener: fn => { listener = fn; } }, sendMessage: async message => { sent.push(message); return sendImpl ? sendImpl(message) : { ok: true, regions: [], translations: [] }; } },
+    runtime: { id, getURL: p => `chrome-extension://${id}/${p}`, onMessage: { addListener: fn => { listener = fn; } }, sendMessage: async message => { sent.push(message); const result = sendImpl ? await sendImpl(message) : { ok: true, regions: [], translations: [] }; return message.type === 'MODEL_STATUS' && result.model === undefined ? { ...result, model: { phase: 'ready' } } : result; } },
     storage: { session: {
       setAccessLevel: async value => { accesses.push(value); await storageGate; },
       get: async key => key === null ? structuredClone(store) : ({ [key]: structuredClone(store[key]) }),
@@ -162,4 +162,33 @@ test('旧章节的延迟暂停请求不能暂停当前章节授权', async () =>
   assert.equal((await h.send({ type: 'MLT_PAUSE_PAGE' }, oldPage)).ok, false);
   assert.equal(h.store['tab:1'].paused, false);
   assert.equal((await h.send(localRequest(), h.page)).ok, true);
+});
+
+test('模型下载仅可信UI可发起且需两个固定来源权限，不能注入下载URL', async () => {
+  let granted = false; const checks = [];
+  const h = harness({ permissions: async args => { checks.push(args.origins); return granted; } });
+  assert.equal((await h.send({ type: 'MLT_UI_MODEL_DOWNLOAD' }, h.page)).ok, false);
+  assert.equal((await h.send({ type: 'MLT_UI_MODEL_DOWNLOAD' })).ok, false);
+  assert.equal(h.sent.some(m => m.type === 'MODEL_DOWNLOAD'), false);
+  granted = true;
+  assert.equal((await h.send({ type: 'MLT_UI_MODEL_DOWNLOAD', url: 'https://evil.invalid/model', apiKey: 'private' })).ok, true);
+  assert.deepEqual(Array.from(checks.at(-1)), ['https://huggingface.co/*', 'https://cas-bridge.xethub.hf.co/*']);
+  const forwarded = h.sent.find(m => m.type === 'MODEL_DOWNLOAD'); assert.deepEqual(Object.keys(forwarded).sort(), ['target', 'type']);
+  assert.equal((await h.send({ type: 'MLT_UI_MODEL_CANCEL' })).ok, true);
+  assert.equal(h.sent.at(-1).type, 'MODEL_CANCEL');
+});
+
+test('模型未就绪时禁止区域模式授权，整图OCR仍可独立启用', async () => {
+  const h = harness({ sendImpl: async message => ({ ok: true, ...(message.type === 'MODEL_STATUS' ? { model: { phase: 'loading' } } : {}) }) });
+  assert.equal((await enableLocal(h)).ok, false); assert.equal(h.store['tab:1'], undefined); assert.equal(h.scripts.length, 0);
+  assert.equal((await h.send({ type: 'MLT_UI_ENABLE', tabId: 1, settings: { ...localSettings, detectorMode: 'whole-image' } })).ok, true);
+  assert.equal(h.store['tab:1'].preparation.detectorMode, 'whole-image');
+  assert.equal(h.sent.some(m => m.type === 'MODEL_DOWNLOAD'), false);
+});
+
+test('模型状态查询不要求下载权限也不发起下载，网页不能查询或取消', async () => {
+  const h = harness({ permissions: async () => false });
+  for (const type of ['MLT_UI_MODEL_STATUS', 'MLT_UI_MODEL_CANCEL']) assert.equal((await h.send({ type }, h.page)).ok, false);
+  assert.equal((await h.send({ type: 'MLT_UI_MODEL_STATUS' })).ok, true);
+  assert.equal(h.sent.length, 1); assert.equal(h.sent[0].type, 'MODEL_STATUS');
 });
