@@ -6,6 +6,8 @@ Each entry describes the changes made, with additions, improvements, fixes, comp
 
 ## 2026-11-03 - v0.1.0
 
+- Confined synthetic provider responses to the temporary offscreen test context and relayed bounded diagnostics directly to the harness. Unexpected offscreen network calls now fail closed in the test, independently of Playwright routing support.
+
 - Corrected the browser test acquisition mock: extension service-worker fetches were not intercepted by Playwright context routes. The harness now injects only the synthetic image response at that boundary and checks privacy fetch options; production fetching and the shipped extension are unchanged.
 
 - Made synthetic service-worker failure diagnostics directly readable by the browser harness because worker console messages were absent from the context-level console stream.

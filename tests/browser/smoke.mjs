@@ -16,15 +16,66 @@ const requestInfo = request => {
   const url = new URL(request.url());
   return {method: request.method(), origin: url.origin, path: url.pathname, serviceWorker: !!request.serviceWorker?.()};
 };
+
+async function refreshProviderEvidence() {
+  if (!worker) return [];
+  const diagnostics = await worker.evaluate(() => globalThis.__syntheticDiagnostics || []);
+  const inputs = diagnostics.filter(entry => entry.kind === 'provider').map(entry => entry.input);
+  calls = inputs.length;
+  providerInputs.splice(0, providerInputs.length, ...inputs);
+  return diagnostics;
+}
+
 try {
   const extension = join(directory, 'extension');
   await cp('dist', extension, {recursive: true});
-  // Synthetic-only diagnostic instrumentation in the temporary copy; shipped bundles stay redacted.
+  // Instrument only the temporary copy. Neither shipped redaction nor actual OCR is replaced.
   for (const name of ['background.js', 'offscreen.js']) {
     const path = join(extension, name);
-    const original = await readFile(path, 'utf8');
+    let original = await readFile(path, 'utf8');
     assert.ok(original.includes('function safeError(error) {'));
-    await writeFile(path, original.replace('function safeError(error) {', 'function safeError(error) { (globalThis.__syntheticErrors ||= []).push(String(error?.message));'));
+    original = original.replace('function safeError(error) {', `function safeError(error) {
+      (globalThis.__syntheticErrors ||= []).push(String(error?.message));
+      globalThis.__syntheticReport?.({kind:'error',message:String(error?.message)}).catch(()=>{});
+    `);
+    const prefix = name === 'background.js' ? `
+      globalThis.__syntheticDiagnostics = [];
+      chrome.runtime.onMessage.addListener((message, sender, reply) => {
+        if (message?.target !== 'synthetic-test' || message.type !== 'DIAGNOSTIC') return;
+        if (sender.id !== chrome.runtime.id || sender.url !== chrome.runtime.getURL('offscreen.html')) return;
+        if (globalThis.__syntheticDiagnostics.length < 100) globalThis.__syntheticDiagnostics.push(message.detail);
+        reply({ok:true});
+      });
+    ` : `
+      globalThis.__syntheticReport = detail => chrome.runtime.sendMessage({target:'synthetic-test',type:'DIAGNOSTIC',detail});
+      (() => {
+        const nativeFetch = globalThis.fetch.bind(globalThis);
+        globalThis.fetch = async (input, options = {}) => {
+          const url = typeof input === 'string' ? input : input.url || String(input);
+          options.signal?.throwIfAborted();
+          if (url === 'https://api.openai.com/v1/chat/completions') {
+            try {
+              const body = JSON.parse(options.body);
+              if (options.method !== 'POST' || options.credentials !== 'omit' || options.redirect !== 'error' || body.store !== false || body.messages?.[1]?.role !== 'user') throw new Error('Synthetic provider transport contract changed');
+              const data = JSON.parse(body.messages[1].content);
+              if (!Array.isArray(data.regions) || !data.regions.length || data.regions.some(region => typeof region.regionId !== 'string' || typeof region.sourceText !== 'string')) throw new Error('Synthetic provider region contract changed');
+              if (body.response_format?.json_schema?.strict !== true) throw new Error('Synthetic provider strict schema missing');
+              // Await the relay so a completed translation proves its request was counted.
+              await globalThis.__syntheticReport({kind:'provider',input:data});
+              options.signal?.throwIfAborted();
+              return new Response(JSON.stringify({choices:[{finish_reason:'stop',message:{content:JSON.stringify({translations:data.regions.map(region => ({regionId:region.regionId,text:'Translated: '+region.sourceText}))})}}]}), {headers:{'content-type':'application/json'}});
+            } catch (error) {
+              await globalThis.__syntheticReport({kind:'error',message:String(error.message)}).catch(()=>{});
+              throw error;
+            }
+          }
+          if (url.startsWith(chrome.runtime.getURL('')) || url.startsWith('blob:')) return nativeFetch(input, options);
+          await globalThis.__syntheticReport({kind:'error',message:'Blocked unexpected offscreen fetch: '+new URL(url,location.href).origin}).catch(()=>{});
+          throw new Error('Unexpected synthetic offscreen network request blocked');
+        };
+      })();
+    `;
+    await writeFile(path, prefix + '\n' + original);
   }
   const manifest = JSON.parse(await readFile(join(extension, 'manifest.json'), 'utf8'));
   // Test-only fixed hosts avoid permission UI. Production permissions are unchanged.
@@ -72,21 +123,6 @@ try {
       } else {
         await route.fulfill({contentType: 'text/html', body: '<!doctype html><html><body><h1>Synthetic reader fixture</h1><img src="/page.png" width="800" height="300"></body></html>'});
       }
-      return;
-    }
-    if (url.href === 'https://api.openai.com/v1/chat/completions') {
-      calls++;
-      const body = route.request().postDataJSON();
-      assert.equal(body.store, false);
-      assert.equal(body.messages[1].role, 'user');
-      const input = JSON.parse(body.messages[1].content);
-      assert.ok(input.regions.length > 0);
-      providerInputs.push(input);
-      await route.fulfill({contentType: 'application/json', body: JSON.stringify({choices: [{
-        finish_reason: 'stop', message: {content: JSON.stringify({translations: input.regions.map(region => ({
-          regionId: region.regionId, text: `Translated: ${region.sourceText}`,
-        }))})},
-      }]})});
       return;
     }
     errors.push(`Unexpected outbound origin: ${url.origin}`);
@@ -138,6 +174,7 @@ try {
       const button = [...(root?.querySelectorAll('button') || [])].find(button => button.textContent === 'Translate');
       return status?.textContent && !status.textContent.startsWith('Fetching') && button && !button.disabled;
     });
+    await refreshProviderEvidence();
     const displayed = await reader.locator('[role="status"]').textContent();
     assert.match(displayed, /^Translated\./, `Translation ended without success (${phase}); displayed status: ${sanitize(displayed)}`);
   }
@@ -197,6 +234,8 @@ try {
   const afterForget = await metrics();
   assert.equal(afterForget.ocrCalls, 1);
   assert.equal(afterForget.translationCalls, 1);
+  const offscreenDiagnostics = await refreshProviderEvidence();
+  assert.deepEqual(offscreenDiagnostics.filter(entry => entry.kind === 'error'), [], 'Offscreen reported a synthetic-run failure');
   assert.deepEqual(errors, []);
   await writeFile('artifacts/browser-smoke.json', JSON.stringify({
     browser: context.browser()?.version(), calls, warm, afterForget,
@@ -205,8 +244,9 @@ try {
   }, null, 2));
   console.log('Browser smoke passed: packaged OCR, mocked provider, warm cache, corrections, context, original toggle, forget/reconfigure.');
 } catch (error) {
+  const offscreenDiagnostics = await refreshProviderEvidence().catch(error => [{kind:'inspection-error',message:sanitize(error.message)}]);
   const backgroundErrors = worker ? await worker.evaluate(() => globalThis.__syntheticErrors || []).catch(() => []) : [];
-  const diagnostics = {backgroundErrors: backgroundErrors.map(sanitize),phase, error: sanitize(error?.stack || error), calls, errors, consoleErrors, network, routed};
+  const diagnostics = {offscreenErrors: offscreenDiagnostics.filter(entry => entry.kind !== 'provider').map(entry => ({kind:entry.kind,message:sanitize(entry.message)})), backgroundErrors: backgroundErrors.map(sanitize),phase, error: sanitize(error?.stack || error), calls, errors, consoleErrors, network, routed};
   if (reader && !reader.isClosed()) {
     diagnostics.reader = await reader.evaluate(() => ({
       url: location.origin + location.pathname,
