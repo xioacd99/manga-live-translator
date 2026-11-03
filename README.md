@@ -12,6 +12,10 @@ This project is at an early stage. The points below describe our goals, not impl
 - **Natural LLM translation:** use large language models to produce fluent dialogue that respects context.
 - **Online reading:** make automatic translation convenient for reading manga in the browser.
 
+## First implementation plan
+
+Read the [first requirements and implementation plan](docs/plans/v0.1/README.md) for the proposed MVP, architecture, cache design, research sources, evaluation gates, and decisions awaiting review. It is a design draft, not implemented application behavior.
+
 ## Contributing
 
 Issues and pull requests are welcome! Share ideas, report problems, or contribute improvements. Read the [issue guide](docs/ISSUES.md) and use the bug or feature form. People, maintainers, dot, and other bots follow the same format.

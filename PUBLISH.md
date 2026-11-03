@@ -6,6 +6,9 @@ Each entry describes the changes made, with additions, improvements, fixes, comp
 
 ## 2026-11-03 - v0.0.0
 
+- Added the first English implementation plan under docs/plans/v0.1: requirements, independent ImageTrans-inspired architecture, layered cache contracts, privacy, research/license comparison, staged delivery, and reproducible evaluation gates. This is a documentation proposal, not an implemented translator or measured benchmark.
+- Recorded checked MV3 lifecycle, context-sensitive cache identity, and separate code/model-license constraints in project memory; linked the plan from README and AGENTS.
+
 - Created dev from main at 0cbb377b69a844299b0e8926a06282cc2a73d494 and documented development on dev, testing before merge, and main as the release branch. This workflow update is committed on dev only; it does not merge into main or publish a release.
 - Added a development record documenting branch separation, verification steps, and the need for explicit merge/release authorization.
 

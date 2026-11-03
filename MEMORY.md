@@ -9,7 +9,7 @@ Before every development task, read [README.md](README.md), this file, and [AGEN
 ## Knowledge tree
 
 - [Architecture](memory/architecture/README.md)
-  - [Decisions](memory/architecture/decisions/README.md): choices, alternatives, and their rationale.
+  - [Decisions](memory/architecture/decisions/README.md): choices, alternatives, and their rationale, including the [first implementation research boundaries](memory/architecture/decisions/initial-plan-research.md).
 - [Development](memory/development/README.md)
   - [Pitfalls](memory/development/pitfalls/README.md): observed problems, causes, fixes, and verification.
   - [Practices](memory/development/practices/README.md): techniques that proved useful in actual work.
