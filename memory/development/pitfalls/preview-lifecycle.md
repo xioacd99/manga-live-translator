@@ -26,3 +26,7 @@ Chromium launch failed in the cloud host with socket creation denied, including 
 - [Cache tests](../../../tests/js/core.test.js)
 - [Content lifecycle tests](../../../tests/js/content-lifecycle.test.js)
 - [Synthetic browser smoke](../../../tests/browser/smoke.mjs)
+
+## CI operating-system pin
+
+[First CI run](https://github.com/xioacd99/manga-live-translator/actions/runs/41580639361) passed all 73 JavaScript and 42 Python tests and the build. Browser installation failed because ubuntu-latest resolved to Ubuntu 26.04, unsupported by pinned Playwright 1.56.1. Pinning Ubuntu 24.04 aligns the runner with that browser tool's supported dependency installer; it is not a browser success claim. Keep runner and browser-tool versions compatible when upgrading.
