@@ -1,0 +1,10 @@
+{
+  "issue": "NumPy boolean diagnostic flag is not JSON serializable; first formal attempt stopped after A first image before any usable output.",
+  "old_sha256": "f8fe523fef141024f58962941dfe37dc09a585c574f4af3a53c3ac85a7808eda",
+  "new_sha256": "b6f2ad1627e19559349030ba644a46478d31f01b4359aedfe599d8167b6fd252",
+  "change": "Only return field fallback_original: bool(fallback)",
+  "inference_logic_parameters_changed": false,
+  "failed_attempt_results": "results",
+  "retry_results": "results-v2",
+  "failed_attempt_log": "run.log"
+}

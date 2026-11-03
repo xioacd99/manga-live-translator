@@ -27,3 +27,5 @@ Record techniques supported by actual project experience, including when they ap
 - [OCR批量、并发与多页模型边界](ocr-batching-boundaries.md)：区分吞吐、首结果、缓存身份与二代输出格式。
 
 - [Paddle组件矩阵与官方导出适配](paddle-component-matrix.md)：分辨率非单调、字典与裁框分辨率的一致性。
+
+- [英文OCR追加精度验证](ocr-accuracy-followup.md)：负结果、置信度选择、桥接与模型许可边界。

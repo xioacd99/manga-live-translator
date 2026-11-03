@@ -1,0 +1,35 @@
+{
+  "runtime_frozen_protocol_tests": {
+    "count": 4,
+    "passed": 4,
+    "scope": "Lightweight geometry, full failure denominator and frozen hashes; no extra inference."
+  },
+  "public_static_tests": {
+    "count": 10,
+    "runs": 2,
+    "passed_per_run": 10,
+    "skipped_per_run": 0,
+    "command": "python -m unittest discover -s tests -v",
+    "scope": "Syntax, exact versions, geometry, failure denominator, asset lock, runtime identity, whitelist/inventory, recognized cache handling."
+  },
+  "real_local_smoke": {
+    "status": "completed",
+    "exact_expected_words": true,
+    "word_count": 5,
+    "eos_missing": 0,
+    "cpu_threads": 1,
+    "public_helper_produced_identical_input": true
+  },
+  "formal_real_local_inference": {
+    "completed_images": 10,
+    "expected_images": 10,
+    "repetitions": 1,
+    "input_id_hash_dimension_validation": true
+  },
+  "not_tested": [
+    "Public download_models.py network execution was not repeated; original official downloads and hashes were verified.",
+    "Public package itself did not rerun model inference; its engine.py, run_eval.py and summarizer are byte-identical to the executed v2 files.",
+    "No browser, MPS/M4, isolated network sandbox, hard CPU/memory isolation, or independent fresh installation test."
+  ],
+  "retained_failure_history": "Initial synthetic attempt failed only the harness version-string assertion. Original failed output and v1 source retained privately; v2 frozen before actual image inference."
+}

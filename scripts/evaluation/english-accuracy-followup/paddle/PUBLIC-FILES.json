@@ -1,0 +1,92 @@
+[
+  {
+    "file": "crop_geometry.py",
+    "bytes": 1647,
+    "sha256": "b6f2ad1627e19559349030ba644a46478d31f01b4359aedfe599d8167b6fd252"
+  },
+  {
+    "file": "PROTOCOL.md",
+    "bytes": 2626,
+    "sha256": "bfc378744692872ea90d95f3bbf50cb672fec5d76e29d64d6c40a6837f6d5c78"
+  },
+  {
+    "file": "analyze.py",
+    "bytes": 5367,
+    "sha256": "90673c94c516c9b8c665667a81a951f5e13fb63ecd229a09df2f58cdcf5fdfd2"
+  },
+  {
+    "file": "SERIALIZATION-FIX.json",
+    "bytes": 536,
+    "sha256": "400288a77a5fd3811226abfdd417a9d600ad4b123067357c2063f6c61b92e2b6"
+  },
+  {
+    "file": "RESULTS.md",
+    "bytes": 1608,
+    "sha256": "0121f1953a0a1fd3ad24486e8641b44167e84d4089ffb92af526558cae725946"
+  },
+  {
+    "file": "run_candidates.py",
+    "bytes": 6060,
+    "sha256": "f6d934f43ca0029cce57f9d017f75c86df605ca07127102a2b049cc6966ed2a0"
+  },
+  {
+    "file": "VALIDATION-NOTES.md",
+    "bytes": 978,
+    "sha256": "6a872ff8ca7858e74bb474d39a29972a677d2adf92f32089eb725e55aac08cd1"
+  },
+  {
+    "file": "worker_engine.py",
+    "bytes": 10094,
+    "sha256": "1d172dff29c62290ee1c425ac3007c66d39ddd9820bdb5819615136af0c2caf2"
+  },
+  {
+    "file": "summary.json",
+    "bytes": 2361,
+    "sha256": "6c43bceaa759a0ce01412b1edc18b7e0a1ad96301040ceb870cc26bebca3c43c"
+  },
+  {
+    "file": "validation.json",
+    "bytes": 1613,
+    "sha256": "cd4230c27aac5ae182b5923ec0f1355bf0e265dee3fb0eedcdca64baab184c33"
+  },
+  {
+    "file": "provenance.json",
+    "bytes": 2039,
+    "sha256": "39729d6f7707d934ad6d17cd03f58ee64d214d2407475448dff8032f71de0df3"
+  },
+  {
+    "file": "worker_process.py",
+    "bytes": 2738,
+    "sha256": "96e91330a8effebf7eac752f2df5ddf6d227fcf11b36635147aa99d2942a1537"
+  },
+  {
+    "file": "failed-attempt-cost.json",
+    "bytes": 710,
+    "sha256": "379ffc9116f27fdae91bf011f1ebd6b21545bcac2ba461dae729abaef689a79c"
+  },
+  {
+    "file": "per-image-metrics.csv",
+    "bytes": 2037,
+    "sha256": "e82f92ec2318a3899736d578ea55bdccb0377fff8db143a8bc878834ca552871"
+  },
+  {
+    "file": "model-references.json",
+    "bytes": 1075,
+    "sha256": "721b08882450cfef894ece3e4a01c0283c2db5e705144f8ca8abe76bf4adefbb"
+  },
+  {
+    "file": "README.md",
+    "bytes": 3084,
+    "sha256": "ef1a6d62d5d74c95de0cd088119ae1ecf082dbb71e3fec287e2c8072f2509e4d"
+  },
+  {
+    "file": "finalize_results.py",
+    "bytes": 2627,
+    "sha256": "bc3e8e9cfccfb2b8affd29b31e7e84f4a0ddd02d6730a66e4168e00815996dfe"
+  },
+  {
+    "file": "tests/test_crop_geometry.py",
+    "bytes": 1358,
+    "sha256": "9046a5b888feccf0474a24d41b0a6804f9343238eac13dbc9c187071091106ec"
+  }
+]

@@ -1,0 +1,144 @@
+{
+  "status": "frozen_before_any_source_image_inference",
+  "scheme": "doctr_db_resnet50_parseq_official1024_cpu1",
+  "software": {
+    "doctr_version": "1.1.0",
+    "doctr_git_commit": "2d8e244bd051634704ed9e69a70dd975ce166c78",
+    "wheel_sha256": "828148045bdb7b3eb8d861864f1877cf3be3ec5fe3b0e15db353cb75d82fe0a6",
+    "torch": "2.8.0+cpu",
+    "torchvision": "0.23.0+cpu"
+  },
+  "models": [
+    {
+      "name": "db_resnet50",
+      "url": "https://doctr-static.mindee.com/models?id=v0.7.0/db_resnet50-79bd7d70.pt&src=0",
+      "bytes": 102021912,
+      "sha256": "79bd7d702506703b89cf11afa42d12aebf5cf25c3618e6ffd5f85772240ca483",
+      "license_evidence": "docTR official release/repository Apache-2.0 overall declaration; no separate checkpoint-specific license located; local research only, no redistribution"
+    },
+    {
+      "name": "parseq",
+      "url": "https://doctr-static.mindee.com/models?id=v0.7.0/parseq-56125471.pt&src=0",
+      "bytes": 95457349,
+      "sha256": "56125471b17e660253c4179c3fbf3c906c34606d898148895dbb84db257d98ba",
+      "license_evidence": "docTR official release/repository Apache-2.0 overall declaration; no separate checkpoint-specific license located; local research only, no redistribution"
+    }
+  ],
+  "input": {
+    "expected_images": 10,
+    "read_as": "Pillow RGB original dimensions; no EXIF transpose/global upscale",
+    "gt_used_for_parameters": false,
+    "source_manifest": "Caller-provided local ten-image manifest with id/file/sha256/width/height; private inputs not distributed"
+  },
+  "detector": {
+    "architecture": "db_resnet50",
+    "input_shape": [
+      3,
+      1024,
+      1024
+    ],
+    "input_color": "RGB",
+    "mean": [
+      0.798,
+      0.785,
+      0.772
+    ],
+    "std": [
+      0.264,
+      0.2749,
+      0.287
+    ],
+    "preserve_aspect_ratio": true,
+    "symmetric_pad": true,
+    "batch_size": 1,
+    "bin_thresh": 0.3,
+    "box_thresh": 0.1,
+    "unclip_ratio": 1.5,
+    "morphological_opening": [
+      3,
+      3
+    ],
+    "min_size_box_pixels": 2,
+    "max_candidates": "no explicit cap in version1.1.0 bitmap_to_boxes; all contours inspected",
+    "assume_straight_pages": true
+  },
+  "recognizer": {
+    "architecture": "docTR PARSeq, not upstream baudm implementation",
+    "input_shape": [
+      3,
+      32,
+      128
+    ],
+    "preserve_aspect_ratio": true,
+    "symmetric_pad": false,
+    "mean": [
+      0.694,
+      0.695,
+      0.693
+    ],
+    "std": [
+      0.299,
+      0.296,
+      0.301
+    ],
+    "vocabulary": "official french, includes English; no whitelist",
+    "max_length": 32,
+    "decoder_max_positions_with_eos": 33,
+    "refinement_iterations": 1,
+    "batch_size": 8,
+    "split_wide_crops": true,
+    "critical_aspect_ratio": 8,
+    "target_aspect_ratio": 6,
+    "overlap_ratio": 0.5,
+    "confidence_filter": null
+  },
+  "document": {
+    "resolve_lines": true,
+    "resolve_blocks": false,
+    "paragraph_break": 0.035,
+    "keep_reading_order": false,
+    "detect_orientation": false,
+    "straighten_pages": false,
+    "detect_language": false,
+    "detect_layout": false,
+    "detect_tables": false
+  },
+  "coordinates": {
+    "unit": "word",
+    "mapping": "docTR DetectionPredictor removes symmetric padding; exported normalized x*original_width and y*original_height",
+    "no_gt_alignment": true,
+    "no_spelling_or_text_post_correction": true,
+    "raw_detector_unit_warning": "word boxes not directly comparable to Paddle line-box recall"
+  },
+  "resources": {
+    "torch_intra_threads": 1,
+    "torch_inter_threads": 1,
+    "opencv_threads": 1,
+    "doctr_multithreading_disabled": true,
+    "repetitions": 1,
+    "group_start_available_gib": 6,
+    "stop_available_gib": 1.5,
+    "stop_combined_rss_gib": 5,
+    "sample_interval_seconds": 0.1,
+    "initialization_limit_seconds": 180,
+    "per_image_limit_seconds": 180,
+    "shared_lock": "Caller-provided shared local lock path via CLI"
+  },
+  "failure_policy": "Retain completed images; explicit empty/error rows for remaining originals; full ten-image denominator; no rerun/parameter tuning.",
+  "diagnostics": "Same forward only. Keep official raw export, post-DB detector words, split-rec-crop text/confidence and EOS presence. EOS missing is recorded, never repaired. Observational hooks included in timing.",
+  "scope": "Local research comparison only; not browser deployment or M4 timing, not commercial licensing determination; no weights redistribution, no remote code, no third-party image transmission.",
+  "timing_scope": "single_pass includes local RGB decode, preprocessing, forward, hooks and projection; excludes raw JSON write, initialization and lock wait. No warm repeats.",
+  "sources": [
+    "https://github.com/mindee/doctr/releases/tag/v1.1.0",
+    "https://github.com/mindee/doctr/blob/2d8e244bd051634704ed9e69a70dd975ce166c78/LICENSE",
+    "https://mindee.github.io/doctr/latest/models/recognition.html",
+    "https://mindee.github.io/doctr/latest/models/end_to_end.html",
+    "https://pytorch.org/get-started/previous-versions/"
+  ],
+  "preflight_compatibility_fix": {
+    "prior_protocol_sha256": "a2c89a2aada6033fe95a069ec51ba88b7c82c063fd5a47718e121ca2ac388abe",
+    "reason": "Official PyPI distribution metadata is1.1.0 but verified wheel doctr/version.py declares v1.1.0; corrected exact package+module version assertions only. No model parameter or image changes.",
+    "original_failure_retained_privately": true
+  },
+  "public_copy_note": "Paths and private input hash removed from metadata only; engine.py/run_eval.py/summarize_results.py byte-identical to the v2 local run, not a new inference run."
+}

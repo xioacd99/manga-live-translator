@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "scheme": "A_expanded_crop",
+      "all_10_id_hash_match": true,
+      "stage_means_seconds": {
+        "detect_and_crop_seconds": 9.1428144159996,
+        "crop_construction_seconds": 0.018004084900894668,
+        "primary_cls_seconds": 0.07383888780022971,
+        "sum_recognition_views_seconds": 14.641207417701661,
+        "sum_extra_cls_seconds": 0.0
+      },
+      "stage_note": "detect_and_crop includes crop_construction; do not add nested fields",
+      "prediction_sha256": "e9dd91d2186452b4832599b557eb2d98f1b7844b083f4094e289482ad521ef58"
+    },
+    {
+      "scheme": "B_confidence_three_views",
+      "all_10_id_hash_match": true,
+      "stage_means_seconds": {
+        "detect_and_crop_seconds": 9.880940540099981,
+        "crop_construction_seconds": 0.030034828998759623,
+        "primary_cls_seconds": 0.07839166729972931,
+        "sum_recognition_views_seconds": 44.31949716579911,
+        "sum_extra_cls_seconds": 0.15556164960071328
+      },
+      "stage_note": "detect_and_crop includes crop_construction; do not add nested fields",
+      "prediction_sha256": "6e193f89b529df2e7a7d79373ed2672549eefa841643d2a7548a048104c5ebbc"
+    }
+  ],
+  "B_original_branch_exact_all_10": true,
+  "successful_formal_image_calls": 20,
+  "failed_first_attempt_images_computed": 1,
+  "failed_attempt_counted_in_success_timing": false,
+  "notes": [
+    "All successful candidates are single pass, not warm.",
+    "Repeated use of this ten-image validation set creates selection bias.",
+    "B gains seven character edits and one word error, not evidence of broad superiority."
+  ]
+}

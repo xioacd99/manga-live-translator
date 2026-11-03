@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="518" viewBox="0 0 1050 518" role="img">
+<title>错字、删除、插入分解</title>
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<g font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" fill="#132338">
+<text x="32" y="36" font-size="23" text-anchor="start" font-weight="bold">错字、删除、插入分解</text>
+<text x="32" y="66" font-size="13" text-anchor="start" font-weight="normal">删除不是纯检测漏检；同样的CER可能有不同错误组成。</text>
+<text x="32" y="136" font-size="15" text-anchor="start" font-weight="bold">基线 medium 1536</text>
+<rect x="300" y="112" width="76.26076260762606" height="35" rx="5" fill="#246c9c" stroke="none"/>
+<rect x="376.2607626076261" y="112" width="96.36587274963658" height="35" rx="5" fill="#d08b31" stroke="none"/>
+<rect x="472.62663535726267" y="112" width="33.97070334339707" height="35" rx="5" fill="#8a65a1" stroke="none"/>
+<text x="300" y="167" font-size="13" text-anchor="start" font-weight="normal">S=110　D=139　I=49　N=2215</text>
+<text x="32" y="218" font-size="15" text-anchor="start" font-weight="bold">A 固定扩边</text>
+<rect x="300" y="194" width="76.26076260762606" height="35" rx="5" fill="#246c9c" stroke="none"/>
+<rect x="376.2607626076261" y="194" width="164.30727943643072" height="35" rx="5" fill="#d08b31" stroke="none"/>
+<rect x="540.5680420440568" y="194" width="30.504305043050426" height="35" rx="5" fill="#8a65a1" stroke="none"/>
+<text x="300" y="249" font-size="13" text-anchor="start" font-weight="normal">S=110　D=237　I=44　N=2215</text>
+<text x="32" y="300" font-size="15" text-anchor="start" font-weight="bold">B 三视图置信度选字</text>
+<rect x="300" y="276" width="74.87420328748742" height="35" rx="5" fill="#246c9c" stroke="none"/>
+<rect x="374.87420328748743" y="276" width="95.67259308956724" height="35" rx="5" fill="#d08b31" stroke="none"/>
+<rect x="470.54679637705465" y="276" width="31.197584703119755" height="35" rx="5" fill="#8a65a1" stroke="none"/>
+<text x="300" y="331" font-size="13" text-anchor="start" font-weight="normal">S=108　D=138　I=45　N=2215</text>
+<text x="32" y="382" font-size="15" text-anchor="start" font-weight="bold">docTR DB-R50 + PARSeq</text>
+<rect x="300" y="358" width="125.48361847254836" height="35" rx="5" fill="#246c9c" stroke="none"/>
+<rect x="425.48361847254836" y="358" width="336.240635133624" height="35" rx="5" fill="#d08b31" stroke="none"/>
+<rect x="761.7242536061724" y="358" width="101.9121100301912" height="35" rx="5" fill="#8a65a1" stroke="none"/>
+<text x="300" y="413" font-size="13" text-anchor="start" font-weight="normal">S=181　D=485　I=147　N=2215</text>
+<text x="300" y="83" font-size="13" text-anchor="start" font-weight="normal">蓝：替换S　橙：删除D　紫：插入I</text>
+<text x="32" y="500" font-size="12" text-anchor="start" font-weight="normal">固定10图 / 2215字符（部分GT） · 云CPU1单遍 · 非M4 · 反复使用验证集存在选择偏差</text>
+</g></svg>

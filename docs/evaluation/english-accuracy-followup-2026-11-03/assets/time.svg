@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1050" height="518" viewBox="0 0 1050 518" role="img">
+<title>单遍整页OCR耗时：不含下载和初始化</title>
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<g font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" fill="#132338">
+<text x="32" y="36" font-size="23" text-anchor="start" font-weight="bold">单遍整页OCR耗时：不含下载和初始化</text>
+<text x="32" y="66" font-size="13" text-anchor="start" font-weight="normal">同一固定验证集；模型和预处理不同，不代表对新漫画或用户设备的保证。</text>
+<line x1="300" y1="105" x2="300" y2="443" stroke="#cad4df"/>
+<text x="300" y="458" font-size="12" text-anchor="middle" font-weight="normal">0.0</text>
+<line x1="424" y1="105" x2="424" y2="443" stroke="#cad4df"/>
+<text x="424" y="458" font-size="12" text-anchor="middle" font-weight="normal">12.5</text>
+<line x1="548" y1="105" x2="548" y2="443" stroke="#cad4df"/>
+<text x="548" y="458" font-size="12" text-anchor="middle" font-weight="normal">25.1</text>
+<line x1="672" y1="105" x2="672" y2="443" stroke="#cad4df"/>
+<text x="672" y="458" font-size="12" text-anchor="middle" font-weight="normal">37.6</text>
+<line x1="796" y1="105" x2="796" y2="443" stroke="#cad4df"/>
+<text x="796" y="458" font-size="12" text-anchor="middle" font-weight="normal">50.1</text>
+<line x1="920" y1="105" x2="920" y2="443" stroke="#cad4df"/>
+<text x="920" y="458" font-size="12" text-anchor="middle" font-weight="normal">62.6</text>
+<text x="32" y="139" font-size="15" text-anchor="start" font-weight="bold">基线 medium 1536</text>
+<rect x="300" y="115" width="230.83607848680427" height="35" rx="5" fill="#74869b" stroke="none"/>
+<text x="538.8360784868042" y="140" font-size="14" text-anchor="start" font-weight="normal">23.32秒</text>
+<text x="32" y="163" font-size="11" text-anchor="start" font-weight="normal">前轮结果；本轮B原视图逐行完全复现</text>
+<text x="32" y="221" font-size="15" text-anchor="start" font-weight="bold">A 固定扩边</text>
+<rect x="300" y="197" width="236.43274977041528" height="35" rx="5" fill="#217c9e" stroke="none"/>
+<text x="544.4327497704153" y="222" font-size="14" text-anchor="start" font-weight="normal">23.89秒</text>
+<text x="32" y="245" font-size="11" text-anchor="start" font-weight="normal">不按GT选择；同一原始检测框</text>
+<text x="32" y="303" font-size="15" text-anchor="start" font-weight="bold">B 三视图置信度选字</text>
+<rect x="300" y="279" width="539.1304347826087" height="35" rx="5" fill="#217c9e" stroke="none"/>
+<text x="847.1304347826087" y="304" font-size="14" text-anchor="start" font-weight="normal">54.47秒</text>
+<text x="32" y="327" font-size="11" text-anchor="start" font-weight="normal">不按GT选择；同一原始检测框</text>
+<text x="32" y="385" font-size="15" text-anchor="start" font-weight="bold">docTR DB-R50 + PARSeq</text>
+<rect x="300" y="361" width="196.77916809985535" height="35" rx="5" fill="#217c9e" stroke="none"/>
+<text x="504.7791680998554" y="386" font-size="14" text-anchor="start" font-weight="normal">19.88秒</text>
+<text x="32" y="409" font-size="11" text-anchor="start" font-weight="normal">官方1024词级流程；不同于Paddle行级</text>
+<text x="32" y="500" font-size="12" text-anchor="start" font-weight="normal">固定10图 / 2215字符（部分GT） · 云CPU1单遍 · 非M4 · 反复使用验证集存在选择偏差</text>
+</g></svg>

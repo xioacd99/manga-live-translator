@@ -1,0 +1,38 @@
+{
+  "scripts": {
+    "run_candidates.py": {
+      "actual_source_sha256": "f6d934f43ca0029cce57f9d017f75c86df605ca07127102a2b049cc6966ed2a0",
+      "public_sha256": "f6d934f43ca0029cce57f9d017f75c86df605ca07127102a2b049cc6966ed2a0",
+      "byte_identical": true
+    },
+    "worker_engine.py": {
+      "actual_source_sha256": "1d172dff29c62290ee1c425ac3007c66d39ddd9820bdb5819615136af0c2caf2",
+      "public_sha256": "1d172dff29c62290ee1c425ac3007c66d39ddd9820bdb5819615136af0c2caf2",
+      "byte_identical": true
+    },
+    "worker_process.py": {
+      "actual_source_sha256": "96e91330a8effebf7eac752f2df5ddf6d227fcf11b36635147aa99d2942a1537",
+      "public_sha256": "96e91330a8effebf7eac752f2df5ddf6d227fcf11b36635147aa99d2942a1537",
+      "byte_identical": true
+    },
+    "crop_geometry.py": {
+      "actual_source_sha256": "b6f2ad1627e19559349030ba644a46478d31f01b4359aedfe599d8167b6fd252",
+      "public_sha256": "b6f2ad1627e19559349030ba644a46478d31f01b4359aedfe599d8167b6fd252",
+      "byte_identical": true
+    },
+    "analyze.py": {
+      "actual_source_sha256": "90673c94c516c9b8c665667a81a951f5e13fb63ecd229a09df2f58cdcf5fdfd2",
+      "public_sha256": "90673c94c516c9b8c665667a81a951f5e13fb63ecd229a09df2f58cdcf5fdfd2",
+      "byte_identical": true
+    },
+    "finalize_results.py": {
+      "actual_source_sha256": "bc3e8e9cfccfb2b8affd29b31e7e84f4a0ddd02d6730a66e4168e00815996dfe",
+      "public_sha256": "bc3e8e9cfccfb2b8affd29b31e7e84f4a0ddd02d6730a66e4168e00815996dfe",
+      "byte_identical": true
+    }
+  },
+  "path_changes": "No changes needed: selected runtime and analysis scripts already take paths via CLI. Hardcoded private synthetic smoke driver is excluded.",
+  "public_copy_reran_ocr": false,
+  "actual_inference_revision": "v2 serialization diagnostic fix; v1 failed attempt separately disclosed",
+  "analysis_postrun_note": "Raw-string length diagnostic added after independent review clarified whitespace-inclusive counts. CER/WER scoring and inference unchanged; both raw and normalized lengths disclosed."
+}

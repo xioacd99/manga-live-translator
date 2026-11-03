@@ -1,0 +1,29 @@
+{
+  "models": [
+    {
+      "name": "db_resnet50",
+      "url": "https://doctr-static.mindee.com/models?id=v0.7.0/db_resnet50-79bd7d70.pt&src=0",
+      "bytes": 102021912,
+      "sha256": "79bd7d702506703b89cf11afa42d12aebf5cf25c3618e6ffd5f85772240ca483",
+      "md5_base64": "7hViBsDVLX8yQZ5zBYE0tw==",
+      "source_hash_prefix_verified": true,
+      "license_evidence": "docTR official release/repository Apache-2.0 overall declaration; no separate checkpoint-specific license located; local research only, no redistribution"
+    },
+    {
+      "name": "parseq",
+      "url": "https://doctr-static.mindee.com/models?id=v0.7.0/parseq-56125471.pt&src=0",
+      "bytes": 95457349,
+      "sha256": "56125471b17e660253c4179c3fbf3c906c34606d898148895dbb84db257d98ba",
+      "md5_base64": "YZgyQzLUSYFdhCrx2EWXzw==",
+      "source_hash_prefix_verified": true,
+      "license_evidence": "docTR official release/repository Apache-2.0 overall declaration; no separate checkpoint-specific license located; local research only, no redistribution"
+    }
+  ],
+  "runtime": {
+    "doctr": "1.1.0",
+    "doctr_git_commit": "2d8e244bd051634704ed9e69a70dd975ce166c78",
+    "doctr_wheel_sha256": "828148045bdb7b3eb8d861864f1877cf3be3ec5fe3b0e15db353cb75d82fe0a6",
+    "torch": "2.8.0+cpu",
+    "torchvision": "0.23.0+cpu"
+  }
+}

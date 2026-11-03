@@ -1,0 +1,146 @@
+[
+  {
+    "scheme": "A_expanded_crop",
+    "prediction_sha256": "e9dd91d2186452b4832599b557eb2d98f1b7844b083f4094e289482ad521ef58",
+    "per_image_checks": [
+      {
+        "id": "EN01",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN02",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN03",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN04",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN05",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN06",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN07",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN08",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN09",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      },
+      {
+        "id": "EN10",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": null
+      }
+    ],
+    "mean_single_pass_seconds": 23.887411276298373,
+    "sum_single_pass_seconds": 238.8741127629837,
+    "peak_sampled_coordinator_worker_rss_bytes": 1640099840,
+    "chosen_counts": [
+      0,
+      0,
+      0
+    ],
+    "changed_lines": 0,
+    "shorter_lines_raw_characters": 0,
+    "longer_lines_raw_characters": 0,
+    "same_length_changed_lines": 0
+  },
+  {
+    "scheme": "B_confidence_three_views",
+    "prediction_sha256": "6e193f89b529df2e7a7d79373ed2672549eefa841643d2a7548a048104c5ebbc",
+    "per_image_checks": [
+      {
+        "id": "EN01",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN02",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN03",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN04",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN05",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN06",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN07",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN08",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN09",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      },
+      {
+        "id": "EN10",
+        "original_detection_identical": true,
+        "original_view_text_score_identical": true
+      }
+    ],
+    "mean_single_pass_seconds": 54.46974008350007,
+    "sum_single_pass_seconds": 544.6974008350007,
+    "peak_sampled_coordinator_worker_rss_bytes": 1633513472,
+    "chosen_counts": [
+      263,
+      217,
+      216
+    ],
+    "changed_lines": 136,
+    "shorter_lines_raw_characters": 50,
+    "longer_lines_raw_characters": 24,
+    "same_length_changed_lines": 62,
+    "normalized_character_diagnostics": {
+      "normalization": "scorer.normalize: NFKC; remove Unicode whitespace",
+      "shorter": 46,
+      "longer": 19,
+      "same_length_changed": 71,
+      "original_total": 7981,
+      "selected_total": 8033
+    }
+  }
+]

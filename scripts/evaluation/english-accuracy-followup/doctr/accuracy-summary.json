@@ -1,0 +1,146 @@
+{
+  "scheme": "doctr_db_resnet50_parseq_official1024_cpu1",
+  "status": "completed",
+  "completed_images": 10,
+  "prediction_sha256": "feadb23e2005cdd358b60bf7d9d84fd111e4ef3f53c297742ce7ee90ee0bc400",
+  "microCER": 0.3670428893905192,
+  "microWER": 0.7452107279693486,
+  "S": 181,
+  "D": 485,
+  "I": 147,
+  "N": 2215,
+  "exactRegions": 5,
+  "empty_regions": 6,
+  "per_image": [
+    {
+      "id": "EN01",
+      "CER": 0.17073170731707318,
+      "WER": 0.4823529411764706,
+      "S": 16,
+      "D": 34,
+      "I": 6,
+      "N": 328,
+      "empty_regions": 1,
+      "no_assigned_raw_word_box_proxy": 1
+    },
+    {
+      "id": "EN02",
+      "CER": 0.8729016786570744,
+      "WER": 0.9714285714285714,
+      "S": 4,
+      "D": 360,
+      "I": 0,
+      "N": 417,
+      "empty_regions": 3,
+      "no_assigned_raw_word_box_proxy": 3
+    },
+    {
+      "id": "EN03",
+      "CER": 0.35403726708074534,
+      "WER": 0.5116279069767442,
+      "S": 8,
+      "D": 5,
+      "I": 44,
+      "N": 161,
+      "empty_regions": 1,
+      "no_assigned_raw_word_box_proxy": 1
+    },
+    {
+      "id": "EN04",
+      "CER": 1.0,
+      "WER": 2.6666666666666665,
+      "S": 5,
+      "D": 1,
+      "I": 18,
+      "N": 24,
+      "empty_regions": 0,
+      "no_assigned_raw_word_box_proxy": 0
+    },
+    {
+      "id": "EN05",
+      "CER": 0.2,
+      "WER": 0.8148148148148148,
+      "S": 13,
+      "D": 7,
+      "I": 4,
+      "N": 120,
+      "empty_regions": 0,
+      "no_assigned_raw_word_box_proxy": 0
+    },
+    {
+      "id": "EN06",
+      "CER": 0.2962962962962963,
+      "WER": 0.7272727272727273,
+      "S": 46,
+      "D": 23,
+      "I": 3,
+      "N": 243,
+      "empty_regions": 0,
+      "no_assigned_raw_word_box_proxy": 0
+    },
+    {
+      "id": "EN07",
+      "CER": 0.16516516516516516,
+      "WER": 0.5285714285714286,
+      "S": 35,
+      "D": 16,
+      "I": 4,
+      "N": 333,
+      "empty_regions": 0,
+      "no_assigned_raw_word_box_proxy": 0
+    },
+    {
+      "id": "EN08",
+      "CER": 0.48,
+      "WER": 1.3333333333333333,
+      "S": 7,
+      "D": 4,
+      "I": 37,
+      "N": 100,
+      "empty_regions": 0,
+      "no_assigned_raw_word_box_proxy": 0
+    },
+    {
+      "id": "EN09",
+      "CER": 0.376,
+      "WER": 0.8888888888888888,
+      "S": 9,
+      "D": 12,
+      "I": 26,
+      "N": 125,
+      "empty_regions": 0,
+      "no_assigned_raw_word_box_proxy": 0
+    },
+    {
+      "id": "EN10",
+      "CER": 0.1813186813186813,
+      "WER": 0.6625,
+      "S": 38,
+      "D": 23,
+      "I": 5,
+      "N": 364,
+      "empty_regions": 1,
+      "no_assigned_raw_word_box_proxy": 1
+    }
+  ],
+  "no_assigned_raw_word_box_proxy": 6,
+  "gt_sha256": "984017f90ce822edb0c480207ed29ec8ec5ded587ba37f7ec40b3eb35e22753f",
+  "independent_review_summary_sha256": "0a21f437538ba5e2304a352e0bd51bb14dbee50dc0a8f112ee674267bd134aff",
+  "public_projection": "Preserve independent numeric metrics; normalize scheme name; rename legacy no_assigned_raw_line_proxy to no_assigned_raw_word_box_proxy. Actual raw detections are words, not lines; this count is a geometric assignment diagnostic, not detector recall.",
+  "metric_units": "CER/WER are rates, not percentages; WER can exceed1 due insertions.",
+  "evaluation_limits": "Same existing ten-image region GT and geometry-only assignment; no GT-oracle crops or text matching; only annotated regions, not exhaustive whole-page recall. This frozen pipeline is not a recognizer-only or equal-pixel comparison against Paddle.",
+  "scoring_source": {
+    "repository_relative_path": "scripts/evaluation/score.py",
+    "sha256": "3885fd46826e9afe2bff7c40f13cdd5eb70deb34a7411ea7f79a7e5659f44880",
+    "included_certainty": "certain"
+  },
+  "annotation_counts": {
+    "total_regions": 71,
+    "certain_regions_included": 67,
+    "certain_dialogue": 66,
+    "certain_caption": 1,
+    "uncertain_regions_excluded": 4,
+    "uncertain_dialogue": 3,
+    "uncertain_caption": 1
+  }
+}

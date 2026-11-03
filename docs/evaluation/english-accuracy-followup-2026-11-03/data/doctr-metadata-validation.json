@@ -1,0 +1,23 @@
+{
+  "prediction_sha256": "feadb23e2005cdd358b60bf7d9d84fd111e4ef3f53c297742ce7ee90ee0bc400",
+  "source_files_frozen": {
+    "engine.py": true,
+    "run_eval.py": true,
+    "models.json": true,
+    "wheelhouse-manifest.json": true
+  },
+  "completed_images": 10,
+  "mean_single_pass_seconds": 19.881107518199133,
+  "peak_sampled_coordinator_worker_rss_bytes": 1524445184,
+  "exported_words": 1647,
+  "split_crop_eos_missing": 0,
+  "all_det_shapes_1_3_1024_1024": true,
+  "threads": {
+    "torch_intra_threads": 1,
+    "torch_inter_threads": 1,
+    "opencv_threads": 1
+  },
+  "raw_geometry_unit": "word",
+  "no_full_page_precision_claim": true,
+  "all_10_original_id_sha_dimensions_match_gt": true
+}

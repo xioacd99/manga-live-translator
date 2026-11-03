@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "status": "completed",
+  "sources": [
+    {
+      "sha256": "991cb461b0e58dd387021c20af220ed147e89865023da1c024fde4718a26ea4d",
+      "file": "data/03_medium_1536.review-summary.json"
+    },
+    {
+      "sha256": "05b450bf49be2cd0c78bdd0a213e7f11595d8f8bc471eaa13052a261bce4c701",
+      "file": "data/A_expanded_crop.review-summary.json"
+    },
+    {
+      "sha256": "a62a9fecb5083f69366f7df21574ec8786d00adc02fc5eb1b6e652a1a21b59a4",
+      "file": "data/B_confidence_three_views.review-summary.json"
+    },
+    {
+      "sha256": "0a21f437538ba5e2304a352e0bd51bb14dbee50dc0a8f112ee674267bd134aff",
+      "file": "data/formal-run.review-summary.json"
+    }
+  ],
+  "rows": [
+    {
+      "scheme": "03_medium_1536",
+      "label": "基线 medium 1536",
+      "note": "前轮结果；本轮B原视图逐行完全复现",
+      "status": "completed",
+      "completed_images": 10,
+      "CER": 0.1345372460496614,
+      "WER": 0.39655172413793105,
+      "S": 110,
+      "D": 139,
+      "I": 49,
+      "N": 2215,
+      "exactRegions": 9,
+      "mean_seconds": 23.321965123598783,
+      "peak_rss_bytes": 1596424192,
+      "prediction_sha256": "30f810895517868d39474917c39a2ba05162735f36b8c614f1def8bd941ff60c"
+    },
+    {
+      "scheme": "A_expanded_crop",
+      "label": "A 固定扩边",
+      "note": "不按GT选择；同一原始检测框",
+      "status": "completed",
+      "completed_images": 10,
+      "CER": 0.1765237020316027,
+      "WER": 0.3946360153256705,
+      "S": 110,
+      "D": 237,
+      "I": 44,
+      "N": 2215,
+      "exactRegions": 13,
+      "mean_seconds": 23.887411276298373,
+      "peak_rss_bytes": 1640099840,
+      "prediction_sha256": "e9dd91d2186452b4832599b557eb2d98f1b7844b083f4094e289482ad521ef58"
+    },
+    {
+      "scheme": "B_confidence_three_views",
+      "label": "B 三视图置信度选字",
+      "note": "不按GT选择；同一原始检测框",
+      "status": "completed",
+      "completed_images": 10,
+      "CER": 0.13137697516930022,
+      "WER": 0.3946360153256705,
+      "S": 108,
+      "D": 138,
+      "I": 45,
+      "N": 2215,
+      "exactRegions": 10,
+      "mean_seconds": 54.46974008350007,
+      "peak_rss_bytes": 1633513472,
+      "prediction_sha256": "6e193f89b529df2e7a7d79373ed2672549eefa841643d2a7548a048104c5ebbc"
+    },
+    {
+      "scheme": "doctr_db_resnet50_parseq_official1024_cpu1",
+      "label": "docTR DB-R50 + PARSeq",
+      "note": "官方1024词级流程；不同于Paddle行级",
+      "status": "completed",
+      "completed_images": 10,
+      "CER": 0.3670428893905192,
+      "WER": 0.7452107279693486,
+      "S": 181,
+      "D": 485,
+      "I": 147,
+      "N": 2215,
+      "exactRegions": 5,
+      "mean_seconds": 19.881107518199133,
+      "peak_rss_bytes": 1524445184,
+      "prediction_sha256": "feadb23e2005cdd358b60bf7d9d84fd111e4ef3f53c297742ce7ee90ee0bc400"
+    }
+  ]
+}

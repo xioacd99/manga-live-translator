@@ -1,0 +1,16 @@
+{
+  "run.log": {
+    "mtime_epoch": 1793720028.4972508,
+    "mtime_utc": "2026-11-03T15:33:48.497251+00:00"
+  },
+  "results/A_expanded_crop/worker-0/session-details.json": {
+    "mtime_epoch": 1793719993.5186648,
+    "mtime_utc": "2026-11-03T15:33:13.518665+00:00"
+  },
+  "results/A_expanded_crop/worker-0/effective-config.yaml": {
+    "mtime_epoch": 1793719993.5245202,
+    "mtime_utc": "2026-11-03T15:33:13.524520+00:00"
+  },
+  "observed_init_artifact_to_error_log_seconds": 34.97273063659668,
+  "scope": "Observed file modification time interval, includes first image processing and failed serialization/error logging; not a separately measured engine wall. Exact failed inference wall was not persisted."
+}

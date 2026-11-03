@@ -1,0 +1,123 @@
+{
+  "status": "completed",
+  "formal": {
+    "scheme": "doctr_db_resnet50_parseq_official1024_cpu1",
+    "status": "completed",
+    "completed_images": 10,
+    "expected_images": 10,
+    "reason": null,
+    "configuration": {
+      "det": "db_resnet50",
+      "rec": "parseq",
+      "det_shape": [
+        3,
+        1024,
+        1024
+      ],
+      "rec_shape": [
+        3,
+        32,
+        128
+      ],
+      "det_batch": 1,
+      "rec_batch": 8,
+      "cpu_threads": 1,
+      "repetitions": 1,
+      "detector_unit": "word"
+    },
+    "raw_result_sha256": "feadb23e2005cdd358b60bf7d9d84fd111e4ef3f53c297742ce7ee90ee0bc400",
+    "mean_single_pass_seconds_completed_pages_only": 19.881107518199133,
+    "peak_sampled_coordinator_worker_rss_bytes": 1524445184,
+    "initialization_ready_wall_seconds": 4.290050013005384,
+    "timing_scope": "One pass per source; single_pass includes RGB decode, predictor including preprocessing and observational hooks, projection; excludes raw JSON disk write, initialization and lock wait. Not warm repetitions.",
+    "synthetic_smoke": false,
+    "split_crops_without_eos": 0,
+    "word_count": 1647
+  },
+  "synthetic": {
+    "scheme": "doctr_db_resnet50_parseq_official1024_cpu1",
+    "status": "completed",
+    "completed_images": 1,
+    "expected_images": 1,
+    "reason": null,
+    "configuration": {
+      "det": "db_resnet50",
+      "rec": "parseq",
+      "det_shape": [
+        3,
+        1024,
+        1024
+      ],
+      "rec_shape": [
+        3,
+        32,
+        128
+      ],
+      "det_batch": 1,
+      "rec_batch": 8,
+      "cpu_threads": 1,
+      "repetitions": 1,
+      "detector_unit": "word"
+    },
+    "raw_result_sha256": "31a350c81fc30eaf3ef273c44a767ec8435a649040e303299eb963db635c3a94",
+    "mean_single_pass_seconds_completed_pages_only": 4.739305727998726,
+    "peak_sampled_coordinator_worker_rss_bytes": 1435582464,
+    "initialization_ready_wall_seconds": 4.3548013330000686,
+    "timing_scope": "One pass per source; single_pass includes RGB decode, predictor including preprocessing and observational hooks, projection; excludes raw JSON disk write, initialization and lock wait. Not warm repetitions.",
+    "synthetic_smoke": true,
+    "split_crops_without_eos": 0,
+    "word_count": 5
+  },
+  "validation_numeric": {
+    "formal_manifest_matches_all_10_ids_hashes_dimensions": true,
+    "cpu1_verified": true,
+    "missing_eos_count": 0,
+    "peak_sampled_rss_bytes": 1524445184,
+    "group_start_available_bytes": 6796353536,
+    "minimum_sampled_available_bytes": 5180469248,
+    "maximum_word_length": 18,
+    "synthetic_helper_identical_image": true,
+    "synthetic_image_sha256": "7f325a2b98f884baa8ac011518aee4bb4e48ee5406ca4cdc94e171a3a37d3d91",
+    "formal_page_seconds": [
+      35.767363639002724,
+      20.92943917899538,
+      10.084399257997575,
+      8.219565788000182,
+      35.953735103001236,
+      25.566260781000892,
+      17.79515772299783,
+      9.83724949399766,
+      8.385263254996971,
+      26.272640962000878
+    ]
+  },
+  "accuracy_status": "Independent same-ten-image geometry evaluation completed; see accuracy-summary.json.",
+  "preflight_history": {
+    "v1_status": "blocked before model load or image inference",
+    "v1_completed_images": 0,
+    "v1_expected_images": 1,
+    "v1_reason": "Harness required module version 1.1.0 but official wheel module declares v1.1.0; distribution metadata is1.1.0.",
+    "v1_failure_result_sha256": "eab980f74ea07f344909328635b44190ea50e6e8af814aa7b1ed5f9837e7ae0b",
+    "v2_change": "Only exact version assertions corrected: package metadata 1.1.0 and module v1.1.0. Models, preprocessing and inference parameters unchanged.",
+    "failed_attempt_preserved": true
+  },
+  "limitations": [
+    "Single pass, CPU1 thread settings; no warm repetitions or M4 measurement.",
+    "Different detector input resolution and word units versus Paddle; not equal-pixel recognition ablation.",
+    "No comic accuracy claim from synthetic correctness.",
+    "No OS network or hard memory isolation proof.",
+    "No checkpoint redistribution or commercial license determination."
+  ],
+  "accuracy": {
+    "microCER": 0.3670428893905192,
+    "microWER": 0.7452107279693486,
+    "S": 181,
+    "D": 485,
+    "I": 147,
+    "N": 2215,
+    "exactRegions": 5,
+    "empty_regions": 6,
+    "gt_sha256": "984017f90ce822edb0c480207ed29ec8ec5ded587ba37f7ec40b3eb35e22753f",
+    "prediction_sha256": "feadb23e2005cdd358b60bf7d9d84fd111e4ef3f53c297742ce7ee90ee0bc400"
+  }
+}

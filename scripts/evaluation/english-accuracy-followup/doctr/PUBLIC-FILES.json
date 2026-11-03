@@ -1,0 +1,77 @@
+[
+  {
+    "path": "LICENSE-docTR.txt",
+    "bytes": 11336,
+    "sha256": "ef94534ac5ceb006211a9c6c1dcf54e357a9e864bbbeb50fb9f79e920a1e3973"
+  },
+  {
+    "path": "PROTOCOL.json",
+    "bytes": 5622,
+    "sha256": "311ae22f146c9ef094b1ae8aa46c3984a6edc4b40bb893159f4d9eb33232c204"
+  },
+  {
+    "path": "README.md",
+    "bytes": 7745,
+    "sha256": "59433afc5aa87f9d69cef0270d81c18b0a86dadb1d335eea8d8a1c4a2f1c79a3"
+  },
+  {
+    "path": "SOURCE-HASHES.json",
+    "bytes": 4871,
+    "sha256": "f20e5574b6e016cf0b2555246f69d12f145d3d577c063796be49cbdb8c554fe8"
+  },
+  {
+    "path": "VALIDATION.json",
+    "bytes": 1490,
+    "sha256": "be29cfc87cc3d352a66fb4ae206dc5f6d8732beb9ceca3c44e549393c9563b85"
+  },
+  {
+    "path": "accuracy-summary.json",
+    "bytes": 3897,
+    "sha256": "930bb17da16e92c62595e2e31b0aa6bca84b921630ec76d928661eeed0518c21"
+  },
+  {
+    "path": "asset-lock.json",
+    "bytes": 1312,
+    "sha256": "610b1a2dc53697a7b5ea635e75611a7b2fba0e6eceb1c4bf4fedd8eb23bf86f2"
+  },
+  {
+    "path": "download_models.py",
+    "bytes": 3142,
+    "sha256": "66331800e42f2d2a4aa9fb02220ec9b2293202024ea15665d10c9a1a51c27281"
+  },
+  {
+    "path": "engine.py",
+    "bytes": 9496,
+    "sha256": "e9047aac86ab3d4c5a24250eece290986071947f0b5821e8fca631e93b3194ff"
+  },
+  {
+    "path": "make_synthetic.py",
+    "bytes": 837,
+    "sha256": "3f0bd432fba9fb971bf4408f47e7271fc0f469e118b7fd26eac0361c9e675836"
+  },
+  {
+    "path": "requirements-public.lock.txt",
+    "bytes": 667,
+    "sha256": "36e6f7dc2bfc81737b0e43b0463bbd8b639de0caba03f25dfa3e8f0289863d15"
+  },
+  {
+    "path": "result-summary.json",
+    "bytes": 4489,
+    "sha256": "a417bef49a36a3e81bc55406a22e78418c7bc1cd052c4d94a828ff7e59ec2106"
+  },
+  {
+    "path": "run_eval.py",
+    "bytes": 7240,
+    "sha256": "fca7acf16304566eb5c1d54548459299c2c4254bbdc787e552bb525677dbe650"
+  },
+  {
+    "path": "summarize_results.py",
+    "bytes": 1369,
+    "sha256": "c5d11270ec706f9d06f9f39069ce3b317d5a496a28f2518458c7af8a7ce4aa81"
+  },
+  {
+    "path": "tests/test_public.py",
+    "bytes": 4032,
+    "sha256": "12dfc465c81e09bb11cacc8bc90965b2ce88f9b95b0bc5e208fb23f7a7ad6e49"
+  }
+]

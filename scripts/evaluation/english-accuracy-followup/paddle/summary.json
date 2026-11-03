@@ -1,0 +1,82 @@
+[
+  {
+    "scheme": "A_expanded_crop",
+    "microCER": 0.1765237020316027,
+    "microWER": 0.3946360153256705,
+    "S": 110,
+    "D": 237,
+    "I": 44,
+    "N": 2215,
+    "exactRegions": 13,
+    "status": "completed",
+    "empty_targets": 0,
+    "no_assigned_raw_line_proxy": 0,
+    "mean_single_pass_seconds": 23.887411276298373,
+    "sum_single_pass_seconds": 238.8741127629837,
+    "peak_sampled_rss_bytes": 1640099840,
+    "length_bias": {
+      "chosen_counts": [
+        0,
+        0,
+        0
+      ],
+      "changed_lines": 0,
+      "shorter_lines": 0,
+      "longer_lines": 0,
+      "same_length_changed_lines": 0,
+      "original_total_characters": 0,
+      "selected_total_characters": 0,
+      "original_branch_identical_to_baseline": null,
+      "length_definition": "NFKC normalized, all Unicode whitespace removed",
+      "raw_string_length": {
+        "changed_lines": 0,
+        "shorter_lines": 0,
+        "longer_lines": 0,
+        "same_length_changed_lines": 0,
+        "original_total_characters": 0,
+        "selected_total_characters": 0,
+        "length_definition": "Python len of raw OCR text, including whitespace"
+      }
+    }
+  },
+  {
+    "scheme": "B_confidence_three_views",
+    "microCER": 0.13137697516930022,
+    "microWER": 0.3946360153256705,
+    "S": 108,
+    "D": 138,
+    "I": 45,
+    "N": 2215,
+    "exactRegions": 10,
+    "status": "completed",
+    "empty_targets": 0,
+    "no_assigned_raw_line_proxy": 0,
+    "mean_single_pass_seconds": 54.46974008350007,
+    "sum_single_pass_seconds": 544.6974008350007,
+    "peak_sampled_rss_bytes": 1633513472,
+    "length_bias": {
+      "chosen_counts": [
+        263,
+        217,
+        216
+      ],
+      "changed_lines": 136,
+      "shorter_lines": 46,
+      "longer_lines": 19,
+      "same_length_changed_lines": 71,
+      "original_total_characters": 7981,
+      "selected_total_characters": 8033,
+      "original_branch_identical_to_baseline": true,
+      "length_definition": "NFKC normalized, all Unicode whitespace removed",
+      "raw_string_length": {
+        "changed_lines": 136,
+        "shorter_lines": 50,
+        "longer_lines": 24,
+        "same_length_changed_lines": 62,
+        "original_total_characters": 9087,
+        "selected_total_characters": 9166,
+        "length_definition": "Python len of raw OCR text, including whitespace"
+      }
+    }
+  }
+]

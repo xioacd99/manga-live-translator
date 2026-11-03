@@ -1,0 +1,91 @@
+{
+  "runtime_files": [
+    {
+      "path": "engine.py",
+      "executed_sha256": "e9047aac86ab3d4c5a24250eece290986071947f0b5821e8fca631e93b3194ff",
+      "public_sha256": "e9047aac86ab3d4c5a24250eece290986071947f0b5821e8fca631e93b3194ff",
+      "byte_identical": true
+    },
+    {
+      "path": "run_eval.py",
+      "executed_sha256": "fca7acf16304566eb5c1d54548459299c2c4254bbdc787e552bb525677dbe650",
+      "public_sha256": "fca7acf16304566eb5c1d54548459299c2c4254bbdc787e552bb525677dbe650",
+      "byte_identical": true
+    },
+    {
+      "path": "summarize_results.py",
+      "executed_sha256": "c5d11270ec706f9d06f9f39069ce3b317d5a496a28f2518458c7af8a7ce4aa81",
+      "public_sha256": "c5d11270ec706f9d06f9f39069ce3b317d5a496a28f2518458c7af8a7ce4aa81",
+      "byte_identical": true
+    }
+  ],
+  "frozen_protocol_v1_sha256": "a2c89a2aada6033fe95a069ec51ba88b7c82c063fd5a47718e121ca2ac388abe",
+  "frozen_protocol_v2_sha256": "fe6971f5f1ac8fbafe501da7e6aa4ab8b3f81f925ec761be35e15dbd3c444029",
+  "public_protocol_sha256": "311ae22f146c9ef094b1ae8aa46c3984a6edc4b40bb893159f4d9eb33232c204",
+  "public_metadata_changes": [
+    "Remove private source manifest hash and local paths.",
+    "Preserve failed v1 assertion history; v2 changes only exact package/module version verification.",
+    "Replace installed setuptools/wheel local file URLs by exact versions in public dependency lock."
+  ],
+  "original_installed_requirements_sha256": "79300369a2c12268d5317d8f146fbf4c53eb4ef6d563111cf244527ad1eae7ef",
+  "public_requirements_sha256": "36e6f7dc2bfc81737b0e43b0463bbd8b639de0caba03f25dfa3e8f0289863d15",
+  "original_v1_engine_sha256": "a587d1c7750436d1fa63ab74a8d0ba44a7f1e64838eea3ba9beb1237e810c8ba",
+  "fixed_official_sources": [
+    {
+      "filename": "pypi.json",
+      "url": "https://pypi.org/pypi/python-doctr/1.1.0/json",
+      "size": 36093,
+      "sha256": "63cbbf892f2659bdf57a574b355bde7acdde54140f16f105bee4255e1c936940"
+    },
+    {
+      "filename": "LICENSE",
+      "url": "https://raw.githubusercontent.com/mindee/doctr/v1.1.0/LICENSE",
+      "size": 11336,
+      "sha256": "ef94534ac5ceb006211a9c6c1dcf54e357a9e864bbbeb50fb9f79e920a1e3973",
+      "fixed_commit_url": "https://raw.githubusercontent.com/mindee/doctr/2d8e244bd051634704ed9e69a70dd975ce166c78/LICENSE"
+    },
+    {
+      "filename": "README.md",
+      "url": "https://raw.githubusercontent.com/mindee/doctr/v1.1.0/README.md",
+      "size": 16928,
+      "sha256": "b06c87c9aefd4db42b91682fa00ce0be34c0fc5f4541e0fa4977cb764f7d0a77",
+      "fixed_commit_url": "https://raw.githubusercontent.com/mindee/doctr/2d8e244bd051634704ed9e69a70dd975ce166c78/README.md"
+    },
+    {
+      "filename": "parseq.py",
+      "url": "https://raw.githubusercontent.com/mindee/doctr/v1.1.0/doctr/models/recognition/parseq/pytorch.py",
+      "size": 20826,
+      "sha256": "9e061840382817f39d0621e2f9ce9a34e546a8d82c6d2eec97df943a4344cb71",
+      "fixed_commit_url": "https://raw.githubusercontent.com/mindee/doctr/2d8e244bd051634704ed9e69a70dd975ce166c78/doctr/models/recognition/parseq/pytorch.py"
+    },
+    {
+      "filename": "dbnet.py",
+      "url": "https://raw.githubusercontent.com/mindee/doctr/v1.1.0/doctr/models/detection/differentiable_binarization/pytorch.py",
+      "size": 16432,
+      "sha256": "aa1341801c819e20c4d494d8dfb0d9953bb2f3090d40fcb838b4904839311006",
+      "fixed_commit_url": "https://raw.githubusercontent.com/mindee/doctr/2d8e244bd051634704ed9e69a70dd975ce166c78/doctr/models/detection/differentiable_binarization/pytorch.py"
+    },
+    {
+      "filename": "predictor.py",
+      "url": "https://raw.githubusercontent.com/mindee/doctr/v1.1.0/doctr/models/predictor/pytorch.py",
+      "size": 14114,
+      "sha256": "d0d4f28b7ba680f9faa865520a58aeb75a0f7a7669e20425c0d59fd33859c893",
+      "fixed_commit_url": "https://raw.githubusercontent.com/mindee/doctr/2d8e244bd051634704ed9e69a70dd975ce166c78/doctr/models/predictor/pytorch.py"
+    },
+    {
+      "filename": "zoo.py",
+      "url": "https://raw.githubusercontent.com/mindee/doctr/v1.1.0/doctr/models/zoo.py",
+      "size": 13264,
+      "sha256": "59f2c9bf80c567489296c46b95233e5ed24b6bb6383e851f557f5b6e15a5afbf",
+      "fixed_commit_url": "https://raw.githubusercontent.com/mindee/doctr/2d8e244bd051634704ed9e69a70dd975ce166c78/doctr/models/zoo.py"
+    },
+    {
+      "filename": "vocab.py",
+      "url": "https://raw.githubusercontent.com/mindee/doctr/v1.1.0/doctr/datasets/vocabs.py",
+      "size": 99165,
+      "sha256": "5f828aaca19d254d6edf2d34f7f6331080ad534fcac2f0b35455571f6cb61422",
+      "fixed_commit_url": "https://raw.githubusercontent.com/mindee/doctr/2d8e244bd051634704ed9e69a70dd975ce166c78/doctr/datasets/vocabs.py"
+    }
+  ],
+  "source_note": "Source snapshots were statically inspected, not used as model remote code. Tag sources are hashed above; fixed commit links identify the reviewed release."
+}
