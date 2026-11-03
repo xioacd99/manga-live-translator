@@ -24,7 +24,7 @@ try {
     const path = join(extension, name);
     const original = await readFile(path, 'utf8');
     assert.ok(original.includes('function safeError(error) {'));
-    await writeFile(path, original.replace('function safeError(error) {', 'function safeError(error) { console.error("Synthetic fixture failure:", error?.message);'));
+    await writeFile(path, original.replace('function safeError(error) {', 'function safeError(error) { (globalThis.__syntheticErrors ||= []).push(String(error?.message));'));
   }
   const manifest = JSON.parse(await readFile(join(extension, 'manifest.json'), 'utf8'));
   // Test-only fixed hosts avoid permission UI. Production permissions are unchanged.
@@ -193,7 +193,8 @@ try {
   }, null, 2));
   console.log('Browser smoke passed: packaged OCR, mocked provider, warm cache, corrections, context, original toggle, forget/reconfigure.');
 } catch (error) {
-  const diagnostics = {phase, error: sanitize(error?.stack || error), calls, errors, consoleErrors, network, routed};
+  const backgroundErrors = worker ? await worker.evaluate(() => globalThis.__syntheticErrors || []).catch(() => []) : [];
+  const diagnostics = {backgroundErrors: backgroundErrors.map(sanitize),phase, error: sanitize(error?.stack || error), calls, errors, consoleErrors, network, routed};
   if (reader && !reader.isClosed()) {
     diagnostics.reader = await reader.evaluate(() => ({
       url: location.origin + location.pathname,
