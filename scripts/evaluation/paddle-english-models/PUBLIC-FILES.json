@@ -1,0 +1,91 @@
+{
+  "files": [
+    {
+      "path": "METHOD.md",
+      "bytes": 5132,
+      "sha256": "f9de4fba15a4c7eceb7d7b3f23ec49ec13d5f2bab20cc1f329ea400d165676c2"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3151,
+      "sha256": "cebf4b11a44c0b01639bddc5dee308d553edbd50d0ae734712204129cde190f6"
+    },
+    {
+      "path": "TIMING-FINAL.md",
+      "bytes": 1118,
+      "sha256": "83d8787e6e486927fed4edeea3873ffd2568be0b5a67801d354f01cf27e99b17"
+    },
+    {
+      "path": "build_figures.py",
+      "bytes": 2652,
+      "sha256": "d9026e705d8dc9bdfc561ce5f474d87a2374e4979cb929b19d8ef366467d7ca8"
+    },
+    {
+      "path": "download_models.py",
+      "bytes": 814,
+      "sha256": "78f44abc055ca188822d4ecd450302c2be70a5b7128624c487a79429e8dd7bd1"
+    },
+    {
+      "path": "hardware.json",
+      "bytes": 246,
+      "sha256": "42fb510f13fa5104652a30fcf550794bfa32a9fab9e1cb57a8aacfe3465163c5"
+    },
+    {
+      "path": "model-manifest.json",
+      "bytes": 3698,
+      "sha256": "286d253f27199131941d9b19da0d2763baab1ebe414b8bbdf895e7ad751a8b24"
+    },
+    {
+      "path": "model-sizes.json",
+      "bytes": 788,
+      "sha256": "d40d4f9d5d328ddb45b6915dab7e8ebf2bfa8c5b943fe7c0dedce1f26b5b906b"
+    },
+    {
+      "path": "official-license-evidence.json",
+      "bytes": 1847,
+      "sha256": "8ec0ead7362ea07e31a9a6be451d4719f9ca165f7846b8af9885f8363e46ee44"
+    },
+    {
+      "path": "requirements-current.lock.txt",
+      "bytes": 415,
+      "sha256": "1d0e1f0aebecd5c6fa6f1059a841ddd35e59c8f41ac3dda358b84a90a8ad6f62"
+    },
+    {
+      "path": "requirements-legacy.lock.txt",
+      "bytes": 405,
+      "sha256": "48d451a2d88617cf6f1eb9f33480b768459de4145fd3baba2bd7fff5b7a4ab10"
+    },
+    {
+      "path": "run_all.py",
+      "bytes": 1211,
+      "sha256": "2d9d7e243bfc53fe4f16ccaf3c7bc1bd5266ac3fc99de75c46f91bef4826273b"
+    },
+    {
+      "path": "run_benchmark_main_frozen.py",
+      "bytes": 7631,
+      "sha256": "8b893f09ca188506b567177458522bcc4722103393f5d5174ef5a8a231a8e34f"
+    },
+    {
+      "path": "run_benchmark_sensitivity.py",
+      "bytes": 8091,
+      "sha256": "39d0e3128332be5fba4dd0d088736e3617b2fc8c7fa615686e44cf1fe36323bd"
+    },
+    {
+      "path": "runner-versions.json",
+      "bytes": 556,
+      "sha256": "3640472b221a6c0f7c6f20465527fc210a7cb1d37f6bca329f5274cecdef918f"
+    },
+    {
+      "path": "terminal-validation.json",
+      "bytes": 3011,
+      "sha256": "4bb89cc3c5d555de600ee06a515d1578a07d1897269e497e1d107afd594cd816"
+    }
+  ],
+  "excluded": [
+    "漫画原图",
+    "完整参考转写",
+    "完整预测",
+    "模型权重",
+    "虚拟环境"
+  ]
+}

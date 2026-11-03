@@ -1,0 +1,884 @@
+[
+  {
+    "scheme": "v5_english",
+    "CER": 0.2984198645598194,
+    "CER_no_punctuation": 0.25175526579739216,
+    "WER": 0.49808429118773945,
+    "S": 140,
+    "D": 472,
+    "I": 49,
+    "N": 2215,
+    "exact_regions": 5,
+    "certain_regions": 67,
+    "no_recognized_output_regions": 5,
+    "no_raw_db_line_regions": 5,
+    "mean_warm_seconds": 3.262268634999964,
+    "model_bytes": 13277459,
+    "repeated_outputs_identical": true,
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "rapidocr": "3.10.0",
+      "onnxruntime": "1.23.2",
+      "opencv": "5.0.0",
+      "opencv_threads": 1,
+      "sessions": {
+        "det": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                "DynamicDimension.1",
+                "DynamicDimension.2"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "ConvTranspose_497_o0__d0",
+                1,
+                "ConvTranspose_497_o0__d2",
+                "ConvTranspose_497_o0__d3"
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "cls": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                null,
+                3,
+                "?",
+                "?"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "save_infer_model/scale_0.tmp_1",
+              "shape": [
+                null,
+                2
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "rec": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                "?",
+                "DynamicDimension.1"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "DynamicDimension.0",
+                "Reshape_524_o0__d2",
+                438
+              ]
+            }
+          ],
+          "dictionary_source": "ONNX embedded character metadata",
+          "dictionary_entries": 436,
+          "dictionary_sha256": "e025a66d31f327ba0c232e03f407ae8d105e1e709e7ccb3f408aa778c24e70d6",
+          "decoder_dictionary_entries_including_blank": 438
+        }
+      },
+      "cpu_threads": 1,
+      "import_seconds": 0.44290053000077023,
+      "cached_model_init_seconds": 0.11904731299728155,
+      "cold_import_plus_init_seconds": 0.5619478429980518,
+      "lock_wait_excluded": true
+    }
+  },
+  {
+    "scheme": "v5_multi_bridge",
+    "CER": 0.309706546275395,
+    "CER_no_punctuation": 0.2683049147442327,
+    "WER": 0.6091954022988506,
+    "S": 185,
+    "D": 453,
+    "I": 48,
+    "N": 2215,
+    "exact_regions": 2,
+    "certain_regions": 67,
+    "no_recognized_output_regions": 5,
+    "no_raw_db_line_regions": 5,
+    "mean_warm_seconds": 3.653025984100168,
+    "model_bytes": 22036414,
+    "repeated_outputs_identical": true,
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "rapidocr": "3.10.0",
+      "onnxruntime": "1.23.2",
+      "opencv": "5.0.0",
+      "opencv_threads": 1,
+      "sessions": {
+        "det": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                "DynamicDimension.1",
+                "DynamicDimension.2"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "ConvTranspose_497_o0__d0",
+                1,
+                "ConvTranspose_497_o0__d2",
+                "ConvTranspose_497_o0__d3"
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "cls": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                null,
+                3,
+                "?",
+                "?"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "save_infer_model/scale_0.tmp_1",
+              "shape": [
+                null,
+                2
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "rec": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                48,
+                "DynamicDimension.1"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "DynamicDimension.0",
+                "Reshape_524_o0__d2",
+                18385
+              ]
+            }
+          ],
+          "dictionary_source": "ONNX embedded character metadata",
+          "dictionary_entries": 18383,
+          "dictionary_sha256": "17665d27ed39f0deb82007859992d626d3105d0ee4578c120b7c72138dc04d05",
+          "decoder_dictionary_entries_including_blank": 18385
+        }
+      },
+      "cpu_threads": 1,
+      "import_seconds": 0.4566364629972668,
+      "cached_model_init_seconds": 0.14551992199994856,
+      "cold_import_plus_init_seconds": 0.6021563849972154,
+      "lock_wait_excluded": true
+    }
+  },
+  {
+    "scheme": "v5_multi_legacy",
+    "CER": 0.309706546275395,
+    "CER_no_punctuation": 0.2683049147442327,
+    "WER": 0.6091954022988506,
+    "S": 185,
+    "D": 453,
+    "I": 48,
+    "N": 2215,
+    "exact_regions": 2,
+    "certain_regions": 67,
+    "no_recognized_output_regions": 5,
+    "no_raw_db_line_regions": 5,
+    "mean_warm_seconds": 3.723684552550367,
+    "model_bytes": 22036414,
+    "repeated_outputs_identical": true,
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "rapidocr": "3.4.5",
+      "onnxruntime": "1.23.2",
+      "opencv": "5.0.0",
+      "opencv_threads": 1,
+      "sessions": {
+        "det": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                "DynamicDimension.1",
+                "DynamicDimension.2"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "ConvTranspose_497_o0__d0",
+                1,
+                "ConvTranspose_497_o0__d2",
+                "ConvTranspose_497_o0__d3"
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "cls": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                null,
+                3,
+                "?",
+                "?"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "save_infer_model/scale_0.tmp_1",
+              "shape": [
+                null,
+                2
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "rec": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                48,
+                "DynamicDimension.1"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "DynamicDimension.0",
+                "Reshape_524_o0__d2",
+                18385
+              ]
+            }
+          ],
+          "dictionary_source": "ONNX embedded character metadata",
+          "dictionary_entries": 18383,
+          "dictionary_sha256": "17665d27ed39f0deb82007859992d626d3105d0ee4578c120b7c72138dc04d05",
+          "decoder_dictionary_entries_including_blank": 18385
+        }
+      },
+      "cpu_threads": 1,
+      "import_seconds": 0.2589674010014278,
+      "cached_model_init_seconds": 0.14489567800046643,
+      "cold_import_plus_init_seconds": 0.4038630790018942,
+      "lock_wait_excluded": true
+    }
+  },
+  {
+    "scheme": "v6_medium",
+    "CER": 0.18284424379232506,
+    "CER_no_punctuation": 0.1354062186559679,
+    "WER": 0.4099616858237548,
+    "S": 112,
+    "D": 249,
+    "I": 44,
+    "N": 2215,
+    "exact_regions": 9,
+    "certain_regions": 67,
+    "no_recognized_output_regions": 3,
+    "no_raw_db_line_regions": 3,
+    "mean_warm_seconds": 17.92492917310028,
+    "model_bytes": 139334970,
+    "repeated_outputs_identical": true,
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "rapidocr": "3.10.0",
+      "onnxruntime": "1.23.2",
+      "opencv": "5.0.0",
+      "opencv_threads": 1,
+      "sessions": {
+        "det": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                "DynamicDimension.1",
+                "DynamicDimension.2"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "ConvTranspose_592_o0__d0",
+                1,
+                "ConvTranspose_592_o0__d2",
+                "ConvTranspose_592_o0__d3"
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "cls": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                null,
+                3,
+                "?",
+                "?"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "save_infer_model/scale_0.tmp_1",
+              "shape": [
+                null,
+                2
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "rec": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                48,
+                "DynamicDimension.1"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "DynamicDimension.0",
+                "Reshape_497_o0__d2",
+                18710
+              ]
+            }
+          ],
+          "dictionary_source": "ONNX embedded character metadata",
+          "dictionary_entries": 18708,
+          "dictionary_sha256": "f7aa897ca828a4c7c9e2739c30f9161a33306d532f020bcdb91dcfb664a5507e",
+          "decoder_dictionary_entries_including_blank": 18710
+        }
+      },
+      "cpu_threads": 1,
+      "import_seconds": 0.45091898900136584,
+      "cached_model_init_seconds": 0.407524967999052,
+      "cold_import_plus_init_seconds": 0.8584439570004179,
+      "lock_wait_excluded": true
+    }
+  },
+  {
+    "scheme": "v6_small",
+    "CER": 0.218510158013544,
+    "CER_no_punctuation": 0.1760280842527583,
+    "WER": 0.45977011494252873,
+    "S": 110,
+    "D": 314,
+    "I": 60,
+    "N": 2215,
+    "exact_regions": 10,
+    "certain_regions": 67,
+    "no_recognized_output_regions": 3,
+    "no_raw_db_line_regions": 3,
+    "mean_warm_seconds": 3.7827114792002248,
+    "model_bytes": 31749509,
+    "repeated_outputs_identical": true,
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "rapidocr": "3.10.0",
+      "onnxruntime": "1.23.2",
+      "opencv": "5.0.0",
+      "opencv_threads": 1,
+      "sessions": {
+        "det": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                "DynamicDimension.1",
+                "DynamicDimension.2"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "ConvTranspose_459_o0__d0",
+                1,
+                "ConvTranspose_459_o0__d2",
+                "ConvTranspose_459_o0__d3"
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "cls": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                null,
+                3,
+                "?",
+                "?"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "save_infer_model/scale_0.tmp_1",
+              "shape": [
+                null,
+                2
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "rec": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                48,
+                "DynamicDimension.1"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "DynamicDimension.0",
+                "Reshape_470_o0__d2",
+                18710
+              ]
+            }
+          ],
+          "dictionary_source": "ONNX embedded character metadata",
+          "dictionary_entries": 18708,
+          "dictionary_sha256": "f7aa897ca828a4c7c9e2739c30f9161a33306d532f020bcdb91dcfb664a5507e",
+          "decoder_dictionary_entries_including_blank": 18710
+        }
+      },
+      "cpu_threads": 1,
+      "import_seconds": 0.4165187549988332,
+      "cached_model_init_seconds": 0.12855774399940856,
+      "cold_import_plus_init_seconds": 0.5450764989982417,
+      "lock_wait_excluded": true
+    }
+  },
+  {
+    "scheme": "v6_small_paddle_params",
+    "CER": 0.20225733634311513,
+    "CER_no_punctuation": 0.15546639919759278,
+    "WER": 0.46934865900383144,
+    "S": 103,
+    "D": 310,
+    "I": 35,
+    "N": 2215,
+    "exact_regions": 7,
+    "certain_regions": 67,
+    "no_recognized_output_regions": 4,
+    "no_raw_db_line_regions": 3,
+    "mean_warm_seconds": 4.173538317000384,
+    "model_bytes": 31749509,
+    "repeated_outputs_identical": true,
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "rapidocr": "3.10.0",
+      "onnxruntime": "1.23.2",
+      "opencv": "5.0.0",
+      "opencv_threads": 1,
+      "sessions": {
+        "det": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                "DynamicDimension.1",
+                "DynamicDimension.2"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "ConvTranspose_459_o0__d0",
+                1,
+                "ConvTranspose_459_o0__d2",
+                "ConvTranspose_459_o0__d3"
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "cls": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                null,
+                3,
+                "?",
+                "?"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "save_infer_model/scale_0.tmp_1",
+              "shape": [
+                null,
+                2
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "rec": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                48,
+                "DynamicDimension.1"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "DynamicDimension.0",
+                "Reshape_470_o0__d2",
+                18710
+              ]
+            }
+          ],
+          "dictionary_source": "ONNX embedded character metadata",
+          "dictionary_entries": 18708,
+          "dictionary_sha256": "f7aa897ca828a4c7c9e2739c30f9161a33306d532f020bcdb91dcfb664a5507e",
+          "decoder_dictionary_entries_including_blank": 18710
+        }
+      },
+      "cpu_threads": 1,
+      "import_seconds": 0.5018848670006264,
+      "cached_model_init_seconds": 0.1526501289990847,
+      "cold_import_plus_init_seconds": 0.6545349959997111,
+      "lock_wait_excluded": true
+    }
+  },
+  {
+    "scheme": "v6_tiny",
+    "CER": 0.3489841986455982,
+    "CER_no_punctuation": 0.30190571715145437,
+    "WER": 0.5996168582375478,
+    "S": 275,
+    "D": 386,
+    "I": 112,
+    "N": 2215,
+    "exact_regions": 4,
+    "certain_regions": 67,
+    "no_recognized_output_regions": 2,
+    "no_raw_db_line_regions": 2,
+    "mean_warm_seconds": 1.094131465600367,
+    "model_bytes": 6904963,
+    "repeated_outputs_identical": true,
+    "environment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "rapidocr": "3.10.0",
+      "onnxruntime": "1.23.2",
+      "opencv": "5.0.0",
+      "opencv_threads": 1,
+      "sessions": {
+        "det": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                "DynamicDimension.1",
+                "DynamicDimension.2"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "ConvTranspose_459_o0__d0",
+                1,
+                "ConvTranspose_459_o0__d2",
+                "ConvTranspose_459_o0__d3"
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "cls": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                null,
+                3,
+                "?",
+                "?"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "save_infer_model/scale_0.tmp_1",
+              "shape": [
+                null,
+                2
+              ]
+            }
+          ],
+          "dictionary_source": null,
+          "dictionary_entries": null,
+          "dictionary_sha256": null
+        },
+        "rec": {
+          "providers": [
+            "CPUExecutionProvider"
+          ],
+          "intra_op_threads": 1,
+          "inter_op_threads": 1,
+          "inputs": [
+            {
+              "name": "x",
+              "shape": [
+                "DynamicDimension.0",
+                3,
+                48,
+                "DynamicDimension.1"
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "name": "fetch_name_0",
+              "shape": [
+                "DynamicDimension.0",
+                "floor(floor(floor(DynamicDimension.1/2 - 1/2)/2)/2 - 1/2) + 1",
+                6906
+              ]
+            }
+          ],
+          "dictionary_source": "ONNX embedded character metadata",
+          "dictionary_entries": 6904,
+          "dictionary_sha256": "34d139222b6e8d84830f57476e39f01e76be3baffde3e9df75a079e251140598",
+          "decoder_dictionary_entries_including_blank": 6906
+        }
+      },
+      "cpu_threads": 1,
+      "import_seconds": 0.5157000139988668,
+      "cached_model_init_seconds": 0.0717005730002711,
+      "cold_import_plus_init_seconds": 0.5874005869991379,
+      "lock_wait_excluded": true
+    }
+  }
+]

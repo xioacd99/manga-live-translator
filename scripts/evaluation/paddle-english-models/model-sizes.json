@@ -1,0 +1,47 @@
+{
+  "v5_multi": {
+    "bytes": 22036414,
+    "MiB": 21.015562057495117,
+    "models": [
+      "v5_det",
+      "v5_multi_rec",
+      "legacy_cls"
+    ]
+  },
+  "v5_english": {
+    "bytes": 13277459,
+    "MiB": 12.662371635437012,
+    "models": [
+      "v5_det",
+      "v5_en_rec",
+      "legacy_cls"
+    ]
+  },
+  "v6_tiny": {
+    "bytes": 6904963,
+    "MiB": 6.585085868835449,
+    "models": [
+      "v6_tiny_det",
+      "v6_tiny_rec",
+      "legacy_cls"
+    ]
+  },
+  "v6_small": {
+    "bytes": 31749509,
+    "MiB": 30.278691291809082,
+    "models": [
+      "v6_small_det",
+      "v6_small_rec",
+      "legacy_cls"
+    ]
+  },
+  "v6_medium": {
+    "bytes": 139334970,
+    "MiB": 132.88018226623535,
+    "models": [
+      "v6_medium_det",
+      "v6_medium_rec",
+      "legacy_cls"
+    ]
+  }
+}

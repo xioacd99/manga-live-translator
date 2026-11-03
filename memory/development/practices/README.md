@@ -21,3 +21,5 @@ Record techniques supported by actual project experience, including when they ap
 - [中文漫画候选方案的公平比较](chinese-comic-benchmark.md)
 
 - [多语言漫画评测与可视化](multilingual-comic-evaluation.md)
+
+- [Paddle英文型号比较经验](paddle-english-model-comparison.md)：固定GT、运行库桥接、检测参数差异和计时边界。

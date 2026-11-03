@@ -1,0 +1,13 @@
+{
+  "main_six": {
+    "file": "run_benchmark_main_frozen.py",
+    "sha256": "8b893f09ca188506b567177458522bcc4722103393f5d5174ef5a8a231a8e34f",
+    "same_as_actual_main_run_benchmark_py": true,
+    "changed_after_formal_started": false
+  },
+  "sensitivity_seventh": {
+    "file": "run_benchmark_sensitivity.py",
+    "sha256": "39d0e3128332be5fba4dd0d088736e3617b2fc8c7fa615686e44cf1fe36323bd",
+    "scope": "same Rapid small weights; official detector normalization and DB thresholds; controlled same resize limits; not native/full official pipeline"
+  }
+}

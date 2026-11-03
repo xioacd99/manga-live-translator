@@ -35,3 +35,5 @@
 - [中文漫画候选方案的公平比较](memory/development/practices/chinese-comic-benchmark.md)
 
 - [多语言漫画评测与可视化](memory/development/practices/multilingual-comic-evaluation.md)
+
+- [Paddle英文型号比较经验](memory/development/practices/paddle-english-model-comparison.md)

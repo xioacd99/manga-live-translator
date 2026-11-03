@@ -1,0 +1,9 @@
+{
+  "model name": "AMD EPYC 9V74 80-Core Processor",
+  "cpu cores": "9",
+  "siblings": "9",
+  "cache size": "1024 KB",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "logical_cpu_count": 9,
+  "nonexclusive_virtualized_environment": true
+}
