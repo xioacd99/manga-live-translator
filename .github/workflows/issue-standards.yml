@@ -1,0 +1,31 @@
+name: Issue standards
+on:
+  issues:
+    types: [opened, edited, reopened]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Issue number to audit (read-only)
+        required: true
+        type: string
+permissions:
+  contents: read
+  issues: read
+concurrency:
+  group: issue-standards-${{ github.event.issue.number || inputs.issue_number }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: refs/heads/main
+          persist-credentials: false
+      - name: Check validator tests
+        run: python3 -m unittest discover -s tests -p 'test_issue_standards.py' -v
+      - name: Read and validate current issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/audit_issue.py

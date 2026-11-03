@@ -1,0 +1,74 @@
+name: Bug report
+description: Report a reproducible problem, including documentation errors.
+title: '[Bug] '
+body:
+- type: markdown
+  attributes:
+    value: 'Please read [the issue guide](https://github.com/xioacd99/manga-live-translator/blob/main/docs/ISSUES.md).
+      These requirements apply equally to people and bots. AI-assisted reports are welcome when accurate
+      and complete. This is a public tracker: remove secrets, private logs, personal information, and
+      private manga content. Use synthetic or shareable minimal examples. Explain unknown or inapplicable
+      details instead of guessing.'
+- type: textarea
+  id: search
+  attributes:
+    label: Existing issue search
+    description: State the search terms and whether a relevant issue already exists. Add new evidence
+      there instead of opening a duplicate.
+  validations:
+    required: true
+- type: textarea
+  id: summary
+  attributes:
+    label: Summary
+    description: Describe one concrete problem or request. Separate observed facts from assumptions.
+  validations:
+    required: true
+- type: textarea
+  id: revision
+  attributes:
+    label: Revision or project state
+    description: Give a commit SHA, branch and observation date, or an actual released version if one
+      exists. For planning or documentation, say so and identify the affected file. Do not invent an application
+      version.
+  validations:
+    required: true
+- type: textarea
+  id: environment
+  attributes:
+    label: Environment
+    description: Include relevant OS/browser versions, setup, source and target languages, and provider/model
+      names if applicable. Do not include credentials. For documentation-only issues, explain why runtime
+      details do not apply.
+  validations:
+    required: true
+- type: textarea
+  id: reproduction
+  attributes:
+    label: Steps to reproduce
+    description: Provide numbered steps and a minimal sanitized example. If intermittent, include frequency
+      and what you tried. For documentation, give the file/section and steps to find the problem.
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Expected behavior
+    description: Describe the intended result and its basis.
+  validations:
+    required: true
+- type: textarea
+  id: actual
+  attributes:
+    label: Actual behavior
+    description: Describe what you observed, including sanitized errors. Do not claim an unrun test passed.
+  validations:
+    required: true
+- type: textarea
+  id: evidence
+  attributes:
+    label: Additional evidence
+    description: Optional sanitized logs, screenshots, links, measurements, or technical analysis. Identify
+      hypotheses and disclose anything not verified.
+  validations:
+    required: false

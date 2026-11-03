@@ -1,0 +1,19 @@
+{
+  "Bug": [
+    "Existing issue search",
+    "Summary",
+    "Revision or project state",
+    "Environment",
+    "Steps to reproduce",
+    "Expected behavior",
+    "Actual behavior"
+  ],
+  "Feature": [
+    "Existing issue search",
+    "Summary",
+    "Problem and use case",
+    "Proposed behavior",
+    "Acceptance criteria",
+    "Alternatives considered"
+  ]
+}

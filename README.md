@@ -14,7 +14,7 @@ This project is at an early stage. The points below describe our goals, not impl
 
 ## Contributing
 
-Issues and pull requests are welcome! Share ideas, report problems, or contribute improvements.
+Issues and pull requests are welcome! Share ideas, report problems, or contribute improvements. Read the [issue guide](docs/ISSUES.md) and use the bug or feature form. People, maintainers, dot, and other bots follow the same format.
 
 ## Development knowledge
 

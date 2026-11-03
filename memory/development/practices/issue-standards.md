@@ -1,0 +1,14 @@
+# Validating Issue Structure Across Entry Points
+
+- Status: resolved
+- Updated: 2026-11-03 (Asia/Shanghai)
+- Scope and environment: English bug/feature Issue Forms, Python 3.12 on Linux, GitHub API and read-only Actions audits.
+- Context: people, maintainers, dot, and API bots need the same reporting structure without claiming that a web form prevents every invalid submission.
+- Evidence: GitHub's issue REST API accepts arbitrary bodies, form responses become editable Markdown, and GITHUB_TOKEN-generated issue events do not start another issue workflow. The Codex reference uses detailed reproduction/environment reporting, but its current outside-PR policy is not adopted here.
+- Verified cause: form validation, bot submission behavior, and post-creation Actions are separate entry points. A form-only policy leaves API/edit gaps; a post-creation audit cannot prevent creation or prove the content true.
+- Decision: independently written forms and guide, a shared JSON heading schema, one dependency-free deterministic checker for local and Actions use, and read-only current-state API audits. No author exemptions, automatic comments, labels, closure, content edits, scheduled scans, or additional secrets. Issue text remains data; no evaluation, reporter-directed downloads, or interpolation into executable code occurs.
+- Verification: `python3 -m unittest discover -s tests -v` passed 42 tests (21 existing hook tests and 21 issue tests). Coverage includes valid forms, missing/placeholder fields, duplicate/fenced/comment headings, CRLF, bot/owner equality, fresh API state, dispatch validation, redirect rejection, CLI behavior, fixed diagnostics, and read-only workflow configuration. YAML parsing and form structure checks passed locally. A local test is not proof of a live issue-triggered Actions run.
+- Applicability: shared formatting rules for new and edited issues; factual and privacy review remains necessary. AI-assisted reporting is welcome, but generated claims are not evidence.
+- Limitations: Actions availability and token event suppression can leave an issue unaudited. Forms/API bodies and checked headings must stay synchronized. No checker can establish accuracy, actual duplicate-search execution, English quality, or adequate reproduction detail. There are no application-cache implementation results or benchmarks in this change.
+- References: [issue guide](../../../docs/ISSUES.md), [checker](../../../scripts/check_issue.py), [tests](../../../tests/test_issue_standards.py), [GitHub issue API](https://docs.github.com/en/rest/issues/issues#create-an-issue), [GITHUB_TOKEN](https://docs.github.com/en/actions/concepts/security/github_token), [Codex reference](https://github.com/openai/codex/blob/7e8143a8970394e38830ff7b30143da539bd0a18/docs/contributing.md).
+- Superseded by: not applicable.
