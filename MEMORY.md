@@ -1,6 +1,6 @@
 # Project Memory
 
-This is the public index of reusable development knowledge for Manga Live Translator. Record actual project experience, not speculative bugs or unimplemented results. Developer-tooling experience is recorded below; no manga translation implementation findings or benchmarks exist yet.
+This is the public index of reusable development knowledge for Manga Live Translator. Record actual project experience, not speculative bugs or unimplemented results. Developer-tooling and preview implementation findings are recorded below; synthetic measurements must not be presented as real-reader performance.
 
 ## Start here
 
@@ -13,6 +13,7 @@ Before every development task, read [README.md](README.md), this file, and [AGEN
 - [Development](memory/development/README.md)
   - [Pitfalls](memory/development/pitfalls/README.md): observed problems, causes, fixes, and verification.
   - [Practices](memory/development/practices/README.md): techniques that proved useful in actual work.
+- [Preview lifecycle and validation lessons](memory/development/pitfalls/preview-lifecycle.md)
 - [Testing](memory/testing/README.md)
   - [Performance](memory/testing/performance/README.md): reproducible measurements and their limitations.
 - [Record template](memory/templates/record.md)

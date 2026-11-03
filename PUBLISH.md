@@ -4,6 +4,14 @@ This file records completed changes under date-version headings (`YYYY-MM-DD - v
 
 Each entry describes the changes made, with additions, improvements, fixes, compatibility changes, and upgrade notes where relevant. Planned features are not listed as completed changes.
 
+## 2026-11-03 - v0.1.0
+
+- Added an unreleased MV3 development preview with locally bundled English OCR, opt-in fixed-endpoint LLM text translation, reversible overlays, original-image toggle and cumulative OCR corrections.
+- Added byte-keyed OCR and context-sensitive translation caches, bounded queues and storage, cancellation/single-flight handling, generation-safe clear/forget, and explicit cache/call counters. No persistent reading cache or automatic paid retry is claimed.
+- Added explicit host/text consent, session-only provider settings, sender validation, bounded image fetching and pre-decode dimension checks; images and secrets are not passed to the LLM or content-script settings.
+- Added locked builds, dependency/model provenance and license notices, real offline synthetic OCR tests, application/lifecycle tests, synthetic cache benchmark and a mocked-provider browser CI smoke. Live provider, real manga quality and M4 performance remain unverified.
+- Recorded actual cancellation/correction/resource pitfalls and the cloud browser execution restriction in memory; documented installation, supported scope and remaining acceptance gates. This entry does not publish a release or merge dev into main.
+
 ## 2026-11-03 - v0.0.0
 
 - Added the first English implementation plan under docs/plans/v0.1: requirements, independent ImageTrans-inspired architecture, layered cache contracts, privacy, research/license comparison, staged delivery, and reproducible evaluation gates. This is a documentation proposal, not an implemented translator or measured benchmark.

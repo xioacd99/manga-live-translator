@@ -1,0 +1,9 @@
+const el=id=>document.getElementById(id);const status=el('status');let tab;el('enable').disabled=true;
+async function send(message){const r=await chrome.runtime.sendMessage(message);if(!r?.ok)throw new Error(r?.error?.message||'Operation failed.');return r;}
+async function run(fn){try{status.textContent='Working…';await fn();}catch(e){status.textContent=e.message;}}
+const ready=Promise.all([chrome.tabs.query({active:true,currentWindow:true}),send({type:'MLT_UI_STATUS'})]).then(([tabs,s])=>{tab=tabs[0];el('config').textContent=s.configured?`Model: ${s.model}; target: ${s.targetLanguage}`:'Configure your provider before enabling translation.';el('enable').disabled=!s.configured;}).catch(e=>{status.textContent=e.message;});
+el('settings').onclick=()=>chrome.runtime.openOptionsPage();
+el('enable').onclick=()=>run(async()=>{const origin=new URL(tab.url).origin;const imageOrigins=el('origins').value.split(/\n/).map(s=>s.trim()).filter(Boolean);if(imageOrigins.length>5)throw new Error('At most five image CDN origins.');const origins=[origin,...imageOrigins,'https://api.openai.com'].map(s=>`${new URL(s).origin}/*`);if(!await chrome.permissions.request({origins}))throw new Error('Host permission not granted.');await send({type:'MLT_UI_ENABLE',tabId:tab.id,imageOrigins,auto:el('auto').checked});status.textContent='Enabled. Use Translate on an image; automatic mode processes visible images only.';});
+el('disable').onclick=()=>run(async()=>{await ready;await send({type:'MLT_UI_DISABLE',tabId:tab.id});status.textContent='Disabled.';});
+el('clear').onclick=()=>run(async()=>{await send({type:'MLT_UI_CLEAR'});status.textContent='Reading cache cleared; active work cancelled. Already sent requests may still be billed.';});
+el('metrics').onclick=()=>run(async()=>{const r=await send({type:'MLT_UI_METRICS'});status.textContent=JSON.stringify(r.metrics,null,2);});

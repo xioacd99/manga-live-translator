@@ -1,0 +1,12 @@
+{
+ "manifest_version":3,"name":"Manga Live Translator","version":"0.1.0",
+ "description":"Local OCR and opt-in LLM translation with reversible overlays and exact result caching.",
+ "minimum_chrome_version":"116",
+ "permissions":["activeTab","scripting","storage","offscreen"],
+ "optional_host_permissions":["https://*/*","http://*/*"],
+ "background":{"service_worker":"background.js"},
+ "action":{"default_popup":"popup.html"},
+ "options_page":"options.html",
+ "content_security_policy":{"extension_pages":"script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self'"},
+ "incognito":"not_allowed"
+}

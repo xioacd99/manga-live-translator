@@ -1,0 +1,33 @@
+name: Extension tests
+on:
+  push:
+    branches: [dev]
+  pull_request:
+    branches: [dev, main]
+permissions:
+  contents: read
+concurrency:
+  group: extension-tests-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Check runtime
+        run: node --version && npm --version && python3 --version
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts
+      - name: Test application and repository tooling
+        run: npm test && npm run test:tooling
+      - name: Build self-contained extension
+        run: npm run build
+      - name: Install Chromium for synthetic browser test
+        run: npx playwright install --with-deps chromium
+      - name: Test real local OCR and mocked provider in Chromium
+        run: npm run test:browser
+      - name: Print synthetic cache benchmark
+        run: node benchmarks/cache.mjs

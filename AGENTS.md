@@ -10,7 +10,7 @@
 ## Development and release branches
 
 - Use dev as the default branch for development changes. Verify the current branch and latest remote state before editing or committing; do not put routine development commits directly on main.
-- Run the applicable tests against the final dev changes and fix failures before proposing a merge to main. For the current repository tooling, run `python3 -m unittest discover -s tests -v`.
+- Run the applicable tests against the final dev changes and fix failures before proposing a merge to main. Run `npm test`, `npm run test:tooling`, `npm run build`, and the synthetic browser smoke in `docs/development/preview.md`. Never substitute mocked provider results for a live-provider or real-manga quality claim.
 - Merge tested development work into main for release only when that merge is authorized. This workflow is not standing permission for an agent to merge, publish a release, or create a tag automatically.
 - Keep PUBLISH.md and real memory/ records updated in the same development commits. A commit on dev records completed development work, not a main release.
 - Before an authorized merge, recheck both branch tips, resolve any divergence without overwriting others' work, and rerun affected checks. Verify the resulting main state before reporting a release or merge as completed.

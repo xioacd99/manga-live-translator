@@ -1,0 +1,6 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Manga Live Translator</title><link rel="stylesheet" href="ui.css"></head><body>
+<h1>Manga Live Translator</h1><p id="config">Loading settings…</p>
+<p>Enable only the current page. OCR stays local; extracted dialogue is sent to OpenAI and may incur API charges.</p>
+<label>Additional image CDN origins (one per line, optional)<textarea id="origins" placeholder="https://images.example.com"></textarea></label>
+<label><input type="checkbox" id="auto"> Automatically translate visible images on this page (may incur charges)</label>
+<button id="enable">Enable this page</button><button id="disable">Disable this page</button><button id="settings">Provider settings</button><button id="clear">Clear reading cache</button><button id="metrics">Show counters</button><pre id="status" role="status"></pre><script src="popup.js"></script></body></html>

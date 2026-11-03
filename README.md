@@ -4,7 +4,7 @@ High-performance, low-latency online manga translation with natural, context-awa
 
 ## Status
 
-This project is at an early stage. The points below describe our goals, not implemented features or measured performance results.
+An unreleased dev-branch preview now implements local English OCR, opt-in LLM text translation, reversible browser overlays, and bounded layered caches. The goals below are not measured performance or quality claims. See the [build, usage, verification and limitations guide](docs/development/preview.md).
 
 ## Goals
 
@@ -14,7 +14,7 @@ This project is at an early stage. The points below describe our goals, not impl
 
 ## First implementation plan
 
-Read the [first requirements and implementation plan](docs/plans/v0.1/README.md) for the proposed MVP, architecture, cache design, research sources, evaluation gates, and decisions awaiting review. It is a design draft, not implemented application behavior.
+Read the [first requirements and implementation plan](docs/plans/v0.1/README.md) for the proposed MVP, architecture, cache design, research sources, evaluation gates, and decisions awaiting review. The plan remains the requirements baseline; the preview guide distinguishes implemented scope from outstanding acceptance gates.
 
 ## Contributing
 
@@ -22,7 +22,7 @@ Issues and pull requests are welcome! Share ideas, report problems, or contribut
 
 ## Branch workflow
 
-Development happens on dev. Run the applicable tests on the final changes, then merge tested work into main for release. The current tooling suite is `python3 -m unittest discover -s tests -v`. Changes on dev are not automatically released; merging or publishing remains an explicit step. See [AGENTS.md](AGENTS.md) for the development workflow.
+Development happens on dev. Run the applicable tests on the final changes, then merge tested work into main for release. Run `npm test`, `npm run test:tooling`, `npm run build` and the synthetic browser smoke as described in the preview guide. Changes on dev are not automatically released; merging or publishing remains an explicit step. See [AGENTS.md](AGENTS.md) for the development workflow.
 
 ## Development knowledge
 

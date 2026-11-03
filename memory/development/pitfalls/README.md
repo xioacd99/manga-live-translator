@@ -5,3 +5,5 @@ Record problems encountered during development, the evidence for their causes, a
 No development pitfalls recorded yet.
 
 [Back to development](../README.md)
+
+- [Preview lifecycle and validation lessons](preview-lifecycle.md)
