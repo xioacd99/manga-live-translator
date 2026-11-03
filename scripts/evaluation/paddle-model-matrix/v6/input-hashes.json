@@ -1,0 +1,62 @@
+[
+  {
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "width": 1740,
+    "height": 2376
+  },
+  {
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "width": 1741,
+    "height": 2405
+  },
+  {
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "width": 1839,
+    "height": 435
+  },
+  {
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "width": 1190,
+    "height": 1394
+  },
+  {
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "width": 1263,
+    "height": 1469
+  },
+  {
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "width": 1266,
+    "height": 1476
+  },
+  {
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "width": 1280,
+    "height": 1484
+  },
+  {
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "width": 3975,
+    "height": 1055
+  },
+  {
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "width": 746,
+    "height": 1144
+  },
+  {
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "width": 1258,
+    "height": 1470
+  }
+]

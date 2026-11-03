@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "models": {
+    "v5_server_det": {
+      "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_server_det_onnx/resolve/dcf248c4dcc064c6d030db241255f9e8fbc6733a/inference.onnx",
+      "revision": "dcf248c4dcc064c6d030db241255f9e8fbc6733a",
+      "bytes": 88116791,
+      "sha256": "10803475a591f7dc623e24670fb5752ec94d39a1f8cf069aac1b6f0ce19cfc85",
+      "license": "apache-2.0",
+      "filename": "v5_server_det.onnx",
+      "model_family": "PP-OCRv5",
+      "revision_kind": "repository commit",
+      "export_provenance": "PaddlePaddle official ONNX export"
+    },
+    "v5_server_rec": {
+      "url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_server_rec_onnx/resolve/b70df217f4fd99d14f970bad092cebe7d74cc4d1/inference.onnx",
+      "revision": "b70df217f4fd99d14f970bad092cebe7d74cc4d1",
+      "bytes": 84503027,
+      "sha256": "d9dc333c9c7b042c6dffb8e33d72b6f65c9c1d463d0a3c2f78174fea55e94752",
+      "license": "apache-2.0",
+      "filename": "v5_server_rec.onnx",
+      "model_family": "PP-OCRv5",
+      "revision_kind": "repository commit",
+      "export_provenance": "PaddlePaddle official ONNX export"
+    },
+    "v6_small_det": {
+      "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv6/det/PP-OCRv6_det_small.onnx",
+      "bytes": 9929594,
+      "sha256": "090f04abcd9d9a7498bc4ebf677e4cb9bdce1fe4197ddb7e529f1ef44e1ff94f",
+      "source_model": "multi_PP-OCRv6_det_small",
+      "wrapper": "RapidOCR 3.10.0",
+      "filename": "v6_small_det.onnx",
+      "model_family": "PP-OCRv6",
+      "revision": "v3.10.0",
+      "revision_kind": "release tag plus exact content SHA-256, not an immutable repository commit",
+      "export_provenance": "RapidAI distribution export; distinct bytes from official PaddlePaddle ONNX exports, not a new model family",
+      "license": "not established by supplied model manifest",
+      "license_note": "RapidOCR runtime Apache-2.0 does not by itself establish the license of every weight file.",
+      "repository_card_license": {
+        "declaration": "Apache License 2.0",
+        "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/README.md",
+        "bytes": 1140,
+        "sha256": "3dc91bb3cb667df783178917d69b38bfabb8c935596f34243a1c9f0d36916b6e",
+        "scope": "repository-level declaration; not independent per-weight provenance verification"
+      }
+    },
+    "v6_medium_rec": {
+      "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv6/rec/PP-OCRv6_rec_medium.onnx",
+      "bytes": 76629984,
+      "sha256": "eef444829dbbe18d7fea59a3f6eb75647518d2b3a9568d27c92e42940204894b",
+      "source_model": "multi_PP-OCRv6_rec_medium",
+      "wrapper": "RapidOCR 3.10.0",
+      "filename": "v6_medium_rec.onnx",
+      "model_family": "PP-OCRv6",
+      "revision": "v3.10.0",
+      "revision_kind": "release tag plus exact content SHA-256, not an immutable repository commit",
+      "export_provenance": "RapidAI distribution export; distinct bytes from official PaddlePaddle ONNX exports, not a new model family",
+      "license": "not established by supplied model manifest",
+      "license_note": "RapidOCR runtime Apache-2.0 does not by itself establish the license of every weight file.",
+      "repository_card_license": {
+        "declaration": "Apache License 2.0",
+        "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/README.md",
+        "bytes": 1140,
+        "sha256": "3dc91bb3cb667df783178917d69b38bfabb8c935596f34243a1c9f0d36916b6e",
+        "scope": "repository-level declaration; not independent per-weight provenance verification"
+      }
+    },
+    "v5_latin_rec": {
+      "url": "https://huggingface.co/PaddlePaddle/latin_PP-OCRv5_mobile_rec_onnx/resolve/89d3a50e2c27e2e7cceeab0e944c25c807d5db4f/inference.onnx",
+      "revision": "89d3a50e2c27e2e7cceeab0e944c25c807d5db4f",
+      "repo": "PaddlePaddle/latin_PP-OCRv5_mobile_rec_onnx",
+      "name": "inference.onnx",
+      "bytes": 8042023,
+      "sha256": "7888113072263cb471b93f66dd5e2ad70548dc526fa1ace760d0d973dd121498",
+      "license": "apache-2.0",
+      "filename": "v5_latin_rec.onnx",
+      "model_family": "PP-OCRv5",
+      "revision_kind": "repository commit",
+      "export_provenance": "PaddlePaddle official ONNX export"
+    },
+    "v5_en_rec": {
+      "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv5/rec/en_PP-OCRv5_rec_mobile.onnx",
+      "bytes": 7872351,
+      "sha256": "c3461add59bb4323ecba96a492ab75e06dda42467c9e3d0c18db5d1d21924be8",
+      "source_model": "en_PP-OCRv5_rec_mobile",
+      "wrapper": "RapidOCR 3.10.0",
+      "filename": "v5_en_rec.onnx",
+      "model_family": "PP-OCRv5",
+      "revision": "v3.10.0",
+      "revision_kind": "release tag plus exact content SHA-256, not an immutable repository commit",
+      "export_provenance": "RapidAI distribution export; distinct bytes from official PaddlePaddle ONNX exports, not a new model family",
+      "license": "not established by supplied model manifest",
+      "license_note": "RapidOCR runtime Apache-2.0 does not by itself establish the license of every weight file.",
+      "repository_card_license": {
+        "declaration": "Apache License 2.0",
+        "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/README.md",
+        "bytes": 1140,
+        "sha256": "3dc91bb3cb667df783178917d69b38bfabb8c935596f34243a1c9f0d36916b6e",
+        "scope": "repository-level declaration; not independent per-weight provenance verification"
+      }
+    },
+    "legacy_cls": {
+      "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.4.0/onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_infer.onnx",
+      "bytes": 585532,
+      "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+      "source_model": "ch_ppocr_mobile_v2.0_cls_infer",
+      "filename": "legacy_cls.onnx",
+      "model_family": "legacy orientation classifier",
+      "revision": "v3.4.0",
+      "revision_kind": "release tag plus exact content SHA-256, not an immutable repository commit",
+      "export_provenance": "RapidAI distribution export; distinct bytes from official PaddlePaddle ONNX exports, not a new model family",
+      "license": "not established by supplied model manifest",
+      "license_note": "RapidOCR runtime Apache-2.0 does not by itself establish the license of every weight file.",
+      "repository_card_license": {
+        "declaration": "Apache License 2.0",
+        "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.4.0/README.md",
+        "bytes": 1140,
+        "sha256": "3dc91bb3cb667df783178917d69b38bfabb8c935596f34243a1c9f0d36916b6e",
+        "scope": "repository-level declaration; not independent per-weight provenance verification"
+      }
+    }
+  },
+  "dictionaries": {
+    "v5_server_rec": {
+      "source_revision": "b70df217f4fd99d14f970bad092cebe7d74cc4d1",
+      "source_file": "inference.yml",
+      "source_sha256": "2c719dba044c4e2228aef8ff92f5f575394d75d24c16de096a33b7cfd902f66d",
+      "source_field": "PostProcess.character_dict",
+      "dictionary_entries": 18383,
+      "contains_ascii_space": false,
+      "empty_entries": 0,
+      "derived_sha256": "d1979e9f794c464c0d2e0b70a7fe14dd978e9dc644c0e71f14158cdf8342af1b",
+      "derived_bytes": 74012,
+      "transformation": "Ordered YAML string list joined by LF with final LF; no filtering or reordering.",
+      "license": "apache-2.0",
+      "source_url": "https://huggingface.co/PaddlePaddle/PP-OCRv5_server_rec_onnx/resolve/b70df217f4fd99d14f970bad092cebe7d74cc4d1/inference.yml",
+      "source_bytes": 148345,
+      "source_filename": "v5_server_rec-inference.yml",
+      "derived_filename": "v5_server_rec_keys.txt",
+      "decoder_classes_with_blank_and_space": 18385
+    },
+    "v5_latin_rec": {
+      "source_revision": "89d3a50e2c27e2e7cceeab0e944c25c807d5db4f",
+      "source_sha256": "0bbe984570f597af3638e50bdf2e8276f3ab26a61966096538b3b0d1849f5c84",
+      "source_field": "PostProcess.character_dict",
+      "model_name": "latin_PP-OCRv5_mobile_rec",
+      "dictionary_entries": 836,
+      "contains_ascii_space": false,
+      "empty_entries": 0,
+      "derived_bytes": 2616,
+      "derived_sha256": "ccbcc45730b3fbbd9050c5bc74db6a99067141ef1035e3d14889a84a6b9b1aff",
+      "transformation": "Ordered YAML string list joined by LF with final LF; no filtering/reordering.",
+      "license": "apache-2.0",
+      "source_url": "https://huggingface.co/PaddlePaddle/latin_PP-OCRv5_mobile_rec_onnx/resolve/89d3a50e2c27e2e7cceeab0e944c25c807d5db4f/inference.yml",
+      "source_bytes": 6817,
+      "source_file": "inference.yml",
+      "source_filename": "v5_latin_rec-inference.yml",
+      "derived_filename": "v5_latin_rec_keys.txt",
+      "decoder_classes_with_blank_and_space": 838
+    }
+  },
+  "embedded_dictionary_expectations": {
+    "v5_en_rec": {
+      "dictionary_entries": 436,
+      "decoder_classes_with_blank_and_space": 438,
+      "source": "ONNX embedded character metadata; no external dictionary substitution"
+    }
+  }
+}

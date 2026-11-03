@@ -1,0 +1,43 @@
+[
+  {
+    "file": "licenses/PaddleX-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/4c968d30b9d0d4a693d9eaaef0881c20f8d7d0e0/LICENSE",
+    "bytes": 11325,
+    "sha256": "accc36c817ac5ede473d05732e14afc11cb6e55ef5919bc826b653f631165043",
+    "status": "retrieved"
+  },
+  {
+    "file": "licenses/PaddleX-NOTICE.txt",
+    "url": "https://raw.githubusercontent.com/PaddlePaddle/PaddleX/4c968d30b9d0d4a693d9eaaef0881c20f8d7d0e0/NOTICE",
+    "status": "unavailable",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "file": "licenses/RapidOCR-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/RapidAI/RapidOCR/v3.10.0/LICENSE",
+    "bytes": 11422,
+    "sha256": "3e0af25fdd06aa9586ae97adb00ea927ebe5a3805ac77d2d3a81ce5f55693333",
+    "status": "retrieved"
+  },
+  {
+    "file": "licenses/ONNXRuntime-LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/microsoft/onnxruntime/v1.23.2/LICENSE",
+    "bytes": 1073,
+    "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c",
+    "status": "retrieved"
+  },
+  {
+    "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/README.md",
+    "bytes": 1140,
+    "sha256": "3dc91bb3cb667df783178917d69b38bfabb8c935596f34243a1c9f0d36916b6e",
+    "status": "read_for_license_metadata",
+    "declared_repository_card_license": "Apache License 2.0"
+  },
+  {
+    "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.4.0/README.md",
+    "bytes": 1140,
+    "sha256": "3dc91bb3cb667df783178917d69b38bfabb8c935596f34243a1c9f0d36916b6e",
+    "status": "read_for_license_metadata",
+    "declared_repository_card_license": "Apache License 2.0"
+  }
+]

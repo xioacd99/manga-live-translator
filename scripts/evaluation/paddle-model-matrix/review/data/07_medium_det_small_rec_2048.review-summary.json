@@ -1,0 +1,127 @@
+{
+  "scheme": "07_medium_det_small_rec_2048",
+  "status": "completed",
+  "completed_images": 10,
+  "prediction_sha256": "9cf6c9d862075f45d00871e072fa9cdf48e298ceb5fa490bb44079ecd5845d34",
+  "microCER": 0.1548532731376975,
+  "microWER": 0.4272030651340996,
+  "S": 122,
+  "D": 188,
+  "I": 33,
+  "N": 2215,
+  "exactRegions": 8,
+  "empty_regions": 1,
+  "per_image": [
+    {
+      "id": "EN01",
+      "CER": 0.054878048780487805,
+      "WER": 0.21176470588235294,
+      "S": 14,
+      "D": 3,
+      "I": 1,
+      "N": 328,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    },
+    {
+      "id": "EN02",
+      "CER": 0.045563549160671464,
+      "WER": 0.23809523809523808,
+      "S": 8,
+      "D": 11,
+      "I": 0,
+      "N": 417,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    },
+    {
+      "id": "EN03",
+      "CER": 0.16149068322981366,
+      "WER": 0.27906976744186046,
+      "S": 10,
+      "D": 2,
+      "I": 14,
+      "N": 161,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    },
+    {
+      "id": "EN04",
+      "CER": 0.20833333333333334,
+      "WER": 0.8333333333333334,
+      "S": 2,
+      "D": 1,
+      "I": 2,
+      "N": 24,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    },
+    {
+      "id": "EN05",
+      "CER": 0.26666666666666666,
+      "WER": 0.7037037037037037,
+      "S": 13,
+      "D": 17,
+      "I": 2,
+      "N": 120,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    },
+    {
+      "id": "EN06",
+      "CER": 0.19753086419753085,
+      "WER": 0.6181818181818182,
+      "S": 14,
+      "D": 33,
+      "I": 1,
+      "N": 243,
+      "empty_regions": 1,
+      "no_assigned_raw_line_proxy": 1
+    },
+    {
+      "id": "EN07",
+      "CER": 0.18618618618618618,
+      "WER": 0.5714285714285714,
+      "S": 18,
+      "D": 43,
+      "I": 1,
+      "N": 333,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    },
+    {
+      "id": "EN08",
+      "CER": 0.25,
+      "WER": 0.4583333333333333,
+      "S": 7,
+      "D": 16,
+      "I": 2,
+      "N": 100,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    },
+    {
+      "id": "EN09",
+      "CER": 0.472,
+      "WER": 0.7407407407407407,
+      "S": 16,
+      "D": 34,
+      "I": 9,
+      "N": 125,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    },
+    {
+      "id": "EN10",
+      "CER": 0.1346153846153846,
+      "WER": 0.4875,
+      "S": 20,
+      "D": 28,
+      "I": 1,
+      "N": 364,
+      "empty_regions": 0,
+      "no_assigned_raw_line_proxy": 0
+    }
+  ],
+  "no_assigned_raw_line_proxy": 1
+}

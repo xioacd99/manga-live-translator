@@ -1,0 +1,207 @@
+{
+  "files": [
+    {
+      "source": "server-v5-preflight/run_server_matrix.py",
+      "public": "run_server_matrix.py",
+      "source_sha256": "70b0c6ef6c2b9fc0f3319707790a1c93244e4ac0a79e35375c3fa0b455ab12ba",
+      "public_sha256": "70b0c6ef6c2b9fc0f3319707790a1c93244e4ac0a79e35375c3fa0b455ab12ba",
+      "byte_identical": true,
+      "exact_changes": []
+    },
+    {
+      "source": "server-v5-preflight/server_worker_engine.py",
+      "public": "server_worker_engine.py",
+      "source_sha256": "22e80ea72171a857e062937889b60a5a367b4bc198658ee18991c70626f6494e",
+      "public_sha256": "22e80ea72171a857e062937889b60a5a367b4bc198658ee18991c70626f6494e",
+      "byte_identical": true,
+      "exact_changes": []
+    },
+    {
+      "source": "server-v5-preflight/server_worker_process.py",
+      "public": "server_worker_process.py",
+      "source_sha256": "3bb4fe7f7777435bc219827ae1ff821a9028de195b11e35f626f8aa3a443d651",
+      "public_sha256": "3bb4fe7f7777435bc219827ae1ff821a9028de195b11e35f626f8aa3a443d651",
+      "byte_identical": true,
+      "exact_changes": []
+    },
+    {
+      "source": "server-v5-preflight/server_preprocess_adapter.py",
+      "public": "server_preprocess_adapter.py",
+      "source_sha256": "e912a4b6e5e13ca6fb431e8f8d09001526bb02ef0307f5ff9841ffbc8440e02f",
+      "public_sha256": "e912a4b6e5e13ca6fb431e8f8d09001526bb02ef0307f5ff9841ffbc8440e02f",
+      "byte_identical": true,
+      "exact_changes": []
+    },
+    {
+      "source": "language-v5-matrix/run_language_matrix.py",
+      "public": "run_language_matrix.py",
+      "source_sha256": "4d2a4236bb2bce6e6dc0e9cf0f7556cbbc4b42d1cb5c3487d7aa747d7b391ad2",
+      "public_sha256": "4d2a4236bb2bce6e6dc0e9cf0f7556cbbc4b42d1cb5c3487d7aa747d7b391ad2",
+      "byte_identical": true,
+      "exact_changes": []
+    },
+    {
+      "source": "language-v5-matrix/language_worker_engine.py",
+      "public": "language_worker_engine.py",
+      "source_sha256": "ce9a6642fa8aa432449a02c5df14f6c4a0d5a663beb253f26f217cf69dc35cc3",
+      "public_sha256": "ce9a6642fa8aa432449a02c5df14f6c4a0d5a663beb253f26f217cf69dc35cc3",
+      "byte_identical": true,
+      "exact_changes": []
+    },
+    {
+      "source": "language-v5-matrix/language_worker_process.py",
+      "public": "language_worker_process.py",
+      "source_sha256": "f7e20b99b57121ca798af448d1628e3207fe4fafaa657401e152d355f4ac17bc",
+      "public_sha256": "f7e20b99b57121ca798af448d1628e3207fe4fafaa657401e152d355f4ac17bc",
+      "byte_identical": true,
+      "exact_changes": []
+    },
+    {
+      "source": "runtime/requirements-current.lock.txt",
+      "public": "requirements-current.lock.txt",
+      "source_sha256": "1d0e1f0aebecd5c6fa6f1059a841ddd35e59c8f41ac3dda358b84a90a8ad6f62",
+      "public_sha256": "1d0e1f0aebecd5c6fa6f1059a841ddd35e59c8f41ac3dda358b84a90a8ad6f62",
+      "byte_identical": true,
+      "exact_changes": []
+    },
+    {
+      "source": "server-v5-preflight/FROZEN-PROTOCOL.json",
+      "public": "FROZEN-PROTOCOL.json",
+      "source_sha256": "c912713528c84dd3158ca089f6ae68008c0e230ca06f27f8a9b12f6b8320f717",
+      "public_sha256": "d67855ada739cf66de1dd9c8784b5a1d3e1bfb46d515b426a5339598dd44ec2b",
+      "byte_identical": false,
+      "exact_changes": [
+        {
+          "operation": "remove",
+          "json_pointer": "/status"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/files"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/scheduling"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/candidates/0/executed"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/candidates/1/executed"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/candidates/2/executed"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/candidates/3/executed"
+        },
+        {
+          "operation": "add",
+          "json_pointer": "/artifact_scope",
+          "value": "frozen protocol only; execution status and results are not distributed"
+        }
+      ],
+      "serialization": "UTF-8 JSON; ensure_ascii=false; indent=2; trailing LF"
+    },
+    {
+      "source": "language-v5-matrix/FROZEN-APPEND-PROTOCOL.json",
+      "public": "FROZEN-APPEND-PROTOCOL.json",
+      "source_sha256": "b8371ec9922aeef1c36e9e6658a0054dede5bb00ae960ccd73edf7dabc8039a3",
+      "public_sha256": "f0a033712c3aa7661f04c2a922a05585bed759537697d6018c096846b176e8c6",
+      "byte_identical": false,
+      "exact_changes": [
+        {
+          "operation": "remove",
+          "json_pointer": "/status"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/files"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/run_order"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/latin_probe"
+        },
+        {
+          "operation": "add",
+          "json_pointer": "/artifact_scope",
+          "value": "frozen protocol only; execution status and results are not distributed"
+        }
+      ],
+      "serialization": "UTF-8 JSON; ensure_ascii=false; indent=2; trailing LF"
+    },
+    {
+      "source": "server-v5-preflight/server-worker-provenance.json",
+      "public": "server-worker-provenance.json",
+      "source_sha256": "810d0acae2b6d99b72272a6dd7d702b76a4564d02074e18358d7bfa2408095a0",
+      "public_sha256": "ad022288ffe732a83f6751f6e998620891a88357aec579bce66eabf6ae66bb9b",
+      "byte_identical": false,
+      "exact_changes": [
+        {
+          "operation": "remove",
+          "json_pointer": "/source_worker_path",
+          "reason": "private path value is intentionally not reproduced"
+        },
+        {
+          "operation": "remove",
+          "json_pointer": "/executed_on_real_images",
+          "reason": "not an execution-status publication"
+        }
+      ],
+      "serialization": "UTF-8 JSON; ensure_ascii=false; indent=2; trailing LF"
+    }
+  ],
+  "asset_lock_extraction": {
+    "sources": [
+      "language-v5-matrix/candidate-models.json",
+      "server-v5-preflight/dictionary-manifest.json",
+      "server-v5-preflight/download-manifest.json",
+      "latin-v5-preflight/dictionary-manifest.json",
+      "latin-v5-preflight/download-manifest.json"
+    ],
+    "model_keys": [
+      "v5_server_det",
+      "v5_server_rec",
+      "v6_small_det",
+      "v6_medium_rec",
+      "v5_latin_rec",
+      "v5_en_rec",
+      "legacy_cls"
+    ],
+    "model_fields_copied": [
+      "url",
+      "revision",
+      "repo",
+      "name",
+      "bytes",
+      "sha256",
+      "source_model",
+      "license",
+      "wrapper"
+    ],
+    "dictionary_fields_omitted": [
+      "derived_path",
+      "runtime_shape_checked",
+      "synthetic_inference_run"
+    ],
+    "download_fields_copied": [
+      "url",
+      "bytes"
+    ],
+    "added_fields": "Explicit relative filenames, family/export provenance, source URL and source size, decoder classes, and license uncertainty. No private path or timing copied. Repository-card license declarations are separately sourced in license-sources.json.",
+    "public_sha256": "e87b9a71c9d5de02f3e2405c5cbcddc24bd0fef8365adf112bee1b5c0ad2301f"
+  },
+  "not_copied": [
+    "All actual image manifests, images, GT, full predictions, raw responses, model weights, and dictionary contents.",
+    "Historical execution claims and synthetic-probe outcome fields."
+  ],
+  "no_algorithm_changes_to_evaluation_sources": true
+}

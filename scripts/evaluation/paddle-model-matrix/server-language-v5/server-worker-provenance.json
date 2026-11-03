@@ -1,0 +1,15 @@
+{
+  "source_worker_sha256": "c3a9de08b620502edcd17fb6f9a0004b8b78aa555f43f0156e675e5101898184",
+  "derived_worker_sha256": "22e80ea72171a857e062937889b60a5a367b4bc198658ee18991c70626f6494e",
+  "common_resize_function": "Parent worker CapturingOCR.preprocess_img body copied unchanged after separate native960 branch.",
+  "changes": [
+    "Four server candidate choices and per-stage model version/type selection.",
+    "Server official YAML dictionary explicit path/hash, dimensions asserted.",
+    "Detector-specific normalization and DB; v6 small keeps its frozen settings.",
+    "Shared legacy cls, rec batch6, text_score0.5 and common default padding retained.",
+    "Native960 bypasses outer resize/padding and uses separate ceil128 adapter.",
+    "Common server uses the same Rapid max4096/round32 resize with official server float32 alpha/beta normalization."
+  ],
+  "wrapper_candidate_change": "Takes cfg[candidate] instead of hardcoded v6_small_paddle_params and adds engine directory to import path for the local adapter.",
+  "derived_wrapper_sha256": "3bb4fe7f7777435bc219827ae1ff821a9028de195b11e35f626f8aa3a443d651"
+}

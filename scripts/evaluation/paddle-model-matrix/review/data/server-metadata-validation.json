@@ -1,0 +1,38 @@
+[
+  {
+    "scheme": "server_det_v6medium_rec_common2048",
+    "input_identity": true,
+    "source_hash": true,
+    "time_mean_sum": true,
+    "simultaneous_rss": true,
+    "cpu_threads_and_dictionary": true,
+    "target_shape": true
+  },
+  {
+    "scheme": "v5_server_common2048",
+    "input_identity": true,
+    "source_hash": true,
+    "time_mean_sum": true,
+    "simultaneous_rss": true,
+    "cpu_threads_and_dictionary": true,
+    "target_shape": true
+  },
+  {
+    "scheme": "v5_server_native960",
+    "input_identity": true,
+    "source_hash": true,
+    "time_mean_sum": true,
+    "simultaneous_rss": true,
+    "cpu_threads_and_dictionary": true,
+    "target_shape": true
+  },
+  {
+    "scheme": "v6small_det_server_rec_common2048",
+    "input_identity": true,
+    "source_hash": true,
+    "time_mean_sum": true,
+    "simultaneous_rss": true,
+    "cpu_threads_and_dictionary": true,
+    "target_shape": true
+  }
+]

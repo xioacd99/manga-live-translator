@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "run_matrix.py": {
+      "executed_sha256": "ca61f8ac5eff0062df26e1c14fda586ccf1f4624f1a90506feab12b0edf6eaec",
+      "public_sha256": "ca61f8ac5eff0062df26e1c14fda586ccf1f4624f1a90506feab12b0edf6eaec",
+      "byte_identical": true
+    },
+    "run_phase2.py": {
+      "executed_sha256": "a71f47839c2646652d3ba5009ca9f3116ece14445c8cde8a16f22119d64912af",
+      "public_sha256": "a71f47839c2646652d3ba5009ca9f3116ece14445c8cde8a16f22119d64912af",
+      "byte_identical": true
+    },
+    "worker_engine.py": {
+      "executed_sha256": "c3a9de08b620502edcd17fb6f9a0004b8b78aa555f43f0156e675e5101898184",
+      "public_sha256": "c3a9de08b620502edcd17fb6f9a0004b8b78aa555f43f0156e675e5101898184",
+      "byte_identical": true
+    },
+    "worker_process.py": {
+      "executed_sha256": "c6b3a91ed5773391080ab079e85d2d8b83aae939e731555fa03dbb8beff53b6c",
+      "public_sha256": "c6b3a91ed5773391080ab079e85d2d8b83aae939e731555fa03dbb8beff53b6c",
+      "byte_identical": true
+    },
+    "finalize_results.py": {
+      "executed_sha256": "bc3e8e9cfccfb2b8affd29b31e7e84f4a0ddd02d6730a66e4168e00815996dfe",
+      "public_sha256": "bc3e8e9cfccfb2b8affd29b31e7e84f4a0ddd02d6730a66e4168e00815996dfe",
+      "byte_identical": true
+    }
+  },
+  "public_inference_rerun": false,
+  "path_parameterization": "Execution scripts already use explicit CLI manifest/models/engine/output/lock/reference paths. Protocol replaces the private lock example; script bytes unchanged."
+}

@@ -1,0 +1,81 @@
+{
+  "candidates": [
+    {
+      "name": "v5_server_native960",
+      "det": "v5_server_det",
+      "rec": "v5_server_rec",
+      "short": 960,
+      "resize_mode": "target",
+      "candidate": "v5_server_native960",
+      "intra": 1,
+      "batch": 6
+    },
+    {
+      "name": "v5_server_common2048",
+      "det": "v5_server_det",
+      "rec": "v5_server_rec",
+      "short": 2048,
+      "resize_mode": "target",
+      "candidate": "v5_server_common2048",
+      "intra": 1,
+      "batch": 6
+    },
+    {
+      "name": "v6small_det_server_rec_common2048",
+      "det": "v6_small_det",
+      "rec": "v5_server_rec",
+      "short": 2048,
+      "resize_mode": "target",
+      "candidate": "v6small_det_server_rec_common2048",
+      "intra": 1,
+      "batch": 6
+    },
+    {
+      "name": "server_det_v6medium_rec_common2048",
+      "det": "v5_server_det",
+      "rec": "v6_medium_rec",
+      "short": 2048,
+      "resize_mode": "target",
+      "candidate": "server_det_v6medium_rec_common2048",
+      "intra": 1,
+      "batch": 6
+    }
+  ],
+  "data_scope": "same ten-image source manifest; no GT read for tuning; exactly one pass",
+  "common_dataflow": {
+    "source_worker_sha256": "c3a9de08b620502edcd17fb6f9a0004b8b78aa555f43f0156e675e5101898184",
+    "ratio": "min(2048/min(h,w),4096/max(h,w))",
+    "integer_resize": "nh/nw=max(1,round(original_dimension*ratio))",
+    "interpolation": "cv2.INTER_LINEAR",
+    "rec_crop_source": "same outer-resized image as detection",
+    "rapid_vertical_padding": "same default as baseline",
+    "detector_resize": "Rapid max4096 then round32; server normalization independently matched"
+  },
+  "native960_dataflow": {
+    "outer_resize": false,
+    "vertical_padding": false,
+    "detector_resize": "official resize_long960 int then ceil128",
+    "rec_crop_source": "original image",
+    "classification": "same fixed legacy cls as common groups"
+  },
+  "runtime": {
+    "rapidocr": "3.10.0",
+    "onnxruntime": "1.23.2",
+    "cpu_provider": "CPUExecutionProvider",
+    "intra_threads": 1,
+    "inter_threads": 1,
+    "opencv_threads": 1,
+    "rec_batch_num": 6,
+    "text_score": 0.5
+  },
+  "guards": {
+    "group_start_available_min_bytes": 6442450944,
+    "runtime_available_min_bytes": 1610612736,
+    "coordinator_worker_rss_limit_bytes": 5368709120,
+    "sample_seconds": 0.1,
+    "per_image_deadline_seconds": 180,
+    "initialization_deadline_seconds": 180,
+    "failure_behavior": "stop group, retain completed images, fill missing ten-image entries explicitly as error/empty to preserve denominator"
+  },
+  "artifact_scope": "frozen protocol only; execution status and results are not distributed"
+}

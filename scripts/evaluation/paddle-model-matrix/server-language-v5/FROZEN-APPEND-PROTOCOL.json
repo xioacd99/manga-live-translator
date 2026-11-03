@@ -1,0 +1,54 @@
+{
+  "groups": [
+    {
+      "candidate": "small_det_latin_rec_common2048",
+      "det": "v6_small_det",
+      "rec": "v5_latin_rec",
+      "dictionary": "official Latin YAML836 + blank/space =838",
+      "rec_lang": "LATIN"
+    },
+    {
+      "candidate": "small_det_en_rec_common2048",
+      "det": "v6_small_det",
+      "rec": "v5_en_rec",
+      "dictionary": "existing ONNX embedded436 + blank/space =438",
+      "rec_lang": "EN"
+    }
+  ],
+  "shared_params": {
+    "outer_resize": "same frozen v6 CapturingOCR.preprocess_img, target2048/cap4096; cv2.INTER_LINEAR, same resized image feeds det/rec crops",
+    "vertical_padding": "same default as frozen v6 baseline",
+    "det_postprocess": {
+      "thresh": 0.2,
+      "box_thresh": 0.45,
+      "unclip_ratio": 1.4,
+      "max_candidates": 3000,
+      "dilation": false,
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ]
+    },
+    "classifier": "fixed existing legacy_cls",
+    "rec_version": "PP-OCRv5",
+    "rec_model_type": "mobile",
+    "rec_shape": [
+      3,
+      48,
+      320
+    ],
+    "rec_batch": 6,
+    "text_score": 0.5,
+    "cpu_threads": 1
+  },
+  "guard": "same 5GiB coordinator+worker RSS / available1.5GiB / group start6GiB / image180s and partial explicit ten-image completion",
+  "accuracy_tuning": false,
+  "source_worker_sha256": "c3a9de08b620502edcd17fb6f9a0004b8b78aa555f43f0156e675e5101898184",
+  "artifact_scope": "frozen protocol only; execution status and results are not distributed"
+}

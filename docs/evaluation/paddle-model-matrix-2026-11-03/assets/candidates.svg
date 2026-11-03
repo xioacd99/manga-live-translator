@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1250" height="666" viewBox="0 0 1250 666" role="img">
+<title>全部已独立复核候选：CER × 单遍耗时</title>
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<g font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" fill="#132338">
+<text x="32" y="36" font-size="23" text-anchor="start" font-weight="bold">全部已独立复核候选：CER × 单遍耗时</text>
+<text x="32" y="66" font-size="13" text-anchor="start" font-weight="normal">越靠左下，观测错误率和耗时越低；不是准确率=1−CER，也不是性能保证。</text>
+<line x1="85" y1="135" x2="85" y2="455" stroke="#cad4df"/>
+<line x1="85" y1="455" x2="595" y2="455" stroke="#cad4df"/>
+<text x="85" y="479" font-size="12" text-anchor="middle" font-weight="normal">0.0</text>
+<text x="74" y="460" font-size="12" text-anchor="end" font-weight="normal">0.0</text>
+<line x1="187" y1="135" x2="187" y2="455" stroke="#cad4df"/>
+<line x1="85" y1="391" x2="595" y2="391" stroke="#cad4df"/>
+<text x="187" y="479" font-size="12" text-anchor="middle" font-weight="normal">11.1</text>
+<text x="74" y="396" font-size="12" text-anchor="end" font-weight="normal">8.2</text>
+<line x1="289" y1="135" x2="289" y2="455" stroke="#cad4df"/>
+<line x1="85" y1="327" x2="595" y2="327" stroke="#cad4df"/>
+<text x="289" y="479" font-size="12" text-anchor="middle" font-weight="normal">22.2</text>
+<text x="74" y="332" font-size="12" text-anchor="end" font-weight="normal">16.4</text>
+<line x1="391" y1="135" x2="391" y2="455" stroke="#cad4df"/>
+<line x1="85" y1="263" x2="595" y2="263" stroke="#cad4df"/>
+<text x="391" y="479" font-size="12" text-anchor="middle" font-weight="normal">33.3</text>
+<text x="74" y="268" font-size="12" text-anchor="end" font-weight="normal">24.5</text>
+<line x1="493" y1="135" x2="493" y2="455" stroke="#cad4df"/>
+<line x1="85" y1="199" x2="595" y2="199" stroke="#cad4df"/>
+<text x="493" y="479" font-size="12" text-anchor="middle" font-weight="normal">44.4</text>
+<text x="74" y="204" font-size="12" text-anchor="end" font-weight="normal">32.7</text>
+<line x1="595" y1="135" x2="595" y2="455" stroke="#cad4df"/>
+<line x1="85" y1="135" x2="595" y2="135" stroke="#cad4df"/>
+<text x="595" y="479" font-size="12" text-anchor="middle" font-weight="normal">55.5</text>
+<text x="74" y="140" font-size="12" text-anchor="end" font-weight="normal">40.9</text>
+<text x="85" y="115" font-size="14" text-anchor="start" font-weight="normal">CER（%）</text>
+<text x="340" y="507" font-size="14" text-anchor="middle" font-weight="normal">单遍每图均值（秒）</text>
+<text x="660" y="148" font-size="12" text-anchor="start" font-weight="normal">01  检 v6 medium / 识 v6 medium · 原Global2000/min736  </text>
+<circle cx="270.50105877774763" cy="342.6920360233092" r="6" fill="#217c9e" stroke="white"/>
+<line x1="270.50105877774763" y1="342.6920360233092" x2="286.50105877774763" y2="312.6920360233092" stroke="#a7b2bd"/>
+<text x="279.50105877774763" y="317.6920360233092" font-size="11" text-anchor="start" font-weight="normal">01</text>
+<text x="660" y="172" font-size="12" text-anchor="start" font-weight="normal">02  检 v6 medium / 识 v6 medium · 短边1024  </text>
+<circle cx="258.14176096111646" cy="301.01801165460006" r="6" fill="#217c9e" stroke="white"/>
+<line x1="258.14176096111646" y1="301.01801165460006" x2="274.14176096111646" y2="271.01801165460006" stroke="#a7b2bd"/>
+<text x="267.14176096111646" y="276.01801165460006" font-size="11" text-anchor="start" font-weight="normal">02</text>
+<text x="660" y="196" font-size="12" text-anchor="start" font-weight="normal">03  检 v6 medium / 识 v6 medium · 短边1536  </text>
+<circle cx="299.49008205264647" cy="349.7554299841073" r="6" fill="#217c9e" stroke="white"/>
+<line x1="299.49008205264647" y1="349.7554299841073" x2="315.49008205264647" y2="319.7554299841073" stroke="#a7b2bd"/>
+<text x="308.49008205264647" y="324.7554299841073" font-size="11" text-anchor="start" font-weight="normal">03</text>
+<text x="660" y="220" font-size="12" text-anchor="start" font-weight="normal">04  检 v6 medium / 识 v6 medium · 短边2048  </text>
+<circle cx="362.64623614945106" cy="338.8071693448702" r="6" fill="#217c9e" stroke="white"/>
+<line x1="362.64623614945106" y1="338.8071693448702" x2="378.64623614945106" y2="308.8071693448702" stroke="#a7b2bd"/>
+<text x="371.64623614945106" y="313.8071693448702" font-size="11" text-anchor="start" font-weight="normal">04</text>
+<text x="660" y="244" font-size="12" text-anchor="start" font-weight="normal">05  检 v6 medium / 识 v6 medium · 短边2560  </text>
+<circle cx="446.66236111396705" cy="331.03743598799224" r="6" fill="#217c9e" stroke="white"/>
+<line x1="446.66236111396705" y1="331.03743598799224" x2="462.66236111396705" y2="301.03743598799224" stroke="#a7b2bd"/>
+<text x="455.66236111396705" y="306.03743598799224" font-size="11" text-anchor="start" font-weight="normal">05</text>
+<text x="660" y="268" font-size="12" text-anchor="start" font-weight="normal">06  检 v6 small / 识 v6 medium · 短边2048  </text>
+<circle cx="250.91476707066985" cy="337.74766025075047" r="6" fill="#217c9e" stroke="white"/>
+<line x1="250.91476707066985" y1="337.74766025075047" x2="266.9147670706699" y2="366.74766025075047" stroke="#a7b2bd"/>
+<text x="259.9147670706699" y="371.74766025075047" font-size="11" text-anchor="start" font-weight="normal">06</text>
+<text x="660" y="292" font-size="12" text-anchor="start" font-weight="normal">07  检 v6 medium / 识 v6 small · 短边2048  </text>
+<circle cx="260.006527526965" cy="333.8627935723115" r="6" fill="#217c9e" stroke="white"/>
+<line x1="260.006527526965" y1="333.8627935723115" x2="244.006527526965" y2="362.8627935723115" stroke="#a7b2bd"/>
+<text x="237.006527526965" y="367.8627935723115" font-size="11" text-anchor="start" font-weight="normal">07</text>
+<text x="660" y="316" font-size="12" text-anchor="start" font-weight="normal">08  检 v6 tiny / 识 v6 tiny · 短边2048  </text>
+<circle cx="107.33959385955418" cy="266.05421154864916" r="6" fill="#217c9e" stroke="white"/>
+<line x1="107.33959385955418" y1="266.05421154864916" x2="123.33959385955418" y2="236.05421154864916" stroke="#a7b2bd"/>
+<text x="116.33959385955418" y="241.05421154864916" font-size="11" text-anchor="start" font-weight="normal">08</text>
+<text x="660" y="340" font-size="12" text-anchor="start" font-weight="normal">09  检 v6 tiny / 识 v6 small · 短边2048  </text>
+<circle cx="132.93703189652697" cy="323.6208723291541" r="6" fill="#217c9e" stroke="white"/>
+<line x1="132.93703189652697" y1="323.6208723291541" x2="148.93703189652697" y2="352.6208723291541" stroke="#a7b2bd"/>
+<text x="141.93703189652697" y="357.6208723291541" font-size="11" text-anchor="start" font-weight="normal">09</text>
+<text x="660" y="364" font-size="12" text-anchor="start" font-weight="normal">10  检 v6 tiny / 识 v6 medium · 短边2048  </text>
+<circle cx="246.44010485053187" cy="331.03743598799224" r="6" fill="#217c9e" stroke="white"/>
+<line x1="246.44010485053187" y1="331.03743598799224" x2="214.44010485053187" y2="326.03743598799224" stroke="#a7b2bd"/>
+<text x="207.44010485053187" y="331.03743598799224" font-size="11" text-anchor="start" font-weight="normal">10</text>
+<text x="660" y="388" font-size="12" text-anchor="start" font-weight="normal">11  检 v6 small / 识 v6 tiny · 短边2048  </text>
+<circle cx="126.02647242324831" cy="254.75278121137205" r="6" fill="#217c9e" stroke="white"/>
+<line x1="126.02647242324831" y1="254.75278121137205" x2="110.02647242324831" y2="283.75278121137205" stroke="#a7b2bd"/>
+<text x="103.02647242324831" y="288.75278121137205" font-size="11" text-anchor="start" font-weight="normal">11</text>
+<text x="660" y="412" font-size="12" text-anchor="start" font-weight="normal">12  检 v6 medium / 识 v6 tiny · 短边2048  </text>
+<circle cx="230.98191518442567" cy="278.4151509800459" r="6" fill="#217c9e" stroke="white"/>
+<line x1="230.98191518442567" y1="278.4151509800459" x2="246.98191518442567" y2="248.4151509800459" stroke="#a7b2bd"/>
+<text x="239.98191518442567" y="253.4151509800459" font-size="11" text-anchor="start" font-weight="normal">12</text>
+<text x="660" y="436" font-size="12" text-anchor="start" font-weight="normal">13  检 v6 small / 识 v6 small · 短边2048  </text>
+<circle cx="149.48687405543774" cy="312.672611689917" r="6" fill="#217c9e" stroke="white"/>
+<line x1="149.48687405543774" y1="312.672611689917" x2="165.48687405543774" y2="282.672611689917" stroke="#a7b2bd"/>
+<text x="158.48687405543774" y="287.672611689917" font-size="11" text-anchor="start" font-weight="normal">13</text>
+<text x="660" y="460" font-size="12" text-anchor="start" font-weight="normal">14  检 v5 server / 识 v6 medium · 短边2048  </text>
+<circle cx="540.3571428571428" cy="323.97404202719406" r="6" fill="#217c9e" stroke="white"/>
+<line x1="540.3571428571428" y1="323.97404202719406" x2="556.3571428571428" y2="293.97404202719406" stroke="#a7b2bd"/>
+<text x="549.3571428571428" y="298.97404202719406" font-size="11" text-anchor="start" font-weight="normal">14</text>
+<text x="660" y="484" font-size="12" text-anchor="start" font-weight="normal">15  检 v5 server / 识 v5 server · 短边2048  </text>
+<circle cx="526.4890724230688" cy="283.7126964506445" r="6" fill="#217c9e" stroke="white"/>
+<line x1="526.4890724230688" y1="283.7126964506445" x2="542.4890724230688" y2="253.7126964506445" stroke="#a7b2bd"/>
+<text x="535.4890724230688" y="258.7126964506445" font-size="11" text-anchor="start" font-weight="normal">15</text>
+<text x="660" y="508" font-size="12" text-anchor="start" font-weight="normal">16  检 v5 server / 识 v5 server · 长边960适配  </text>
+<circle cx="204.68974227568197" cy="169.28571428571433" r="6" fill="#217c9e" stroke="white"/>
+<line x1="204.68974227568197" y1="169.28571428571433" x2="220.68974227568197" y2="198.28571428571433" stroke="#a7b2bd"/>
+<text x="213.68974227568197" y="203.28571428571433" font-size="11" text-anchor="start" font-weight="normal">16</text>
+<text x="660" y="532" font-size="12" text-anchor="start" font-weight="normal">17  检 v6 small / 识 v5 server · 短边2048  </text>
+<circle cx="237.48199526248067" cy="287.9507328271234" r="6" fill="#217c9e" stroke="white"/>
+<line x1="237.48199526248067" y1="287.9507328271234" x2="221.48199526248067" y2="257.9507328271234" stroke="#a7b2bd"/>
+<text x="214.48199526248067" y="262.9507328271234" font-size="11" text-anchor="start" font-weight="normal">17</text>
+<text x="660" y="556" font-size="12" text-anchor="start" font-weight="normal">18  检 v6 small / 识 v5 en · 短边2048  </text>
+<circle cx="146.32471148907325" cy="277.35564188592616" r="6" fill="#217c9e" stroke="white"/>
+<line x1="146.32471148907325" y1="277.35564188592616" x2="162.32471148907325" y2="247.35564188592616" stroke="#a7b2bd"/>
+<text x="155.32471148907325" y="252.35564188592616" font-size="11" text-anchor="start" font-weight="normal">18</text>
+<text x="660" y="580" font-size="12" text-anchor="start" font-weight="normal">19  检 v6 small / 识 v5 latin · 短边2048  </text>
+<circle cx="148.49014581707826" cy="285.1253752428041" r="6" fill="#217c9e" stroke="white"/>
+<line x1="148.49014581707826" y1="285.1253752428041" x2="190.49014581707826" y2="238.12537524280413" stroke="#a7b2bd"/>
+<text x="183.49014581707826" y="243.12537524280413" font-size="11" text-anchor="start" font-weight="normal">19</text>
+<text x="85" y="548" font-size="12" text-anchor="start" font-weight="normal">partial/blocked/未复核结果不入散点；状态和完整GT分母仍保留在结果表。</text>
+<text x="32" y="648" font-size="12" text-anchor="start" font-weight="normal">同10图 · 67个明确文字目标 / 2215字符（部分GT） · CPU1单遍非warm · 非M4</text>
+</g></svg>

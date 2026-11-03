@@ -1,0 +1,102 @@
+[
+  {
+    "source": "server-v5-preflight/run_server_matrix.py",
+    "bytes": 6895,
+    "sha256": "70b0c6ef6c2b9fc0f3319707790a1c93244e4ac0a79e35375c3fa0b455ab12ba"
+  },
+  {
+    "source": "server-v5-preflight/server_worker_engine.py",
+    "bytes": 8980,
+    "sha256": "22e80ea72171a857e062937889b60a5a367b4bc198658ee18991c70626f6494e"
+  },
+  {
+    "source": "server-v5-preflight/server_worker_process.py",
+    "bytes": 2526,
+    "sha256": "3bb4fe7f7777435bc219827ae1ff821a9028de195b11e35f626f8aa3a443d651"
+  },
+  {
+    "source": "server-v5-preflight/server_preprocess_adapter.py",
+    "bytes": 3215,
+    "sha256": "e912a4b6e5e13ca6fb431e8f8d09001526bb02ef0307f5ff9841ffbc8440e02f"
+  },
+  {
+    "source": "server-v5-preflight/FROZEN-PROTOCOL.json",
+    "bytes": 3402,
+    "sha256": "c912713528c84dd3158ca089f6ae68008c0e230ca06f27f8a9b12f6b8320f717"
+  },
+  {
+    "source": "server-v5-preflight/server-worker-provenance.json",
+    "bytes": 1250,
+    "sha256": "810d0acae2b6d99b72272a6dd7d702b76a4564d02074e18358d7bfa2408095a0"
+  },
+  {
+    "source": "server-v5-preflight/model-records.json",
+    "bytes": 1608,
+    "sha256": "1d65e8a067355f0fcc186d06f92ba2958063d51e4700c2bf68a8de5c0e4f138b"
+  },
+  {
+    "source": "server-v5-preflight/dictionary-manifest.json",
+    "bytes": 658,
+    "sha256": "ff85ecd895bc5e58b01b95813694f3b8f21669f411170b87d56fcbf98f6695ef"
+  },
+  {
+    "source": "server-v5-preflight/download-manifest.json",
+    "bytes": 3403,
+    "sha256": "796d3a62408e6835bcbd0b50db533d0b931a80c4691e92f7e3ca692b75f49092"
+  },
+  {
+    "source": "server-v5-preflight/candidate-models.json",
+    "bytes": 6143,
+    "sha256": "b606f054f2954b4b2b94b6afb6868ee333d975cc56387fa3851a7af45a8990ff"
+  },
+  {
+    "source": "language-v5-matrix/run_language_matrix.py",
+    "bytes": 6739,
+    "sha256": "4d2a4236bb2bce6e6dc0e9cf0f7556cbbc4b42d1cb5c3487d7aa747d7b391ad2"
+  },
+  {
+    "source": "language-v5-matrix/language_worker_engine.py",
+    "bytes": 7600,
+    "sha256": "ce9a6642fa8aa432449a02c5df14f6c4a0d5a663beb253f26f217cf69dc35cc3"
+  },
+  {
+    "source": "language-v5-matrix/language_worker_process.py",
+    "bytes": 2532,
+    "sha256": "f7e20b99b57121ca798af448d1628e3207fe4fafaa657401e152d355f4ac17bc"
+  },
+  {
+    "source": "language-v5-matrix/FROZEN-APPEND-PROTOCOL.json",
+    "bytes": 2446,
+    "sha256": "b8371ec9922aeef1c36e9e6658a0054dede5bb00ae960ccd73edf7dabc8039a3"
+  },
+  {
+    "source": "language-v5-matrix/candidate-models.json",
+    "bytes": 7517,
+    "sha256": "3fa0d247bc180ef9a1e7d634998c1ad4d83d0196f630537bcc0d6921ae7a88da"
+  },
+  {
+    "source": "language-v5-matrix/static-checks.json",
+    "bytes": 79,
+    "sha256": "6cca6573738f10a4c2b730755615f04c2ef2c461e1a4487eb572c6a708bc9fc5"
+  },
+  {
+    "source": "latin-v5-preflight/download-manifest.json",
+    "bytes": 1551,
+    "sha256": "51b487822f784bb2d10bb4db77522534c98e11c4403a29212198f0910025d417"
+  },
+  {
+    "source": "latin-v5-preflight/dictionary-manifest.json",
+    "bytes": 732,
+    "sha256": "9c59d747ebd632cecb921130c7c2fc9256e19b457946dd9bf23bf5649d54c9b3"
+  },
+  {
+    "source": "latin-v5-preflight/model-records.json",
+    "bytes": 1377,
+    "sha256": "0c7c5964cfe1521c96c8bf7499cc1c191e57f2e854991ae112defd56f57dff5b"
+  },
+  {
+    "source": "runtime/requirements-current.lock.txt",
+    "bytes": 415,
+    "sha256": "1d0e1f0aebecd5c6fa6f1059a841ddd35e59c8f41ac3dda358b84a90a8ad6f62"
+  }
+]

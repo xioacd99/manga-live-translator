@@ -1,0 +1,123 @@
+{
+  "scope": "static packaging and synthetic dictionary unit validation only, not an experiment result",
+  "validation_date_utc": "2026-11-03",
+  "command": "python -m unittest discover -s tests -v",
+  "tests": [
+    "all Python AST parses",
+    "byte-identical copy hashes and transformed public metadata hashes",
+    "seven required model assets and dictionary metadata",
+    "asset-lock SHA-256 embedded in preparer",
+    "frozen six-group matrices and local helper layout",
+    "common preprocessing AST equality after distinct native960 branch",
+    "public payload whitelist and private absolute-path exclusion",
+    "generated local manifest and existing engine dictionary-field AST contract",
+    "sealed inventory size and SHA-256 verification",
+    "precise standard bytecode-cache filtering with unknown-payload regression"
+  ],
+  "static_tests_expected_count": 10,
+  "original_allowed_source_hashes_rechecked_unchanged": true,
+  "python_sources_ast_parsed": 10,
+  "evaluation_source_files_byte_identical": 7,
+  "not_run": [
+    "asset downloader",
+    "real YAML dictionary derivation",
+    "dependency installation",
+    "ONNX session initialization",
+    "inference",
+    "runtime memory/timeout guard fault injection",
+    "execution isolation or numerical equivalence checks"
+  ],
+  "not_accessed": [
+    "user image bytes",
+    "GT",
+    "full predictions or raw responses",
+    "model weights",
+    "experimental inference lock"
+  ],
+  "gaps": [
+    "No experiment outcomes are included; do not infer completion.",
+    "No source images or GT are distributed, so original accuracy numbers cannot be reproduced from this package alone.",
+    "Runtime and network behavior remain unvalidated in this packaging pass.",
+    "RapidAI per-weight license is absent from supplied manifests; fixed release repository-card declarations are recorded separately.",
+    "Fixed PaddleX root NOTICE URL returned HTTP 404; no fallback source was substituted.",
+    "Release owner must select/confirm the publication license for project-owned harness and new helper code.",
+    "Dependency versions are copied exactly but no wheel hashes, platform image, or Python version are locked."
+  ],
+  "static_tests_passed_count": 10,
+  "static_validation_status": "passed",
+  "manifest_interface_check": "AST only: record.path/sha256, nested record.dictionary.derived_path/derived_sha256/dictionary_entries match server and language engine reads; no downloader or model execution",
+  "validation_history_note": "Initial 9 static tests passed with bytecode disabled; ordinary 13-test discovery then exposed two cache-filter failures. Added one cache precision regression, making the full suite 14 tests. See full_suite_runs for observed post-fix outcomes.",
+  "full_suite_expected_count": 14,
+  "synthetic_tests_expected_count": 4,
+  "prior_static_only_validation": {
+    "count": 9,
+    "passed": 9,
+    "bytecode_disabled": true,
+    "synthetic_tests_run": false
+  },
+  "prior_full_suite_failure": {
+    "source": "reproduced in this artifact directory before repair",
+    "command": "python -m unittest discover -s tests -v",
+    "count": 13,
+    "passed": 11,
+    "failed": 2,
+    "failing_tests": [
+      "test_public_payload_whitelist",
+      "test_sealed_inventory"
+    ],
+    "reason": "test-generated __pycache__ bytecode files were incorrectly treated as public payload"
+  },
+  "cache_policy": "Exclude only direct __pycache__ *.pyc files accepted by source_from_cache and matching an existing non-symlink .py source; cache symlinks, unknown JSON/bin, orphan/malformed/nested pyc and pyc outside __pycache__ remain subject to payload and inventory checks.",
+  "full_suite_runs": [
+    {
+      "run": 1,
+      "command": "python -m unittest discover -s tests -v",
+      "bytecode_disabled": false,
+      "returncode": 0,
+      "test_count": 14,
+      "log": "test_all_python_syntax (test_static.StaticChecks.test_all_python_syntax) ... ok\ntest_byte_identical_copies (test_static.StaticChecks.test_byte_identical_copies) ... ok\ntest_bytecode_cache_filter_precision (test_static.StaticChecks.test_bytecode_cache_filter_precision) ... ok\ntest_common_resize_ast (test_static.StaticChecks.test_common_resize_ast) ... ok\ntest_downloader_lock_is_pinned (test_static.StaticChecks.test_downloader_lock_is_pinned) ... ok\ntest_frozen_matrices_and_helpers (test_static.StaticChecks.test_frozen_matrices_and_helpers) ... ok\ntest_generated_manifest_engine_contract (test_static.StaticChecks.test_generated_manifest_engine_contract) ... ok\ntest_public_payload_whitelist (test_static.StaticChecks.test_public_payload_whitelist) ... ok\ntest_required_assets_and_sizes (test_static.StaticChecks.test_required_assets_and_sizes) ... ok\ntest_sealed_inventory (test_static.StaticChecks.test_sealed_inventory) ... ok\ntest_line_separator_rejected (test_synthetic_units.DictionaryTests.test_line_separator_rejected) ... ok\ntest_no_numeric_coercion (test_synthetic_units.DictionaryTests.test_no_numeric_coercion) ... ok\ntest_preserves_order_duplicates_and_unicode (test_synthetic_units.DictionaryTests.test_preserves_order_duplicates_and_unicode) ... ok\ntest_reordered_dictionary_rejected (test_synthetic_units.DictionaryTests.test_reordered_dictionary_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.067s\n\nOK\n"
+    },
+    {
+      "run": 2,
+      "command": "python -m unittest discover -s tests -v",
+      "bytecode_disabled": false,
+      "returncode": 0,
+      "test_count": 14,
+      "log": "test_all_python_syntax (test_static.StaticChecks.test_all_python_syntax) ... ok\ntest_byte_identical_copies (test_static.StaticChecks.test_byte_identical_copies) ... ok\ntest_bytecode_cache_filter_precision (test_static.StaticChecks.test_bytecode_cache_filter_precision) ... ok\ntest_common_resize_ast (test_static.StaticChecks.test_common_resize_ast) ... ok\ntest_downloader_lock_is_pinned (test_static.StaticChecks.test_downloader_lock_is_pinned) ... ok\ntest_frozen_matrices_and_helpers (test_static.StaticChecks.test_frozen_matrices_and_helpers) ... ok\ntest_generated_manifest_engine_contract (test_static.StaticChecks.test_generated_manifest_engine_contract) ... ok\ntest_public_payload_whitelist (test_static.StaticChecks.test_public_payload_whitelist) ... ok\ntest_required_assets_and_sizes (test_static.StaticChecks.test_required_assets_and_sizes) ... ok\ntest_sealed_inventory (test_static.StaticChecks.test_sealed_inventory) ... ok\ntest_line_separator_rejected (test_synthetic_units.DictionaryTests.test_line_separator_rejected) ... ok\ntest_no_numeric_coercion (test_synthetic_units.DictionaryTests.test_no_numeric_coercion) ... ok\ntest_preserves_order_duplicates_and_unicode (test_synthetic_units.DictionaryTests.test_preserves_order_duplicates_and_unicode) ... ok\ntest_reordered_dictionary_rejected (test_synthetic_units.DictionaryTests.test_reordered_dictionary_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.058s\n\nOK\n"
+    }
+  ],
+  "full_suite_passed_count": 14,
+  "synthetic_tests_passed_count": 4,
+  "synthetic_test_scope": "Four pure synthetic dictionary helper tests executed successfully; no official YAML, weight files, or inference accessed.",
+  "final_sealed_recheck": {
+    "command": "python -m unittest discover -s tests -v",
+    "consecutive_runs": 2,
+    "test_count_each": 14,
+    "failures_each": 0,
+    "result": "passed after first two run logs were saved and inventory resealed",
+    "bytecode_disabled": false
+  },
+  "post_fix_full_suite_runs_total": 4,
+  "source_review": {
+    "test_filter_and_regression_read_back": true,
+    "all_ten_python_source_hashes_scanned": true,
+    "frozen_runtime_source_sha256": {
+      "run_server_matrix.py": "70b0c6ef6c2b9fc0f3319707790a1c93244e4ac0a79e35375c3fa0b455ab12ba",
+      "server_worker_engine.py": "22e80ea72171a857e062937889b60a5a367b4bc198658ee18991c70626f6494e",
+      "server_worker_process.py": "3bb4fe7f7777435bc219827ae1ff821a9028de195b11e35f626f8aa3a443d651",
+      "server_preprocess_adapter.py": "e912a4b6e5e13ca6fb431e8f8d09001526bb02ef0307f5ff9841ffbc8440e02f",
+      "run_language_matrix.py": "4d2a4236bb2bce6e6dc0e9cf0f7556cbbc4b42d1cb5c3487d7aa747d7b391ad2",
+      "language_worker_engine.py": "ce9a6642fa8aa432449a02c5df14f6c4a0d5a663beb253f26f217cf69dc35cc3",
+      "language_worker_process.py": "f7e20b99b57121ca798af448d1628e3207fe4fafaa657401e152d355f4ac17bc"
+    }
+  },
+  "release_cache_cleanup": {
+    "removed_only_test_generated_standard_cache_files": [
+      "tests/__pycache__/test_static.cpython-312.pyc",
+      "tests/__pycache__/test_synthetic_units.cpython-312.pyc",
+      "__pycache__/prepare_assets.cpython-312.pyc"
+    ],
+    "unknown_files_deleted": false,
+    "cache_files_in_release_inventory": false
+  }
+}

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="530" viewBox="0 0 1000 530" role="img">
+<title>Medium分辨率：错字漏字与耗时分开看</title>
+<rect width="100%" height="100%" fill="#f7f9fc"/>
+<g font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" fill="#132338">
+<text x="32" y="36" font-size="23" text-anchor="start" font-weight="bold">Medium分辨率：错字漏字与耗时分开看</text>
+<text x="32" y="66" font-size="13" text-anchor="start" font-weight="normal">同medium det + medium rec；横轴为请求短边，长边4096上限约束可能改变实际尺寸。</text>
+<text x="80" y="112" font-size="17" text-anchor="start" font-weight="bold">CER（%，越低越好）</text>
+<line x1="80" y1="406" x2="450" y2="406" stroke="#cad4df"/>
+<text x="70" y="411" font-size="12" text-anchor="end" font-weight="normal">0.0</text>
+<line x1="80" y1="344" x2="450" y2="344" stroke="#cad4df"/>
+<text x="70" y="349" font-size="12" text-anchor="end" font-weight="normal">5.8</text>
+<line x1="80" y1="282" x2="450" y2="282" stroke="#cad4df"/>
+<text x="70" y="287" font-size="12" text-anchor="end" font-weight="normal">11.6</text>
+<line x1="80" y1="220" x2="450" y2="220" stroke="#cad4df"/>
+<text x="70" y="225" font-size="12" text-anchor="end" font-weight="normal">17.4</text>
+<line x1="80" y1="158" x2="450" y2="158" stroke="#cad4df"/>
+<text x="70" y="163" font-size="12" text-anchor="end" font-weight="normal">23.2</text>
+<text x="127" y="436" font-size="13" text-anchor="middle" font-weight="normal">1024</text>
+<rect x="102" y="195.83050847457628" width="50" height="210.16949152542372" rx="5" fill="#3e8aab" stroke="none"/>
+<text x="127" y="185.83050847457628" font-size="13" text-anchor="middle" font-weight="normal">19.68</text>
+<text x="221" y="436" font-size="13" text-anchor="middle" font-weight="normal">1536</text>
+<rect x="196" y="262.35204478308196" width="50" height="143.64795521691806" rx="5" fill="#3e8aab" stroke="none"/>
+<text x="221" y="252.35204478308194" font-size="13" text-anchor="middle" font-weight="normal">13.45</text>
+<text x="315" y="436" font-size="13" text-anchor="middle" font-weight="normal">2048</text>
+<rect x="290" y="247.40880111957702" width="50" height="158.59119888042298" rx="5" fill="#3e8aab" stroke="none"/>
+<text x="315" y="237.40880111957702" font-size="13" text-anchor="middle" font-weight="normal">14.85</text>
+<text x="409" y="436" font-size="13" text-anchor="middle" font-weight="normal">2560</text>
+<rect x="384" y="236.80391851967033" width="50" height="169.19608148032967" rx="5" fill="#3e8aab" stroke="none"/>
+<text x="409" y="226.80391851967033" font-size="13" text-anchor="middle" font-weight="normal">15.85</text>
+<text x="560" y="112" font-size="17" text-anchor="start" font-weight="bold">单遍每图均值（秒，越低越快）</text>
+<line x1="560" y1="406" x2="930" y2="406" stroke="#cad4df"/>
+<text x="550" y="411" font-size="12" text-anchor="end" font-weight="normal">0.0</text>
+<line x1="560" y1="344" x2="930" y2="344" stroke="#cad4df"/>
+<text x="550" y="349" font-size="12" text-anchor="end" font-weight="normal">11.6</text>
+<line x1="560" y1="282" x2="930" y2="282" stroke="#cad4df"/>
+<text x="550" y="287" font-size="12" text-anchor="end" font-weight="normal">23.2</text>
+<line x1="560" y1="220" x2="930" y2="220" stroke="#cad4df"/>
+<text x="550" y="225" font-size="12" text-anchor="end" font-weight="normal">34.8</text>
+<line x1="560" y1="158" x2="930" y2="158" stroke="#cad4df"/>
+<text x="550" y="163" font-size="12" text-anchor="end" font-weight="normal">46.4</text>
+<text x="607" y="436" font-size="13" text-anchor="middle" font-weight="normal">1024</text>
+<rect x="582" y="305.38373528577563" width="50" height="100.61626471422436" rx="5" fill="#3e8aab" stroke="none"/>
+<text x="607" y="295.38373528577563" font-size="13" text-anchor="middle" font-weight="normal">18.83</text>
+<text x="701" y="436" font-size="13" text-anchor="middle" font-weight="normal">1536</text>
+<rect x="676" y="281.3553691807986" width="50" height="124.6446308192014" rx="5" fill="#3e8aab" stroke="none"/>
+<text x="701" y="271.3553691807986" font-size="13" text-anchor="middle" font-weight="normal">23.32</text>
+<text x="795" y="436" font-size="13" text-anchor="middle" font-weight="normal">2048</text>
+<rect x="770" y="244.65401946792653" width="50" height="161.34598053207347" rx="5" fill="#3e8aab" stroke="none"/>
+<text x="795" y="234.65401946792653" font-size="13" text-anchor="middle" font-weight="normal">30.19</text>
+<text x="889" y="436" font-size="13" text-anchor="middle" font-weight="normal">2560</text>
+<rect x="864" y="195.83050847457625" width="50" height="210.16949152542375" rx="5" fill="#3e8aab" stroke="none"/>
+<text x="889" y="185.83050847457625" font-size="13" text-anchor="middle" font-weight="normal">39.32</text>
+<text x="80" y="475" font-size="13" text-anchor="start" font-weight="normal">原Global2000/min736组不属于短边2048，另列候选表。无重复或置信区间，微小差异不等于稳健优势。</text>
+<text x="32" y="512" font-size="12" text-anchor="start" font-weight="normal">同10图 · 67个明确文字目标 / 2215字符（部分GT） · CPU1单遍非warm · 非M4</text>
+</g></svg>

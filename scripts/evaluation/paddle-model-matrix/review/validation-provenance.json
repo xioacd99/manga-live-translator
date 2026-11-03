@@ -1,0 +1,10 @@
+{
+  "analysis_rerun": true,
+  "inference_rerun": false,
+  "groups_exactly_matched": 19,
+  "full_metrics_exported": false,
+  "scorer_sha256": "3885fd46826e9afe2bff7c40f13cdd5eb70deb34a7411ea7f79a7e5659f44880",
+  "ground_truth_sha256": "984017f90ce822edb0c480207ed29ec8ec5ded587ba37f7ec40b3eb35e22753f",
+  "metadata_groups_passed": 19,
+  "completed_images": 190
+}

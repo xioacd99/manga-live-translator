@@ -1,0 +1,135 @@
+{
+  "scope": "only this self-contained subdirectory",
+  "excludes_from_this_inventory": [
+    "PUBLIC-FILES.json",
+    "SHA256SUMS.txt"
+  ],
+  "runtime_cache_policy": "Standard direct __pycache__ *.pyc files with corresponding real non-symlink .py source are not release payload; unknown files are not excluded.",
+  "files": [
+    {
+      "file": "FROZEN-APPEND-PROTOCOL.json",
+      "bytes": 1556,
+      "sha256": "f0a033712c3aa7661f04c2a922a05585bed759537697d6018c096846b176e8c6"
+    },
+    {
+      "file": "FROZEN-PROTOCOL.json",
+      "bytes": 2649,
+      "sha256": "d67855ada739cf66de1dd9c8784b5a1d3e1bfb46d515b426a5339598dd44ec2b"
+    },
+    {
+      "file": "PUBLIC-COPY-CHANGES.json",
+      "bytes": 7501,
+      "sha256": "7cb31a348af75f204c030ac7a29f04acf1ceadf31bcea2b293385ccf0ee974d5"
+    },
+    {
+      "file": "README.md",
+      "bytes": 10737,
+      "sha256": "ac8d27346732919d0ea03d220ea6fa89313fa91ff25ca4a44ad027671a899ec7"
+    },
+    {
+      "file": "SOURCE-FILES.json",
+      "bytes": 3378,
+      "sha256": "b9859cb37226f7f68433b7588f05cbb9a3570dfdfb2e9081dde5d145ab85578b"
+    },
+    {
+      "file": "STATIC-VALIDATION.json",
+      "bytes": 8841,
+      "sha256": "9d0ceff5a4a8b3e32bf6f0e34f5f14b4007df4076dab380a9ebc9c2552c4683a"
+    },
+    {
+      "file": "THIRD-PARTY-NOTICES.md",
+      "bytes": 3490,
+      "sha256": "8fe5b690fa12290804be5c12fd8958071e099ed454ac95b9ee3882df3c999a70"
+    },
+    {
+      "file": "asset-lock.json",
+      "bytes": 9090,
+      "sha256": "e87b9a71c9d5de02f3e2405c5cbcddc24bd0fef8365adf112bee1b5c0ad2301f"
+    },
+    {
+      "file": "input-manifest.schema.json",
+      "bytes": 918,
+      "sha256": "56252466bbe21079649e088b9339634d0a243c459661ad8779d5bd8a246391ba"
+    },
+    {
+      "file": "language_worker_engine.py",
+      "bytes": 7600,
+      "sha256": "ce9a6642fa8aa432449a02c5df14f6c4a0d5a663beb253f26f217cf69dc35cc3"
+    },
+    {
+      "file": "language_worker_process.py",
+      "bytes": 2532,
+      "sha256": "f7e20b99b57121ca798af448d1628e3207fe4fafaa657401e152d355f4ac17bc"
+    },
+    {
+      "file": "license-sources.json",
+      "bytes": 1681,
+      "sha256": "3090b66b637a082d941e0d2054f26f7f0eb986c466192f304049d2740d5d1c78"
+    },
+    {
+      "file": "licenses/ONNXRuntime-LICENSE.txt",
+      "bytes": 1073,
+      "sha256": "2f07c72751aed99790b8a4869cf2311df85a860b22ded05fa22803587a48922c"
+    },
+    {
+      "file": "licenses/PaddleX-LICENSE.txt",
+      "bytes": 11325,
+      "sha256": "accc36c817ac5ede473d05732e14afc11cb6e55ef5919bc826b653f631165043"
+    },
+    {
+      "file": "licenses/RapidOCR-LICENSE.txt",
+      "bytes": 11422,
+      "sha256": "3e0af25fdd06aa9586ae97adb00ea927ebe5a3805ac77d2d3a81ce5f55693333"
+    },
+    {
+      "file": "prepare_assets.py",
+      "bytes": 7191,
+      "sha256": "0479812ba526bed24b34ca365d255b498e194b61b483966747a9c35a8230cb0c"
+    },
+    {
+      "file": "requirements-current.lock.txt",
+      "bytes": 415,
+      "sha256": "1d0e1f0aebecd5c6fa6f1059a841ddd35e59c8f41ac3dda358b84a90a8ad6f62"
+    },
+    {
+      "file": "run_language_matrix.py",
+      "bytes": 6739,
+      "sha256": "4d2a4236bb2bce6e6dc0e9cf0f7556cbbc4b42d1cb5c3487d7aa747d7b391ad2"
+    },
+    {
+      "file": "run_server_matrix.py",
+      "bytes": 6895,
+      "sha256": "70b0c6ef6c2b9fc0f3319707790a1c93244e4ac0a79e35375c3fa0b455ab12ba"
+    },
+    {
+      "file": "server-worker-provenance.json",
+      "bytes": 1131,
+      "sha256": "ad022288ffe732a83f6751f6e998620891a88357aec579bce66eabf6ae66bb9b"
+    },
+    {
+      "file": "server_preprocess_adapter.py",
+      "bytes": 3215,
+      "sha256": "e912a4b6e5e13ca6fb431e8f8d09001526bb02ef0307f5ff9841ffbc8440e02f"
+    },
+    {
+      "file": "server_worker_engine.py",
+      "bytes": 8980,
+      "sha256": "22e80ea72171a857e062937889b60a5a367b4bc198658ee18991c70626f6494e"
+    },
+    {
+      "file": "server_worker_process.py",
+      "bytes": 2526,
+      "sha256": "3bb4fe7f7777435bc219827ae1ff821a9028de195b11e35f626f8aa3a443d651"
+    },
+    {
+      "file": "tests/test_static.py",
+      "bytes": 11354,
+      "sha256": "f226443d538bfcf354601f2695c7c9ec2ae75ebc62215df0ed25b8c2b4f211df"
+    },
+    {
+      "file": "tests/test_synthetic_units.py",
+      "bytes": 1941,
+      "sha256": "e929bf38e95e8ae4b05f0318ed914d0b465c5a8a73d7b00fcfdb5d75373e4850"
+    }
+  ]
+}

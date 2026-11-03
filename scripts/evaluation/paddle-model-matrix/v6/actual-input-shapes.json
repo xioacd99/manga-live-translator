@@ -1,0 +1,3822 @@
+[
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        1984,
+        1472
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1984,
+      1472
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        1984,
+        1440
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1984,
+      1440
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        435,
+        1839
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      736,
+      3104
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        1394,
+        1190
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1408,
+      1184
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        1469,
+        1263
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1472,
+      1248
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        1476,
+        1266
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1472,
+      1280
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        1484,
+        1280
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1472,
+      1280
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        544,
+        1984
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      736,
+      2688
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        1144,
+        746
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1152,
+      736
+    ]
+  },
+  {
+    "scheme": "01_medium_original_params",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        1470,
+        1258
+      ],
+      "rule": "original_Global2000_Det_min736"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1472,
+      1248
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        1398,
+        1024
+      ],
+      "detector_tensor": [
+        1408,
+        1024
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1408,
+      1024
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        1415,
+        1024
+      ],
+      "detector_tensor": [
+        1408,
+        1024
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1408,
+      1024
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        1200,
+        1024
+      ],
+      "detector_tensor": [
+        1216,
+        1024
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1216,
+      1024
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        1191,
+        1024
+      ],
+      "detector_tensor": [
+        1184,
+        1024
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1184,
+      1024
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        1194,
+        1024
+      ],
+      "detector_tensor": [
+        1184,
+        1024
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1184,
+      1024
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        1187,
+        1024
+      ],
+      "detector_tensor": [
+        1184,
+        1024
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1184,
+      1024
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1024,
+        3858
+      ],
+      "detector_tensor": [
+        1024,
+        3872
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1024,
+      3872
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        1570,
+        1024
+      ],
+      "detector_tensor": [
+        1568,
+        1024
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1568,
+      1024
+    ]
+  },
+  {
+    "scheme": "02_medium_1024",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        1197,
+        1024
+      ],
+      "detector_tensor": [
+        1184,
+        1024
+      ],
+      "rule": "short1024_cap4096",
+      "target_short": 1024,
+      "long_cap_active": false,
+      "achieved_short": 1024,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1184,
+      1024
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2097,
+        1536
+      ],
+      "detector_tensor": [
+        2112,
+        1536
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": false,
+      "achieved_short": 1536,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2112,
+      1536
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2122,
+        1536
+      ],
+      "detector_tensor": [
+        2112,
+        1536
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": false,
+      "achieved_short": 1536,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2112,
+      1536
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        1799,
+        1536
+      ],
+      "detector_tensor": [
+        1792,
+        1536
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": false,
+      "achieved_short": 1536,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1792,
+      1536
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        1787,
+        1536
+      ],
+      "detector_tensor": [
+        1792,
+        1536
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": false,
+      "achieved_short": 1536,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1792,
+      1536
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        1791,
+        1536
+      ],
+      "detector_tensor": [
+        1792,
+        1536
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": false,
+      "achieved_short": 1536,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1792,
+      1536
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        1781,
+        1536
+      ],
+      "detector_tensor": [
+        1792,
+        1536
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": false,
+      "achieved_short": 1536,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1792,
+      1536
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        2355,
+        1536
+      ],
+      "detector_tensor": [
+        2368,
+        1536
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": false,
+      "achieved_short": 1536,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      1536
+    ]
+  },
+  {
+    "scheme": "03_medium_1536",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        1795,
+        1536
+      ],
+      "detector_tensor": [
+        1792,
+        1536
+      ],
+      "rule": "short1536_cap4096",
+      "target_short": 1536,
+      "long_cap_active": false,
+      "achieved_short": 1536,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1792,
+      1536
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "04_medium_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        3496,
+        2560
+      ],
+      "detector_tensor": [
+        3488,
+        2560
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": false,
+      "achieved_short": 2560,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3488,
+      2560
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        3536,
+        2560
+      ],
+      "detector_tensor": [
+        3520,
+        2560
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": false,
+      "achieved_short": 2560,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3520,
+      2560
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2999,
+        2560
+      ],
+      "detector_tensor": [
+        3008,
+        2560
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": false,
+      "achieved_short": 2560,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3008,
+      2560
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2978,
+        2560
+      ],
+      "detector_tensor": [
+        2976,
+        2560
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": false,
+      "achieved_short": 2560,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2976,
+      2560
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2985,
+        2560
+      ],
+      "detector_tensor": [
+        2976,
+        2560
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": false,
+      "achieved_short": 2560,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2976,
+      2560
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2968,
+        2560
+      ],
+      "detector_tensor": [
+        2976,
+        2560
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": false,
+      "achieved_short": 2560,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2976,
+      2560
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3926,
+        2560
+      ],
+      "detector_tensor": [
+        3936,
+        2560
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": false,
+      "achieved_short": 2560,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3936,
+      2560
+    ]
+  },
+  {
+    "scheme": "05_medium_2560",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2991,
+        2560
+      ],
+      "detector_tensor": [
+        2976,
+        2560
+      ],
+      "rule": "short2560_cap4096",
+      "target_short": 2560,
+      "long_cap_active": false,
+      "achieved_short": 2560,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2976,
+      2560
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "06_small_det_medium_rec_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "07_medium_det_small_rec_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "08_tiny_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "09_tiny_det_small_rec_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "10_tiny_det_medium_rec_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "11_small_det_tiny_rec_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "12_medium_det_tiny_rec_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN01",
+    "sha256": "339d7b1228ca24bbffa55afe46efb4203db484afb6875eaa5888684694fce9d6",
+    "resize": {
+      "original": [
+        2376,
+        1740
+      ],
+      "preprocess": [
+        2797,
+        2048
+      ],
+      "detector_tensor": [
+        2784,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2784,
+      2048
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN02",
+    "sha256": "7de67d3a65bcc70c1f557c3ddaafd5527d6f4790d4ae95baf626154047a636d0",
+    "resize": {
+      "original": [
+        2405,
+        1741
+      ],
+      "preprocess": [
+        2829,
+        2048
+      ],
+      "detector_tensor": [
+        2816,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2816,
+      2048
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN03",
+    "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+    "resize": {
+      "original": [
+        435,
+        1839
+      ],
+      "preprocess": [
+        969,
+        4096
+      ],
+      "detector_tensor": [
+        960,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 969,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      960,
+      4096
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN04",
+    "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+    "resize": {
+      "original": [
+        1394,
+        1190
+      ],
+      "preprocess": [
+        2399,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN05",
+    "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+    "resize": {
+      "original": [
+        1469,
+        1263
+      ],
+      "preprocess": [
+        2382,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN06",
+    "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+    "resize": {
+      "original": [
+        1476,
+        1266
+      ],
+      "preprocess": [
+        2388,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN07",
+    "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+    "resize": {
+      "original": [
+        1484,
+        1280
+      ],
+      "preprocess": [
+        2374,
+        2048
+      ],
+      "detector_tensor": [
+        2368,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2368,
+      2048
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN08",
+    "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+    "resize": {
+      "original": [
+        1055,
+        3975
+      ],
+      "preprocess": [
+        1087,
+        4096
+      ],
+      "detector_tensor": [
+        1088,
+        4096
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": true,
+      "achieved_short": 1087,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      1088,
+      4096
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN09",
+    "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+    "resize": {
+      "original": [
+        1144,
+        746
+      ],
+      "preprocess": [
+        3141,
+        2048
+      ],
+      "detector_tensor": [
+        3136,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      3136,
+      2048
+    ]
+  },
+  {
+    "scheme": "bridge_small_2048",
+    "id": "EN10",
+    "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+    "resize": {
+      "original": [
+        1470,
+        1258
+      ],
+      "preprocess": [
+        2393,
+        2048
+      ],
+      "detector_tensor": [
+        2400,
+        2048
+      ],
+      "rule": "short2048_cap4096",
+      "target_short": 2048,
+      "long_cap_active": false,
+      "achieved_short": 2048,
+      "interpolation": "INTER_LINEAR"
+    },
+    "actual_detector_input_shape": [
+      1,
+      3,
+      2400,
+      2048
+    ]
+  }
+]
