@@ -1,6 +1,6 @@
 # Project Memory
 
-This is the public index of reusable development knowledge for Manga Live Translator. Record actual project experience, not speculative bugs or unimplemented results. No implementation lessons have been recorded yet.
+This is the public index of reusable development knowledge for Manga Live Translator. Record actual project experience, not speculative bugs or unimplemented results. Developer-tooling experience is recorded below; no manga translation implementation findings or benchmarks exist yet.
 
 ## Start here
 
@@ -19,7 +19,7 @@ Before every development task, read [README.md](README.md), this file, and [AGEN
 
 ## Maintaining records
 
-- At the end of a task, record reusable findings when there are any. Update an existing entry instead of repeating it; do not create filler records.
+- Each development commit must update a real record below memory/ alongside PUBLISH.md. Record verified findings or newly checked applicability and limitations, not filler. Update an existing entry instead of repeating it; do not create filler records.
 - Use the template, link the new record from its category index, and keep this index current when categories change.
 - Distinguish verified causes from hypotheses. Use open, resolved, or superseded status; update stale entries and link their replacements.
 - Keep all records in English. Use Asia/Shanghai dates.

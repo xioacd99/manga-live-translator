@@ -7,6 +7,14 @@
 - Update stale entries and mark superseded records with links to their replacements. Separate verified causes from hypotheses and document checks and applicability.
 - Keep public project memory in English and exclude secrets, private logs, and users' manga content.
 
+## Commit and push requirements
+
+- Every development commit must update the root PUBLISH.md and at least one real Markdown experience record under memory/. Updating MEMORY.md, a category index, or a template alone does not satisfy this requirement.
+- Keep entries accurate and based on the actual work; update existing evidence, applicability, or limitations instead of fabricating lessons. Stage both required updates in the same commit.
+- Versioned pre-commit, pre-merge-commit, and pre-push hooks check this rule. Follow the [installation and testing guide](docs/change-record-hooks.md). Cloning does not install hooks; users must explicitly enable them per clone. Do not change another person's local Git configuration without permission.
+- Run `python3 -m unittest discover -s tests -v` when changing the hooks. Preserve the documented pre-policy baseline and fail-closed behavior.
+- Local hooks are bypassable and do not run for GitHub/API writes. Follow the same documentation requirement when using those routes; do not claim server-side enforcement.
+
 ## Project direction
 
 - Build an online manga translation experience focused on high performance and low latency.

@@ -16,4 +16,6 @@ Each entry describes the changes made, with additions, improvements, fixes, comp
 - Root MEMORY.md index and a multi-level memory/ knowledge tree for architecture decisions, development pitfalls and practices, and performance testing.
 - Reusable record template covering evidence, cause, fix, verification, applicability, references, status, and update date; category indexes explicitly state that no implementation lessons exist yet.
 - Required reading order of README.md, MEMORY.md, and AGENTS.md before development, followed by task-relevant records; guidelines for maintaining useful, current, public-safe project knowledge.
-- Documentation-only initialization: v0.0.0 identifies this initial documentation record. No software release or Git tag has been published, and no application upgrade procedure exists yet.
+- Versioned commit, merge, and push hooks requiring PUBLISH.md and real memory/ record content updates, with a fixed pre-policy history baseline and fail-closed remote-history inspection.
+- Python standard-library validator, 21 isolated integration tests, explicit per-clone installation instructions, and a verified development record documenting behavior and limitations.
+- Project initialization: v0.0.0 covers documentation and developer tooling only. No manga translation application release or Git tag has been published, and no application upgrade procedure exists yet.

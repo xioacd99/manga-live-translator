@@ -20,6 +20,10 @@ Issues and pull requests are welcome! Share ideas, report problems, or contribut
 
 Before development, read this README, [MEMORY.md](MEMORY.md), and [AGENTS.md](AGENTS.md), in that order. MEMORY.md indexes the project's development lessons, pitfalls, decisions, and testing experience.
 
+## Commit and push checks
+
+Each development commit must update PUBLISH.md and a real memory/ record. Versioned commit, merge, and push hooks check this requirement. They are not enabled automatically by cloning. See [installation, behavior, and tests](docs/change-record-hooks.md); opt in per clone with `git config --local core.hooksPath .githooks` after reviewing any existing hooks.
+
 ## Update history
 
 See [PUBLISH.md](PUBLISH.md) for changes to the project. Released updates will be recorded by version and date, including additions, improvements, fixes, compatibility changes, and upgrade notes where relevant.
