@@ -7,6 +7,15 @@
 - Update stale entries and mark superseded records with links to their replacements. Separate verified causes from hypotheses and document checks and applicability.
 - Keep public project memory in English and exclude secrets, private logs, and users' manga content.
 
+## Development and release branches
+
+- Use dev as the default branch for development changes. Verify the current branch and latest remote state before editing or committing; do not put routine development commits directly on main.
+- Run the applicable tests against the final dev changes and fix failures before proposing a merge to main. For the current repository tooling, run `python3 -m unittest discover -s tests -v`.
+- Merge tested development work into main for release only when that merge is authorized. This workflow is not standing permission for an agent to merge, publish a release, or create a tag automatically.
+- Keep PUBLISH.md and real memory/ records updated in the same development commits. A commit on dev records completed development work, not a main release.
+- Before an authorized merge, recheck both branch tips, resolve any divergence without overwriting others' work, and rerun affected checks. Verify the resulting main state before reporting a release or merge as completed.
+- Creating dev does not change the repository's default branch, branch protections, or permissions.
+
 ## Commit and push requirements
 
 - Every development commit must update the root PUBLISH.md and at least one real Markdown experience record under memory/. Updating MEMORY.md, a category index, or a template alone does not satisfy this requirement.

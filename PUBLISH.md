@@ -6,6 +6,9 @@ Each entry describes the changes made, with additions, improvements, fixes, comp
 
 ## 2026-11-03 - v0.0.0
 
+- Created dev from main at 0cbb377b69a844299b0e8926a06282cc2a73d494 and documented development on dev, testing before merge, and main as the release branch. This workflow update is committed on dev only; it does not merge into main or publish a release.
+- Added a development record documenting branch separation, verification steps, and the need for explicit merge/release authorization.
+
 - English bug and feature Issue Forms, API body examples, and a shared issue guide applying equally to people, maintainers, dot, and other bots.
 - Dependency-free issue-structure validator with offline tests and a read-only opened/edited/reopened/manual audit workflow; reports results without commenting, labeling, closing, or modifying issues.
 - Documented API/form bypass limits, GITHUB_TOKEN event suppression, factual-review obligations, and safe treatment of untrusted issue content. These are contribution-tooling changes, not a translation implementation or software release.

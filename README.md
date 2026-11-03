@@ -16,6 +16,10 @@ This project is at an early stage. The points below describe our goals, not impl
 
 Issues and pull requests are welcome! Share ideas, report problems, or contribute improvements. Read the [issue guide](docs/ISSUES.md) and use the bug or feature form. People, maintainers, dot, and other bots follow the same format.
 
+## Branch workflow
+
+Development happens on dev. Run the applicable tests on the final changes, then merge tested work into main for release. The current tooling suite is `python3 -m unittest discover -s tests -v`. Changes on dev are not automatically released; merging or publishing remains an explicit step. See [AGENTS.md](AGENTS.md) for the development workflow.
+
 ## Development knowledge
 
 Before development, read this README, [MEMORY.md](MEMORY.md), and [AGENTS.md](AGENTS.md), in that order. MEMORY.md indexes the project's development lessons, pitfalls, decisions, and testing experience.

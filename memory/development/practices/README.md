@@ -6,4 +6,6 @@ Record techniques supported by actual project experience, including when they ap
 
 - [Validating issue structure across entry points](issue-standards.md): shared pre-submit checks, read-only audits, and platform limits.
 
+- [Developing on dev before releasing from main](dev-main-workflow.md): branch separation, testing, and explicit merge boundaries.
+
 [Back to development](../README.md)
