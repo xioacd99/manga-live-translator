@@ -53,3 +53,7 @@ See [PUBLISH.md](PUBLISH.md) for project changes. Updates are recorded by versio
 ## License
 
 The project uses the [MIT License](LICENSE). You may use, modify, distribute, and commercially use the software subject to retaining the copyright and license notices. See LICENSE for the full terms and disclaimer; the license text remains unchanged.
+
+## Experimental page preparation
+
+See the [Chinese Issue #2 implementation guide](docs/development/issue-2.md) for conservative region OCR and bounded, opt-in page preparation. Prefetch is disabled by default. The heuristic detector is not a trained segmentation model; real-comic quality and M4 performance remain unverified.

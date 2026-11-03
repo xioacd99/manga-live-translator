@@ -1,4 +1,4 @@
-import {createEnglishBitmap} from '../fixtures/generated-english.js';
+import {createBubbleBitmap} from '../fixtures/generated-bubble.js';
 import {chromium} from 'playwright';
 import {readFile, writeFile, mkdir, cp, mkdtemp, rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
@@ -38,6 +38,13 @@ try {
       (globalThis.__syntheticErrors ||= []).push(String(error?.message));
       globalThis.__syntheticReport?.({kind:'error',message:String(error?.message)}).catch(()=>{});
     `);
+    if (name === 'offscreen.js') {
+      // 仅在临时测试副本中记录真实检测返回，不能以 OCR 成功推断检测命中。
+      const detectionReturn = /const byId = new Map\(\((\w+)\.translations/;
+      assert.ok(detectionReturn.test(original));
+      original = original.replace(detectionReturn, (match, variable) => `await globalThis.__syntheticReport({kind:'detection',regions:${variable}.detection?.regions || []});
+    ${match}`);
+    }
     const prefix = name === 'background.js' ? `
       globalThis.__syntheticDiagnostics = [];
       chrome.runtime.onMessage.addListener((message, sender, reply) => {
@@ -94,14 +101,16 @@ try {
   // Substitute only the synthetic acquisition boundary; production validation and decoding still run.
   await worker.evaluate(bytes => {
     globalThis.__syntheticImageFetches = 0;
+    globalThis.__syntheticImageOrder = [];
     globalThis.fetch = async (url, options = {}) => {
       options.signal?.throwIfAborted();
-      if (String(url) !== 'https://reader.example.com/page.png') throw new Error('Unexpected synthetic worker fetch');
+      if (!/^https:\/\/reader\.example\.com\/(?:page|near|rest|lazy)\.png$/.test(String(url))) throw new Error('Unexpected synthetic worker fetch');
       if (options.credentials !== 'omit' || options.redirect !== 'error') throw new Error('Image fetch privacy options changed');
       globalThis.__syntheticImageFetches++;
+      globalThis.__syntheticImageOrder.push(new URL(url).pathname);
       return new Response(new Uint8Array(bytes), {headers: {'content-type': 'image/bmp'}});
     };
-  }, Array.from(createEnglishBitmap().imageBytes));
+  }, Array.from(createBubbleBitmap().imageBytes));
   context.on('page', page => page.on('pageerror', error => record(errors, sanitize(error.message))));
   context.on('console', message => {
     if (message.type() === 'error') record(consoleErrors, sanitize(message.text()));
@@ -119,7 +128,7 @@ try {
     record(routed, requestInfo(route.request()));
     if (url.origin === 'https://reader.example.com') {
       if (url.pathname.endsWith('.png')) {
-        await route.fulfill({contentType: 'image/bmp', body: createEnglishBitmap().imageBytes});
+        await route.fulfill({contentType: 'image/bmp', body: createBubbleBitmap().imageBytes});
       } else {
         await route.fulfill({contentType: 'text/html', body: '<!doctype html><html><body><h1>Synthetic reader fixture</h1><img src="/page.png" width="800" height="300"></body></html>'});
       }
@@ -146,18 +155,18 @@ try {
     await options.waitForFunction(() => document.getElementById('status').textContent.length > 0);
     assert.match(await options.locator('#status').textContent(), /^Configured/, 'Settings save failed');
   }
-  await configure();
-  phase = 'open synthetic reader';
+  phase = 'open synthetic reader without provider';
   reader = await context.newPage();
   await reader.goto('https://reader.example.com/');
   const tabId = await worker.evaluate(async () => {
     const tabs = await chrome.tabs.query({url: 'https://reader.example.com/*'});
     return tabs[0].id;
   });
-  async function enable() {
-    const response = await options.evaluate(tabId => chrome.runtime.sendMessage({
-      type: 'MLT_UI_ENABLE', tabId, imageOrigins: [], auto: false,
-    }), tabId);
+  async function enable(settings = {}) {
+    await reader.bringToFront();
+    const response = await options.evaluate(({tabId, settings}) => chrome.runtime.sendMessage({
+      type: 'MLT_UI_ENABLE', tabId, imageOrigins: [], auto: false, settings,
+    }), {tabId, settings});
     assert.equal(response.ok, true, JSON.stringify(response));
   }
   async function metrics() {
@@ -182,8 +191,27 @@ try {
     await reader.getByRole('button', {name: 'Translate', exact: true}).click();
     await waitForTranslation();
   }
-  phase = 'initial enable and cold translation';
-  await enable();
+  async function waitForPreparation(count = 1) {
+    await reader.waitForFunction(count => [...document.querySelectorAll('[data-mlt-reader]')].filter(host => host.shadowRoot?.querySelector('[role="status"]')?.textContent === '本地准备完成，尚未翻译。').length === count, count);
+    await refreshProviderEvidence();
+  }
+  phase = 'local preparation without provider';
+  await enable({prepareEnabled: true, prepareBudget: 1});
+  await waitForPreparation();
+  assert.equal(calls, 0, 'local-only preparation must not require or call a provider');
+  const withoutProvider = await metrics();
+  assert.equal(withoutProvider.ocrCalls, 1);
+  const detections = (await refreshProviderEvidence()).filter(entry => entry.kind === 'detection');
+  assert.ok(detections.some(entry => entry.regions.some(region => region.bbox.x === 22 && region.bbox.y === 17 && region.bbox.width === 736 && region.bbox.height === 126)), 'real local detector must locate the synthetic bubble');
+  assert.equal(await reader.locator('.region').count(), 0);
+  phase = 'local preparation with configured provider';
+  await configure();
+  await reader.reload();
+  await enable({prepareEnabled: true, prepareBudget: 1});
+  await waitForPreparation();
+  assert.equal(calls, 0, 'configuring a provider does not consent to remote prefetch');
+  const prepared = await metrics();
+  phase = 'initial translation reuses preparation';
   await translate();
   assert.equal(calls, 1);
   assert.match(await reader.locator('.region').first().textContent(), /Translated:.*HELLO\s+WORLD/s);
@@ -193,7 +221,7 @@ try {
   const warm = await metrics();
   assert.equal(warm.ocrCalls, 1);
   assert.equal(warm.translationCalls, 1);
-  assert.equal(warm.ocrHits, 1);
+  assert.equal(warm.ocrHits, prepared.ocrHits + 2, 'reading and warm replay must reuse local preparation');
   assert.equal(warm.translationHits, 1);
 
   phase = 'source correction';
@@ -207,6 +235,7 @@ try {
 
   phase = 'context invalidation';
   await configure('A synthetic friend is greeting another friend.');
+  await enable();
   await translate();
   assert.equal(calls, 3, 'changed context must invalidate translation');
   assert.equal(providerInputs.at(-1).context, 'A synthetic friend is greeting another friend.');
@@ -234,13 +263,36 @@ try {
   const afterForget = await metrics();
   assert.equal(afterForget.ocrCalls, 1);
   assert.equal(afterForget.translationCalls, 1);
+  phase = 'bounded visible then near preparation';
+  await reader.reload();
+  await reader.evaluate(() => {
+    const rest = document.createElement('img'); rest.src = '/rest.png'; rest.width = 800; rest.height = 300; rest.style.cssText = 'position:absolute;top:5000px';
+    const near = document.createElement('img'); near.src = '/near.png'; near.width = 800; near.height = 300; near.style.cssText = 'position:absolute;top:900px';
+    document.body.append(rest, near);
+  });
+  await reader.waitForFunction(() => [...document.images].every(image => image.complete && image.naturalWidth > 0));
+  await worker.evaluate(() => { globalThis.__syntheticImageOrder = []; });
+  await enable({prepareEnabled: true, prepareBudget: 2});
+  await waitForPreparation(2);
+  assert.deepEqual(await worker.evaluate(() => globalThis.__syntheticImageOrder), ['/page.png', '/near.png']);
+  assert.equal(calls, 4, 'bounded local preparation does not send unseen text');
+  const pauseResult = await options.evaluate(tabId => chrome.runtime.sendMessage({type: 'MLT_UI_PAUSE', tabId}), tabId);
+  assert.equal(pauseResult.ok, true);
+  await reader.evaluate(() => { const image = document.createElement('img'); image.src = '/lazy.png'; image.width = 800; image.height = 300; document.body.append(image); });
+  await reader.waitForFunction(() => document.images.length === 4 && [...document.images].every(image => image.complete));
+  const clearResult = await options.evaluate(() => chrome.runtime.sendMessage({type: 'MLT_UI_CLEAR'}));
+  assert.equal(clearResult.ok, true);
+  const pausedGrant = await worker.evaluate(async tabId => (await chrome.storage.session.get(`tab:${tabId}`))[`tab:${tabId}`], tabId);
+  assert.equal(pausedGrant.paused, true);
+  assert.equal(pausedGrant.prepareRemaining, 0);
+  assert.deepEqual(await worker.evaluate(() => globalThis.__syntheticImageOrder), ['/page.png', '/near.png']);
   const offscreenDiagnostics = await refreshProviderEvidence();
   assert.deepEqual(offscreenDiagnostics.filter(entry => entry.kind === 'error'), [], 'Offscreen reported a synthetic-run failure');
   assert.deepEqual(errors, []);
   await writeFile('artifacts/browser-smoke.json', JSON.stringify({
-    browser: context.browser()?.version(), calls, warm, afterForget,
+    browser: context.browser()?.version(), calls, withoutProvider, prepared, warm, afterForget,
     realLocalOCR: true, mockedProvider: true, mockedImageAcquisition: true, productionManifestUnchanged: true,
-    verified: ['warm completion', 'source correction', 'context invalidation', 'original toggle', 'forget and reconfigure'], errors, consoleErrors, network, routed,
+    verified: ['local preparation without provider', 'local preparation with provider without LLM', 'visible-near priority and budget', 'pause and clear', 'warm completion', 'source correction', 'context invalidation', 'original toggle', 'forget and reconfigure'], errors, consoleErrors, network, routed,
   }, null, 2));
   console.log('Browser smoke passed: packaged OCR, mocked provider, warm cache, corrections, context, original toggle, forget/reconfigure.');
 } catch (error) {

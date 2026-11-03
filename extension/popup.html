@@ -1,6 +1,12 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Manga Live Translator</title><link rel="stylesheet" href="ui.css"></head><body>
-<h1>Manga Live Translator</h1><p id="config">Loading settings…</p>
-<p>Enable only the current page. OCR stays local; extracted dialogue is sent to OpenAI and may incur API charges.</p>
-<label>Additional image CDN origins (one per line, optional)<textarea id="origins" placeholder="https://images.example.com"></textarea></label>
-<label><input type="checkbox" id="auto"> Automatically translate visible images on this page (may incur charges)</label>
-<button id="enable">Enable this page</button><button id="disable">Disable this page</button><button id="settings">Provider settings</button><button id="clear">Clear reading cache</button><button id="metrics">Show counters</button><pre id="status" role="status"></pre><script src="popup.js"></script></body></html>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>Manga Live Translator</title><link rel="stylesheet" href="ui.css"></head><body>
+<h1>Manga Live Translator</h1><p id="config">正在读取设置…</p>
+<p>仅显式启用当前页面。图片从已授权来源获取，检测与 OCR 在本机运行，不上传图片。点击翻译或勾选自动翻译后，对白文本发送到 OpenAI，可能产生 API 费用。</p>
+<label>额外图片 CDN 来源（可选，每行一个）<textarea id="origins" placeholder="https://images.example.com"></textarea></label>
+<label><input type="checkbox" id="auto"> 自动翻译当前可见图片（发送文本到 OpenAI，可能计费）</label>
+<label><input type="checkbox" id="prepare"> 提前获取当前页面图片并本地检测 / OCR（不发送远端翻译）</label>
+<label>本地提前准备预算（1–20 张）<input id="prepareBudget" type="number" min="1" max="20" step="1" value="8"></label>
+<label><input type="checkbox" id="remotePrefetch"> 我同意提前把尚未阅读图片中的对白文本发送到 OpenAI 翻译，并承担 API 费用</label>
+<label>远端提前翻译预算（开启时须填写 1–20 张）<input id="remoteBudget" type="number" min="0" max="20" step="1" value="0"></label>
+<label><input type="checkbox" id="wholeImage"> 显式使用整图 OCR 基线（默认优先区域检测，必要时整图回退）</label>
+<p>提前处理默认关闭。最多发现 80 张已加载图片、同时处理 2 项，按可见、邻近、其余顺序调度。隐藏页面、暂停或导航会取消处理；返回后请重新启用。预算按开始的图片任务计数，失败和取消也占用预算，不代表费用上限；可见自动翻译和手动翻译不计入预取预算。</p>
+<button id="enable">启用当前页面</button><button id="pause">暂停处理</button><button id="disable">关闭当前页面</button><button id="settings">翻译服务设置</button><button id="clear">清空阅读缓存</button><button id="metrics">显示计数</button><pre id="status" role="status"></pre><script src="popup.js"></script></body></html>

@@ -23,7 +23,10 @@ export async function sha256(bytes) {
   return Array.from(new Uint8Array(digest), x => x.toString(16).padStart(2, '0')).join('');
 }
 export async function hashKey(value) { return sha256(new TextEncoder().encode(canonicalize(value))); }
-export async function ocrKey({ imageHash, width, height, namespace, ocrConfig }) {
-  return hashKey({ cacheSchema: 1, stage: 'ocr', imageHash, width, height, namespace, ocrConfig });
+export async function detectionKey({ imageHash, width, height, namespace, detectionConfig }) {
+  return hashKey({ cacheSchema: 1, stage: 'detection', imageHash, width, height, namespace, detectionConfig });
+}
+export async function ocrKey({ imageHash, width, height, namespace, ocrConfig, detection }) {
+  return hashKey({ cacheSchema: 1, stage: 'ocr', imageHash, width, height, namespace, ocrConfig, ...(detection === undefined ? {} : { detection }) });
 }
 export async function translationKey(request) { return hashKey({ cacheSchema: 1, stage: 'translation', request }); }

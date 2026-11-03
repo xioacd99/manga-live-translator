@@ -1,5 +1,9 @@
 import {validateImageRequest, publicHttpUrl, readBoundedImage, toBase64, safeError} from './security.js';
+import {preparationSettings,reserveRequest} from './preparation-policy.js';
 let creating; let mutations=Promise.resolve(); let generation=0; const fetches=new Map();
+const tabFences=new Map();
+function tabFence(tabId){if(!tabFences.has(tabId))tabFences.set(tabId,{cancelled:false});return tabFences.get(tabId);}
+function cancelTab(tabId){const fence=tabFences.get(tabId);if(fence)fence.cancelled=true;tabFences.delete(tabId);for(const entry of fetches.values())if(entry.tabId===tabId)entry.controller.abort();}
 function invalidate(){generation++;for(const entry of fetches.values())entry.controller.abort();}
 const storageReady=chrome.storage.session.setAccessLevel({accessLevel:'TRUSTED_CONTEXTS'});
 function mutate(work){const result=mutations.then(work);mutations=result.catch(()=>{});return result;}
@@ -10,6 +14,13 @@ async function executor() {
 }
 async function callExecutor(payload,{signal,expectedGeneration}={}) { await executor(); signal?.throwIfAborted(); if(expectedGeneration!==undefined&&expectedGeneration!==generation)throw new DOMException('Session changed','AbortError'); const r=await chrome.runtime.sendMessage({...payload,target:'executor'}); signal?.throwIfAborted(); if(expectedGeneration!==undefined&&expectedGeneration!==generation)throw new DOMException('Session changed','AbortError'); if(!r?.ok)throw new Error(r?.error?.message||'Executor unavailable.'); return r; }
 function trustedUi(sender) { return sender.id===chrome.runtime.id && ['popup.html','options.html'].some(p=>sender.url===chrome.runtime.getURL(p)); }
+async function pauseGrants() {
+  const stored=await chrome.storage.session.get(null);
+  for(const [key,grant] of Object.entries(stored))if(key.startsWith('tab:')) {
+    await chrome.storage.session.set({[key]:{...grant,paused:true}});
+    await chrome.tabs.sendMessage(Number(key.slice(4)),{type:'MLT_PAUSE',reset:true}).catch(()=>{});
+  }
+}
 async function settings(){return (await chrome.storage.session.get('settings')).settings;}
 async function getGrant(tabId){return (await chrome.storage.session.get(`tab:${tabId}`))[`tab:${tabId}`];}
 async function handle(message,sender) {
@@ -30,21 +41,30 @@ async function handle(message,sender) {
     if(message.type==='MLT_UI_STATUS') {
       const s=await settings(); return {ok:true,configured:!!s,model:s?.model||'',targetLanguage:s?.targetLanguage||'Simplified Chinese'};
     }
-    if(message.type==='MLT_UI_CLEAR') {invalidate();await callExecutor({type:'CLEAR'});return {ok:true};}
-    if(message.type==='MLT_UI_FORGET') {invalidate();await chrome.storage.session.clear();await callExecutor({type:'FORGET'});return {ok:true};}
+    if(message.type==='MLT_UI_CLEAR') {invalidate();await pauseGrants();await callExecutor({type:'CLEAR'});return {ok:true};}
+    if(message.type==='MLT_UI_FORGET') {invalidate();await pauseGrants();await chrome.storage.session.clear();await callExecutor({type:'FORGET'});return {ok:true};}
     if(message.type==='MLT_UI_ENABLE') {
-      const s=await settings(); if(!s)throw new Error('Configure the provider first.');
+      const s=await settings(); const preparation=preparationSettings(message.settings);
+      if(!s&&(message.auto===true||preparation.remotePrefetchEnabled))throw new Error('Configure the provider before remote translation.');
       const tab=await chrome.tabs.get(message.tabId); if(tab.incognito)throw new Error('Incognito is not supported.');
       const origin=publicHttpUrl(tab.url).origin;
       const imageOrigins=[origin,...(message.imageOrigins||[]).map(v=>publicHttpUrl(v).origin)];
       if(imageOrigins.length>6)throw new Error('Enable at most five additional image hosts.');
-      for(const host of [...imageOrigins,'https://api.openai.com'])if(!await chrome.permissions.contains({origins:[`${host}/*`]}))throw new Error('Grant the requested host permissions first.');
-      await chrome.storage.session.set({[`tab:${tab.id}`]:{origin,imageOrigins:[...new Set(imageOrigins)]}});
-      await callExecutor({type:'ENSURE_CONFIG',settings:s});
+      for(const host of [...imageOrigins,...(s?['https://api.openai.com']:[])])if(!await chrome.permissions.contains({origins:[`${host}/*`]}))throw new Error('Grant the requested host permissions first.');
+      await chrome.storage.session.set({[`tab:${tab.id}`]:{origin,pageUrl:tab.url.split('#')[0],imageOrigins:[...new Set(imageOrigins)],preparation,prepareRemaining:preparation.prepareBudget,remoteRemaining:preparation.remotePrefetchBudget,auto:message.auto===true,paused:false}});
+      await callExecutor({type:'ENSURE_CONFIG',settings:s||null});
       await chrome.scripting.executeScript({target:{tabId:tab.id},files:['content.js']});
-      await chrome.tabs.sendMessage(tab.id,{type:'MLT_ENABLE',auto:message.auto===true});return {ok:true};
+      await chrome.tabs.sendMessage(tab.id,{type:'MLT_ENABLE',auto:message.auto===true,settings:preparation});return {ok:true};
+    }
+    if(message.type==='MLT_UI_PAUSE') {
+      cancelTab(message.tabId);
+      const grant=await getGrant(message.tabId);if(grant)await chrome.storage.session.set({[`tab:${message.tabId}`]:{...grant,paused:true}});
+      await chrome.tabs.sendMessage(message.tabId,{type:'MLT_PAUSE'}).catch(()=>{});
+      for(const entry of fetches.values())if(entry.tabId===message.tabId)entry.controller.abort();
+      await callExecutor({type:'CANCEL_TAB',tabId:message.tabId});return {ok:true};
     }
     if(message.type==='MLT_UI_DISABLE') {
+      cancelTab(message.tabId);
       await chrome.storage.session.remove(`tab:${message.tabId}`);
       await chrome.tabs.sendMessage(message.tabId,{type:'MLT_DISABLE'}).catch(()=>{});
       for(const [id,entry] of fetches)if(entry.tabId===message.tabId){entry.controller.abort();fetches.delete(id);}
@@ -55,21 +75,34 @@ async function handle(message,sender) {
   }
   if(sender.id!==chrome.runtime.id||!sender.tab||sender.frameId!==0)throw new Error('Invalid sender.');
   const id=`${sender.tab.id}:${message.requestId}`;
+  if(message.type==='MLT_PAUSE_PAGE') {
+    await mutate(async()=>{const grant=await getGrant(sender.tab.id);if(grant?.pageUrl!==sender.url.split('#')[0])throw new Error('Stale page pause.');cancelTab(sender.tab.id);if(grant)await chrome.storage.session.set({[`tab:${sender.tab.id}`]:{...grant,paused:true}});});
+    for(const entry of fetches.values())if(entry.tabId===sender.tab.id)entry.controller.abort();
+    await callExecutor({type:'CANCEL_TAB',tabId:sender.tab.id});return {ok:true};
+  }
   if(message.type==='MLT_CANCEL') {fetches.get(id)?.controller.abort();await callExecutor({type:'CANCEL',id});return {ok:true};}
-  if(message.type!=='MLT_TRANSLATE')throw new Error('Unknown operation.');
-  const grant=await getGrant(sender.tab.id); const image=validateImageRequest(message,sender,grant);
+  if(!['MLT_TRANSLATE','MLT_PREPARE'].includes(message.type))throw new Error('Unknown operation.');
+  const startedGeneration=generation; const fence=tabFence(sender.tab.id);
+  const grant=await mutate(async()=>{
+    if(startedGeneration!==generation||fence.cancelled)throw new DOMException('Session changed','AbortError');
+    const current=await getGrant(sender.tab.id);validateImageRequest(message,sender,current);
+    if(current.pageUrl && (sender.url.split('#')[0]!==current.pageUrl || sender.tab.url.split('#')[0]!==current.pageUrl))throw new Error('Page changed; enable it again.');
+    const next=reserveRequest(current,message);await chrome.storage.session.set({[`tab:${sender.tab.id}`]:next});return next;
+  });
+  if(startedGeneration!==generation||fence.cancelled)throw new DOMException('Session changed','AbortError');
+  const image=validateImageRequest(message,sender,grant); const localOnly=message.type==='MLT_PREPARE';
   if(fetches.has(id)||fetches.size>=16)throw new Error('Request queue is full.');
-  const startedGeneration=generation; const controller=new AbortController(); fetches.set(id,{controller,tabId:sender.tab.id});
+  const controller=new AbortController(); fetches.set(id,{controller,tabId:sender.tab.id});
   const timer=setTimeout(()=>controller.abort(),120000);
   try {
-    const config=await settings();if(!config)throw new Error('Provider is not configured.');
-    if(!await chrome.permissions.contains({origins:[`${image.origin}/*`,'https://api.openai.com/*']}))throw new Error('Permission was revoked.');
+    const config=await settings();if(!localOnly&&!config)throw new Error('Provider is not configured.');
+    if(!await chrome.permissions.contains({origins:[`${image.origin}/*`,...(localOnly?[]:['https://api.openai.com/*'])]}))throw new Error('Permission was revoked.');
     const response=await fetch(image.href,{credentials:'omit',redirect:'error',referrerPolicy:'no-referrer',signal:controller.signal,cache:'no-cache'});
     const {bytes,mime}=await readBoundedImage(response,controller.signal); controller.signal.throwIfAborted();
-    if(startedGeneration!==generation)throw new DOMException('Session changed','AbortError');
-    await callExecutor({type:'ENSURE_CONFIG',settings:config},{signal:controller.signal,expectedGeneration:startedGeneration}); controller.signal.throwIfAborted();
+    if(startedGeneration!==generation||fence.cancelled)throw new DOMException('Session changed','AbortError');
+    await callExecutor({type:'ENSURE_CONFIG',settings:config||null},{signal:controller.signal,expectedGeneration:startedGeneration}); controller.signal.throwIfAborted();
     const abort=()=>{chrome.runtime.sendMessage({target:'executor',type:'CANCEL',id}).catch(()=>{});};controller.signal.addEventListener('abort',abort,{once:true});
-    try { return await callExecutor({type:'RUN',id,tabId:sender.tab.id,imageBase64:toBase64(bytes),mime,namespace:grant.origin,corrections:message.corrections},{signal:controller.signal,expectedGeneration:startedGeneration}); }
+    try { return await callExecutor({type:localOnly?'PREPARE':'RUN',detectorMode:grant.preparation.detectorMode,id,tabId:sender.tab.id,imageBase64:toBase64(bytes),mime,namespace:grant.origin,corrections:message.corrections},{signal:controller.signal,expectedGeneration:startedGeneration}); }
     finally {controller.signal.removeEventListener('abort',abort);}
   } finally {clearTimeout(timer);if(fetches.get(id)?.controller===controller)fetches.delete(id);}
 }
@@ -79,5 +112,8 @@ chrome.runtime.onMessage.addListener((message,sender,reply)=>{
   const operation=message.type.startsWith('MLT_UI_')?mutate(()=>handle(message,sender)):handle(message,sender);
   operation.then(reply,error=>reply({ok:false,error:safeError(error)}));return true;
 });
-chrome.tabs.onRemoved.addListener(tabId=>{chrome.storage.session.remove(`tab:${tabId}`);for(const entry of fetches.values())if(entry.tabId===tabId)entry.controller.abort();chrome.runtime.sendMessage({target:'executor',type:'CANCEL_TAB',tabId}).catch(()=>{});});
-chrome.permissions.onRemoved.addListener(()=>{invalidate();mutate(async()=>{await chrome.storage.session.remove('settings');await callExecutor({type:'FORGET'});}).catch(()=>{});});
+chrome.tabs.onRemoved.addListener(tabId=>{cancelTab(tabId);mutate(async()=>{await chrome.storage.session.remove(`tab:${tabId}`);cancelTab(tabId);await callExecutor({type:'CANCEL_TAB',tabId});}).catch(()=>{});});
+chrome.permissions.onRemoved.addListener(()=>{invalidate();mutate(async()=>{await pauseGrants();await chrome.storage.session.remove('settings');await callExecutor({type:'FORGET'});}).catch(()=>{});});
+
+// 同源页面导航也使旧授权失效，不能把站点授权当作每个新章节的预处理同意。
+chrome.tabs.onUpdated?.addListener((tabId,change)=>{if(!change.url)return;cancelTab(tabId);mutate(async()=>{const grant=await getGrant(tabId);if(grant&&change.url.split('#')[0]!==grant.pageUrl){await chrome.storage.session.remove(`tab:${tabId}`);for(const entry of fetches.values())if(entry.tabId===tabId)entry.controller.abort();await callExecutor({type:'CANCEL_TAB',tabId});}}).catch(()=>{});});

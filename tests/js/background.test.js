@@ -4,8 +4,9 @@ import vm from 'node:vm';
 import { readFile } from 'node:fs/promises';
 import { webcrypto } from 'node:crypto';
 import * as security from '../../extension/security.js';
+import * as preparation from '../../extension/preparation-policy.js';
 
-const source = (await readFile(new URL('../../extension/background.js', import.meta.url), 'utf8')).replace(/^import[^\n]+\n/, '');
+const source = (await readFile(new URL('../../extension/background.js', import.meta.url), 'utf8')).replace(/^import[^\n]+\n/gm, '');
 const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; };
 const tick = () => new Promise(resolve => setImmediate(resolve));
 const config = { consent: true, apiKey: 'synthetic-not-a-real-key', model: 'test-model', targetLanguage: 'Simplified Chinese' };
@@ -18,7 +19,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
     runtime: { id, getURL: p => `chrome-extension://${id}/${p}`, onMessage: { addListener: fn => { listener = fn; } }, sendMessage: async message => { sent.push(message); return sendImpl ? sendImpl(message) : { ok: true, regions: [], translations: [] }; } },
     storage: { session: {
       setAccessLevel: async value => { accesses.push(value); await storageGate; },
-      get: async key => ({ [key]: structuredClone(store[key]) }),
+      get: async key => key === null ? structuredClone(store) : ({ [key]: structuredClone(store[key]) }),
       set: async values => { Object.assign(store, structuredClone(values)); },
       remove: async key => { delete store[key]; }, clear: async () => { for (const key of Object.keys(store)) delete store[key]; },
     } },
@@ -27,7 +28,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
     permissions: { contains: async () => true, onRemoved: { addListener: fn => { permissionRemoved = fn; } } },
     scripting: { executeScript: async args => { scripts.push(args); } },
   };
-  vm.runInNewContext(source, { ...security, chrome, crypto: webcrypto, fetch: fetchImpl, URL, DOMException, AbortController, setTimeout, clearTimeout, btoa, console });
+  vm.runInNewContext(source, { ...security, ...preparation, structuredClone, chrome, crypto: webcrypto, fetch: fetchImpl, URL, DOMException, AbortController, setTimeout, clearTimeout, btoa, console });
   const ui = { id, url: `chrome-extension://${id}/options.html` };
   const page = { id, url: 'https://reader.example.com/chapter', tab: { id: 1, url: 'https://reader.example.com/chapter' }, frameId: 0 };
   const send = (message, sender = ui) => new Promise(resolve => { const accepted = listener(message, sender, resolve); if (accepted !== true) resolve(undefined); });
@@ -74,9 +75,9 @@ test('background config and forget mutations serialize; forget clears credential
   assert.equal((await h.send({ type: 'MLT_UI_STATUS' })).configured, false);
 });
 
-test('background enables only configured page and rejects forged content senders', async () => {
+test('background requires provider for automatic translation and rejects forged content senders', async () => {
   let fetches = 0; const h = harness({ fetchImpl: async () => { fetches++; throw new Error('not expected'); } });
-  assert.equal((await h.send({ type: 'MLT_UI_ENABLE', tabId: 1 })).ok, false);
+  assert.equal((await h.send({ type: 'MLT_UI_ENABLE', tabId: 1, auto: true })).ok, false);
   await h.enable();
   assert.equal(h.scripts.length, 1); assert.equal(h.store['tab:1'].origin, 'https://reader.example.com');
   assert.equal(JSON.stringify(h.tabMessages).includes(config.apiKey), false);

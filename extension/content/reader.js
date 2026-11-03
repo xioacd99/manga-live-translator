@@ -1,7 +1,6 @@
 import {imageGeometry, projectBox, isEligibleImage, isCurrentRequest} from './geometry.js';
 
-const MAX_IMAGES = 80;
-const MAX_AUTO_PENDING = 2;
+import {MAX_IMAGES, MAX_PENDING, preparationSettings, imagePriority, selectPreparationJobs} from './scheduler.js';
 const CSS = `
 :host { all: initial; position: fixed; display: block; z-index: 2147483646; pointer-events: none; }
 * { box-sizing: border-box; }
@@ -20,7 +19,8 @@ button:disabled { opacity: .6; cursor: wait; }
 
 export function installReader({document: doc = globalThis.document, window: win = globalThis.window, runtime = globalThis.chrome.runtime} = {}) {
   const states = new Map();
-  let enabled = false, auto = false, serial = 0, frame = 0;
+  let enabled = false, auto = false, serial = 0, frame = 0, paused = false;
+  let options = preparationSettings(), localUsed = 0, remoteUsed = 0;
   let pageUrl = win.location.href;
   const session = globalThis.crypto.randomUUID();
   const node = (tag, text) => { const el = doc.createElement(tag); if (text !== undefined) el.textContent = text; return el; };
@@ -44,6 +44,7 @@ export function installReader({document: doc = globalThis.document, window: win 
     state.sourceVersion = `${session}:${++serial}`;
     state.imageUrl = source(state.image);
     state.corrections = Object.create(null);
+    state.prepared = false; state.prepareAttempted = false;
     state.result = null; state.renderedResult = null; state.layoutKey = null; state.attempted = false; state.original = false;
     state.regions.replaceChildren(); state.panel.hidden = true;
     state.toggle.hidden = state.details.hidden = true;
@@ -82,8 +83,8 @@ export function installReader({document: doc = globalThis.document, window: win 
     states.set(image, state); resize.observe(image);
     return state;
   }
-  async function translate(state, corrections) {
-    if (!enabled || state.requestId || !isEligibleImage(state.image)) return;
+  async function translate(state, corrections, purpose = 'manual') {
+    if (!enabled || paused || doc.hidden || state.requestId || !isEligibleImage(state.image) || [...states.values()].filter(s => s.requestId).length >= MAX_PENDING) return;
     if (state.imageUrl !== source(state.image)) reset(state);
     if (corrections) Object.assign(state.corrections, corrections);
     const sourceEdits = {...state.corrections};
@@ -93,8 +94,8 @@ export function installReader({document: doc = globalThis.document, window: win 
     state.status.textContent = 'Fetching → local OCR → translation…';
     const snapshot = {requestId, sourceVersion: state.sourceVersion, imageUrl: state.imageUrl, pageUrl};
     try {
-      const response = await send({type: 'MLT_TRANSLATE', requestId, imageUrl: state.imageUrl, sourceVersion: state.sourceVersion, width: state.image.naturalWidth, height: state.image.naturalHeight, ...(Object.keys(sourceEdits).length ? {corrections: sourceEdits} : {})});
-      if (!isCurrentRequest(snapshot, {enabled, connected: state.image.isConnected, requestId: state.requestId, sourceVersion: state.sourceVersion, imageUrl: source(state.image), pageUrl: win.location.href})) return;
+      const response = await send({type: 'MLT_TRANSLATE', requestId, imageUrl: state.imageUrl, sourceVersion: state.sourceVersion, purpose, prefetch: purpose === 'prefetch', detectorMode: options.detectorMode, width: state.image.naturalWidth, height: state.image.naturalHeight, ...(Object.keys(sourceEdits).length ? {corrections: sourceEdits} : {})});
+      if (!isCurrentRequest(snapshot, {enabled: enabled && !doc.hidden, connected: state.image.isConnected, requestId: state.requestId, sourceVersion: state.sourceVersion, imageUrl: source(state.image), pageUrl: win.location.href})) return;
       if (!response?.ok) throw new Error(response?.error?.message || 'Translation failed. Check extension settings, then retry.');
       const result = response.result;
       if (!result || !Array.isArray(result.regions) || result.regions.length > 500 || ![result.width, result.height].every(n => Number.isFinite(n) && n > 0)) throw new Error('Invalid translation response.');
@@ -105,6 +106,25 @@ export function installReader({document: doc = globalThis.document, window: win 
       layout(state);
     } catch (error) {
       if (state.requestId === requestId) state.status.textContent = String(error.message || 'Extension unavailable. Reload this tab.').slice(0, 240);
+    } finally {
+      if (state.requestId === requestId) { state.requestId = null; state.translate.disabled = false; state.cancel.hidden = true; }
+      schedule();
+    }
+  }
+  async function prepare(state) {
+    state.prepareAttempted = true;
+    const requestId = `${session}:prepare:${++serial}`;
+    state.requestId = requestId; state.translate.disabled = true; state.cancel.hidden = false;
+    state.status.textContent = '正在获取图片并本地准备；不发送远端翻译…';
+    const snapshot = {requestId, sourceVersion: state.sourceVersion, imageUrl: state.imageUrl, pageUrl};
+    try {
+      const response = await send({type: 'MLT_PREPARE', requestId, imageUrl: state.imageUrl, sourceVersion: state.sourceVersion, width: state.image.naturalWidth, height: state.image.naturalHeight, detectorMode: options.detectorMode});
+      if (!isCurrentRequest(snapshot, {enabled: enabled && !doc.hidden, connected: state.image.isConnected, requestId: state.requestId, sourceVersion: state.sourceVersion, imageUrl: source(state.image), pageUrl: win.location.href})) return;
+      if (!response?.ok) throw new Error(response?.error?.message || '本地准备失败，可手动翻译重试。');
+      state.prepared = true;
+      state.status.textContent = '本地准备完成，尚未翻译。';
+    } catch (error) {
+      if (state.requestId === requestId) state.status.textContent = String(error.message || '本地准备失败。').slice(0, 240);
     } finally {
       if (state.requestId === requestId) { state.requestId = null; state.translate.disabled = false; state.cancel.hidden = true; }
       schedule();
@@ -153,10 +173,16 @@ export function installReader({document: doc = globalThis.document, window: win 
       if (states.size >= MAX_IMAGES) break;
       if (!states.has(image) && isEligibleImage(image)) add(image);
     }
+    if (doc.hidden) return;
     let pending = [...states.values()].filter(state => state.requestId).length;
     for (const state of states.values()) {
       layout(state);
-      if (auto && pending < MAX_AUTO_PENDING && !state.attempted && visible(state.image)) { pending++; translate(state); }
+      if (!paused && auto && pending < MAX_PENDING && !state.attempted && visible(state.image)) { pending++; translate(state, undefined, 'visible'); }
+    }
+    const candidates = [...states.values()].map(state => ({id: state, priority: imagePriority(state.image.getBoundingClientRect(), {width: win.innerWidth, height: win.innerHeight}), pending: !!state.requestId, translated: !!state.result, prepared: state.prepared, prepareAttempted: state.prepareAttempted, translateAttempted: state.attempted}));
+    for (const job of selectPreparationJobs(candidates, {settings: options, localUsed, remoteUsed, pending, paused, hidden: !!doc.hidden})) {
+      if (job.kind === 'prepare') { localUsed++; prepare(job.id); }
+      else { remoteUsed++; translate(job.id, undefined, 'prefetch'); }
     }
   }
   function schedule() { if (enabled && !frame) frame = win.requestAnimationFrame(scan); }
@@ -164,7 +190,15 @@ export function installReader({document: doc = globalThis.document, window: win 
   const mutations = new win.MutationObserver(records => {
     if (records.some(record => !record.target.closest?.('[data-mlt-reader]'))) schedule();
   });
-  function enable(automatic = false) {
+  function enable(automatic = false, settings = {}) {
+    const nextOptions = preparationSettings(settings);
+    if (enabled) for (const state of states.values()) {
+      cancel(state, '设置已更新。');
+      if (options.detectorMode !== nextOptions.detectorMode) reset(state);
+      if (!state.result) state.attempted = false;
+      if (!state.prepared) state.prepareAttempted = false;
+    }
+    options = nextOptions; localUsed = 0; remoteUsed = 0; paused = false;
     enabled = true; auto = automatic === true; pageUrl = win.location.href;
     mutations.observe(doc.documentElement, {subtree: true, childList: true, attributes: true, attributeFilter: ['src', 'srcset', 'sizes', 'style', 'class', 'width', 'height']});
     schedule();
@@ -175,22 +209,28 @@ export function installReader({document: doc = globalThis.document, window: win 
     resize.disconnect(); if (frame) win.cancelAnimationFrame(frame); frame = 0;
   }
   function onMessage(message, _sender, reply) {
-    if (message?.type === 'MLT_ENABLE') { enable(message.auto); reply?.({ok: true}); }
+    if (message?.type === 'MLT_ENABLE') { try { enable(message.auto, message.settings); reply?.({ok: true}); } catch (error) { reply?.({ok: false, error: {message: error.message}}); } }
     else if (message?.type === 'MLT_DISABLE') { disable(); reply?.({ok: true}); }
-    else if (message?.type === 'MLT_PAUSE') { auto = false; reply?.({ok: true}); }
+    else if (message?.type === 'MLT_PAUSE') { paused = true; auto = false; for (const state of states.values()) { if (message.reset === true) reset(state); cancel(state, '已暂停。已发送的远端请求仍可能计费。'); } reply?.({ok: true}); }
   }
   runtime.onMessage.addListener(onMessage);
   win.addEventListener('scroll', schedule, {passive: true, capture: true});
   win.addEventListener('resize', schedule);
+  win.addEventListener('pagehide', disable);
   win.addEventListener('popstate', schedule);
   win.addEventListener('hashchange', schedule);
+  function visibilityChanged() {
+    if (doc.hidden && enabled) { paused = true; auto = false; send({type: 'MLT_PAUSE_PAGE'}).catch(() => {}); for (const state of states.values()) if (state.requestId) cancel(state, '页面已隐藏，处理已取消；请重新启用。远端请求仍可能计费。'); }
+    else schedule();
+  }
+  doc.addEventListener('visibilitychange', visibilityChanged);
   doc.addEventListener('load', schedule, true);
   // currentSrc 可能在 DOM 未变动时改变；history.pushState 也不会发出导航事件。
   const interval = win.setInterval(schedule, 1000);
   return {enable, disable, destroy() {
     disable(); win.clearInterval(interval); runtime.onMessage.removeListener(onMessage);
-    win.removeEventListener('scroll', schedule, true); win.removeEventListener('resize', schedule);
+    win.removeEventListener('pagehide', disable); win.removeEventListener('scroll', schedule, true); win.removeEventListener('resize', schedule);
     win.removeEventListener('popstate', schedule); win.removeEventListener('hashchange', schedule);
-    doc.removeEventListener('load', schedule, true);
+    doc.removeEventListener('load', schedule, true); doc.removeEventListener('visibilitychange', visibilityChanged);
   }};
 }

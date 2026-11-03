@@ -27,3 +27,5 @@
 - 这些文件公开可见。不得包含 API 密钥、令牌、密码、私有日志或用户的漫画内容；使用脱敏示例和公开项目引用。
 
 - [中文默认规范与 Issue 迁移边界](memory/development/practices/chinese-default-transition.md)
+
+- [区域准备的缓存与授权边界](memory/development/practices/region-preparation.md)
