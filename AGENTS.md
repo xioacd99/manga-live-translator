@@ -1,5 +1,12 @@
 # Development Guidelines
 
+## Required reading and project memory
+
+- Before every development task, read [README.md](README.md), [MEMORY.md](MEMORY.md), and this AGENTS.md in that order. Then read the relevant memory/ category indexes and records for the task.
+- At task completion, record reusable, evidence-backed lessons in the appropriate memory/ subdirectory, using its template and updating the category index. Do not fabricate incidents or add repetitive, low-value records.
+- Update stale entries and mark superseded records with links to their replacements. Separate verified causes from hypotheses and document checks and applicability.
+- Keep public project memory in English and exclude secrets, private logs, and users' manga content.
+
 ## Project direction
 
 - Build an online manga translation experience focused on high performance and low latency.

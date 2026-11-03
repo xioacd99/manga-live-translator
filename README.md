@@ -16,6 +16,10 @@ This project is at an early stage. The points below describe our goals, not impl
 
 Issues and pull requests are welcome! Share ideas, report problems, or contribute improvements.
 
+## Development knowledge
+
+Before development, read this README, [MEMORY.md](MEMORY.md), and [AGENTS.md](AGENTS.md), in that order. MEMORY.md indexes the project's development lessons, pitfalls, decisions, and testing experience.
+
 ## Update history
 
 See [PUBLISH.md](PUBLISH.md) for changes to the project. Released updates will be recorded by version and date, including additions, improvements, fixes, compatibility changes, and upgrade notes where relevant.
