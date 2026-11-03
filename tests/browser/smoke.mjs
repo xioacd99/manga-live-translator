@@ -16,6 +16,13 @@ let cancelledDownloadProgress, unknownDownloadProgress, cachedModelReloadMs;
 const errors = [], providerInputs = [], network = [], routed = [], consoleErrors = [];
 const sanitize = value => String(value).replaceAll('synthetic-test-key-not-real', '[synthetic key redacted]').replace(/Bearer\s+[^\s"']+/gi, 'Bearer [redacted]').slice(0, 1000);
 const record = (list, item) => { if (list.length < 100) list.push(item); };
+// 保留合成检测/OCR记录的结构与数值，仅清理字符串；不把非错误记录压成 undefined。
+const safeDiagnostic = value => {
+  if (typeof value === 'string') return sanitize(value);
+  if (Array.isArray(value)) return value.map(safeDiagnostic);
+  if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, safeDiagnostic(item)]));
+  return value;
+};
 const requestInfo = request => {
   const url = new URL(request.url());
   return {method: request.method(), origin: url.origin, path: url.pathname, serviceWorker: !!request.serviceWorker?.()};
@@ -61,6 +68,7 @@ try {
       const detectionReturn = /const byId = new Map\(\((\w+)\.translations/;
       assert.ok(detectionReturn.test(original));
       original = original.replace(detectionReturn, (match, variable) => `await globalThis.__syntheticReport({kind:'detection',regions:${variable}.detection?.regions || [],revision:${variable}.detection?.detectorRevision});
+    await globalThis.__syntheticReport({kind:m.type==='PREPARE'?'preparation-result':'translation-result',width,height,regions:${variable}.regions,detection:${variable}.detection});
     ${match}`);
     }
     const prefix = name === 'background.js' ? `
@@ -373,6 +381,7 @@ try {
     browser: context.browser()?.version(), calls, withoutProvider, prepared, warm, afterForget,
     modelDownload: {mockedTransport:true,realPinnedWeights:true,sha256:DETECTOR_MODEL.sha256,bytes:DETECTOR_MODEL.bytes,cancelledDownloadProgress,unknownDownloadProgress,cachedModelReloadMs,networkAttempts:offscreenDiagnostics.filter(entry => entry.kind === 'model-fetch').length},
     originalPanel: {source:'independently drawn synthetic panel',panelPreparationMs,executions:panelExecutions,timingScope:'adapterDurationMs includes image decode, preprocessing and model inference; preparation includes OCR. Single CI sample, not real manga performance.'},
+    preparationResults: offscreenDiagnostics.filter(entry => entry.kind === 'preparation-result').map(safeDiagnostic),
     realLocalOCR: true, mockedProvider: true, mockedImageAcquisition: true, productionManifestUnchanged: true,
     verified: ['model download progress and cancellation', 'model retry and cached popup reload', 'real pretrained panel inference', 'local preparation without provider', 'local preparation with provider without LLM', 'visible-near priority and budget', 'pause and clear', 'warm completion', 'source correction', 'context invalidation', 'original toggle', 'forget and reconfigure'], errors, consoleErrors, network, routed,
   }, null, 2));
@@ -380,7 +389,7 @@ try {
 } catch (error) {
   const offscreenDiagnostics = await refreshProviderEvidence().catch(error => [{kind:'inspection-error',message:sanitize(error.message)}]);
   const backgroundErrors = worker ? await worker.evaluate(() => globalThis.__syntheticErrors || []).catch(() => []) : [];
-  const diagnostics = {offscreenErrors: offscreenDiagnostics.filter(entry => entry.kind !== 'provider').map(entry => ({kind:entry.kind,message:sanitize(entry.message)})), backgroundErrors: backgroundErrors.map(sanitize),phase, error: sanitize(error?.stack || error), calls, errors, consoleErrors, network, routed};
+  const diagnostics = {offscreenDiagnostics: offscreenDiagnostics.filter(entry => entry.kind !== 'provider').map(safeDiagnostic), offscreenErrors: offscreenDiagnostics.filter(entry => ['error', 'inspection-error'].includes(entry.kind)).map(safeDiagnostic), preparationResults: offscreenDiagnostics.filter(entry => entry.kind === 'preparation-result').map(safeDiagnostic), backgroundErrors: backgroundErrors.map(sanitize),phase, error: sanitize(error?.stack || error), calls, errors, consoleErrors, network, routed};
   if (reader && !reader.isClosed()) {
     diagnostics.reader = await reader.evaluate(() => ({
       url: location.origin + location.pathname,

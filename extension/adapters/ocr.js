@@ -116,6 +116,13 @@ export function createOcrAdapter({ workerPath, corePath, langPath, createWorkerI
         if (signal?.aborted || disposed) throw abortError();
         collected.push(...paragraphsToRegions(data, width, height));
       }
+      // 稀疏模式可能把带轮廓的气泡当成非文字；仅在全程无文本时尝试一次自动版面分析。
+      // recognize 的临时参数由 Tesseract 保存并恢复，不改变后续图片的稀疏模式。
+      if (!collected.length) {
+        const { data } = await worker.recognize(input, { tessedit_pageseg_mode: '3' }, { blocks: true, text: true });
+        if (signal?.aborted || disposed) throw abortError();
+        collected.push(...paragraphsToRegions(data, width, height));
+      }
       if (collected.length > 1280) throw new Error('OCR candidate budget exceeded.');
       const regions = mergeOcrRegions(collected);
       if (regions.length > 256) throw new Error('OCR region budget exceeded.');

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { createOcrAdapter, mergeOcrRegions } from '../../extension/adapters/ocr.js';
 import { createWorker } from 'tesseract.js';
 import { createEnglishBitmap } from '../fixtures/generated-english.js';
+import { createBubbleBitmap } from '../fixtures/generated-bubble.js';
 
 const paths = { workerPath: '/bundled/worker.js', corePath: '/bundled/core', langPath: '/bundled/lang' };
 const input = { imageBytes: new Uint8Array([1]), width: 200, height: 100 };
@@ -34,7 +35,7 @@ test('整图显式选择、异常框、无框和低置信度检测直接整图�
     { regionMode: 'regions-only', regions: Array(33).fill(crop) },
   ]) {
     const calls = [], adapter = mock(options => { calls.push(options); return []; });
-    try { await adapter.recognize({ ...input, config }); assert.deepEqual(calls, [{}]); }
+    try { await adapter.recognize({ ...input, config }); assert.deepEqual(calls, [{}, { tessedit_pageseg_mode: '3' }]); }
     finally { await adapter.dispose(); }
   }
 });
@@ -44,7 +45,8 @@ test('实验局部模式遇到空识别或低置信度 OCR 也整图回退', asy
     const calls = [], adapter = mock(options => { calls.push(options); return output; });
     try {
       await adapter.recognize({ ...input, config: { regionMode: 'regions-only', regions: [crop] } });
-      assert.equal(calls.length, 2); assert.deepEqual(calls[1], {});
+      assert.equal(calls.length, output.length ? 2 : 3); assert.deepEqual(calls[1], {});
+      if (!output.length) assert.deepEqual(calls[2], { tessedit_pageseg_mode: '3' });
     } finally { await adapter.dispose(); }
   }
 });
@@ -84,4 +86,33 @@ test('真实打包 Tesseract rectangle 返回原图坐标，低置信度结果�
     assert.ok(actualCrop.confidence < 50);
     assert.deepEqual(captures[1].options, {});
   } finally { await adapter.dispose(); }
+});
+
+test('真实气泡图的空稀疏OCR只追加一次自动版面识别，后续调用恢复原模式', { timeout: 30000 }, async () => {
+  const root = new URL('../../node_modules/', import.meta.url).pathname;
+  const captures = [];
+  const adapter = createOcrAdapter({ workerPath: `${root}tesseract.js/src/worker-script/node/index.js`, corePath: `${root}tesseract.js-core`, langPath: `${root}@tesseract.js-data/eng/4.0.0_best_int`, createWorkerImpl: async (...args) => {
+    const worker = await createWorker(...args), recognize = worker.recognize.bind(worker);
+    worker.recognize = async (...input) => { const output = await recognize(...input); captures.push({ options: input[1], text: output.data.text }); return output; };
+    return worker;
+  } });
+  try {
+    for (let n = 0; n < 2; n++) {
+      const result = await adapter.recognize({ ...createBubbleBitmap(), config: { regionMode: 'regions-only', regions: [] } });
+      assert.equal(result.regions[0].sourceText, 'HELLO WORLD');
+      assert.deepEqual(result.regions[0].bbox, { x: 50, y: 40, width: 650, height: 70 });
+      assert.deepEqual(captures[n * 2], { options: {}, text: '' });
+      assert.deepEqual(captures[n * 2 + 1], { options: { tessedit_pageseg_mode: '3' }, text: 'HELLO WORLD\n' });
+    }
+  } finally { await adapter.dispose(); }
+});
+
+test('空识别回退有界，取消时不再开始自动版面识别', async () => {
+  const calls = [], adapter = mock(options => { calls.push(options); return []; });
+  try { assert.deepEqual(await adapter.recognize(input), { regions: [] }); assert.deepEqual(calls, [{}, { tessedit_pageseg_mode: '3' }]); }
+  finally { await adapter.dispose(); }
+  const controller = new AbortController(); let count = 0;
+  const cancelled = mock(() => { count++; controller.abort(); return []; });
+  try { await assert.rejects(cancelled.recognize({ ...input, signal: controller.signal }), { name: 'AbortError' }); assert.equal(count, 1); }
+  finally { await cancelled.dispose(); }
 });
