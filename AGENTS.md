@@ -17,6 +17,7 @@
 
 - Keep README.md accurate and synchronized with the implementation, project status, contribution guidance, and license. Maintain its link to PUBLISH.md.
 - Update PUBLISH.md with every project change. Explain the actual additions, improvements, fixes, compatibility changes, and upgrade requirements, as applicable.
-- Put completed but unreleased changes under Unreleased. When a release actually occurs, organize its changes under the real version and release date (YYYY-MM-DD).
+- Format every update section in PUBLISH.md as `## YYYY-MM-DD - vX.Y.Z`, using the actual update date in Asia/Shanghai and the applicable version. Place detailed change bullets directly below the heading; do not use Unreleased headings or Added/Changed subheadings.
+- Clearly label documentation-only initialization records. A versioned history entry does not mean a software release or Git tag has been published.
 - Do not claim planned work is complete or invent a release, version, date, or upgrade procedure.
 - Keep these guidelines synchronized with explicit changes to the project's requirements.
