@@ -6,6 +6,8 @@ High-performance, low-latency online manga translation with natural, context-awa
 
 An unreleased dev-branch preview now implements local English OCR, opt-in LLM text translation, reversible browser overlays, and bounded layered caches. The goals below are not measured performance or quality claims. See the [build, usage, verification and limitations guide](docs/development/preview.md).
 
+The [synthetic browser integration run](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987) passed with genuine packaged OCR and mocked image/provider boundaries. Live-site and translation-quality validation remain open.
+
 ## Goals
 
 - **High performance and low latency:** minimize the wait between opening a manga page and reading its translation.

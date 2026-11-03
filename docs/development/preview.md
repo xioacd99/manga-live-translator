@@ -44,8 +44,21 @@ Never paste a production secret into an issue or commit. No key is needed for th
 
 The local unit suite includes actual offline OCR on a synthetic English bitmap, cache invalidation/concurrency tests, content lifecycle/geometry tests, provider malformed-response tests, and request security checks. Synthetic core timing is a test fixture measurement, not end-to-end browser latency or manga translation quality.
 
-The initial cloud container could not start Chromium because the host denied socket creation, including an isolated-profile retry. The browser smoke is therefore also wired into GitHub Actions, where it must pass before browser behavior is considered verified. It uses the built extension, genuine packaged OCR, a generated image, a mocked image-acquisition boundary and a mocked provider. Live reader/CDN acquisition is not covered by that synthetic smoke. No live paid provider call, user device run, M4 performance result or real manga corpus quality gate has been completed.
+The initial cloud container could not start Chromium because the host denied socket creation, including an isolated-profile retry. The browser smoke is therefore also wired into GitHub Actions, where the [first successful synthetic browser run](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987) passed on commit 1906c1d909023e29a44813ca4ac7635c0346249b (Chromium 141, Ubuntu 24.04). It uses the built extension, genuine packaged OCR, a generated image, a mocked image-acquisition boundary and a mocked provider. Live reader/CDN acquisition is not covered by that synthetic smoke. No live paid provider call, user device run, M4 performance result or real manga corpus quality gate has been completed.
 
 Outstanding acceptance work includes real reader-site coverage, speech-bubble/panel quality, natural dialogue evaluation, interruption/recovery exercises across Chrome lifecycle states, representative long-scroll memory measurements, Japanese/vertical OCR and a larger licensed benchmark corpus. These are not implied by passing synthetic tests.
 
 See [dependency provenance](dependency-provenance.md), the [approved plan](../plans/v0.1/README.md) and [Issue #1](https://github.com/xioacd99/manga-live-translator/issues/1).
+
+## Current acceptance status
+
+| Area | Actual evidence | Still open |
+| --- | --- | --- |
+| Repository and application checks | 77 JavaScript tests, 42 Python tooling tests, locked build and full committed-file readback | Broader fuzzing and independent security audit |
+| Browser vertical slice | Real packaged Chromium/Tesseract, synthetic image and mocked acquisition/provider; overlays, correction, context change, warm reuse and forget/reconfigure passed | Real site/CDN fetching, permissions prompt interaction, real reader layouts |
+| Cache correctness | Stage keys, coalescing, per-subscriber cancel, TTL/LRU/byte limits, account isolation, clear fencing and stale cleanup regressions | Persistent content is deliberately absent; full browser process-death acceptance |
+| OCR quality | Original generated English bitmap recognized offline and in packaged browser | Rights-cleared manga corpus, second OCR candidate comparison, Japanese/vertical input, reading-order/quality scoring |
+| Translation quality | Strict schema and error contracts with synthetic provider response | Explicitly authorized paid model smoke and bilingual quality review |
+| Performance and release | Synthetic cache counters/benchmark, bounded implementation, reproducible build | M4 p50/p95/memory measurements, release thresholds, authorized main merge/store publication |
+
+Successful CI runs preserve an unpacked development build and synthetic screenshot/metrics artifacts for seven days. These are test/build artifacts, not GitHub Releases or store packages. Build locally after artifact expiry.
