@@ -1,0 +1,58 @@
+{
+  "status": "bounded_smoke_timeout_before_first_token",
+  "scope": "Two synthetic pages only; not an OCR accuracy evaluation.",
+  "runtime_device": "Device(cpu, 0)",
+  "generation_stream": "ThreadLocalStream(Device(cpu, 0), 1)",
+  "model_classes": {
+    "model": "mlx_vlm.models.unlimited_ocr.unlimitedocr.Model",
+    "processor": "mlx_vlm.models.unlimited_ocr.processing_unlimitedocr.UnlimitedOCRProcessor",
+    "attention": "mlx_vlm.models.unlimited_ocr.dash.DashAttention"
+  },
+  "model_initialization_seconds_synchronized": 2.5707386059984856,
+  "model_initialization_peak_rss_bytes": 2736418816,
+  "strict_cold_disk_test": false,
+  "cold_note": "Fresh process; OS file cache warmed by preceding processor-argument failure.",
+  "total_process_wall_seconds": 900.1839959440003,
+  "first_response_received": false,
+  "output_token_records": 0,
+  "page_or_block_output_available": false,
+  "accuracy": "not evaluated",
+  "prefill_time_seconds": null,
+  "prefill_time_note": "No first token; image preparation, visual encoding and text prefill were not separately instrumented.",
+  "sampled_peak_rss_bytes": 4608626688,
+  "sample_interval_seconds": 0.1,
+  "rss_limit_bytes": 6000000000,
+  "timeout_seconds": 900,
+  "termination": "wall_timeout_900_seconds",
+  "child_exit_code": -15,
+  "max_observed_threads": 13,
+  "affinity_logical_cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "mlx_internal_threads_control_verified": false,
+  "cpu_utilization_measured": false,
+  "scope_limits": [
+    "No real comic images or GT were read for this probe.",
+    "No cloud API, image upload, user Mac operation, or product-default changes.",
+    "The model-loading directory contains only allowlisted data files, with no Python files. Loading used trust_remote_code=False and offline settings; no Hugging Face remote code was executed. Separate Python source files were downloaded for static review only.",
+    "No automatic ten-image run or budget expansion."
+  ],
+  "data_files_verified": 10,
+  "runtime_source_files_sha_matched": 12,
+  "attempts": [
+    {
+      "attempt": 1,
+      "status": "processor_argument_error",
+      "cause": "Unsupported local_files_only was forwarded into processor constructor.",
+      "inference_started": false
+    },
+    {
+      "attempt": 2,
+      "status": "timeout",
+      "cause": "No first token within 900-second process bound; exact internal cause unestablished."
+    }
+  ]
+}

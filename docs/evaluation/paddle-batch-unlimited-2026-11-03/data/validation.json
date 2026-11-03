@@ -1,0 +1,156 @@
+{
+  "completed": true,
+  "groups": [
+    {
+      "group": "A",
+      "workers": 1,
+      "ort_intra": 1,
+      "ort_inter": 1,
+      "rec_batch": 1,
+      "all_identity_checks_pass": true,
+      "all_repeat_regions_exact": true,
+      "all_repeat_bbox_text_exact": true,
+      "round_makespan_seconds": [
+        62.10899582999991,
+        53.285760749000474,
+        54.13463703000161
+      ],
+      "round_images_per_second": [
+        0.16100727223752337,
+        0.18766739668228494,
+        0.18472461530420836
+      ],
+      "round_first_completion_seconds": [
+        8.690089634001197,
+        7.0074776010005735,
+        6.831456436000735
+      ],
+      "round_sampled_rss_peak_bytes": [
+        1196617728,
+        1494401024,
+        1450430464
+      ],
+      "mean_warm_makespan_seconds": 53.710198889501044,
+      "warm_aggregate_images_per_second": 0.18618437851204347,
+      "initialization_ready_wall_seconds": 0.7138983879995067,
+      "min_sampled_available_bytes": 6917787648,
+      "max_sampled_coordinator_workers_rss_bytes": 1494401024,
+      "results_sha256": "1e4ad0266660434057ede187bcb3e6075a68abeee73f56628c066bdafafbae78"
+    },
+    {
+      "group": "B",
+      "workers": 1,
+      "ort_intra": 1,
+      "ort_inter": 1,
+      "rec_batch": 6,
+      "all_identity_checks_pass": true,
+      "all_repeat_regions_exact": true,
+      "all_repeat_bbox_text_exact": true,
+      "round_makespan_seconds": [
+        74.5295324280014,
+        66.9129116030017,
+        61.67476783799793
+      ],
+      "round_images_per_second": [
+        0.13417499981850028,
+        0.14944798784621116,
+        0.16214086166107922
+      ],
+      "round_first_completion_seconds": [
+        10.325624905999575,
+        8.470665029002703,
+        8.713058396999259
+      ],
+      "round_sampled_rss_peak_bytes": [
+        1195548672,
+        1510449152,
+        1512628224
+      ],
+      "mean_warm_makespan_seconds": 64.29383972049982,
+      "warm_aggregate_images_per_second": 0.1555358964944746,
+      "initialization_ready_wall_seconds": 0.6456680750015948,
+      "min_sampled_available_bytes": 6888742912,
+      "max_sampled_coordinator_workers_rss_bytes": 1512628224,
+      "results_sha256": "cf2dc9021cb01501800e575433a15246b12978e4cc4bafb107e258a6eb6aab5a"
+    },
+    {
+      "group": "C",
+      "workers": 1,
+      "ort_intra": 2,
+      "ort_inter": 1,
+      "rec_batch": 6,
+      "all_identity_checks_pass": true,
+      "all_repeat_regions_exact": true,
+      "all_repeat_bbox_text_exact": true,
+      "round_makespan_seconds": [
+        52.372117266000714,
+        44.741652763001184,
+        45.128517965000356
+      ],
+      "round_images_per_second": [
+        0.190941297049525,
+        0.22350537770632903,
+        0.22158937299371428
+      ],
+      "round_first_completion_seconds": [
+        7.944688563002273,
+        6.10265138700197,
+        6.392533246998937
+      ],
+      "round_sampled_rss_peak_bytes": [
+        1208958976,
+        1506660352,
+        1513639936
+      ],
+      "mean_warm_makespan_seconds": 44.93508536400077,
+      "warm_aggregate_images_per_second": 0.22254325142578646,
+      "initialization_ready_wall_seconds": 0.8126198779973492,
+      "min_sampled_available_bytes": 6820052992,
+      "max_sampled_coordinator_workers_rss_bytes": 1513639936,
+      "results_sha256": "f14c000d6462bd5c4cdf6f67c83532dbfa7d974401a9ed8543f232d0fdd5c71b"
+    },
+    {
+      "group": "D",
+      "workers": 2,
+      "ort_intra": 1,
+      "ort_inter": 1,
+      "rec_batch": 6,
+      "all_identity_checks_pass": true,
+      "all_repeat_regions_exact": true,
+      "all_repeat_bbox_text_exact": true,
+      "round_makespan_seconds": [
+        41.70281266500024,
+        45.46051101199919,
+        38.971915377002006
+      ],
+      "round_images_per_second": [
+        0.23979197950819903,
+        0.21997113049082367,
+        0.2565950352520054
+      ],
+      "round_first_completion_seconds": [
+        10.819057779001014,
+        13.664771936997568,
+        9.477354032998846
+      ],
+      "round_sampled_rss_peak_bytes": [
+        2119286784,
+        2512355328,
+        2598748160
+      ],
+      "mean_warm_makespan_seconds": 42.2162131945006,
+      "warm_aggregate_images_per_second": 0.23687581721097323,
+      "initialization_ready_wall_seconds": 0.7615409300015017,
+      "min_sampled_available_bytes": 5750571008,
+      "max_sampled_coordinator_workers_rss_bytes": 2598748160,
+      "results_sha256": "cea5d49567b705803e9d3df45d5ac74c50230ada31c65421a3c35ff67215c075"
+    }
+  ],
+  "limits": [
+    "The shared lock coordinates this project only; no exclusive physical CPU guarantee.",
+    "cgroup limits unavailable; /proc MemAvailable does not guarantee container quota.",
+    "100ms sampling can miss short peaks; summed current RSS can double count shared pages.",
+    "RSS sampling covers coordinator and known OCR workers, not Python resource-tracker helper.",
+    "Batch processing means independent image jobs; rec_batch is within-image text crop batch."
+  ]
+}

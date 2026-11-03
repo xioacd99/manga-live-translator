@@ -1,0 +1,27 @@
+{
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "logical_cpu_count": 9,
+  "sched_getaffinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "cpu.max": {
+    "status": "unknown",
+    "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/cpu.max'"
+  },
+  "cpuset.cpus.effective": {
+    "status": "unknown",
+    "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/cpuset.cpus.effective'"
+  },
+  "memory.max": {
+    "status": "unknown",
+    "reason": "[Errno 2] No such file or directory: '/sys/fs/cgroup/memory.max'"
+  }
+}

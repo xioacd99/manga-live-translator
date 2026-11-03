@@ -1,0 +1,29 @@
+{
+  "private_frozen_probe_sha256": "b22baf2e3eba3f6c0a33480944d7bd79bb8e9d225ff5d01fea5dbad2cd3b09f4",
+  "private_frozen_guard_sha256": "7ce0ae74dc42b54806317025dc7b810a663295b58f74ebc9d0b6f0e3dd634cea",
+  "public_changes": [
+    "Only path inputs are parameterized (models, output, lock, Python interpreter).",
+    "Model download manifest is stored beside model data.",
+    "No re-inference was performed with public scripts."
+  ],
+  "runtime": {
+    "mlx": "0.32.4",
+    "mlx-cpu": "0.32.4",
+    "mlx-vlm": "0.7.11",
+    "mlx_vlm_commit": "527c513a0768245644a70266a22126d880767b18",
+    "installed_source_files_crosschecked": 12
+  },
+  "model": {
+    "repo": "mlx-community/Unlimited-OCR-2-4bit",
+    "revision": "ac04b808479927cc42ea82e06f55ebecd2b0a623",
+    "bytes": 2459096904,
+    "sha256": "c623d9e83bf3f7035770beeb3110f57dc3ff4bf86e7ce871a858f840d329ed11",
+    "provenance": "Community 4bit affine/group64 derivative of baidu/Unlimited-OCR-2; SAM/CLIP/DASH remain BF16."
+  },
+  "original_model_revision": "0480966938291445591f69f08a13b041c073a96a",
+  "license_sources": {
+    "mlx": "https://github.com/ml-explore/mlx/blob/main/LICENSE",
+    "mlx_vlm": "https://github.com/Blaizzy/mlx-vlm/blob/527c513a0768245644a70266a22126d880767b18/LICENSE",
+    "weights": "https://huggingface.co/mlx-community/Unlimited-OCR-2-4bit/blob/ac04b808479927cc42ea82e06f55ebecd2b0a623/README.md"
+  }
+}

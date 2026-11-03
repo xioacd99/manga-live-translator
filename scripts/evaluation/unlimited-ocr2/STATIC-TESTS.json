@@ -1,0 +1,11 @@
+{
+  "python_compile_files": 5,
+  "help_commands_passed": [
+    "run_guarded_probe.py",
+    "probe_two_pages.py",
+    "download_model.py"
+  ],
+  "static_contract_tests_passed": 6,
+  "static_contract_tests_failed": 0,
+  "public_version_reinference_performed": false
+}

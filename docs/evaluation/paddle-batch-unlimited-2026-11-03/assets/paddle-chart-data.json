@@ -1,0 +1,151 @@
+{
+  "source": "../data/paddle-summary.json",
+  "memory_unit": "decimal GB",
+  "latency": "mean of rounds 1 and 2; range is min/max, not confidence interval",
+  "rows": [
+    {
+      "group": "A",
+      "workers": 1,
+      "ort_intra": 1,
+      "rec_batch": 1,
+      "warm_mean_batch_seconds": 53.710198889501044,
+      "warm_mean_first_result_seconds": 6.920298844499484,
+      "warm_aggregate_images_per_second": 0.18618437851204347,
+      "peak_sampled_tree_rss_bytes": 1494401024,
+      "CER_by_round": [
+        0.18239277652370203,
+        0.18239277652370203,
+        0.18239277652370203
+      ],
+      "WER_by_round": [
+        0.42911877394636017,
+        0.42911877394636017,
+        0.42911877394636017
+      ],
+      "S_by_round": [
+        106,
+        106,
+        106
+      ],
+      "D_by_round": [
+        246,
+        246,
+        246
+      ],
+      "I_by_round": [
+        52,
+        52,
+        52
+      ],
+      "N_per_round": 2215
+    },
+    {
+      "group": "B",
+      "workers": 1,
+      "ort_intra": 1,
+      "rec_batch": 6,
+      "warm_mean_batch_seconds": 64.29383972049982,
+      "warm_mean_first_result_seconds": 8.592867913499504,
+      "warm_aggregate_images_per_second": 0.1555358964944746,
+      "peak_sampled_tree_rss_bytes": 1512628224,
+      "CER_by_round": [
+        0.181941309255079,
+        0.181941309255079,
+        0.181941309255079
+      ],
+      "WER_by_round": [
+        0.43486590038314177,
+        0.43486590038314177,
+        0.43486590038314177
+      ],
+      "S_by_round": [
+        109,
+        109,
+        109
+      ],
+      "D_by_round": [
+        242,
+        242,
+        242
+      ],
+      "I_by_round": [
+        52,
+        52,
+        52
+      ],
+      "N_per_round": 2215
+    },
+    {
+      "group": "C",
+      "workers": 1,
+      "ort_intra": 2,
+      "rec_batch": 6,
+      "warm_mean_batch_seconds": 44.93508536400077,
+      "warm_mean_first_result_seconds": 6.249243778500386,
+      "warm_aggregate_images_per_second": 0.22254325142578646,
+      "peak_sampled_tree_rss_bytes": 1513639936,
+      "CER_by_round": [
+        0.181941309255079,
+        0.181941309255079,
+        0.181941309255079
+      ],
+      "WER_by_round": [
+        0.43486590038314177,
+        0.43486590038314177,
+        0.43486590038314177
+      ],
+      "S_by_round": [
+        109,
+        109,
+        109
+      ],
+      "D_by_round": [
+        242,
+        242,
+        242
+      ],
+      "I_by_round": [
+        52,
+        52,
+        52
+      ],
+      "N_per_round": 2215
+    },
+    {
+      "group": "D",
+      "workers": 2,
+      "ort_intra": 1,
+      "rec_batch": 6,
+      "warm_mean_batch_seconds": 42.2162131945006,
+      "warm_mean_first_result_seconds": 11.572046080998916,
+      "warm_aggregate_images_per_second": 0.23687581721097323,
+      "peak_sampled_tree_rss_bytes": 2598748160,
+      "CER_by_round": [
+        0.181941309255079,
+        0.181941309255079,
+        0.181941309255079
+      ],
+      "WER_by_round": [
+        0.43486590038314177,
+        0.43486590038314177,
+        0.43486590038314177
+      ],
+      "S_by_round": [
+        109,
+        109,
+        109
+      ],
+      "D_by_round": [
+        242,
+        242,
+        242
+      ],
+      "I_by_round": [
+        52,
+        52,
+        52
+      ],
+      "N_per_round": 2215
+    }
+  ]
+}

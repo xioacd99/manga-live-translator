@@ -1,0 +1,61 @@
+{
+  "repo": "mlx-community/Unlimited-OCR-2-4bit",
+  "sha": "ac04b808479927cc42ea82e06f55ebecd2b0a623",
+  "siblings": [
+    {
+      "rfilename": "README.md",
+      "blobId": "1047f1ceaa6cd008e8f5ff2538606fbfa0aba41c",
+      "size": 1501
+    },
+    {
+      "rfilename": "chat_template.jinja",
+      "blobId": "018be89ef7f7a19b2e94d9540e2ade1cbc157365",
+      "size": 224
+    },
+    {
+      "rfilename": "config.json",
+      "blobId": "f72ce8529c0336aaa7c65688a22d5697bcd71214",
+      "size": 6890
+    },
+    {
+      "rfilename": "generation_config.json",
+      "blobId": "6f7f9313195af78c979fc889accc234edb6e0d3c",
+      "size": 111
+    },
+    {
+      "rfilename": "model.safetensors",
+      "blobId": "123db6079fa299eb4fb9399fe0006747646869e0",
+      "size": 2459096904,
+      "lfs": {
+        "sha256": "c623d9e83bf3f7035770beeb3110f57dc3ff4bf86e7ce871a858f840d329ed11",
+        "size": 2459096904,
+        "pointerSize": 135
+      }
+    },
+    {
+      "rfilename": "model.safetensors.index.json",
+      "blobId": "65a13ad8bd4ceb3d260394f724dbe3ee7118d6aa",
+      "size": 78403
+    },
+    {
+      "rfilename": "processor_config.json",
+      "blobId": "ba6519a10b25d5aa6e42ee7af37c9a19d5ff3750",
+      "size": 506
+    },
+    {
+      "rfilename": "special_tokens_map.json",
+      "blobId": "ae2383ca05f494aa736e72e6a874332cd2f1c67e",
+      "size": 549
+    },
+    {
+      "rfilename": "tokenizer.json",
+      "blobId": "d5909a7c1e63a78be90fe2bde6c8464e6e9e8540",
+      "size": 9980278
+    },
+    {
+      "rfilename": "tokenizer_config.json",
+      "blobId": "61385809f8805d910febae64f2cb8ba81fa7816b",
+      "size": 567
+    }
+  ]
+}

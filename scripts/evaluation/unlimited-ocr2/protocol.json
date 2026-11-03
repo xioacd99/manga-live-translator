@@ -1,0 +1,28 @@
+{
+  "runtime": "mlx-vlm 0.7.11 / mlx-cpu 0.32.4",
+  "device": "Device(cpu, 0)",
+  "model_revision": "ac04b808479927cc42ea82e06f55ebecd2b0a623",
+  "max_tokens": 256,
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "cropping": false,
+  "base_size": 1024,
+  "image_size": 1024,
+  "prefill_step_size": 2048,
+  "skip_special_tokens": false,
+  "prompt": "<image>Multi page parsing.",
+  "affinity": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "thread_limit_verified": false,
+  "raw_user_images_used": false,
+  "trust_remote_code": false,
+  "load_seconds_synchronized": 2.5707386059984856,
+  "memory_limit_bytes": 6000000000,
+  "timeout_seconds": 900,
+  "repeat_count": 1
+}

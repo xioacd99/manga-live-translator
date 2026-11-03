@@ -1,0 +1,290 @@
+{
+  "A": [
+    {
+      "id": "EN01",
+      "region_count": 68,
+      "B_region_count": 70,
+      "exact_regions_equal_B": false,
+      "bbox_text_equal_B": false
+    },
+    {
+      "id": "EN02",
+      "region_count": 110,
+      "B_region_count": 110,
+      "exact_regions_equal_B": false,
+      "bbox_text_equal_B": false
+    },
+    {
+      "id": "EN03",
+      "region_count": 40,
+      "B_region_count": 40,
+      "exact_regions_equal_B": false,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN04",
+      "region_count": 17,
+      "B_region_count": 17,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN05",
+      "region_count": 131,
+      "B_region_count": 131,
+      "exact_regions_equal_B": false,
+      "bbox_text_equal_B": false
+    },
+    {
+      "id": "EN06",
+      "region_count": 106,
+      "B_region_count": 106,
+      "exact_regions_equal_B": false,
+      "bbox_text_equal_B": false
+    },
+    {
+      "id": "EN07",
+      "region_count": 48,
+      "B_region_count": 48,
+      "exact_regions_equal_B": false,
+      "bbox_text_equal_B": false
+    },
+    {
+      "id": "EN08",
+      "region_count": 20,
+      "B_region_count": 20,
+      "exact_regions_equal_B": false,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN09",
+      "region_count": 20,
+      "B_region_count": 20,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN10",
+      "region_count": 89,
+      "B_region_count": 89,
+      "exact_regions_equal_B": false,
+      "bbox_text_equal_B": false
+    }
+  ],
+  "B": [
+    {
+      "id": "EN01",
+      "region_count": 70,
+      "B_region_count": 70,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN02",
+      "region_count": 110,
+      "B_region_count": 110,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN03",
+      "region_count": 40,
+      "B_region_count": 40,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN04",
+      "region_count": 17,
+      "B_region_count": 17,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN05",
+      "region_count": 131,
+      "B_region_count": 131,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN06",
+      "region_count": 106,
+      "B_region_count": 106,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN07",
+      "region_count": 48,
+      "B_region_count": 48,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN08",
+      "region_count": 20,
+      "B_region_count": 20,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN09",
+      "region_count": 20,
+      "B_region_count": 20,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN10",
+      "region_count": 89,
+      "B_region_count": 89,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    }
+  ],
+  "C": [
+    {
+      "id": "EN01",
+      "region_count": 70,
+      "B_region_count": 70,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN02",
+      "region_count": 110,
+      "B_region_count": 110,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN03",
+      "region_count": 40,
+      "B_region_count": 40,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN04",
+      "region_count": 17,
+      "B_region_count": 17,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN05",
+      "region_count": 131,
+      "B_region_count": 131,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN06",
+      "region_count": 106,
+      "B_region_count": 106,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN07",
+      "region_count": 48,
+      "B_region_count": 48,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN08",
+      "region_count": 20,
+      "B_region_count": 20,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN09",
+      "region_count": 20,
+      "B_region_count": 20,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN10",
+      "region_count": 89,
+      "B_region_count": 89,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    }
+  ],
+  "D": [
+    {
+      "id": "EN01",
+      "region_count": 70,
+      "B_region_count": 70,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN02",
+      "region_count": 110,
+      "B_region_count": 110,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN03",
+      "region_count": 40,
+      "B_region_count": 40,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN04",
+      "region_count": 17,
+      "B_region_count": 17,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN05",
+      "region_count": 131,
+      "B_region_count": 131,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN06",
+      "region_count": 106,
+      "B_region_count": 106,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN07",
+      "region_count": 48,
+      "B_region_count": 48,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN08",
+      "region_count": 20,
+      "B_region_count": 20,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN09",
+      "region_count": 20,
+      "B_region_count": 20,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    },
+    {
+      "id": "EN10",
+      "region_count": 89,
+      "B_region_count": 89,
+      "exact_regions_equal_B": true,
+      "bbox_text_equal_B": true
+    }
+  ]
+}

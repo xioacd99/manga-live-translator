@@ -1,0 +1,378 @@
+[
+  {
+    "group": "A",
+    "workers": 1,
+    "ort_intra": 1,
+    "ort_inter": 1,
+    "rec_batch": 1,
+    "initialization_ready_wall_seconds": 0.7138983879995067,
+    "CER_by_round": [
+      0.18239277652370203,
+      0.18239277652370203,
+      0.18239277652370203
+    ],
+    "WER_by_round": [
+      0.42911877394636017,
+      0.42911877394636017,
+      0.42911877394636017
+    ],
+    "CER_no_punctuation_by_round": [
+      0.13239719157472418,
+      0.13239719157472418,
+      0.13239719157472418
+    ],
+    "S_by_round": [
+      106,
+      106,
+      106
+    ],
+    "D_by_round": [
+      246,
+      246,
+      246
+    ],
+    "I_by_round": [
+      52,
+      52,
+      52
+    ],
+    "N_per_round": 2215,
+    "exact_regions_by_round": [
+      9,
+      9,
+      9
+    ],
+    "empty_regions_by_round": [
+      0,
+      0,
+      0
+    ],
+    "first_batch_seconds": 62.10899582999991,
+    "warm_batch_seconds": [
+      53.285760749000474,
+      54.13463703000161
+    ],
+    "warm_mean_batch_seconds": 53.710198889501044,
+    "warm_mean_first_result_seconds": 6.920298844499484,
+    "peak_sampled_tree_rss_bytes": 1494401024,
+    "rounds": [
+      {
+        "round": 0,
+        "start_at": 30901.807662362,
+        "end_at": 30963.916658192,
+        "makespan_seconds": 62.10899582999991,
+        "first_image_completion_seconds": 8.690089634001197,
+        "first_result_received_seconds": 8.691487981999671,
+        "images_per_second": 0.16100727223752337,
+        "sampled_tree_peak_rss_bytes": 1196617728,
+        "sample_count": 618
+      },
+      {
+        "round": 1,
+        "start_at": 30963.96277861,
+        "end_at": 31017.248539359,
+        "makespan_seconds": 53.285760749000474,
+        "first_image_completion_seconds": 7.0074776010005735,
+        "first_result_received_seconds": 7.008249397000327,
+        "images_per_second": 0.18766739668228494,
+        "sampled_tree_peak_rss_bytes": 1494401024,
+        "sample_count": 530
+      },
+      {
+        "round": 2,
+        "start_at": 31017.29978763,
+        "end_at": 31071.43442466,
+        "makespan_seconds": 54.13463703000161,
+        "first_image_completion_seconds": 6.831456436000735,
+        "first_result_received_seconds": 6.832348291998642,
+        "images_per_second": 0.18472461530420836,
+        "sampled_tree_peak_rss_bytes": 1450430464,
+        "sample_count": 538
+      }
+    ],
+    "mean_round_images_per_second": 0.18619600599324665,
+    "warm_aggregate_images_per_second": 0.18618437851204347
+  },
+  {
+    "group": "B",
+    "workers": 1,
+    "ort_intra": 1,
+    "ort_inter": 1,
+    "rec_batch": 6,
+    "initialization_ready_wall_seconds": 0.6456680750015948,
+    "CER_by_round": [
+      0.181941309255079,
+      0.181941309255079,
+      0.181941309255079
+    ],
+    "WER_by_round": [
+      0.43486590038314177,
+      0.43486590038314177,
+      0.43486590038314177
+    ],
+    "CER_no_punctuation_by_round": [
+      0.13189568706118354,
+      0.13189568706118354,
+      0.13189568706118354
+    ],
+    "S_by_round": [
+      109,
+      109,
+      109
+    ],
+    "D_by_round": [
+      242,
+      242,
+      242
+    ],
+    "I_by_round": [
+      52,
+      52,
+      52
+    ],
+    "N_per_round": 2215,
+    "exact_regions_by_round": [
+      9,
+      9,
+      9
+    ],
+    "empty_regions_by_round": [
+      0,
+      0,
+      0
+    ],
+    "first_batch_seconds": 74.5295324280014,
+    "warm_batch_seconds": [
+      66.9129116030017,
+      61.67476783799793
+    ],
+    "warm_mean_batch_seconds": 64.29383972049982,
+    "warm_mean_first_result_seconds": 8.592867913499504,
+    "peak_sampled_tree_rss_bytes": 1512628224,
+    "rounds": [
+      {
+        "round": 0,
+        "start_at": 31072.418935847,
+        "end_at": 31146.948468275,
+        "makespan_seconds": 74.5295324280014,
+        "first_image_completion_seconds": 10.325624905999575,
+        "first_result_received_seconds": 10.327102007002395,
+        "images_per_second": 0.13417499981850028,
+        "sampled_tree_peak_rss_bytes": 1195548672,
+        "sample_count": 741
+      },
+      {
+        "round": 1,
+        "start_at": 31147.012522208,
+        "end_at": 31213.925433811,
+        "makespan_seconds": 66.9129116030017,
+        "first_image_completion_seconds": 8.470665029002703,
+        "first_result_received_seconds": 8.471530716000416,
+        "images_per_second": 0.14944798784621116,
+        "sampled_tree_peak_rss_bytes": 1510449152,
+        "sample_count": 665
+      },
+      {
+        "round": 2,
+        "start_at": 31213.97967531,
+        "end_at": 31275.654443148,
+        "makespan_seconds": 61.67476783799793,
+        "first_image_completion_seconds": 8.713058396999259,
+        "first_result_received_seconds": 8.714205110998591,
+        "images_per_second": 0.16214086166107922,
+        "sampled_tree_peak_rss_bytes": 1512628224,
+        "sample_count": 613
+      }
+    ],
+    "mean_round_images_per_second": 0.1557944247536452,
+    "warm_aggregate_images_per_second": 0.1555358964944746
+  },
+  {
+    "group": "C",
+    "workers": 1,
+    "ort_intra": 2,
+    "ort_inter": 1,
+    "rec_batch": 6,
+    "initialization_ready_wall_seconds": 0.8126198779973492,
+    "CER_by_round": [
+      0.181941309255079,
+      0.181941309255079,
+      0.181941309255079
+    ],
+    "WER_by_round": [
+      0.43486590038314177,
+      0.43486590038314177,
+      0.43486590038314177
+    ],
+    "CER_no_punctuation_by_round": [
+      0.13189568706118354,
+      0.13189568706118354,
+      0.13189568706118354
+    ],
+    "S_by_round": [
+      109,
+      109,
+      109
+    ],
+    "D_by_round": [
+      242,
+      242,
+      242
+    ],
+    "I_by_round": [
+      52,
+      52,
+      52
+    ],
+    "N_per_round": 2215,
+    "exact_regions_by_round": [
+      9,
+      9,
+      9
+    ],
+    "empty_regions_by_round": [
+      0,
+      0,
+      0
+    ],
+    "first_batch_seconds": 52.372117266000714,
+    "warm_batch_seconds": [
+      44.741652763001184,
+      45.128517965000356
+    ],
+    "warm_mean_batch_seconds": 44.93508536400077,
+    "warm_mean_first_result_seconds": 6.249243778500386,
+    "peak_sampled_tree_rss_bytes": 1513639936,
+    "rounds": [
+      {
+        "round": 0,
+        "start_at": 31276.900348825,
+        "end_at": 31329.272466091,
+        "makespan_seconds": 52.372117266000714,
+        "first_image_completion_seconds": 7.944688563002273,
+        "first_result_received_seconds": 7.94626978100132,
+        "images_per_second": 0.190941297049525,
+        "sampled_tree_peak_rss_bytes": 1208958976,
+        "sample_count": 520
+      },
+      {
+        "round": 1,
+        "start_at": 31329.321769666,
+        "end_at": 31374.063422429,
+        "makespan_seconds": 44.741652763001184,
+        "first_image_completion_seconds": 6.10265138700197,
+        "first_result_received_seconds": 6.10428965599931,
+        "images_per_second": 0.22350537770632903,
+        "sampled_tree_peak_rss_bytes": 1506660352,
+        "sample_count": 444
+      },
+      {
+        "round": 2,
+        "start_at": 31374.115064602,
+        "end_at": 31419.243582567,
+        "makespan_seconds": 45.128517965000356,
+        "first_image_completion_seconds": 6.392533246998937,
+        "first_result_received_seconds": 6.394197901001462,
+        "images_per_second": 0.22158937299371428,
+        "sampled_tree_peak_rss_bytes": 1513639936,
+        "sample_count": 448
+      }
+    ],
+    "mean_round_images_per_second": 0.22254737535002167,
+    "warm_aggregate_images_per_second": 0.22254325142578646
+  },
+  {
+    "group": "D",
+    "workers": 2,
+    "ort_intra": 1,
+    "ort_inter": 1,
+    "rec_batch": 6,
+    "initialization_ready_wall_seconds": 0.7615409300015017,
+    "CER_by_round": [
+      0.181941309255079,
+      0.181941309255079,
+      0.181941309255079
+    ],
+    "WER_by_round": [
+      0.43486590038314177,
+      0.43486590038314177,
+      0.43486590038314177
+    ],
+    "CER_no_punctuation_by_round": [
+      0.13189568706118354,
+      0.13189568706118354,
+      0.13189568706118354
+    ],
+    "S_by_round": [
+      109,
+      109,
+      109
+    ],
+    "D_by_round": [
+      242,
+      242,
+      242
+    ],
+    "I_by_round": [
+      52,
+      52,
+      52
+    ],
+    "N_per_round": 2215,
+    "exact_regions_by_round": [
+      9,
+      9,
+      9
+    ],
+    "empty_regions_by_round": [
+      0,
+      0,
+      0
+    ],
+    "first_batch_seconds": 41.70281266500024,
+    "warm_batch_seconds": [
+      45.46051101199919,
+      38.971915377002006
+    ],
+    "warm_mean_batch_seconds": 42.2162131945006,
+    "warm_mean_first_result_seconds": 11.572046080998916,
+    "peak_sampled_tree_rss_bytes": 2598748160,
+    "rounds": [
+      {
+        "round": 0,
+        "start_at": 31420.359299466,
+        "end_at": 31462.062112131,
+        "makespan_seconds": 41.70281266500024,
+        "first_image_completion_seconds": 10.819057779001014,
+        "first_result_received_seconds": 10.82183167599942,
+        "images_per_second": 0.23979197950819903,
+        "sampled_tree_peak_rss_bytes": 2119286784,
+        "sample_count": 415
+      },
+      {
+        "round": 1,
+        "start_at": 31462.116937203,
+        "end_at": 31507.577448215,
+        "makespan_seconds": 45.46051101199919,
+        "first_image_completion_seconds": 13.664771936997568,
+        "first_result_received_seconds": 13.665707008996833,
+        "images_per_second": 0.21997113049082367,
+        "sampled_tree_peak_rss_bytes": 2512355328,
+        "sample_count": 452
+      },
+      {
+        "round": 2,
+        "start_at": 31507.624486514,
+        "end_at": 31546.596401891,
+        "makespan_seconds": 38.971915377002006,
+        "first_image_completion_seconds": 9.477354032998846,
+        "first_result_received_seconds": 9.478385153001,
+        "images_per_second": 0.2565950352520054,
+        "sampled_tree_peak_rss_bytes": 2598748160,
+        "sample_count": 388
+      }
+    ],
+    "mean_round_images_per_second": 0.23828308287141453,
+    "warm_aggregate_images_per_second": 0.23687581721097323
+  }
+]
