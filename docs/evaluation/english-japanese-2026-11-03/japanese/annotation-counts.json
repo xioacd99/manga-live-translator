@@ -1,0 +1,99 @@
+{
+  "ground_truth_sha256": "bffb692bc28d205d686d60d70a46ea605be26cc0ad40a07caa3c1de6852c449e",
+  "normalization": "NFKC, remove Unicode whitespace; preserve punctuation and case",
+  "images": [
+    {
+      "id": "JA01",
+      "certain_regions": 0,
+      "uncertain_regions": 6,
+      "normalized_characters": 0,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 6,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA02",
+      "certain_regions": 5,
+      "uncertain_regions": 0,
+      "normalized_characters": 65,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 5,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA03",
+      "certain_regions": 8,
+      "uncertain_regions": 0,
+      "normalized_characters": 149,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 8,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA04",
+      "certain_regions": 4,
+      "uncertain_regions": 0,
+      "normalized_characters": 52,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 4,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA05",
+      "certain_regions": 4,
+      "uncertain_regions": 0,
+      "normalized_characters": 91,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 4,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA06",
+      "certain_regions": 9,
+      "uncertain_regions": 0,
+      "normalized_characters": 102,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 9,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA07",
+      "certain_regions": 1,
+      "uncertain_regions": 0,
+      "normalized_characters": 4,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 1,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA08",
+      "certain_regions": 10,
+      "uncertain_regions": 0,
+      "normalized_characters": 191,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 10,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA09",
+      "certain_regions": 2,
+      "uncertain_regions": 0,
+      "normalized_characters": 24,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 2,
+      "target_count_is_estimate": false
+    },
+    {
+      "id": "JA10",
+      "certain_regions": 6,
+      "uncertain_regions": 0,
+      "normalized_characters": 128,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 6,
+      "target_count_is_estimate": false
+    }
+  ],
+  "total_normalized_characters": 806,
+  "total_certain_regions": 49,
+  "total_uncertain_regions": 6
+}

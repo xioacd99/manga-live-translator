@@ -60,3 +60,5 @@
 ## 方案对比实验
 
 [中文漫画10图、五方案CPU实测](docs/evaluation/chinese-comics-2026-11-03/README.md)：区分检测、OCR错字漏字与耗时，供选择下一阶段方案；没有自动替换产品默认实现。
+
+[英文与日文图文评测](docs/evaluation/english-japanese-2026-11-03/README.md)：独立语言样本、实际错漏字和耗时图，保留原始指标与范围限制。

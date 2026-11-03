@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "label": "A  Paddle 全图",
+      "value": 1.2255333656499716
+    },
+    {
+      "label": "B  Tesseract 全图",
+      "value": 1.9210326883003115
+    },
+    {
+      "label": "C  RT-DETR + Tesseract *",
+      "value": 2.2289005304499385
+    },
+    {
+      "label": "D  RT-DETR + Paddle 仅识别 *",
+      "value": 0.9175494967496954
+    },
+    {
+      "label": "E  RT-DETR + Paddle 再检测 *",
+      "value": 4.087542382498493
+    },
+    {
+      "label": "C-v  RT-DETR + 竖排 Tesseract *",
+      "value": 1.5513340449997077
+    }
+  ],
+  "title": "日文漫画 · 暖处理均值 ↓",
+  "unit": "秒",
+  "subtitle": "各路线同10图×2暖轮；云CPU单线程，非Mac/浏览器。* 组合路线为分阶段耗时相加。"
+}

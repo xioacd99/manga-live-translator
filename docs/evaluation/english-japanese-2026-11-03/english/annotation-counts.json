@@ -1,0 +1,110 @@
+{
+  "ground_truth_sha256": "984017f90ce822edb0c480207ed29ec8ec5ded587ba37f7ec40b3eb35e22753f",
+  "normalization": "NFKC, remove Unicode whitespace; preserve punctuation and case",
+  "images": [
+    {
+      "id": "EN01",
+      "certain_regions": 8,
+      "uncertain_regions": 1,
+      "normalized_characters": 328,
+      "fullyAnnotated": false,
+      "estimated_target_regions": 21,
+      "target_count_is_estimate": false,
+      "normalized_words": 85
+    },
+    {
+      "id": "EN02",
+      "certain_regions": 8,
+      "uncertain_regions": 0,
+      "normalized_characters": 417,
+      "fullyAnnotated": false,
+      "estimated_target_regions": 34,
+      "target_count_is_estimate": true,
+      "normalized_words": 105
+    },
+    {
+      "id": "EN03",
+      "certain_regions": 7,
+      "uncertain_regions": 0,
+      "normalized_characters": 161,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 7,
+      "target_count_is_estimate": false,
+      "normalized_words": 43
+    },
+    {
+      "id": "EN04",
+      "certain_regions": 1,
+      "uncertain_regions": 1,
+      "normalized_characters": 24,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 2,
+      "target_count_is_estimate": false,
+      "normalized_words": 6
+    },
+    {
+      "id": "EN05",
+      "certain_regions": 9,
+      "uncertain_regions": 1,
+      "normalized_characters": 120,
+      "fullyAnnotated": false,
+      "estimated_target_regions": 32,
+      "target_count_is_estimate": true,
+      "normalized_words": 27
+    },
+    {
+      "id": "EN06",
+      "certain_regions": 10,
+      "uncertain_regions": 0,
+      "normalized_characters": 243,
+      "fullyAnnotated": false,
+      "estimated_target_regions": 22,
+      "target_count_is_estimate": true,
+      "normalized_words": 55
+    },
+    {
+      "id": "EN07",
+      "certain_regions": 6,
+      "uncertain_regions": 1,
+      "normalized_characters": 333,
+      "fullyAnnotated": false,
+      "estimated_target_regions": 12,
+      "target_count_is_estimate": true,
+      "normalized_words": 70
+    },
+    {
+      "id": "EN08",
+      "certain_regions": 3,
+      "uncertain_regions": 0,
+      "normalized_characters": 100,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 3,
+      "target_count_is_estimate": false,
+      "normalized_words": 24
+    },
+    {
+      "id": "EN09",
+      "certain_regions": 6,
+      "uncertain_regions": 0,
+      "normalized_characters": 125,
+      "fullyAnnotated": true,
+      "estimated_target_regions": 6,
+      "target_count_is_estimate": false,
+      "normalized_words": 27
+    },
+    {
+      "id": "EN10",
+      "certain_regions": 9,
+      "uncertain_regions": 0,
+      "normalized_characters": 364,
+      "fullyAnnotated": false,
+      "estimated_target_regions": 26,
+      "target_count_is_estimate": true,
+      "normalized_words": 80
+    }
+  ],
+  "total_normalized_characters": 2215,
+  "total_certain_regions": 67,
+  "total_uncertain_regions": 4,
+  "total_normalized_words": 522
+}

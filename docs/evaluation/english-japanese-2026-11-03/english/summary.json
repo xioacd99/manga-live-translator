@@ -1,0 +1,692 @@
+[
+  {
+    "label": "A",
+    "scheme": "paddle_db_rec",
+    "CER": 0.309706546275395,
+    "CER_no_punctuation": 0.2683049147442327,
+    "WER": 0.6091954022988506,
+    "S": 185,
+    "D": 453,
+    "I": 48,
+    "N": 2215,
+    "exact": 2,
+    "referenceRegions": 67,
+    "meanWarmSeconds": 3.3445116907992998,
+    "meanFirstImagePassSeconds": 3.6412602412001434,
+    "stageSum": false,
+    "timing": {
+      "EN01": {
+        "firstSeconds": 6.416674866999529,
+        "warmMeanSeconds": 5.198659267998664,
+        "warmSeconds": [
+          5.117630601998826,
+          5.279687933998503
+        ],
+        "stageSum": false
+      },
+      "EN02": {
+        "firstSeconds": 7.091227214001265,
+        "warmMeanSeconds": 6.060667937499602,
+        "warmSeconds": [
+          5.92320570299853,
+          6.198130172000674
+        ],
+        "stageSum": false
+      },
+      "EN03": {
+        "firstSeconds": 2.397601674998441,
+        "warmMeanSeconds": 2.0639684019988636,
+        "warmSeconds": [
+          2.025755341997865,
+          2.102181461999862
+        ],
+        "stageSum": false
+      },
+      "EN04": {
+        "firstSeconds": 1.8007344699981331,
+        "warmMeanSeconds": 1.525314933998743,
+        "warmSeconds": [
+          1.5416291119981906,
+          1.5090007559992955
+        ],
+        "stageSum": false
+      },
+      "EN05": {
+        "firstSeconds": 4.902322837999236,
+        "warmMeanSeconds": 4.97323658949972,
+        "warmSeconds": [
+          4.919300995999947,
+          5.027172182999493
+        ],
+        "stageSum": false
+      },
+      "EN06": {
+        "firstSeconds": 4.1992371730011655,
+        "warmMeanSeconds": 3.954159611999785,
+        "warmSeconds": [
+          3.9236216579993197,
+          3.98469756600025
+        ],
+        "stageSum": false
+      },
+      "EN07": {
+        "firstSeconds": 2.885024702998635,
+        "warmMeanSeconds": 2.8155694144970767,
+        "warmSeconds": [
+          2.73113062399716,
+          2.9000082049969933
+        ],
+        "stageSum": false
+      },
+      "EN08": {
+        "firstSeconds": 1.591856009003095,
+        "warmMeanSeconds": 1.5647037135004211,
+        "warmSeconds": [
+          1.666825960001006,
+          1.4625814669998363
+        ],
+        "stageSum": false
+      },
+      "EN09": {
+        "firstSeconds": 0.9583460760004527,
+        "warmMeanSeconds": 0.9695552400007728,
+        "warmSeconds": [
+          0.9627921739993326,
+          0.9763183060022129
+        ],
+        "stageSum": false
+      },
+      "EN10": {
+        "firstSeconds": 4.169577387001482,
+        "warmMeanSeconds": 4.319281796999348,
+        "warmSeconds": [
+          4.3929527459986275,
+          4.245610848000069
+        ],
+        "stageSum": false
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 16,
+        "FP": 74,
+        "FN": 2,
+        "images": [
+          "EN03",
+          "EN04",
+          "EN08",
+          "EN09"
+        ],
+        "precision": 0.17777777777777778,
+        "recall": 0.8888888888888888,
+        "F1": 0.2962962962962963
+      },
+      {
+        "threshold": 0.5,
+        "TP": 2,
+        "FP": 88,
+        "FN": 16,
+        "images": [
+          "EN03",
+          "EN04",
+          "EN08",
+          "EN09"
+        ],
+        "precision": 0.022222222222222223,
+        "recall": 0.1111111111111111,
+        "F1": 0.037037037037037035
+      }
+    ]
+  },
+  {
+    "label": "B",
+    "scheme": "tesseract-best-eng-whole-psm11",
+    "CER": 0.8830699774266366,
+    "CER_no_punctuation": 0.8244734202607823,
+    "WER": 1.3065134099616857,
+    "S": 449,
+    "D": 1033,
+    "I": 474,
+    "N": 2215,
+    "exact": 0,
+    "referenceRegions": 67,
+    "meanWarmSeconds": 2.3510659640504046,
+    "meanFirstImagePassSeconds": 2.3365143015990033,
+    "stageSum": false,
+    "timing": {
+      "EN01": {
+        "firstSeconds": 3.517200398996472,
+        "warmMeanSeconds": 3.6410781824998555,
+        "warmSeconds": [
+          3.6941642630007117,
+          3.5879921019989998
+        ],
+        "stageSum": false
+      },
+      "EN02": {
+        "firstSeconds": 4.498563481999561,
+        "warmMeanSeconds": 4.585102228499949,
+        "warmSeconds": [
+          4.402024902999401,
+          4.768179554000497
+        ],
+        "stageSum": false
+      },
+      "EN03": {
+        "firstSeconds": 0.7814031059984118,
+        "warmMeanSeconds": 0.7829107340006158,
+        "warmSeconds": [
+          0.8133754010014236,
+          0.752446066999808
+        ],
+        "stageSum": false
+      },
+      "EN04": {
+        "firstSeconds": 0.7701520389989018,
+        "warmMeanSeconds": 0.7583610765011981,
+        "warmSeconds": [
+          0.7386381650026888,
+          0.7780839879997075
+        ],
+        "stageSum": false
+      },
+      "EN05": {
+        "firstSeconds": 5.007274341998622,
+        "warmMeanSeconds": 4.869739227000624,
+        "warmSeconds": [
+          4.886288138000294,
+          4.853190316000953
+        ],
+        "stageSum": false
+      },
+      "EN06": {
+        "firstSeconds": 2.293505339998752,
+        "warmMeanSeconds": 2.2277811950007456,
+        "warmSeconds": [
+          2.23648400599882,
+          2.2190783840026707
+        ],
+        "stageSum": false
+      },
+      "EN07": {
+        "firstSeconds": 1.7079893339984118,
+        "warmMeanSeconds": 1.762378592000343,
+        "warmSeconds": [
+          1.8017685200031848,
+          1.7229886639975012
+        ],
+        "stageSum": false
+      },
+      "EN08": {
+        "firstSeconds": 1.9758973590005189,
+        "warmMeanSeconds": 2.150960376501083,
+        "warmSeconds": [
+          2.0547220380045474,
+          2.2471987149976194
+        ],
+        "stageSum": false
+      },
+      "EN09": {
+        "firstSeconds": 0.27784596700035036,
+        "warmMeanSeconds": 0.28389399650041014,
+        "warmSeconds": [
+          0.2697715750001371,
+          0.2980164180006832
+        ],
+        "stageSum": false
+      },
+      "EN10": {
+        "firstSeconds": 2.5353116480000315,
+        "warmMeanSeconds": 2.4484540319992227,
+        "warmSeconds": [
+          2.4410169489998372,
+          2.4558911149986087
+        ],
+        "stageSum": false
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "images": [],
+        "precision": null,
+        "recall": null,
+        "F1": null
+      },
+      {
+        "threshold": 0.5,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "images": [],
+        "precision": null,
+        "recall": null,
+        "F1": null
+      }
+    ]
+  },
+  {
+    "label": "C",
+    "scheme": "rtdetr-tesseract-best-eng-crop2x-psm6",
+    "CER": 0.4270880361173815,
+    "CER_no_punctuation": 0.3786359077231695,
+    "WER": 0.7758620689655172,
+    "S": 566,
+    "D": 280,
+    "I": 100,
+    "N": 2215,
+    "exact": 2,
+    "referenceRegions": 67,
+    "meanWarmSeconds": 3.5958892959497613,
+    "meanFirstImagePassSeconds": 3.6134025529997786,
+    "stageSum": true,
+    "timing": {
+      "EN01": {
+        "firstSeconds": 6.958089703995233,
+        "warmMeanSeconds": 6.8658818555,
+        "warmSeconds": [
+          6.94003215499927,
+          6.79173155600073
+        ],
+        "stageSum": true
+      },
+      "EN02": {
+        "firstSeconds": 6.887646981999648,
+        "warmMeanSeconds": 7.158622890497303,
+        "warmSeconds": [
+          6.946988615996339,
+          7.370257164998266
+        ],
+        "stageSum": true
+      },
+      "EN03": {
+        "firstSeconds": 1.3457666959972094,
+        "warmMeanSeconds": 1.4353858949979668,
+        "warmSeconds": [
+          1.3819197629983546,
+          1.488852026997579
+        ],
+        "stageSum": true
+      },
+      "EN04": {
+        "firstSeconds": 1.1071334740042367,
+        "warmMeanSeconds": 1.0660739695012171,
+        "warmSeconds": [
+          1.0566845049999174,
+          1.0754634340025169
+        ],
+        "stageSum": true
+      },
+      "EN05": {
+        "firstSeconds": 10.896512342000985,
+        "warmMeanSeconds": 10.391572973500878,
+        "warmSeconds": [
+          10.4958795160012,
+          10.287266431000555
+        ],
+        "stageSum": true
+      },
+      "EN06": {
+        "firstSeconds": 2.220854405000817,
+        "warmMeanSeconds": 2.162702637000389,
+        "warmSeconds": [
+          2.1505273829991327,
+          2.1748778910016444
+        ],
+        "stageSum": true
+      },
+      "EN07": {
+        "firstSeconds": 1.7913576600005163,
+        "warmMeanSeconds": 1.786739831499045,
+        "warmSeconds": [
+          1.7563184039997595,
+          1.8171612589983306
+        ],
+        "stageSum": true
+      },
+      "EN08": {
+        "firstSeconds": 1.4421902689998933,
+        "warmMeanSeconds": 1.5079181874969727,
+        "warmSeconds": [
+          1.5213234229964838,
+          1.4945129519974616
+        ],
+        "stageSum": true
+      },
+      "EN09": {
+        "firstSeconds": 0.9835656720014267,
+        "warmMeanSeconds": 0.9820966845037946,
+        "warmSeconds": [
+          0.9818265130052459,
+          0.9823668560023434
+        ],
+        "stageSum": true
+      },
+      "EN10": {
+        "firstSeconds": 2.5009083259978215,
+        "warmMeanSeconds": 2.6018980350000476,
+        "warmSeconds": [
+          2.6954308329989107,
+          2.508365237001184
+        ],
+        "stageSum": true
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 17,
+        "FP": 1,
+        "FN": 1,
+        "images": [
+          "EN03",
+          "EN04",
+          "EN08",
+          "EN09"
+        ],
+        "precision": 0.9444444444444444,
+        "recall": 0.9444444444444444,
+        "F1": 0.9444444444444444
+      },
+      {
+        "threshold": 0.5,
+        "TP": 16,
+        "FP": 2,
+        "FN": 2,
+        "images": [
+          "EN03",
+          "EN04",
+          "EN08",
+          "EN09"
+        ],
+        "precision": 0.8888888888888888,
+        "recall": 0.8888888888888888,
+        "F1": 0.8888888888888888
+      }
+    ]
+  },
+  {
+    "label": "D",
+    "scheme": "rtdetr_paddle_rec_only",
+    "CER": 0.9399548532731377,
+    "CER_no_punctuation": 0.936308926780341,
+    "WER": 0.9885057471264368,
+    "S": 71,
+    "D": 2004,
+    "I": 7,
+    "N": 2215,
+    "exact": 0,
+    "referenceRegions": 67,
+    "meanWarmSeconds": 1.5875774326499192,
+    "meanFirstImagePassSeconds": 1.622736223900378,
+    "stageSum": true,
+    "timing": {
+      "EN01": {
+        "firstSeconds": 2.7678540999996124,
+        "warmMeanSeconds": 2.5421597619984495,
+        "warmSeconds": [
+          2.551351989997584,
+          2.532967533999315
+        ],
+        "stageSum": true
+      },
+      "EN02": {
+        "firstSeconds": 3.079692951996948,
+        "warmMeanSeconds": 3.179540014995924,
+        "warmSeconds": [
+          3.134773952997745,
+          3.224306076994103
+        ],
+        "stageSum": true
+      },
+      "EN03": {
+        "firstSeconds": 1.0568128559989536,
+        "warmMeanSeconds": 1.1415880204986215,
+        "warmSeconds": [
+          1.0900450569993418,
+          1.1931309839979012
+        ],
+        "stageSum": true
+      },
+      "EN04": {
+        "firstSeconds": 0.9761046279991715,
+        "warmMeanSeconds": 0.9734427120027258,
+        "warmSeconds": [
+          0.9694397700023474,
+          0.9774456540031042
+        ],
+        "stageSum": true
+      },
+      "EN05": {
+        "firstSeconds": 0.8845302020012987,
+        "warmMeanSeconds": 0.8299555069999169,
+        "warmSeconds": [
+          0.9040221249984952,
+          0.7558888890013387
+        ],
+        "stageSum": true
+      },
+      "EN06": {
+        "firstSeconds": 1.7682404560033573,
+        "warmMeanSeconds": 1.668197795501169,
+        "warmSeconds": [
+          1.5805564790013868,
+          1.755839112000951
+        ],
+        "stageSum": true
+      },
+      "EN07": {
+        "firstSeconds": 1.4142670970023155,
+        "warmMeanSeconds": 1.3352256115019727,
+        "warmSeconds": [
+          1.3074961980022217,
+          1.3629550250017237
+        ],
+        "stageSum": true
+      },
+      "EN08": {
+        "firstSeconds": 0.9218518979989131,
+        "warmMeanSeconds": 0.9081105525002858,
+        "warmSeconds": [
+          0.9033962420012213,
+          0.9128248629993504
+        ],
+        "stageSum": true
+      },
+      "EN09": {
+        "firstSeconds": 0.9641159520024994,
+        "warmMeanSeconds": 0.930794751502388,
+        "warmSeconds": [
+          0.9131687790031138,
+          0.9484207240016622
+        ],
+        "stageSum": true
+      },
+      "EN10": {
+        "firstSeconds": 2.39389209800071,
+        "warmMeanSeconds": 2.36675959899774,
+        "warmSeconds": [
+          2.260173666997984,
+          2.473345530997496
+        ],
+        "stageSum": true
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 17,
+        "FP": 1,
+        "FN": 1,
+        "images": [
+          "EN03",
+          "EN04",
+          "EN08",
+          "EN09"
+        ],
+        "precision": 0.9444444444444444,
+        "recall": 0.9444444444444444,
+        "F1": 0.9444444444444444
+      },
+      {
+        "threshold": 0.5,
+        "TP": 16,
+        "FP": 2,
+        "FN": 2,
+        "images": [
+          "EN03",
+          "EN04",
+          "EN08",
+          "EN09"
+        ],
+        "precision": 0.8888888888888888,
+        "recall": 0.8888888888888888,
+        "F1": 0.8888888888888888
+      }
+    ]
+  },
+  {
+    "label": "E",
+    "scheme": "rtdetr_paddle_inner_db_rec",
+    "CER": 0.32686230248306997,
+    "CER_no_punctuation": 0.2778335005015045,
+    "WER": 0.6302681992337165,
+    "S": 218,
+    "D": 493,
+    "I": 13,
+    "N": 2215,
+    "exact": 1,
+    "referenceRegions": 67,
+    "meanWarmSeconds": 9.184579341600106,
+    "meanFirstImagePassSeconds": 9.606124679899754,
+    "stageSum": true,
+    "timing": {
+      "EN01": {
+        "firstSeconds": 18.52830186899978,
+        "warmMeanSeconds": 17.495533124998076,
+        "warmSeconds": [
+          17.164868067997105,
+          17.82619818199905
+        ],
+        "stageSum": true
+      },
+      "EN02": {
+        "firstSeconds": 21.73326992499682,
+        "warmMeanSeconds": 19.724287982496293,
+        "warmSeconds": [
+          19.82795243499491,
+          19.62062352999768
+        ],
+        "stageSum": true
+      },
+      "EN03": {
+        "firstSeconds": 4.813335804998144,
+        "warmMeanSeconds": 4.837923083498046,
+        "warmSeconds": [
+          4.804194946997567,
+          4.871651219998523
+        ],
+        "stageSum": true
+      },
+      "EN04": {
+        "firstSeconds": 2.347588467003385,
+        "warmMeanSeconds": 2.2604034845033323,
+        "warmSeconds": [
+          2.2165129250043467,
+          2.304294044002318
+        ],
+        "stageSum": true
+      },
+      "EN05": {
+        "firstSeconds": 0.8857151639999593,
+        "warmMeanSeconds": 0.8285804279995628,
+        "warmSeconds": [
+          0.9037466100004294,
+          0.7534142459986961
+        ],
+        "stageSum": true
+      },
+      "EN06": {
+        "firstSeconds": 15.868986999000871,
+        "warmMeanSeconds": 15.92073260450145,
+        "warmSeconds": [
+          15.428770909001031,
+          16.41269430000187
+        ],
+        "stageSum": true
+      },
+      "EN07": {
+        "firstSeconds": 13.305365892999411,
+        "warmMeanSeconds": 11.737914011003102,
+        "warmSeconds": [
+          11.94825439900192,
+          11.527573623004287
+        ],
+        "stageSum": true
+      },
+      "EN08": {
+        "firstSeconds": 4.291619936998522,
+        "warmMeanSeconds": 4.031329536499609,
+        "warmSeconds": [
+          4.0290435969995855,
+          4.033615475999632
+        ],
+        "stageSum": true
+      },
+      "EN09": {
+        "firstSeconds": 3.2701307849993793,
+        "warmMeanSeconds": 3.2626909280022556,
+        "warmSeconds": [
+          3.190926789000456,
+          3.3344550670040554
+        ],
+        "stageSum": true
+      },
+      "EN10": {
+        "firstSeconds": 11.016931955001258,
+        "warmMeanSeconds": 11.74639823249934,
+        "warmSeconds": [
+          11.30256597399912,
+          12.190230490999559
+        ],
+        "stageSum": true
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 17,
+        "FP": 1,
+        "FN": 1,
+        "images": [
+          "EN03",
+          "EN04",
+          "EN08",
+          "EN09"
+        ],
+        "precision": 0.9444444444444444,
+        "recall": 0.9444444444444444,
+        "F1": 0.9444444444444444
+      },
+      {
+        "threshold": 0.5,
+        "TP": 16,
+        "FP": 2,
+        "FN": 2,
+        "images": [
+          "EN03",
+          "EN04",
+          "EN08",
+          "EN09"
+        ],
+        "precision": 0.8888888888888888,
+        "recall": 0.8888888888888888,
+        "F1": 0.8888888888888888
+      }
+    ]
+  }
+]

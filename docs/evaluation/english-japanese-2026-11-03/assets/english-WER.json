@@ -1,0 +1,27 @@
+{
+  "rows": [
+    {
+      "label": "A  Paddle 全图",
+      "value": 60.91954022988506
+    },
+    {
+      "label": "B  Tesseract 全图",
+      "value": 130.65134099616859
+    },
+    {
+      "label": "C  RT-DETR + Tesseract",
+      "value": 77.58620689655173
+    },
+    {
+      "label": "D  RT-DETR + Paddle 仅识别",
+      "value": 98.85057471264368
+    },
+    {
+      "label": "E  RT-DETR + Paddle 再检测",
+      "value": 63.02681992337165
+    }
+  ],
+  "title": "英文漫画 · 严格词错误率 WER ↓",
+  "unit": "%",
+  "subtitle": "522参考词；保留大小写/标点。区域间插空格，拆词会受罚；不是语义错误率。"
+}

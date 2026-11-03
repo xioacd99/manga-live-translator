@@ -1,0 +1,892 @@
+[
+  {
+    "label": "A",
+    "scheme": "paddle_db_rec",
+    "CER": 0.11538461538461539,
+    "CER_no_punctuation": 0.0778816199376947,
+    "WER": null,
+    "S": 10,
+    "D": 72,
+    "I": 11,
+    "N": 806,
+    "exact": 25,
+    "referenceRegions": 49,
+    "meanWarmSeconds": 1.2255333656499716,
+    "meanFirstImagePassSeconds": 1.2597819584003447,
+    "stageSum": false,
+    "timing": {
+      "JA01": {
+        "firstSeconds": 1.606413960998907,
+        "warmMeanSeconds": 1.5356907344994397,
+        "warmSeconds": [
+          1.615879977001896,
+          1.4555014919969835
+        ],
+        "stageSum": false
+      },
+      "JA02": {
+        "firstSeconds": 1.3485210219987493,
+        "warmMeanSeconds": 1.127589824000097,
+        "warmSeconds": [
+          1.1098848879992147,
+          1.1452947600009793
+        ],
+        "stageSum": false
+      },
+      "JA03": {
+        "firstSeconds": 1.2872124890018313,
+        "warmMeanSeconds": 1.2911448609993386,
+        "warmSeconds": [
+          1.2743320879999374,
+          1.3079576339987398
+        ],
+        "stageSum": false
+      },
+      "JA04": {
+        "firstSeconds": 0.9642367550004565,
+        "warmMeanSeconds": 0.9811055714999384,
+        "warmSeconds": [
+          0.9571858599992993,
+          1.0050252830005775
+        ],
+        "stageSum": false
+      },
+      "JA05": {
+        "firstSeconds": 1.2278503100023954,
+        "warmMeanSeconds": 1.316838317499787,
+        "warmSeconds": [
+          1.220834396997816,
+          1.4128422380017582
+        ],
+        "stageSum": false
+      },
+      "JA06": {
+        "firstSeconds": 1.518670972000109,
+        "warmMeanSeconds": 1.4653456889991503,
+        "warmSeconds": [
+          1.4725432640007057,
+          1.458148113997595
+        ],
+        "stageSum": false
+      },
+      "JA07": {
+        "firstSeconds": 0.7752556909981649,
+        "warmMeanSeconds": 0.7146109915011039,
+        "warmSeconds": [
+          0.6961252319997584,
+          0.7330967510024493
+        ],
+        "stageSum": false
+      },
+      "JA08": {
+        "firstSeconds": 1.6253317000009702,
+        "warmMeanSeconds": 1.5479793105005228,
+        "warmSeconds": [
+          1.4702848390006693,
+          1.6256737820003764
+        ],
+        "stageSum": false
+      },
+      "JA09": {
+        "firstSeconds": 0.9801901700011513,
+        "warmMeanSeconds": 0.9889540130006935,
+        "warmSeconds": [
+          0.970957774999988,
+          1.006950251001399
+        ],
+        "stageSum": false
+      },
+      "JA10": {
+        "firstSeconds": 1.264136514000711,
+        "warmMeanSeconds": 1.286074343999644,
+        "warmSeconds": [
+          1.2816921259982337,
+          1.2904565620010544
+        ],
+        "stageSum": false
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 44,
+        "FP": 117,
+        "FN": 11,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.2732919254658385,
+        "recall": 0.8,
+        "F1": 0.4074074074074074
+      },
+      {
+        "threshold": 0.5,
+        "TP": 18,
+        "FP": 143,
+        "FN": 37,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.11180124223602485,
+        "recall": 0.32727272727272727,
+        "F1": 0.16666666666666666
+      }
+    ]
+  },
+  {
+    "label": "B",
+    "scheme": "tesseract-best-jpn-whole-psm11",
+    "CER": 1.5694789081885856,
+    "CER_no_punctuation": 1.604361370716511,
+    "WER": null,
+    "S": 180,
+    "D": 292,
+    "I": 793,
+    "N": 806,
+    "exact": 0,
+    "referenceRegions": 49,
+    "meanWarmSeconds": 1.9210326883003115,
+    "meanFirstImagePassSeconds": 1.9230041220001877,
+    "stageSum": false,
+    "timing": {
+      "JA01": {
+        "firstSeconds": 2.317906891003251,
+        "warmMeanSeconds": 2.379117163499817,
+        "warmSeconds": [
+          2.4191878639981153,
+          2.3390464630015195
+        ],
+        "stageSum": false
+      },
+      "JA02": {
+        "firstSeconds": 1.8520019380003214,
+        "warmMeanSeconds": 1.8711024319995193,
+        "warmSeconds": [
+          1.8675007980018854,
+          1.8747040659971534
+        ],
+        "stageSum": false
+      },
+      "JA03": {
+        "firstSeconds": 1.9186745860017835,
+        "warmMeanSeconds": 1.9524829289987684,
+        "warmSeconds": [
+          1.988778358001262,
+          1.9161874999962747
+        ],
+        "stageSum": false
+      },
+      "JA04": {
+        "firstSeconds": 1.1065444769971073,
+        "warmMeanSeconds": 1.103002964001149,
+        "warmSeconds": [
+          1.142638030000031,
+          1.063367898002267
+        ],
+        "stageSum": false
+      },
+      "JA05": {
+        "firstSeconds": 2.5156049039959907,
+        "warmMeanSeconds": 2.441838468501344,
+        "warmSeconds": [
+          2.4456242190003397,
+          2.438052718002349
+        ],
+        "stageSum": false
+      },
+      "JA06": {
+        "firstSeconds": 1.9203706919997932,
+        "warmMeanSeconds": 2.0242146189976484,
+        "warmSeconds": [
+          1.947750923998654,
+          2.1006783139966427
+        ],
+        "stageSum": false
+      },
+      "JA07": {
+        "firstSeconds": 1.711838742002845,
+        "warmMeanSeconds": 1.609741982003674,
+        "warmSeconds": [
+          1.6300468820035459,
+          1.589437082003802
+        ],
+        "stageSum": false
+      },
+      "JA08": {
+        "firstSeconds": 2.8032906149998307,
+        "warmMeanSeconds": 2.8150141164977103,
+        "warmSeconds": [
+          2.866514753997326,
+          2.7635134789980946
+        ],
+        "stageSum": false
+      },
+      "JA09": {
+        "firstSeconds": 1.0041719489991665,
+        "warmMeanSeconds": 1.0220371935013683,
+        "warmSeconds": [
+          1.0222002639994026,
+          1.021874123003334
+        ],
+        "stageSum": false
+      },
+      "JA10": {
+        "firstSeconds": 2.079636426001787,
+        "warmMeanSeconds": 1.9917750150021165,
+        "warmSeconds": [
+          1.972187261004001,
+          2.011362769000232
+        ],
+        "stageSum": false
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "images": [],
+        "precision": null,
+        "recall": null,
+        "F1": null
+      },
+      {
+        "threshold": 0.5,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0,
+        "images": [],
+        "precision": null,
+        "recall": null,
+        "F1": null
+      }
+    ]
+  },
+  {
+    "label": "C",
+    "scheme": "rtdetr-tesseract-best-jpn-crop2x-psm6",
+    "CER": 0.8374689826302729,
+    "CER_no_punctuation": 0.7538940809968847,
+    "WER": null,
+    "S": 242,
+    "D": 156,
+    "I": 277,
+    "N": 806,
+    "exact": 3,
+    "referenceRegions": 49,
+    "meanWarmSeconds": 2.2289005304499385,
+    "meanFirstImagePassSeconds": 2.1981345505990872,
+    "stageSum": true,
+    "timing": {
+      "JA01": {
+        "firstSeconds": 4.157238241002529,
+        "warmMeanSeconds": 4.105167645000214,
+        "warmSeconds": [
+          4.130790086998344,
+          4.079545203002084
+        ],
+        "stageSum": true
+      },
+      "JA02": {
+        "firstSeconds": 4.713680325996971,
+        "warmMeanSeconds": 4.891380496997084,
+        "warmSeconds": [
+          4.792267266997831,
+          4.990493726996338
+        ],
+        "stageSum": true
+      },
+      "JA03": {
+        "firstSeconds": 2.013047036002319,
+        "warmMeanSeconds": 2.078671691501082,
+        "warmSeconds": [
+          2.0704598190014005,
+          2.0868835640007637
+        ],
+        "stageSum": true
+      },
+      "JA04": {
+        "firstSeconds": 1.0679128099992095,
+        "warmMeanSeconds": 1.0687422055028026,
+        "warmSeconds": [
+          1.0867178340041446,
+          1.050766577001461
+        ],
+        "stageSum": true
+      },
+      "JA05": {
+        "firstSeconds": 1.4960435860043362,
+        "warmMeanSeconds": 1.5632527230019178,
+        "warmSeconds": [
+          1.537677932000799,
+          1.5888275140030363
+        ],
+        "stageSum": true
+      },
+      "JA06": {
+        "firstSeconds": 2.1845975450002135,
+        "warmMeanSeconds": 2.37651500500367,
+        "warmSeconds": [
+          2.3865427990026364,
+          2.3664872110047037
+        ],
+        "stageSum": true
+      },
+      "JA07": {
+        "firstSeconds": 0.7894334620023128,
+        "warmMeanSeconds": 0.7997258904983711,
+        "warmSeconds": [
+          0.7928276369971973,
+          0.8066241439995447
+        ],
+        "stageSum": true
+      },
+      "JA08": {
+        "firstSeconds": 2.5447287419972238,
+        "warmMeanSeconds": 2.248260166001457,
+        "warmSeconds": [
+          2.304750984000497,
+          2.1917693480024174
+        ],
+        "stageSum": true
+      },
+      "JA09": {
+        "firstSeconds": 0.9822459819922115,
+        "warmMeanSeconds": 1.0110787849986973,
+        "warmSeconds": [
+          1.0147342789988725,
+          1.0074232909985221
+        ],
+        "stageSum": true
+      },
+      "JA10": {
+        "firstSeconds": 2.0324177759935482,
+        "warmMeanSeconds": 2.146210695994088,
+        "warmSeconds": [
+          2.138237509994913,
+          2.1541838819932635
+        ],
+        "stageSum": true
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 54,
+        "FP": 5,
+        "FN": 1,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.9152542372881356,
+        "recall": 0.9818181818181818,
+        "F1": 0.9473684210526315
+      },
+      {
+        "threshold": 0.5,
+        "TP": 39,
+        "FP": 20,
+        "FN": 16,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.6610169491525424,
+        "recall": 0.7090909090909091,
+        "F1": 0.6842105263157895
+      }
+    ]
+  },
+  {
+    "label": "D",
+    "scheme": "rtdetr_paddle_rec_only",
+    "CER": 1.0037220843672456,
+    "CER_no_punctuation": 1.0031152647975077,
+    "WER": null,
+    "S": 2,
+    "D": 804,
+    "I": 3,
+    "N": 806,
+    "exact": 0,
+    "referenceRegions": 49,
+    "meanWarmSeconds": 0.9175494967496954,
+    "meanFirstImagePassSeconds": 0.9263925388992531,
+    "stageSum": true,
+    "timing": {
+      "JA01": {
+        "firstSeconds": 1.1610910619993053,
+        "warmMeanSeconds": 0.9814272094998906,
+        "warmSeconds": [
+          0.9652028109998521,
+          0.9976516079999291
+        ],
+        "stageSum": true
+      },
+      "JA02": {
+        "firstSeconds": 0.8983240679977135,
+        "warmMeanSeconds": 0.8890866214986926,
+        "warmSeconds": [
+          0.8957296410000959,
+          0.8824436019972891
+        ],
+        "stageSum": true
+      },
+      "JA03": {
+        "firstSeconds": 0.9416524130028429,
+        "warmMeanSeconds": 1.0124599105025172,
+        "warmSeconds": [
+          1.0000372200005732,
+          1.0248826010044612
+        ],
+        "stageSum": true
+      },
+      "JA04": {
+        "firstSeconds": 0.8611958290025805,
+        "warmMeanSeconds": 0.8457596315008732,
+        "warmSeconds": [
+          0.8499820770019741,
+          0.8415371859997722
+        ],
+        "stageSum": true
+      },
+      "JA05": {
+        "firstSeconds": 0.857002563001748,
+        "warmMeanSeconds": 0.8915425435011848,
+        "warmSeconds": [
+          0.8713468010006109,
+          0.9117382860017588
+        ],
+        "stageSum": true
+      },
+      "JA06": {
+        "firstSeconds": 1.0844585520020464,
+        "warmMeanSeconds": 1.1245996875046202,
+        "warmSeconds": [
+          1.1105779360060115,
+          1.1386214390032292
+        ],
+        "stageSum": true
+      },
+      "JA07": {
+        "firstSeconds": 0.744017203996742,
+        "warmMeanSeconds": 0.7369637674981595,
+        "warmSeconds": [
+          0.7337259269981987,
+          0.7402016079981204
+        ],
+        "stageSum": true
+      },
+      "JA08": {
+        "firstSeconds": 1.0331390029953145,
+        "warmMeanSeconds": 0.9775378909971423,
+        "warmSeconds": [
+          0.9789503559961631,
+          0.9761254259981215
+        ],
+        "stageSum": true
+      },
+      "JA09": {
+        "firstSeconds": 0.7670642569964293,
+        "warmMeanSeconds": 0.795014934497247,
+        "warmSeconds": [
+          0.8003853519965888,
+          0.7896445169979052
+        ],
+        "stageSum": true
+      },
+      "JA10": {
+        "firstSeconds": 0.9159804379978086,
+        "warmMeanSeconds": 0.9211027704966273,
+        "warmSeconds": [
+          0.9226186399959261,
+          0.9195869009973285
+        ],
+        "stageSum": true
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 54,
+        "FP": 5,
+        "FN": 1,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.9152542372881356,
+        "recall": 0.9818181818181818,
+        "F1": 0.9473684210526315
+      },
+      {
+        "threshold": 0.5,
+        "TP": 39,
+        "FP": 20,
+        "FN": 16,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.6610169491525424,
+        "recall": 0.7090909090909091,
+        "F1": 0.6842105263157895
+      }
+    ]
+  },
+  {
+    "label": "E",
+    "scheme": "rtdetr_paddle_inner_db_rec",
+    "CER": 0.2878411910669975,
+    "CER_no_punctuation": 0.12305295950155763,
+    "WER": null,
+    "S": 32,
+    "D": 196,
+    "I": 4,
+    "N": 806,
+    "exact": 9,
+    "referenceRegions": 49,
+    "meanWarmSeconds": 4.087542382498493,
+    "meanFirstImagePassSeconds": 4.341966892099535,
+    "stageSum": true,
+    "timing": {
+      "JA01": {
+        "firstSeconds": 7.222942857998551,
+        "warmMeanSeconds": 5.995478576997704,
+        "warmSeconds": [
+          5.918815087996716,
+          6.072142065998692
+        ],
+        "stageSum": true
+      },
+      "JA02": {
+        "firstSeconds": 4.208895206999409,
+        "warmMeanSeconds": 3.7287122754968474,
+        "warmSeconds": [
+          3.665598904997048,
+          3.791825645996647
+        ],
+        "stageSum": true
+      },
+      "JA03": {
+        "firstSeconds": 5.403231953001481,
+        "warmMeanSeconds": 5.3820026660019415,
+        "warmSeconds": [
+          5.3895903790029625,
+          5.37441495300092
+        ],
+        "stageSum": true
+      },
+      "JA04": {
+        "firstSeconds": 3.1536625380035996,
+        "warmMeanSeconds": 3.1629542354992326,
+        "warmSeconds": [
+          3.1264725119989327,
+          3.199435958999533
+        ],
+        "stageSum": true
+      },
+      "JA05": {
+        "firstSeconds": 2.955704473001111,
+        "warmMeanSeconds": 2.970666372999897,
+        "warmSeconds": [
+          2.8674153449988733,
+          3.073917401000921
+        ],
+        "stageSum": true
+      },
+      "JA06": {
+        "firstSeconds": 7.331214649001935,
+        "warmMeanSeconds": 6.738729519502691,
+        "warmSeconds": [
+          6.71472950400319,
+          6.762729535002192
+        ],
+        "stageSum": true
+      },
+      "JA07": {
+        "firstSeconds": 1.4000621459998057,
+        "warmMeanSeconds": 1.4119268140001031,
+        "warmSeconds": [
+          1.3914218210004439,
+          1.4324318069997626
+        ],
+        "stageSum": true
+      },
+      "JA08": {
+        "firstSeconds": 5.237070247998647,
+        "warmMeanSeconds": 5.102074047496886,
+        "warmSeconds": [
+          4.9695385059978765,
+          5.234609588995896
+        ],
+        "stageSum": true
+      },
+      "JA09": {
+        "firstSeconds": 1.4884724379943983,
+        "warmMeanSeconds": 1.631632964495382,
+        "warmSeconds": [
+          1.6256637969944094,
+          1.6376021319963547
+        ],
+        "stageSum": true
+      },
+      "JA10": {
+        "firstSeconds": 5.018412410996411,
+        "warmMeanSeconds": 4.751246352494245,
+        "warmSeconds": [
+          4.831163466993894,
+          4.6713292379945965
+        ],
+        "stageSum": true
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 54,
+        "FP": 5,
+        "FN": 1,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.9152542372881356,
+        "recall": 0.9818181818181818,
+        "F1": 0.9473684210526315
+      },
+      {
+        "threshold": 0.5,
+        "TP": 39,
+        "FP": 20,
+        "FN": 16,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.6610169491525424,
+        "recall": 0.7090909090909091,
+        "F1": 0.6842105263157895
+      }
+    ]
+  },
+  {
+    "label": "C-v",
+    "scheme": "rtdetr-tesseract-best-jpn_vert-crop2x-psm5",
+    "CER": 0.7431761786600496,
+    "CER_no_punctuation": 0.602803738317757,
+    "WER": null,
+    "S": 139,
+    "D": 141,
+    "I": 319,
+    "N": 806,
+    "exact": 8,
+    "referenceRegions": 49,
+    "meanWarmSeconds": 1.5513340449997077,
+    "meanFirstImagePassSeconds": 1.546990265498389,
+    "stageSum": true,
+    "timing": {
+      "JA01": {
+        "firstSeconds": 2.3042315119994865,
+        "warmMeanSeconds": 2.184030617000828,
+        "warmSeconds": [
+          2.1794947289998836,
+          2.188566505001772
+        ],
+        "stageSum": true
+      },
+      "JA02": {
+        "firstSeconds": 3.431116233994162,
+        "warmMeanSeconds": 3.4017280179985567,
+        "warmSeconds": [
+          3.356226401997493,
+          3.447229633999621
+        ],
+        "stageSum": true
+      },
+      "JA03": {
+        "firstSeconds": 1.3781900880028715,
+        "warmMeanSeconds": 1.4723763945023873,
+        "warmSeconds": [
+          1.452189200003886,
+          1.4925635890008888
+        ],
+        "stageSum": true
+      },
+      "JA04": {
+        "firstSeconds": 1.039088864000064,
+        "warmMeanSeconds": 1.0082976630035436,
+        "warmSeconds": [
+          1.0150728360013472,
+          1.00152249000574
+        ],
+        "stageSum": true
+      },
+      "JA05": {
+        "firstSeconds": 1.1731517039982573,
+        "warmMeanSeconds": 1.22442009150148,
+        "warmSeconds": [
+          1.1872501610024702,
+          1.2615900220004896
+        ],
+        "stageSum": true
+      },
+      "JA06": {
+        "firstSeconds": 1.3590966030009568,
+        "warmMeanSeconds": 1.4229767035041094,
+        "warmSeconds": [
+          1.415372832003195,
+          1.430580575005024
+        ],
+        "stageSum": true
+      },
+      "JA07": {
+        "firstSeconds": 0.887228059996849,
+        "warmMeanSeconds": 0.8764530314987014,
+        "warmSeconds": [
+          0.8795587010001582,
+          0.8733473619972446
+        ],
+        "stageSum": true
+      },
+      "JA08": {
+        "firstSeconds": 1.6684907779966707,
+        "warmMeanSeconds": 1.638257590495932,
+        "warmSeconds": [
+          1.640314206993662,
+          1.6362009739982022
+        ],
+        "stageSum": true
+      },
+      "JA09": {
+        "firstSeconds": 0.8514558599972988,
+        "warmMeanSeconds": 0.8767279829962227,
+        "warmSeconds": [
+          0.8860294649969547,
+          0.8674265009954907
+        ],
+        "stageSum": true
+      },
+      "JA10": {
+        "firstSeconds": 1.3778529519972726,
+        "warmMeanSeconds": 1.4080723574953171,
+        "warmSeconds": [
+          1.4180336139939318,
+          1.3981111009967027
+        ],
+        "stageSum": true
+      }
+    },
+    "detectorCompletePages": [
+      {
+        "threshold": 0.3,
+        "TP": 54,
+        "FP": 5,
+        "FN": 1,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.9152542372881356,
+        "recall": 0.9818181818181818,
+        "F1": 0.9473684210526315
+      },
+      {
+        "threshold": 0.5,
+        "TP": 39,
+        "FP": 20,
+        "FN": 16,
+        "images": [
+          "JA01",
+          "JA02",
+          "JA03",
+          "JA04",
+          "JA05",
+          "JA06",
+          "JA07",
+          "JA08",
+          "JA09",
+          "JA10"
+        ],
+        "precision": 0.6610169491525424,
+        "recall": 0.7090909090909091,
+        "F1": 0.6842105263157895
+      }
+    ]
+  }
+]

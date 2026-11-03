@@ -1,0 +1,96 @@
+{
+  "english": {
+    "full": {
+      "status": "complete",
+      "images": 10,
+      "calls": 30,
+      "source_hashes_all_match": true,
+      "all_repeats_identical_bbox_text_confidence": true,
+      "prediction_sha256": "323bca85f8eb3907e45a260ac91d31cdcfc29f6e214a8984cc22543194d0bab8",
+      "import_seconds": 0.29227073400033987,
+      "cached_model_init_seconds": 0.16476063699883525,
+      "first_image_first_call_seconds": 6.416674866999529,
+      "warm_mean_seconds": 3.3445116907992998,
+      "cpu_threads": 1,
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "rec-only": {
+      "status": "complete",
+      "images": 10,
+      "calls": 30,
+      "source_hashes_all_match": true,
+      "all_repeats_identical_bbox_text_confidence": true,
+      "prediction_sha256": "3fbf8b90eff2120d0634c88c4981315012c6f535a4223602755ebfc0dec616fa",
+      "import_seconds": 0.2623362250014907,
+      "cached_model_init_seconds": 0.18193221999899833,
+      "first_image_first_call_seconds": 1.8392390660010278,
+      "warm_mean_seconds": 0.7791637337499197,
+      "cpu_threads": 1,
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "inner-db-rec": {
+      "status": "complete",
+      "images": 10,
+      "calls": 30,
+      "source_hashes_all_match": true,
+      "all_repeats_identical_bbox_text_confidence": true,
+      "prediction_sha256": "47de19c82cc97d11dcbab4afa8cbbb4ec1743893172a9b5273053902a56c8610",
+      "import_seconds": 0.24753128999873297,
+      "cached_model_init_seconds": 0.13399766799921053,
+      "first_image_first_call_seconds": 17.599686835001194,
+      "warm_mean_seconds": 8.376165642700107,
+      "cpu_threads": 1,
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    }
+  },
+  "japanese": {
+    "full": {
+      "status": "complete",
+      "images": 10,
+      "calls": 30,
+      "source_hashes_all_match": true,
+      "all_repeats_identical_bbox_text_confidence": true,
+      "prediction_sha256": "0873cd9384a9075b355e9b182fba3978efe7bf2e05341d5b98fba459770bb795",
+      "import_seconds": 0.32996798800013494,
+      "cached_model_init_seconds": 0.18755383199822973,
+      "first_image_first_call_seconds": 1.606413960998907,
+      "warm_mean_seconds": 1.2255333656499716,
+      "cpu_threads": 1,
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "rec-only": {
+      "status": "complete",
+      "images": 10,
+      "calls": 30,
+      "source_hashes_all_match": true,
+      "all_repeats_identical_bbox_text_confidence": true,
+      "prediction_sha256": "24618870e2b09e0d5e482e8356e8d3f60867cb7904b6df97626ce5f3c7507ee6",
+      "import_seconds": 0.32777732300019125,
+      "cached_model_init_seconds": 0.1447106569976313,
+      "first_image_first_call_seconds": 0.273289933000342,
+      "warm_mean_seconds": 0.17962412200031394,
+      "cpu_threads": 1,
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    },
+    "inner-db-rec": {
+      "status": "complete",
+      "images": 10,
+      "calls": 30,
+      "source_hashes_all_match": true,
+      "all_repeats_identical_bbox_text_confidence": true,
+      "prediction_sha256": "b3f73a0078f76a73b231240c0f461bd7cb8c9a1307d1585045207e657fe27ea2",
+      "import_seconds": 0.22767454899803852,
+      "cached_model_init_seconds": 0.14854129300147179,
+      "first_image_first_call_seconds": 6.335141728999588,
+      "warm_mean_seconds": 3.3496170077491114,
+      "cpu_threads": 1,
+      "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+    }
+  }
+}

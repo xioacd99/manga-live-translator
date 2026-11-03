@@ -19,3 +19,5 @@ Record techniques supported by actual project experience, including when they ap
 - [预训练检测、本地下载与生命周期](pretrained-local-detector.md)
 
 - [中文漫画候选方案的公平比较](chinese-comic-benchmark.md)
+
+- [多语言漫画评测与可视化](multilingual-comic-evaluation.md)

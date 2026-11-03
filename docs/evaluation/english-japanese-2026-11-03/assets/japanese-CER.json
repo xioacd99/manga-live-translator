@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "label": "A  Paddle 全图",
+      "value": 11.538461538461538
+    },
+    {
+      "label": "B  Tesseract 全图",
+      "value": 156.94789081885855
+    },
+    {
+      "label": "C  RT-DETR + Tesseract",
+      "value": 83.74689826302729
+    },
+    {
+      "label": "D  RT-DETR + Paddle 仅识别",
+      "value": 100.37220843672456
+    },
+    {
+      "label": "E  RT-DETR + Paddle 再检测",
+      "value": 28.78411910669975
+    },
+    {
+      "label": "C-v  RT-DETR + 竖排 Tesseract",
+      "value": 74.31761786600497
+    }
+  ],
+  "title": "日文漫画 · 字符错误率 CER ↓",
+  "unit": "%",
+  "subtitle": "9 张现代竖排页 / 49 处目标 / 806 字符；历史手写页未评 OCR。"
+}

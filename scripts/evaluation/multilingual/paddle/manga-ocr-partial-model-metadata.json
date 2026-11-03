@@ -1,0 +1,47 @@
+{
+  "status": "blocked_not_run",
+  "repo": "kha-white/manga-ocr-base",
+  "revision": "aa6573bd10b0d446cbf622e29c3e084914df9741",
+  "license": "apache-2.0",
+  "downloaded_files": [
+    {
+      "name": "README.md",
+      "bytes": 705,
+      "sha256": "32f413afcc4295151e77d25202c5c5d81ef621b46f947da1c3bde13256dc0d5f",
+      "url": "https://huggingface.co/kha-white/manga-ocr-base/resolve/aa6573bd10b0d446cbf622e29c3e084914df9741/README.md"
+    },
+    {
+      "name": "config.json",
+      "bytes": 77546,
+      "sha256": "8c0e395de8fa699daaac21aee33a4ba9bd1309cfbff03147813d2a025f39f349",
+      "url": "https://huggingface.co/kha-white/manga-ocr-base/resolve/aa6573bd10b0d446cbf622e29c3e084914df9741/config.json"
+    },
+    {
+      "name": "preprocessor_config.json",
+      "bytes": 228,
+      "sha256": "af4eb4d79cf61b47010fc0bc9352ee967579c417423b4917188d809b7e048948",
+      "url": "https://huggingface.co/kha-white/manga-ocr-base/resolve/aa6573bd10b0d446cbf622e29c3e084914df9741/preprocessor_config.json"
+    },
+    {
+      "name": "pytorch_model.bin",
+      "bytes": 444135475,
+      "sha256": "c63e0bb5b3ff798c5991de18a8e0956c7ee6d1563aca6729029815eda6f5c2eb",
+      "url": "https://huggingface.co/kha-white/manga-ocr-base/resolve/aa6573bd10b0d446cbf622e29c3e084914df9741/pytorch_model.bin"
+    }
+  ],
+  "total_downloaded_bytes": 444213954,
+  "failed_url": "https://huggingface.co/kha-white/manga-ocr-base/resolve/aa6573bd10b0d446cbf622e29c3e084914df9741/special_tokens_map.json",
+  "error": "urllib.error.URLError: <urlopen error Tunnel connection failed: 403 Forbidden>",
+  "missing_files": [
+    "special_tokens_map.json",
+    "tokenizer_config.json",
+    "vocab.txt"
+  ],
+  "retry_count": 0,
+  "not_attempted_after_denial": [
+    "alternate paths",
+    "alternate mirrors",
+    "other network tools"
+  ],
+  "inference_performed": false
+}

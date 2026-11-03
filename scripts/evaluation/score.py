@@ -47,7 +47,58 @@ def ordered(regions,orientation='horizontal'):
     if str(orientation).startswith('vertical'):return sorted(regions,key=lambda r:(-(r['bbox']['x']+r['bbox']['width']/2),r['bbox']['y']))
     return sorted(regions,key=lambda r:(r['bbox']['y'],r['bbox']['x']))
 
-def score_image(gt,pred):
+TEXT_ORDERS = ('line-overlap-v1', 'line-column-overlap-v2', 'legacy-yx')
+
+def words(text):
+    """仅英文词错误率：NFKC 后按 Unicode 空白拆分，保留大小写和标点。"""
+    return unicodedata.normalize('NFKC', text or '').split()
+
+def versioned_ordered(regions, orientation='horizontal', version='legacy-yx'):
+    """显式选择的几何顺序；默认保持历史 CER 的逐框排序。"""
+    if version not in TEXT_ORDERS:
+        raise ValueError('Unsupported text ordering version')
+    vertical = str(orientation).startswith('vertical')
+    if version == 'legacy-yx' or (vertical and version == 'line-overlap-v1'):
+        return ordered(regions, orientation)
+    if vertical:
+        # v2 仅为竖排列提供 v1 同行规则的对称版本，不使用文字或模型分数。
+        columns = []
+        for region in ordered(regions, orientation):
+            b = region['bbox']; center = b['x'] + b['width'] / 2
+            candidates = []
+            for index, column in enumerate(columns):
+                a = column[0]['bbox']; anchor = a['x'] + a['width'] / 2
+                overlap = max(0, min(a['x'] + a['width'], b['x'] + b['width']) - max(a['x'], b['x']))
+                if overlap / max(a['width'], b['width']) >= .5 and abs(center - anchor) <= .5 * min(a['width'], b['width']):
+                    candidates.append((abs(center - anchor), index))
+            if candidates:
+                columns[min(candidates)[1]].append(region)
+            else:
+                columns.append([region])
+        # 列按固定锚点的横向中心从右到左；列内从上到下，避免微小横向偏移颠倒字序。
+        return [region for column in columns for region in sorted(column, key=lambda r: (r['bbox']['y'], -(r['bbox']['x'] + r['bbox']['width'] / 2)))]
+    lines = []
+    for region in ordered(regions):
+        b = region['bbox']; center = b['y'] + b['height'] / 2
+        candidates = []
+        for index, line in enumerate(lines):
+            # 固定首框作为行锚点，避免链式重叠把相邻行不断合并。
+            a = line[0]['bbox']; anchor = a['y'] + a['height'] / 2
+            overlap = max(0, min(a['y'] + a['height'], b['y'] + b['height']) - max(a['y'], b['y']))
+            if overlap / max(a['height'], b['height']) >= .5 and abs(center - anchor) <= .5 * min(a['height'], b['height']):
+                candidates.append((abs(center - anchor), index))
+        if candidates:
+            lines[min(candidates)[1]].append(region)
+        else:
+            lines.append([region])
+    return [region for line in lines for region in sorted(line, key=lambda r: (r['bbox']['x'], r['bbox']['y']))]
+
+def score_image(gt,pred,include_wer=False,text_order='legacy-yx'):
+    if text_order not in TEXT_ORDERS:raise ValueError('Unsupported text ordering version')
+    ocr_evaluated=gt.get('ocrEvaluation',True)
+    if not isinstance(ocr_evaluated,bool):raise ValueError('ocrEvaluation must be boolean')
+    wer_supported=include_wer and gt.get('language')=='en'
+    word_totals={k:0 for k in ['S','D','I','N']}
     for r in gt.get('regions',[])+gt.get('ignoreRegions',[])+pred.get('regions',[])+pred.get('detectorRegions',[]):
         validate_bbox(r.get('bbox'))
         b=r['bbox']
@@ -64,15 +115,20 @@ def score_image(gt,pred):
         else:unmatched.append(p)
     totals={k:0 for k in ['S','D','I','N']};nopunct=dict(totals);rows=[];exact=0;count=0
     for g,items in zip(target,groups):
-        if g.get('certainty')!='certain' or not isinstance(g.get('text'),str):continue
-        hypothesis=''.join(p.get('text','') for p in ordered(items,g.get('orientation','horizontal')))
+        if not ocr_evaluated or g.get('certainty')!='certain' or not isinstance(g.get('text'),str):continue
+        hypothesis=''.join(p.get('text','') for p in versioned_ordered(items,g.get('orientation','horizontal'),text_order))
         ref=normalize(g['text']);hyp=normalize(hypothesis)
         e=edits(ref,hyp);e2=edits(normalize(g['text'],True),normalize(hypothesis,True))
         for k in totals:totals[k]+=e[k];nopunct[k]+=e2[k]
         exact+=ref==hyp;count+=1
         rows.append(dict(id=g['id'],**e,exact=ref==hyp,predictionCount=len(items)))
-    extra=sum(len(normalize(p.get('text',''))) for p in unmatched) if gt.get('fullyAnnotated') else 0
-    extra2=sum(len(normalize(p.get('text',''),True)) for p in unmatched) if gt.get('fullyAnnotated') else 0
+        if wer_supported:
+            word_hypothesis=' '.join(p.get('text','') for p in versioned_ordered(items,g.get('orientation','horizontal'),text_order))
+            we=edits(words(g['text']),words(word_hypothesis))
+            for k in word_totals:word_totals[k]+=we[k]
+            rows[-1]['wordEdits']=we
+    extra=sum(len(normalize(p.get('text',''))) for p in unmatched) if ocr_evaluated and gt.get('fullyAnnotated') else 0
+    extra2=sum(len(normalize(p.get('text',''),True)) for p in unmatched) if ocr_evaluated and gt.get('fullyAnnotated') else 0
     totals['I']+=extra;nopunct['I']+=extra2
     boxes=[p['bbox'] for p in pred.get('detectorRegions',pred.get('regions',[])) if not ignore(p['bbox'],ignored)]
     gtboxes=[g['bbox'] for g in target];metrics={}
@@ -82,9 +138,21 @@ def score_image(gt,pred):
     # 单个预测框与目标框存在较强包含关系的数量，仅作弱重叠诊断。
     # 不是联合覆盖率：段落内一个很短的行框也可能使该目标计数。不能解释为召回率或mAP。
     covered=sum(any(intersection(g,p)/area(g)>=.5 or intersection(g,p)/area(p)>=.8 for p in boxes) for g in gtboxes)
-    return dict(id=gt['id'],sha256=gt['sha256'],fullyAnnotated=gt.get('fullyAnnotated',False),**totals,CER=(totals['S']+totals['D']+totals['I'])/totals['N'] if totals['N'] else None,CER_no_punctuation=(nopunct['S']+nopunct['D']+nopunct['I'])/nopunct['N'] if nopunct['N'] else None,noPunctuationEdits=nopunct,exactRegions=exact,referenceRegions=count,unmatchedInsertionCharacters=extra,detector=metrics,weakOverlapTargetCount=covered,detectorTargets=len(gtboxes),regions=rows,error=pred.get('error'),timing=pred.get('timing',{}))
+    result=dict(id=gt['id'],sha256=gt['sha256'],fullyAnnotated=gt.get('fullyAnnotated',False),**totals,CER=(totals['S']+totals['D']+totals['I'])/totals['N'] if totals['N'] else None,CER_no_punctuation=(nopunct['S']+nopunct['D']+nopunct['I'])/nopunct['N'] if nopunct['N'] else None,noPunctuationEdits=nopunct,exactRegions=exact,referenceRegions=count,unmatchedInsertionCharacters=extra,detector=metrics,weakOverlapTargetCount=covered,detectorTargets=len(gtboxes),regions=rows,error=pred.get('error'),timing=pred.get('timing',{}))
 
-def score(gt,data):
+    if 'ocrEvaluation' in gt:result['ocrEvaluated']=ocr_evaluated
+    if text_order != 'legacy-yx':result['textOrdering']=text_order
+    if include_wer:
+        word_extra=sum(len(words(p.get('text',''))) for p in unmatched) if ocr_evaluated and wer_supported and gt.get('fullyAnnotated') else 0
+        word_totals['I']+=word_extra
+        result.update(WER=(word_totals['S']+word_totals['D']+word_totals['I'])/word_totals['N'] if wer_supported and word_totals['N'] else None,
+                      wordEdits=word_totals if wer_supported else None,werSupported=bool(wer_supported),
+                      werUnsupportedReason=None if wer_supported else 'Only GT language=en supports whitespace-tokenized WER',
+                      unmatchedInsertionWords=word_extra if wer_supported else None,werOrdering=text_order)
+    return result
+
+def score(gt,data,include_wer=False,text_order='legacy-yx'):
+    if text_order not in TEXT_ORDERS:raise ValueError('Unsupported text ordering version')
     for name,images in [('ground truth',gt['images']),('predictions',data['images'])]:
         ids=[i['id'] for i in images]
         if len(ids)!=len(set(ids)):raise ValueError('Duplicate image ID in '+name)
@@ -92,11 +160,26 @@ def score(gt,data):
     for g in gt['images']:
         p=indexed.get(g['id'],{'id':g['id'],'regions':[],'error':'missing prediction'})
         if p.get('sha256') and p['sha256']!=g['sha256']:raise ValueError('Input hash mismatch: '+g['id'])
-        rows.append(score_image(g,p))
+        rows.append(score_image({**g,'language':g.get('language',gt.get('language'))},p,include_wer=include_wer,text_order=text_order))
     totals={k:sum(r[k] for r in rows) for k in ['S','D','I','N']};micro=(totals['S']+totals['D']+totals['I'])/totals['N'] if totals['N'] else None
     valid_cer=[r['CER'] for r in rows if r['CER'] is not None]
     nopunct={k:sum(r['noPunctuationEdits'][k] for r in rows) for k in ['S','D','I','N']}
-    return dict(scheme=data.get('scheme'),normalization='NFKC; remove Unicode whitespace; preserve punctuation/case/script',matching='geometry only, prediction overlap >=0.5 assigned once; strict detection maximum-cardinality IoU matching',**totals,microCER=micro,macroCER=sum(valid_cer)/len(valid_cer) if valid_cer else None,noPunctuationEdits=nopunct,microCER_no_punctuation=(nopunct['S']+nopunct['D']+nopunct['I'])/nopunct['N'] if nopunct['N'] else None,exactRegions=sum(r['exactRegions'] for r in rows),referenceRegions=sum(r['referenceRegions'] for r in rows),images=rows)
+    result=dict(scheme=data.get('scheme'),normalization='NFKC; remove Unicode whitespace; preserve punctuation/case/script',matching='geometry only, prediction overlap >=0.5 assigned once; strict detection maximum-cardinality IoU matching',**totals,microCER=micro,macroCER=sum(valid_cer)/len(valid_cer) if valid_cer else None,noPunctuationEdits=nopunct,microCER_no_punctuation=(nopunct['S']+nopunct['D']+nopunct['I'])/nopunct['N'] if nopunct['N'] else None,exactRegions=sum(r['exactRegions'] for r in rows),referenceRegions=sum(r['referenceRegions'] for r in rows),images=rows)
+    if any('ocrEvaluated' in r for r in rows):
+        result.update(ocrEvaluatedImages=sum(r.get('ocrEvaluated',True) for r in rows),ocrExcludedImages=sum(not r.get('ocrEvaluated',True) for r in rows))
+    if text_order != 'legacy-yx':result['textOrdering']=text_order
+    if include_wer:
+        supported=[r for r in rows if r['werSupported']]
+        word_totals={k:sum(r['wordEdits'][k] for r in supported) for k in ['S','D','I','N']}
+        valid_wer=[r['WER'] for r in supported if r['WER'] is not None]
+        result.update(wordEdits=word_totals if supported else None,
+                      microWER=(word_totals['S']+word_totals['D']+word_totals['I'])/word_totals['N'] if word_totals['N'] else None,
+                      macroWER=sum(valid_wer)/len(valid_wer) if valid_wer else None,
+                      werSupportedImages=len(supported),werUnsupportedImages=len(rows)-len(supported),
+                      werNormalization='GT language=en only; NFKC; Unicode whitespace split; preserve punctuation/case; join prediction regions with one space',
+                      werOrdering=text_order)
+    return result
+
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('ground_truth');p.add_argument('predictions');p.add_argument('output');a=p.parse_args()
-    result=score(json.loads(Path(a.ground_truth).read_text()),json.loads(Path(a.predictions).read_text()));Path(a.output).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+    p=argparse.ArgumentParser();p.add_argument('ground_truth');p.add_argument('predictions');p.add_argument('output');p.add_argument('--wer',action='store_true',help='附加英文词错误率，不改变 CER');p.add_argument('--text-order',choices=TEXT_ORDERS,default='legacy-yx',help='CER/WER 共用的显式几何排序版本');a=p.parse_args()
+    result=score(json.loads(Path(a.ground_truth).read_text()),json.loads(Path(a.predictions).read_text()),include_wer=a.wer,text_order=a.text_order);Path(a.output).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')

@@ -33,3 +33,5 @@
 - [预训练检测、本地下载与生命周期](memory/development/practices/pretrained-local-detector.md)
 
 - [中文漫画候选方案的公平比较](memory/development/practices/chinese-comic-benchmark.md)
+
+- [多语言漫画评测与可视化](memory/development/practices/multilingual-comic-evaluation.md)

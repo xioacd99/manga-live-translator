@@ -1,0 +1,71 @@
+{
+  "files": [
+    {
+      "path": "MODEL-CHOICE.md",
+      "bytes": 3396,
+      "sha256": "40c0d085ff3cdd243d934444884da376e65bf32f4ab4a0bf366b41b23d8e4335"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1557,
+      "sha256": "cbe705c0b1d2ee03dba4d31c38aef66010a371b092dc4f57c32669c5adb588bb"
+    },
+    {
+      "path": "TIMING-REPORT.md",
+      "bytes": 1618,
+      "sha256": "6a4c7c9914bb6aff6f2f603d288f2b79b69d8d023e4e2fe6a2e94d4666759752"
+    },
+    {
+      "path": "manga-ocr-partial-model-metadata.json",
+      "bytes": 1845,
+      "sha256": "e721d7d0386ead79be8884c1fcd450a260d82bbe232860f7fd06f4b7b9d456cc"
+    },
+    {
+      "path": "manga-ocr-requirements.lock.txt",
+      "bytes": 594,
+      "sha256": "3fba8e87fe70c916fab71f8736a9bed120fc63d2da195d28df158fe7a7fbd399"
+    },
+    {
+      "path": "manga-ocr-status.md",
+      "bytes": 902,
+      "sha256": "f0745362342f1a6e9b9cf93c407b65727d0b693b1d085ed9ffcb06f8e9b37b69"
+    },
+    {
+      "path": "model-verification.json",
+      "bytes": 770,
+      "sha256": "d11ab93ba005538a710ff3180e8e60a0cdbb74f77242607331f311d0ba10f038"
+    },
+    {
+      "path": "repro/README.md",
+      "bytes": 4800,
+      "sha256": "72adb5ec8bbd1018ac1a6130d198629a873860614bfe590ee31e07ae6704addd"
+    },
+    {
+      "path": "repro/benchmark.py",
+      "bytes": 6372,
+      "sha256": "416e4df66b0df371f81955f831468dbfbce09cc2c4cfaa5c70e8636b9fedf324"
+    },
+    {
+      "path": "repro/models.json",
+      "bytes": 1009,
+      "sha256": "6a056feac0bae208697415b8026c8d46ade70f919aed2bccccf0c733ec6883bb"
+    },
+    {
+      "path": "repro/requirements.lock.txt",
+      "bytes": 405,
+      "sha256": "48d451a2d88617cf6f1eb9f33480b768459de4145fd3baba2bd7fff5b7a4ab10"
+    },
+    {
+      "path": "run_language.py",
+      "bytes": 1085,
+      "sha256": "866b1a3c419044caca11e184cccd5615aca27fefecac858545e7a4b4265d3438"
+    },
+    {
+      "path": "terminal-validation.json",
+      "bytes": 3905,
+      "sha256": "8b818001c45fe8b055220c056e1395b40467f4c479e114a07e07831255786195"
+    }
+  ],
+  "private_path_scan": "passed",
+  "images_or_full_text_or_weights_included": false
+}

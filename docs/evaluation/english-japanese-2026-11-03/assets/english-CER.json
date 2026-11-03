@@ -1,0 +1,27 @@
+{
+  "rows": [
+    {
+      "label": "A  Paddle 全图",
+      "value": 30.970654627539503
+    },
+    {
+      "label": "B  Tesseract 全图",
+      "value": 88.30699774266367
+    },
+    {
+      "label": "C  RT-DETR + Tesseract",
+      "value": 42.70880361173815
+    },
+    {
+      "label": "D  RT-DETR + Paddle 仅识别",
+      "value": 93.99548532731376
+    },
+    {
+      "label": "E  RT-DETR + Paddle 再检测",
+      "value": 32.686230248307
+    }
+  ],
+  "title": "英文漫画 · 字符错误率 CER ↓",
+  "unit": "%",
+  "subtitle": "10 图 / 67 处可确定目标 / 2215 字符；6页部分标注，仅代表已标注子集。"
+}

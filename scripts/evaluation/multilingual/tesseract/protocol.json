@@ -1,0 +1,40 @@
+{
+  "parameter_freeze": "Parameters chosen before ground-truth scoring; no per-image or per-region best-output selection.",
+  "english_sources_sha256": "ed66d28c5053316355f3732b8f8f9edb1fdfdb2d743c8ed27ac53377725d2f37",
+  "japanese_sources_sha256": "962816d3342f245ed640c4d1aada2a7d65c4a8edaf23c3951598379c939f6cff",
+  "schemes": {
+    "english-B": {
+      "language": "eng",
+      "psm": 11,
+      "empty_fallback_psm": 3
+    },
+    "english-C": {
+      "language": "eng",
+      "psm": 6,
+      "upscale": 2,
+      "pad": 4
+    },
+    "japanese-B": {
+      "language": "jpn",
+      "psm": 11,
+      "empty_fallback_psm": 3
+    },
+    "japanese-C": {
+      "language": "jpn",
+      "psm": 6,
+      "upscale": 2,
+      "pad": 4
+    },
+    "japanese-C-vertical": {
+      "language": "jpn_vert",
+      "psm": 5,
+      "upscale": 2,
+      "pad": 4,
+      "reuse": "baseline detector results and detection timing only"
+    }
+  },
+  "measured_scripts_sha256": {
+    "run.py": "ca5f89fcfd353b79e9dc0fd62ac1dced802e11cc19a81898ec889f21fcd72072",
+    "detect.mjs": "3482d9c087682fac2d282e7e63da80fec38aac7f42980d25a8612ed552823cc2"
+  }
+}
