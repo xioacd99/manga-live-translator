@@ -1,0 +1,24 @@
+{
+  "v6_small_det": {
+    "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv6/det/PP-OCRv6_det_small.onnx",
+    "bytes": 9929594,
+    "sha256": "090f04abcd9d9a7498bc4ebf677e4cb9bdce1fe4197ddb7e529f1ef44e1ff94f",
+    "provision_seconds": 9.475387587001023,
+    "wrapper": "RapidOCR 3.10.0",
+    "source_model": "multi_PP-OCRv6_det_small"
+  },
+  "v6_small_rec": {
+    "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv6/rec/PP-OCRv6_rec_small.onnx",
+    "bytes": 21234383,
+    "sha256": "6f327246b50388f3c176ae304bd95767ea6dc0c9ae92153ef8cbe210b3c14884",
+    "provision_seconds": 10.50167307800075,
+    "wrapper": "RapidOCR 3.10.0",
+    "source_model": "multi_PP-OCRv6_rec_small"
+  },
+  "legacy_cls": {
+    "bytes": 585532,
+    "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+    "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.4.0/onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_infer.onnx",
+    "source_model": "ch_ppocr_mobile_v2.0_cls_infer"
+  }
+}

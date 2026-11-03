@@ -1,0 +1,11 @@
+{
+  "failure_ids": [
+    "EN01",
+    "EN02"
+  ],
+  "selection_rule": "VL error -> whole-page fixed v6_small_paddle_params; else full VL; exploratory after failure observation, no GT selection",
+  "vl_sha256": "857c36072fac98da6ef9530e1e9a5bfede6f95b30a33d809f5ad2722050c6048",
+  "baseline_sha256": "d6b2b7b672c0fb14ca42e754ebb441dd7459cc77403cd603c12628a2699fc19b",
+  "gt_sha256": "984017f90ce822edb0c480207ed29ec8ec5ded587ba37f7ec40b3eb35e22753f",
+  "valid_subset_caveat": "Post-selected by service success, same pages for both; not full-batch score or generalization claim; no mixed-system latency measured"
+}

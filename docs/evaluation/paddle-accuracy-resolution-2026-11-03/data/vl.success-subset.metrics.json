@@ -1,0 +1,1280 @@
+{
+  "scheme": "paddleocr_vl_1_6_bf16_spotting_fullpage_cpu4_onepass",
+  "normalization": "NFKC; remove Unicode whitespace; preserve punctuation/case/script",
+  "matching": "geometry only, prediction overlap >=0.5 assigned once; strict detection maximum-cardinality IoU matching",
+  "S": 65,
+  "D": 105,
+  "I": 23,
+  "N": 1470,
+  "microCER": 0.13129251700680272,
+  "macroCER": 0.12280259669873196,
+  "noPunctuationEdits": {
+    "S": 44,
+    "D": 18,
+    "I": 22,
+    "N": 1292
+  },
+  "microCER_no_punctuation": 0.06501547987616099,
+  "exactRegions": 9,
+  "referenceRegions": 51,
+  "images": [
+    {
+      "id": "EN03",
+      "sha256": "aab598ea6743c701deb83c0900a1aaaf2f0233733517f14b0175a7249720b6e7",
+      "fullyAnnotated": true,
+      "S": 1,
+      "D": 2,
+      "I": 4,
+      "N": 161,
+      "CER": 0.043478260869565216,
+      "CER_no_punctuation": 0.006578947368421052,
+      "noPunctuationEdits": {
+        "S": 0,
+        "D": 1,
+        "I": 0,
+        "N": 152
+      },
+      "exactRegions": 2,
+      "referenceRegions": 7,
+      "unmatchedInsertionCharacters": 0,
+      "detector": {
+        "0.3": {
+          "TP": 7,
+          "FP": 12,
+          "FN": 0,
+          "precision": 0.3684210526315789,
+          "recall": 1.0,
+          "F1": 0.5384615384615384
+        },
+        "0.5": {
+          "TP": 1,
+          "FP": 18,
+          "FN": 6,
+          "precision": 0.05263157894736842,
+          "recall": 0.14285714285714285,
+          "F1": 0.07692307692307693
+        }
+      },
+      "weakOverlapTargetCount": 7,
+      "detectorTargets": 7,
+      "regions": [
+        {
+          "id": "EN03-R01",
+          "S": 0,
+          "D": 1,
+          "I": 0,
+          "N": 29,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN03-R02",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 26,
+          "exact": true,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN03-R03",
+          "S": 1,
+          "D": 0,
+          "I": 1,
+          "N": 27,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN03-R04",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 25,
+          "exact": true,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN03-R05",
+          "S": 0,
+          "D": 1,
+          "I": 1,
+          "N": 26,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN03-R06",
+          "S": 0,
+          "D": 0,
+          "I": 1,
+          "N": 25,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN03-R07",
+          "S": 0,
+          "D": 0,
+          "I": 1,
+          "N": 3,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        }
+      ],
+      "error": null,
+      "timing": {
+        "first_pass_seconds": 38.60805943399828,
+        "warm_seconds": [],
+        "warm_mean_seconds": null
+      },
+      "textOrdering": "line-column-overlap-v2",
+      "WER": 0.16279069767441862,
+      "wordEdits": {
+        "S": 7,
+        "D": 0,
+        "I": 0,
+        "N": 43
+      },
+      "werSupported": true,
+      "werUnsupportedReason": null,
+      "unmatchedInsertionWords": 0,
+      "werOrdering": "line-column-overlap-v2"
+    },
+    {
+      "id": "EN04",
+      "sha256": "894fdcbc1a25ffa0926ed736240d87fe78dc8c95505bcff3fa35692658906a49",
+      "fullyAnnotated": true,
+      "S": 1,
+      "D": 0,
+      "I": 0,
+      "N": 24,
+      "CER": 0.041666666666666664,
+      "CER_no_punctuation": 0.043478260869565216,
+      "noPunctuationEdits": {
+        "S": 1,
+        "D": 0,
+        "I": 0,
+        "N": 23
+      },
+      "exactRegions": 0,
+      "referenceRegions": 1,
+      "unmatchedInsertionCharacters": 0,
+      "detector": {
+        "0.3": {
+          "TP": 0,
+          "FP": 8,
+          "FN": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "F1": 0.0
+        },
+        "0.5": {
+          "TP": 0,
+          "FP": 8,
+          "FN": 2,
+          "precision": 0.0,
+          "recall": 0.0,
+          "F1": 0.0
+        }
+      },
+      "weakOverlapTargetCount": 2,
+      "detectorTargets": 2,
+      "regions": [
+        {
+          "id": "EN04-R02",
+          "S": 1,
+          "D": 0,
+          "I": 0,
+          "N": 24,
+          "exact": false,
+          "predictionCount": 4,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 6
+          }
+        }
+      ],
+      "error": null,
+      "timing": {
+        "first_pass_seconds": 86.09576711499903,
+        "warm_seconds": [],
+        "warm_mean_seconds": null
+      },
+      "textOrdering": "line-column-overlap-v2",
+      "WER": 0.16666666666666666,
+      "wordEdits": {
+        "S": 1,
+        "D": 0,
+        "I": 0,
+        "N": 6
+      },
+      "werSupported": true,
+      "werUnsupportedReason": null,
+      "unmatchedInsertionWords": 0,
+      "werOrdering": "line-column-overlap-v2"
+    },
+    {
+      "id": "EN05",
+      "sha256": "746f740caf52156e66bb89150c1ef41ceb654c8cf4a192c2dd1748ae61835fa0",
+      "fullyAnnotated": false,
+      "S": 8,
+      "D": 11,
+      "I": 0,
+      "N": 120,
+      "CER": 0.15833333333333333,
+      "CER_no_punctuation": 0.09615384615384616,
+      "noPunctuationEdits": {
+        "S": 5,
+        "D": 4,
+        "I": 1,
+        "N": 104
+      },
+      "exactRegions": 1,
+      "referenceRegions": 9,
+      "unmatchedInsertionCharacters": 0,
+      "detector": {
+        "0.3": {
+          "TP": 8,
+          "FP": null,
+          "FN": 2,
+          "precision": null,
+          "recall": 0.8,
+          "F1": null
+        },
+        "0.5": {
+          "TP": 2,
+          "FP": null,
+          "FN": 8,
+          "precision": null,
+          "recall": 0.2,
+          "F1": null
+        }
+      },
+      "weakOverlapTargetCount": 10,
+      "detectorTargets": 10,
+      "regions": [
+        {
+          "id": "EN05-R01",
+          "S": 5,
+          "D": 0,
+          "I": 0,
+          "N": 7,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 2
+          }
+        },
+        {
+          "id": "EN05-R02",
+          "S": 0,
+          "D": 4,
+          "I": 0,
+          "N": 20,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 2,
+            "D": 1,
+            "I": 0,
+            "N": 5
+          }
+        },
+        {
+          "id": "EN05-R04",
+          "S": 1,
+          "D": 1,
+          "I": 0,
+          "N": 27,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN05-R05",
+          "S": 0,
+          "D": 2,
+          "I": 0,
+          "N": 9,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        },
+        {
+          "id": "EN05-R06",
+          "S": 1,
+          "D": 0,
+          "I": 0,
+          "N": 14,
+          "exact": false,
+          "predictionCount": 2,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 3
+          }
+        },
+        {
+          "id": "EN05-R07",
+          "S": 0,
+          "D": 3,
+          "I": 0,
+          "N": 12,
+          "exact": false,
+          "predictionCount": 2,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 2
+          }
+        },
+        {
+          "id": "EN05-R08",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 17,
+          "exact": true,
+          "predictionCount": 2,
+          "wordEdits": {
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 3
+          }
+        },
+        {
+          "id": "EN05-R09",
+          "S": 1,
+          "D": 0,
+          "I": 0,
+          "N": 8,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 1,
+            "D": 1,
+            "I": 0,
+            "N": 3
+          }
+        },
+        {
+          "id": "EN05-R10",
+          "S": 0,
+          "D": 1,
+          "I": 0,
+          "N": 6,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        }
+      ],
+      "error": null,
+      "timing": {
+        "first_pass_seconds": 132.9680382680017,
+        "warm_seconds": [],
+        "warm_mean_seconds": null
+      },
+      "textOrdering": "line-column-overlap-v2",
+      "WER": 0.5185185185185185,
+      "wordEdits": {
+        "S": 12,
+        "D": 2,
+        "I": 0,
+        "N": 27
+      },
+      "werSupported": true,
+      "werUnsupportedReason": null,
+      "unmatchedInsertionWords": 0,
+      "werOrdering": "line-column-overlap-v2"
+    },
+    {
+      "id": "EN06",
+      "sha256": "ca600516e5becc241d8ee1c1127ffbb0c6a9dfacef0ff412d2303617ea704847",
+      "fullyAnnotated": false,
+      "S": 25,
+      "D": 30,
+      "I": 16,
+      "N": 243,
+      "CER": 0.29218106995884774,
+      "CER_no_punctuation": 0.18274111675126903,
+      "noPunctuationEdits": {
+        "S": 19,
+        "D": 1,
+        "I": 16,
+        "N": 197
+      },
+      "exactRegions": 2,
+      "referenceRegions": 10,
+      "unmatchedInsertionCharacters": 0,
+      "detector": {
+        "0.3": {
+          "TP": 6,
+          "FP": null,
+          "FN": 4,
+          "precision": null,
+          "recall": 0.6,
+          "F1": null
+        },
+        "0.5": {
+          "TP": 2,
+          "FP": null,
+          "FN": 8,
+          "precision": null,
+          "recall": 0.2,
+          "F1": null
+        }
+      },
+      "weakOverlapTargetCount": 10,
+      "detectorTargets": 10,
+      "regions": [
+        {
+          "id": "EN06-R01",
+          "S": 1,
+          "D": 8,
+          "I": 0,
+          "N": 51,
+          "exact": false,
+          "predictionCount": 4,
+          "wordEdits": {
+            "S": 4,
+            "D": 1,
+            "I": 0,
+            "N": 14
+          }
+        },
+        {
+          "id": "EN06-R02",
+          "S": 13,
+          "D": 5,
+          "I": 7,
+          "N": 55,
+          "exact": false,
+          "predictionCount": 7,
+          "wordEdits": {
+            "S": 9,
+            "D": 0,
+            "I": 0,
+            "N": 11
+          }
+        },
+        {
+          "id": "EN06-R03",
+          "S": 2,
+          "D": 2,
+          "I": 9,
+          "N": 26,
+          "exact": false,
+          "predictionCount": 4,
+          "wordEdits": {
+            "S": 5,
+            "D": 0,
+            "I": 1,
+            "N": 6
+          }
+        },
+        {
+          "id": "EN06-R04",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 2,
+          "exact": true,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        },
+        {
+          "id": "EN06-R05",
+          "S": 2,
+          "D": 4,
+          "I": 0,
+          "N": 22,
+          "exact": false,
+          "predictionCount": 4,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 4
+          }
+        },
+        {
+          "id": "EN06-R06",
+          "S": 1,
+          "D": 6,
+          "I": 0,
+          "N": 44,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 4,
+            "D": 0,
+            "I": 0,
+            "N": 9
+          }
+        },
+        {
+          "id": "EN06-R07",
+          "S": 0,
+          "D": 1,
+          "I": 0,
+          "N": 5,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        },
+        {
+          "id": "EN06-R08",
+          "S": 3,
+          "D": 2,
+          "I": 0,
+          "N": 12,
+          "exact": false,
+          "predictionCount": 2,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 2
+          }
+        },
+        {
+          "id": "EN06-R09",
+          "S": 3,
+          "D": 2,
+          "I": 0,
+          "N": 20,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 2,
+            "D": 1,
+            "I": 0,
+            "N": 5
+          }
+        },
+        {
+          "id": "EN06-R10",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 6,
+          "exact": true,
+          "predictionCount": 2,
+          "wordEdits": {
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 2
+          }
+        }
+      ],
+      "error": null,
+      "timing": {
+        "first_pass_seconds": 126.93098381899836,
+        "warm_seconds": [],
+        "warm_mean_seconds": null
+      },
+      "textOrdering": "line-column-overlap-v2",
+      "WER": 0.5636363636363636,
+      "wordEdits": {
+        "S": 28,
+        "D": 2,
+        "I": 1,
+        "N": 55
+      },
+      "werSupported": true,
+      "werUnsupportedReason": null,
+      "unmatchedInsertionWords": 0,
+      "werOrdering": "line-column-overlap-v2"
+    },
+    {
+      "id": "EN07",
+      "sha256": "87e364de5a0cfa93d4d01454390fd4f15416e4abef6f9784b0badd866ed8b12e",
+      "fullyAnnotated": false,
+      "S": 8,
+      "D": 24,
+      "I": 2,
+      "N": 333,
+      "CER": 0.1021021021021021,
+      "CER_no_punctuation": 0.03728813559322034,
+      "noPunctuationEdits": {
+        "S": 5,
+        "D": 4,
+        "I": 2,
+        "N": 295
+      },
+      "exactRegions": 0,
+      "referenceRegions": 6,
+      "unmatchedInsertionCharacters": 0,
+      "detector": {
+        "0.3": {
+          "TP": 2,
+          "FP": null,
+          "FN": 5,
+          "precision": null,
+          "recall": 0.2857142857142857,
+          "F1": null
+        },
+        "0.5": {
+          "TP": 0,
+          "FP": null,
+          "FN": 7,
+          "precision": null,
+          "recall": 0.0,
+          "F1": null
+        }
+      },
+      "weakOverlapTargetCount": 7,
+      "detectorTargets": 7,
+      "regions": [
+        {
+          "id": "EN07-R01",
+          "S": 0,
+          "D": 1,
+          "I": 0,
+          "N": 9,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        },
+        {
+          "id": "EN07-R02",
+          "S": 4,
+          "D": 6,
+          "I": 1,
+          "N": 57,
+          "exact": false,
+          "predictionCount": 5,
+          "wordEdits": {
+            "S": 5,
+            "D": 3,
+            "I": 0,
+            "N": 13
+          }
+        },
+        {
+          "id": "EN07-R03",
+          "S": 0,
+          "D": 7,
+          "I": 0,
+          "N": 70,
+          "exact": false,
+          "predictionCount": 4,
+          "wordEdits": {
+            "S": 2,
+            "D": 1,
+            "I": 1,
+            "N": 13
+          }
+        },
+        {
+          "id": "EN07-R04",
+          "S": 1,
+          "D": 3,
+          "I": 1,
+          "N": 48,
+          "exact": false,
+          "predictionCount": 5,
+          "wordEdits": {
+            "S": 3,
+            "D": 1,
+            "I": 1,
+            "N": 12
+          }
+        },
+        {
+          "id": "EN07-R06",
+          "S": 2,
+          "D": 3,
+          "I": 0,
+          "N": 95,
+          "exact": false,
+          "predictionCount": 7,
+          "wordEdits": {
+            "S": 4,
+            "D": 0,
+            "I": 0,
+            "N": 18
+          }
+        },
+        {
+          "id": "EN07-R07",
+          "S": 1,
+          "D": 4,
+          "I": 0,
+          "N": 54,
+          "exact": false,
+          "predictionCount": 5,
+          "wordEdits": {
+            "S": 3,
+            "D": 0,
+            "I": 0,
+            "N": 13
+          }
+        }
+      ],
+      "error": null,
+      "timing": {
+        "first_pass_seconds": 111.32522045299993,
+        "warm_seconds": [],
+        "warm_mean_seconds": null
+      },
+      "textOrdering": "line-column-overlap-v2",
+      "WER": 0.35714285714285715,
+      "wordEdits": {
+        "S": 18,
+        "D": 5,
+        "I": 2,
+        "N": 70
+      },
+      "werSupported": true,
+      "werUnsupportedReason": null,
+      "unmatchedInsertionWords": 0,
+      "werOrdering": "line-column-overlap-v2"
+    },
+    {
+      "id": "EN08",
+      "sha256": "0e0f68589811797b97512766652f5550b948039beabac8db30c845ecd9cf53c3",
+      "fullyAnnotated": true,
+      "S": 2,
+      "D": 13,
+      "I": 0,
+      "N": 100,
+      "CER": 0.15,
+      "CER_no_punctuation": 0.08888888888888889,
+      "noPunctuationEdits": {
+        "S": 1,
+        "D": 7,
+        "I": 0,
+        "N": 90
+      },
+      "exactRegions": 1,
+      "referenceRegions": 3,
+      "unmatchedInsertionCharacters": 0,
+      "detector": {
+        "0.3": {
+          "TP": 1,
+          "FP": 12,
+          "FN": 2,
+          "precision": 0.07692307692307693,
+          "recall": 0.3333333333333333,
+          "F1": 0.125
+        },
+        "0.5": {
+          "TP": 0,
+          "FP": 13,
+          "FN": 3,
+          "precision": 0.0,
+          "recall": 0.0,
+          "F1": 0.0
+        }
+      },
+      "weakOverlapTargetCount": 3,
+      "detectorTargets": 3,
+      "regions": [
+        {
+          "id": "EN08-R01",
+          "S": 0,
+          "D": 10,
+          "I": 0,
+          "N": 34,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 0,
+            "D": 2,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN08-R02",
+          "S": 2,
+          "D": 3,
+          "I": 0,
+          "N": 43,
+          "exact": false,
+          "predictionCount": 7,
+          "wordEdits": {
+            "S": 3,
+            "D": 0,
+            "I": 0,
+            "N": 10
+          }
+        },
+        {
+          "id": "EN08-R03",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 23,
+          "exact": true,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        }
+      ],
+      "error": null,
+      "timing": {
+        "first_pass_seconds": 88.68188959000327,
+        "warm_seconds": [],
+        "warm_mean_seconds": null
+      },
+      "textOrdering": "line-column-overlap-v2",
+      "WER": 0.20833333333333334,
+      "wordEdits": {
+        "S": 3,
+        "D": 2,
+        "I": 0,
+        "N": 24
+      },
+      "werSupported": true,
+      "werUnsupportedReason": null,
+      "unmatchedInsertionWords": 0,
+      "werOrdering": "line-column-overlap-v2"
+    },
+    {
+      "id": "EN09",
+      "sha256": "4c79c83a80263e52e8150a491059f0f928c4a7660919b96b3c6379a7be0e5e4c",
+      "fullyAnnotated": true,
+      "S": 5,
+      "D": 8,
+      "I": 0,
+      "N": 125,
+      "CER": 0.104,
+      "CER_no_punctuation": 0.00980392156862745,
+      "noPunctuationEdits": {
+        "S": 1,
+        "D": 0,
+        "I": 0,
+        "N": 102
+      },
+      "exactRegions": 3,
+      "referenceRegions": 6,
+      "unmatchedInsertionCharacters": 0,
+      "detector": {
+        "0.3": {
+          "TP": 3,
+          "FP": 14,
+          "FN": 3,
+          "precision": 0.17647058823529413,
+          "recall": 0.5,
+          "F1": 0.2608695652173913
+        },
+        "0.5": {
+          "TP": 3,
+          "FP": 14,
+          "FN": 3,
+          "precision": 0.17647058823529413,
+          "recall": 0.5,
+          "F1": 0.2608695652173913
+        }
+      },
+      "weakOverlapTargetCount": 6,
+      "detectorTargets": 6,
+      "regions": [
+        {
+          "id": "EN09-R01",
+          "S": 2,
+          "D": 5,
+          "I": 0,
+          "N": 45,
+          "exact": false,
+          "predictionCount": 5,
+          "wordEdits": {
+            "S": 3,
+            "D": 0,
+            "I": 0,
+            "N": 9
+          }
+        },
+        {
+          "id": "EN09-R02",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 5,
+          "exact": true,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 2
+          }
+        },
+        {
+          "id": "EN09-R03",
+          "S": 2,
+          "D": 0,
+          "I": 0,
+          "N": 48,
+          "exact": false,
+          "predictionCount": 5,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 1,
+            "N": 11
+          }
+        },
+        {
+          "id": "EN09-R04",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 4,
+          "exact": true,
+          "predictionCount": 2,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 1,
+            "N": 1
+          }
+        },
+        {
+          "id": "EN09-R05",
+          "S": 1,
+          "D": 3,
+          "I": 0,
+          "N": 17,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 3
+          }
+        },
+        {
+          "id": "EN09-R06",
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 6,
+          "exact": true,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        }
+      ],
+      "error": null,
+      "timing": {
+        "first_pass_seconds": 97.70419235599911,
+        "warm_seconds": [],
+        "warm_mean_seconds": null
+      },
+      "textOrdering": "line-column-overlap-v2",
+      "WER": 0.37037037037037035,
+      "wordEdits": {
+        "S": 8,
+        "D": 0,
+        "I": 2,
+        "N": 27
+      },
+      "werSupported": true,
+      "werUnsupportedReason": null,
+      "unmatchedInsertionWords": 0,
+      "werOrdering": "line-column-overlap-v2"
+    },
+    {
+      "id": "EN10",
+      "sha256": "ea617fdf27ac43cec7fda35d906bc8721530f97ae324546efaf33402415ee9c8",
+      "fullyAnnotated": false,
+      "S": 15,
+      "D": 17,
+      "I": 1,
+      "N": 364,
+      "CER": 0.09065934065934066,
+      "CER_no_punctuation": 0.0486322188449848,
+      "noPunctuationEdits": {
+        "S": 12,
+        "D": 1,
+        "I": 3,
+        "N": 329
+      },
+      "exactRegions": 0,
+      "referenceRegions": 9,
+      "unmatchedInsertionCharacters": 0,
+      "detector": {
+        "0.3": {
+          "TP": 3,
+          "FP": null,
+          "FN": 6,
+          "precision": null,
+          "recall": 0.3333333333333333,
+          "F1": null
+        },
+        "0.5": {
+          "TP": 3,
+          "FP": null,
+          "FN": 6,
+          "precision": null,
+          "recall": 0.3333333333333333,
+          "F1": null
+        }
+      },
+      "weakOverlapTargetCount": 9,
+      "detectorTargets": 9,
+      "regions": [
+        {
+          "id": "EN10-R01",
+          "S": 4,
+          "D": 2,
+          "I": 1,
+          "N": 51,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 3,
+            "D": 0,
+            "I": 2,
+            "N": 10
+          }
+        },
+        {
+          "id": "EN10-R02",
+          "S": 1,
+          "D": 2,
+          "I": 0,
+          "N": 26,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 3,
+            "D": 0,
+            "I": 0,
+            "N": 7
+          }
+        },
+        {
+          "id": "EN10-R03",
+          "S": 2,
+          "D": 3,
+          "I": 0,
+          "N": 95,
+          "exact": false,
+          "predictionCount": 7,
+          "wordEdits": {
+            "S": 4,
+            "D": 0,
+            "I": 1,
+            "N": 21
+          }
+        },
+        {
+          "id": "EN10-R04",
+          "S": 2,
+          "D": 2,
+          "I": 0,
+          "N": 87,
+          "exact": false,
+          "predictionCount": 7,
+          "wordEdits": {
+            "S": 3,
+            "D": 0,
+            "I": 0,
+            "N": 22
+          }
+        },
+        {
+          "id": "EN10-R05",
+          "S": 0,
+          "D": 1,
+          "I": 0,
+          "N": 5,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        },
+        {
+          "id": "EN10-R06",
+          "S": 1,
+          "D": 4,
+          "I": 0,
+          "N": 39,
+          "exact": false,
+          "predictionCount": 6,
+          "wordEdits": {
+            "S": 4,
+            "D": 0,
+            "I": 0,
+            "N": 9
+          }
+        },
+        {
+          "id": "EN10-R07",
+          "S": 4,
+          "D": 0,
+          "I": 0,
+          "N": 28,
+          "exact": false,
+          "predictionCount": 4,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 4
+          }
+        },
+        {
+          "id": "EN10-R08",
+          "S": 0,
+          "D": 1,
+          "I": 0,
+          "N": 5,
+          "exact": false,
+          "predictionCount": 1,
+          "wordEdits": {
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 1
+          }
+        },
+        {
+          "id": "EN10-R09",
+          "S": 1,
+          "D": 2,
+          "I": 0,
+          "N": 28,
+          "exact": false,
+          "predictionCount": 3,
+          "wordEdits": {
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 5
+          }
+        }
+      ],
+      "error": null,
+      "timing": {
+        "first_pass_seconds": 115.73156031200051,
+        "warm_seconds": [],
+        "warm_mean_seconds": null
+      },
+      "textOrdering": "line-column-overlap-v2",
+      "WER": 0.325,
+      "wordEdits": {
+        "S": 23,
+        "D": 0,
+        "I": 3,
+        "N": 80
+      },
+      "werSupported": true,
+      "werUnsupportedReason": null,
+      "unmatchedInsertionWords": 0,
+      "werOrdering": "line-column-overlap-v2"
+    }
+  ],
+  "textOrdering": "line-column-overlap-v2",
+  "wordEdits": {
+    "S": 100,
+    "D": 11,
+    "I": 8,
+    "N": 332
+  },
+  "microWER": 0.35843373493975905,
+  "macroWER": 0.334057350917816,
+  "werSupportedImages": 8,
+  "werUnsupportedImages": 0,
+  "werNormalization": "GT language=en only; NFKC; Unicode whitespace split; preserve punctuation/case; join prediction regions with one space",
+  "werOrdering": "line-column-overlap-v2"
+}

@@ -1,0 +1,52 @@
+{
+  "runtime": {
+    "repository": "https://github.com/ggml-org/llama.cpp",
+    "release_tag": "v0.8.0",
+    "binary_release_tag": "b11960",
+    "commit": "8642541b255bfb5dc39cd351a178be09013a55d6",
+    "asset": "llama-b11960-bin-ubuntu-x64.tar.gz",
+    "asset_url": "https://github.com/ggml-org/llama.cpp/releases/download/b11960/llama-b11960-bin-ubuntu-x64.tar.gz",
+    "asset_bytes": 22686210,
+    "asset_sha256": "31cc3a6bc638ac6c48dc4b1b74888f1eaadf3d14227c1e5f67daf9a49541d97a",
+    "license": "MIT",
+    "license_source": "https://github.com/ggml-org/llama.cpp/blob/8642541b255bfb5dc39cd351a178be09013a55d6/LICENSE",
+    "bundled_license_file": "LICENSE.llama.cpp"
+  },
+  "weights": {
+    "repository": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6-GGUF",
+    "revision": "511b09642bb324401f15f97cc23bc67e8f0a291d",
+    "license": "Apache-2.0",
+    "license_evidence": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6-GGUF/blob/511b09642bb324401f15f97cc23bc67e8f0a291d/README.md",
+    "files": [
+      {
+        "name": "PaddleOCR-VL-1.6-GGUF.gguf",
+        "bytes": 935769056,
+        "sha256": "f3ae46ec885050acf4b3d31944431e1fd90d50664fb09126af4a3c050ba14ee8",
+        "official_url": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6-GGUF/resolve/511b09642bb324401f15f97cc23bc67e8f0a291d/PaddleOCR-VL-1.6-GGUF.gguf"
+      },
+      {
+        "name": "PaddleOCR-VL-1.6-GGUF-mmproj.gguf",
+        "bytes": 881770560,
+        "sha256": "204d757d7610d9b3faab10d506d69e5b244e32bf765e2bab2d0167e65e0a058a",
+        "official_url": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6-GGUF/resolve/511b09642bb324401f15f97cc23bc67e8f0a291d/PaddleOCR-VL-1.6-GGUF-mmproj.gguf"
+      }
+    ]
+  },
+  "spotting_metadata_patch": {
+    "key": "clip.vision.image_max_pixels",
+    "byte_offset": 1546,
+    "old_value": 1003520,
+    "new_value": 1605632,
+    "original_sha256": "204d757d7610d9b3faab10d506d69e5b244e32bf765e2bab2d0167e65e0a058a",
+    "patched_sha256": "8e011479092c5e82c8c1c2d85d52b9ac48df12183c5c7bc3190190732259db09",
+    "original_preserved": true,
+    "written_value_size_bytes": 4
+  },
+  "format_reference": {
+    "repository": "https://github.com/PaddlePaddle/PaddleX",
+    "commit": "4c968d30b9d0d4a693d9eaaef0881c20f8d7d0e0",
+    "parser_preprocess": "https://github.com/PaddlePaddle/PaddleX/blob/4c968d30b9d0d4a693d9eaaef0881c20f8d7d0e0/paddlex/inference/pipelines/paddleocr_vl/uilts.py#L1111-L1184",
+    "note": "仅作为格式与预处理依据；公开解析器是独立实现，没有复制或执行上游远程代码。"
+  },
+  "redistribution_note": "本包不分发运行时二进制、模型权重或漫画图片。打包产品时仍需单独审查全部依赖和适用地域的素材许可。"
+}

@@ -32,3 +32,5 @@
 - [标注、计时、参数差异与局限](METHODS.md)
 - [可复现脚本、模型SHA与许可](../../../scripts/evaluation/paddle-english-models/README.md)
 - [原10图来源与图片哈希](../english-japanese-2026-11-03/english/sources.json)
+
+后续：[放宽体积/速度后的分辨率与本地VL实测](../paddle-accuracy-resolution-2026-11-03/README.md)。本页保留原七型号实验结论，后续实验不覆盖其历史数值。

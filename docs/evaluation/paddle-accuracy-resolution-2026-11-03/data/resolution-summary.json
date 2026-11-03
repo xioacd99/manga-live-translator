@@ -1,0 +1,2086 @@
+[
+  {
+    "target_short": 1024,
+    "CER": 0.28893905191873587,
+    "CER_no_punctuation": 0.24874623871614845,
+    "WER": 0.5517241379310345,
+    "S": 118,
+    "D": 476,
+    "I": 46,
+    "N": 2215,
+    "exact_regions": 9,
+    "empty_reference_regions": 3,
+    "first_pass_mean_seconds": 3.828053390799687,
+    "warm_mean_seconds": 3.4913854283995533,
+    "peak_rss_kib": 976820,
+    "source_sha256": "8a309cab985ebb8ad67ce518695d2d2d4f75f85c68680598a314df0af82e8f34",
+    "stable_regions_all_repeats": true,
+    "model_bytes": 31749509,
+    "cpu_threads": 1,
+    "per_image": [
+      {
+        "id": "EN01",
+        "resize": {
+          "original": [
+            2376,
+            1740
+          ],
+          "preprocess": [
+            1398,
+            1024
+          ],
+          "detector_tensor": [
+            1408,
+            1024
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.357005896999908,
+          "warm_seconds": [
+            3.8376227999979164,
+            4.067899112000305
+          ],
+          "warm_mean_seconds": 3.9527609559991106
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1408,
+            1024
+          ],
+          [
+            1,
+            3,
+            1408,
+            1024
+          ],
+          [
+            1,
+            3,
+            1408,
+            1024
+          ]
+        ]
+      },
+      {
+        "id": "EN02",
+        "resize": {
+          "original": [
+            2405,
+            1741
+          ],
+          "preprocess": [
+            1415,
+            1024
+          ],
+          "detector_tensor": [
+            1408,
+            1024
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.013957318999019,
+          "warm_seconds": [
+            3.983491781000339,
+            4.0546193739974115
+          ],
+          "warm_mean_seconds": 4.019055577498875
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1408,
+            1024
+          ],
+          [
+            1,
+            3,
+            1408,
+            1024
+          ],
+          [
+            1,
+            3,
+            1408,
+            1024
+          ]
+        ]
+      },
+      {
+        "id": "EN03",
+        "resize": {
+          "original": [
+            435,
+            1839
+          ],
+          "preprocess": [
+            969,
+            4096
+          ],
+          "detector_tensor": [
+            960,
+            4096
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": true,
+          "achieved_short": 969,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 5.384886591000395,
+          "warm_seconds": [
+            4.332053482001356,
+            3.5203440979967127
+          ],
+          "warm_mean_seconds": 3.9261987899990345
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            960,
+            4096
+          ],
+          [
+            1,
+            3,
+            960,
+            4096
+          ],
+          [
+            1,
+            3,
+            960,
+            4096
+          ]
+        ]
+      },
+      {
+        "id": "EN04",
+        "resize": {
+          "original": [
+            1394,
+            1190
+          ],
+          "preprocess": [
+            1200,
+            1024
+          ],
+          "detector_tensor": [
+            1216,
+            1024
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 1.6063536440015014,
+          "warm_seconds": [
+            1.6526419340007124,
+            1.5033018889989762
+          ],
+          "warm_mean_seconds": 1.5779719114998443
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1216,
+            1024
+          ],
+          [
+            1,
+            3,
+            1216,
+            1024
+          ],
+          [
+            1,
+            3,
+            1216,
+            1024
+          ]
+        ]
+      },
+      {
+        "id": "EN05",
+        "resize": {
+          "original": [
+            1469,
+            1263
+          ],
+          "preprocess": [
+            1191,
+            1024
+          ],
+          "detector_tensor": [
+            1184,
+            1024
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 5.401513308999711,
+          "warm_seconds": [
+            5.428368513999885,
+            5.127849950000382
+          ],
+          "warm_mean_seconds": 5.2781092320001335
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1184,
+            1024
+          ],
+          [
+            1,
+            3,
+            1184,
+            1024
+          ],
+          [
+            1,
+            3,
+            1184,
+            1024
+          ]
+        ]
+      },
+      {
+        "id": "EN06",
+        "resize": {
+          "original": [
+            1476,
+            1266
+          ],
+          "preprocess": [
+            1194,
+            1024
+          ],
+          "detector_tensor": [
+            1184,
+            1024
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.322341407998465,
+          "warm_seconds": [
+            4.278655660000368,
+            4.290760586998658
+          ],
+          "warm_mean_seconds": 4.284708123499513
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1184,
+            1024
+          ],
+          [
+            1,
+            3,
+            1184,
+            1024
+          ],
+          [
+            1,
+            3,
+            1184,
+            1024
+          ]
+        ]
+      },
+      {
+        "id": "EN07",
+        "resize": {
+          "original": [
+            1484,
+            1280
+          ],
+          "preprocess": [
+            1187,
+            1024
+          ],
+          "detector_tensor": [
+            1184,
+            1024
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 2.764929264001694,
+          "warm_seconds": [
+            2.7091247950011166,
+            2.674248567996983
+          ],
+          "warm_mean_seconds": 2.69168668149905
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1184,
+            1024
+          ],
+          [
+            1,
+            3,
+            1184,
+            1024
+          ],
+          [
+            1,
+            3,
+            1184,
+            1024
+          ]
+        ]
+      },
+      {
+        "id": "EN08",
+        "resize": {
+          "original": [
+            1055,
+            3975
+          ],
+          "preprocess": [
+            1024,
+            3858
+          ],
+          "detector_tensor": [
+            1024,
+            3872
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.209336973999598,
+          "warm_seconds": [
+            3.55073977000211,
+            2.7099759000011545
+          ],
+          "warm_mean_seconds": 3.1303578350016323
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1024,
+            3872
+          ],
+          [
+            1,
+            3,
+            1024,
+            3872
+          ],
+          [
+            1,
+            3,
+            1024,
+            3872
+          ]
+        ]
+      },
+      {
+        "id": "EN09",
+        "resize": {
+          "original": [
+            1144,
+            746
+          ],
+          "preprocess": [
+            1570,
+            1024
+          ],
+          "detector_tensor": [
+            1568,
+            1024
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 1.7303254580001521,
+          "warm_seconds": [
+            1.6324034499994013,
+            1.6155020559999684
+          ],
+          "warm_mean_seconds": 1.623952752999685
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1568,
+            1024
+          ],
+          [
+            1,
+            3,
+            1568,
+            1024
+          ],
+          [
+            1,
+            3,
+            1568,
+            1024
+          ]
+        ]
+      },
+      {
+        "id": "EN10",
+        "resize": {
+          "original": [
+            1470,
+            1258
+          ],
+          "preprocess": [
+            1197,
+            1024
+          ],
+          "detector_tensor": [
+            1184,
+            1024
+          ],
+          "rule": "short1024_cap4096",
+          "target_short": 1024,
+          "long_cap_active": false,
+          "achieved_short": 1024,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.489884043996426,
+          "warm_seconds": [
+            4.467297724997479,
+            4.390807122999831
+          ],
+          "warm_mean_seconds": 4.429052423998655
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1184,
+            1024
+          ],
+          [
+            1,
+            3,
+            1184,
+            1024
+          ],
+          [
+            1,
+            3,
+            1184,
+            1024
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "target_short": 1536,
+    "CER": 0.21986455981941308,
+    "CER_no_punctuation": 0.17101303911735205,
+    "WER": 0.48659003831417624,
+    "S": 135,
+    "D": 295,
+    "I": 57,
+    "N": 2215,
+    "exact_regions": 9,
+    "empty_reference_regions": 0,
+    "first_pass_mean_seconds": 5.305873181800417,
+    "warm_mean_seconds": 4.857459647200085,
+    "peak_rss_kib": 1074804,
+    "source_sha256": "aa8f25046f3cbae83874ceb03f8a1b5de2558449ae84275365917236950ac982",
+    "stable_regions_all_repeats": true,
+    "model_bytes": 31749509,
+    "cpu_threads": 1,
+    "per_image": [
+      {
+        "id": "EN01",
+        "resize": {
+          "original": [
+            2376,
+            1740
+          ],
+          "preprocess": [
+            2097,
+            1536
+          ],
+          "detector_tensor": [
+            2112,
+            1536
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": false,
+          "achieved_short": 1536,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 8.2381795959991,
+          "warm_seconds": [
+            6.431048571997962,
+            5.908133691002149
+          ],
+          "warm_mean_seconds": 6.169591131500056
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2112,
+            1536
+          ],
+          [
+            1,
+            3,
+            2112,
+            1536
+          ],
+          [
+            1,
+            3,
+            2112,
+            1536
+          ]
+        ]
+      },
+      {
+        "id": "EN02",
+        "resize": {
+          "original": [
+            2405,
+            1741
+          ],
+          "preprocess": [
+            2122,
+            1536
+          ],
+          "detector_tensor": [
+            2112,
+            1536
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": false,
+          "achieved_short": 1536,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 9.01142813000115,
+          "warm_seconds": [
+            9.494474153998453,
+            9.228702039999916
+          ],
+          "warm_mean_seconds": 9.361588096999185
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2112,
+            1536
+          ],
+          [
+            1,
+            3,
+            2112,
+            1536
+          ],
+          [
+            1,
+            3,
+            2112,
+            1536
+          ]
+        ]
+      },
+      {
+        "id": "EN03",
+        "resize": {
+          "original": [
+            435,
+            1839
+          ],
+          "preprocess": [
+            969,
+            4096
+          ],
+          "detector_tensor": [
+            960,
+            4096
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": true,
+          "achieved_short": 969,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.521269613000186,
+          "warm_seconds": [
+            4.084532060001948,
+            4.09619632400063
+          ],
+          "warm_mean_seconds": 4.090364192001289
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            960,
+            4096
+          ],
+          [
+            1,
+            3,
+            960,
+            4096
+          ],
+          [
+            1,
+            3,
+            960,
+            4096
+          ]
+        ]
+      },
+      {
+        "id": "EN04",
+        "resize": {
+          "original": [
+            1394,
+            1190
+          ],
+          "preprocess": [
+            1799,
+            1536
+          ],
+          "detector_tensor": [
+            1792,
+            1536
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": false,
+          "achieved_short": 1536,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 3.007710351001151,
+          "warm_seconds": [
+            2.335778663000383,
+            2.232752736999828
+          ],
+          "warm_mean_seconds": 2.2842657000001054
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ]
+        ]
+      },
+      {
+        "id": "EN05",
+        "resize": {
+          "original": [
+            1469,
+            1263
+          ],
+          "preprocess": [
+            1787,
+            1536
+          ],
+          "detector_tensor": [
+            1792,
+            1536
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": false,
+          "achieved_short": 1536,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 6.238606283997797,
+          "warm_seconds": [
+            6.3512472129987145,
+            6.364539417001652
+          ],
+          "warm_mean_seconds": 6.357893315000183
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ]
+        ]
+      },
+      {
+        "id": "EN06",
+        "resize": {
+          "original": [
+            1476,
+            1266
+          ],
+          "preprocess": [
+            1791,
+            1536
+          ],
+          "detector_tensor": [
+            1792,
+            1536
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": false,
+          "achieved_short": 1536,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 5.504909491002763,
+          "warm_seconds": [
+            5.3141591860003246,
+            5.0995422980013245
+          ],
+          "warm_mean_seconds": 5.2068507420008245
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ]
+        ]
+      },
+      {
+        "id": "EN07",
+        "resize": {
+          "original": [
+            1484,
+            1280
+          ],
+          "preprocess": [
+            1781,
+            1536
+          ],
+          "detector_tensor": [
+            1792,
+            1536
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": false,
+          "achieved_short": 1536,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 3.838518551998277,
+          "warm_seconds": [
+            3.7412262709985953,
+            3.4971668219986896
+          ],
+          "warm_mean_seconds": 3.6191965464986424
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ]
+        ]
+      },
+      {
+        "id": "EN08",
+        "resize": {
+          "original": [
+            1055,
+            3975
+          ],
+          "preprocess": [
+            1087,
+            4096
+          ],
+          "detector_tensor": [
+            1088,
+            4096
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": true,
+          "achieved_short": 1087,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 3.8734545480001543,
+          "warm_seconds": [
+            3.3481662269987282,
+            3.3549840279993077
+          ],
+          "warm_mean_seconds": 3.351575127499018
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1088,
+            4096
+          ],
+          [
+            1,
+            3,
+            1088,
+            4096
+          ],
+          [
+            1,
+            3,
+            1088,
+            4096
+          ]
+        ]
+      },
+      {
+        "id": "EN09",
+        "resize": {
+          "original": [
+            1144,
+            746
+          ],
+          "preprocess": [
+            2355,
+            1536
+          ],
+          "detector_tensor": [
+            2368,
+            1536
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": false,
+          "achieved_short": 1536,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 3.4242961880008806,
+          "warm_seconds": [
+            3.014546476999385,
+            3.0238949110025715
+          ],
+          "warm_mean_seconds": 3.0192206940009783
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2368,
+            1536
+          ],
+          [
+            1,
+            3,
+            2368,
+            1536
+          ],
+          [
+            1,
+            3,
+            2368,
+            1536
+          ]
+        ]
+      },
+      {
+        "id": "EN10",
+        "resize": {
+          "original": [
+            1470,
+            1258
+          ],
+          "preprocess": [
+            1795,
+            1536
+          ],
+          "detector_tensor": [
+            1792,
+            1536
+          ],
+          "rule": "short1536_cap4096",
+          "target_short": 1536,
+          "long_cap_active": false,
+          "achieved_short": 1536,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 5.400359065002704,
+          "warm_seconds": [
+            4.925819973999751,
+            5.302281879001384
+          ],
+          "warm_mean_seconds": 5.114050926500568
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ],
+          [
+            1,
+            3,
+            1792,
+            1536
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "target_short": 2048,
+    "CER": 0.181941309255079,
+    "CER_no_punctuation": 0.13189568706118354,
+    "WER": 0.43486590038314177,
+    "S": 109,
+    "D": 242,
+    "I": 52,
+    "N": 2215,
+    "exact_regions": 9,
+    "empty_reference_regions": 0,
+    "first_pass_mean_seconds": 7.362404420500025,
+    "warm_mean_seconds": 6.3911930869500795,
+    "peak_rss_kib": 1430760,
+    "source_sha256": "0f74829f8859882593c4eb64e2f4e00e7c09a566bba00981019f9b2b65cafa9c",
+    "stable_regions_all_repeats": true,
+    "model_bytes": 31749509,
+    "cpu_threads": 1,
+    "per_image": [
+      {
+        "id": "EN01",
+        "resize": {
+          "original": [
+            2376,
+            1740
+          ],
+          "preprocess": [
+            2797,
+            2048
+          ],
+          "detector_tensor": [
+            2784,
+            2048
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": false,
+          "achieved_short": 2048,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 10.424630313998932,
+          "warm_seconds": [
+            8.464737606998824,
+            8.589977449999424
+          ],
+          "warm_mean_seconds": 8.527357528499124
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2784,
+            2048
+          ],
+          [
+            1,
+            3,
+            2784,
+            2048
+          ],
+          [
+            1,
+            3,
+            2784,
+            2048
+          ]
+        ]
+      },
+      {
+        "id": "EN02",
+        "resize": {
+          "original": [
+            2405,
+            1741
+          ],
+          "preprocess": [
+            2829,
+            2048
+          ],
+          "detector_tensor": [
+            2816,
+            2048
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": false,
+          "achieved_short": 2048,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 13.113013898000645,
+          "warm_seconds": [
+            11.147013342000719,
+            10.70508741100275
+          ],
+          "warm_mean_seconds": 10.926050376501735
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2816,
+            2048
+          ],
+          [
+            1,
+            3,
+            2816,
+            2048
+          ],
+          [
+            1,
+            3,
+            2816,
+            2048
+          ]
+        ]
+      },
+      {
+        "id": "EN03",
+        "resize": {
+          "original": [
+            435,
+            1839
+          ],
+          "preprocess": [
+            969,
+            4096
+          ],
+          "detector_tensor": [
+            960,
+            4096
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": true,
+          "achieved_short": 969,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.646416879000753,
+          "warm_seconds": [
+            3.901599074000842,
+            4.133642652999697
+          ],
+          "warm_mean_seconds": 4.0176208635002695
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            960,
+            4096
+          ],
+          [
+            1,
+            3,
+            960,
+            4096
+          ],
+          [
+            1,
+            3,
+            960,
+            4096
+          ]
+        ]
+      },
+      {
+        "id": "EN04",
+        "resize": {
+          "original": [
+            1394,
+            1190
+          ],
+          "preprocess": [
+            2399,
+            2048
+          ],
+          "detector_tensor": [
+            2400,
+            2048
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": false,
+          "achieved_short": 2048,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.728419979997852,
+          "warm_seconds": [
+            3.7484417550003855,
+            3.6903237070000614
+          ],
+          "warm_mean_seconds": 3.7193827310002234
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2400,
+            2048
+          ],
+          [
+            1,
+            3,
+            2400,
+            2048
+          ],
+          [
+            1,
+            3,
+            2400,
+            2048
+          ]
+        ]
+      },
+      {
+        "id": "EN05",
+        "resize": {
+          "original": [
+            1469,
+            1263
+          ],
+          "preprocess": [
+            2382,
+            2048
+          ],
+          "detector_tensor": [
+            2368,
+            2048
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": false,
+          "achieved_short": 2048,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 9.491767538002023,
+          "warm_seconds": [
+            7.589628136000101,
+            8.153312035999988
+          ],
+          "warm_mean_seconds": 7.871470086000045
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2368,
+            2048
+          ],
+          [
+            1,
+            3,
+            2368,
+            2048
+          ],
+          [
+            1,
+            3,
+            2368,
+            2048
+          ]
+        ]
+      },
+      {
+        "id": "EN06",
+        "resize": {
+          "original": [
+            1476,
+            1266
+          ],
+          "preprocess": [
+            2388,
+            2048
+          ],
+          "detector_tensor": [
+            2400,
+            2048
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": false,
+          "achieved_short": 2048,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 7.164667529999861,
+          "warm_seconds": [
+            7.692009971000516,
+            7.161752934000106
+          ],
+          "warm_mean_seconds": 7.426881452500311
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2400,
+            2048
+          ],
+          [
+            1,
+            3,
+            2400,
+            2048
+          ],
+          [
+            1,
+            3,
+            2400,
+            2048
+          ]
+        ]
+      },
+      {
+        "id": "EN07",
+        "resize": {
+          "original": [
+            1484,
+            1280
+          ],
+          "preprocess": [
+            2374,
+            2048
+          ],
+          "detector_tensor": [
+            2368,
+            2048
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": false,
+          "achieved_short": 2048,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 5.643671298999834,
+          "warm_seconds": [
+            5.5681662910028535,
+            5.963557512997795
+          ],
+          "warm_mean_seconds": 5.765861902000324
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2368,
+            2048
+          ],
+          [
+            1,
+            3,
+            2368,
+            2048
+          ],
+          [
+            1,
+            3,
+            2368,
+            2048
+          ]
+        ]
+      },
+      {
+        "id": "EN08",
+        "resize": {
+          "original": [
+            1055,
+            3975
+          ],
+          "preprocess": [
+            1087,
+            4096
+          ],
+          "detector_tensor": [
+            1088,
+            4096
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": true,
+          "achieved_short": 1087,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.326146164999955,
+          "warm_seconds": [
+            3.408766956999898,
+            3.4575967299970216
+          ],
+          "warm_mean_seconds": 3.43318184349846
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1088,
+            4096
+          ],
+          [
+            1,
+            3,
+            1088,
+            4096
+          ],
+          [
+            1,
+            3,
+            1088,
+            4096
+          ]
+        ]
+      },
+      {
+        "id": "EN09",
+        "resize": {
+          "original": [
+            1144,
+            746
+          ],
+          "preprocess": [
+            3141,
+            2048
+          ],
+          "detector_tensor": [
+            3136,
+            2048
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": false,
+          "achieved_short": 2048,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 6.259801233998587,
+          "warm_seconds": [
+            4.388500926001143,
+            4.295689365000726
+          ],
+          "warm_mean_seconds": 4.3420951455009344
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            3136,
+            2048
+          ],
+          [
+            1,
+            3,
+            3136,
+            2048
+          ],
+          [
+            1,
+            3,
+            3136,
+            2048
+          ]
+        ]
+      },
+      {
+        "id": "EN10",
+        "resize": {
+          "original": [
+            1470,
+            1258
+          ],
+          "preprocess": [
+            2393,
+            2048
+          ],
+          "detector_tensor": [
+            2400,
+            2048
+          ],
+          "rule": "short2048_cap4096",
+          "target_short": 2048,
+          "long_cap_active": false,
+          "achieved_short": 2048,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 7.8255093680018035,
+          "warm_seconds": [
+            7.880730985998525,
+            7.883326895000209
+          ],
+          "warm_mean_seconds": 7.882028940499367
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2400,
+            2048
+          ],
+          [
+            1,
+            3,
+            2400,
+            2048
+          ],
+          [
+            1,
+            3,
+            2400,
+            2048
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "target_short": 2560,
+    "CER": 0.18013544018058691,
+    "CER_no_punctuation": 0.12738214643931794,
+    "WER": 0.446360153256705,
+    "S": 102,
+    "D": 242,
+    "I": 55,
+    "N": 2215,
+    "exact_regions": 8,
+    "empty_reference_regions": 2,
+    "first_pass_mean_seconds": 8.906347106300382,
+    "warm_mean_seconds": 7.569543956750567,
+    "peak_rss_kib": 2128972,
+    "source_sha256": "e4fabfc77b5eec78bd71c080435425767562a3415cc42149e83e70fd492029b4",
+    "stable_regions_all_repeats": true,
+    "model_bytes": 31749509,
+    "cpu_threads": 1,
+    "per_image": [
+      {
+        "id": "EN01",
+        "resize": {
+          "original": [
+            2376,
+            1740
+          ],
+          "preprocess": [
+            3496,
+            2560
+          ],
+          "detector_tensor": [
+            3488,
+            2560
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": false,
+          "achieved_short": 2560,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 13.388481185000273,
+          "warm_seconds": [
+            9.810409116998926,
+            10.012221766999573
+          ],
+          "warm_mean_seconds": 9.91131544199925
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            3488,
+            2560
+          ],
+          [
+            1,
+            3,
+            3488,
+            2560
+          ],
+          [
+            1,
+            3,
+            3488,
+            2560
+          ]
+        ]
+      },
+      {
+        "id": "EN02",
+        "resize": {
+          "original": [
+            2405,
+            1741
+          ],
+          "preprocess": [
+            3536,
+            2560
+          ],
+          "detector_tensor": [
+            3520,
+            2560
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": false,
+          "achieved_short": 2560,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 14.426045918000455,
+          "warm_seconds": [
+            11.987863275000564,
+            13.70557204600118
+          ],
+          "warm_mean_seconds": 12.846717660500872
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            3520,
+            2560
+          ],
+          [
+            1,
+            3,
+            3520,
+            2560
+          ],
+          [
+            1,
+            3,
+            3520,
+            2560
+          ]
+        ]
+      },
+      {
+        "id": "EN03",
+        "resize": {
+          "original": [
+            435,
+            1839
+          ],
+          "preprocess": [
+            969,
+            4096
+          ],
+          "detector_tensor": [
+            960,
+            4096
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": true,
+          "achieved_short": 969,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.699752909000381,
+          "warm_seconds": [
+            3.8036400800010597,
+            3.799530110001797
+          ],
+          "warm_mean_seconds": 3.8015850950014283
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            960,
+            4096
+          ],
+          [
+            1,
+            3,
+            960,
+            4096
+          ],
+          [
+            1,
+            3,
+            960,
+            4096
+          ]
+        ]
+      },
+      {
+        "id": "EN04",
+        "resize": {
+          "original": [
+            1394,
+            1190
+          ],
+          "preprocess": [
+            2999,
+            2560
+          ],
+          "detector_tensor": [
+            3008,
+            2560
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": false,
+          "achieved_short": 2560,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 7.406888279001578,
+          "warm_seconds": [
+            5.164918310001667,
+            5.435502547999931
+          ],
+          "warm_mean_seconds": 5.300210429000799
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            3008,
+            2560
+          ],
+          [
+            1,
+            3,
+            3008,
+            2560
+          ],
+          [
+            1,
+            3,
+            3008,
+            2560
+          ]
+        ]
+      },
+      {
+        "id": "EN05",
+        "resize": {
+          "original": [
+            1469,
+            1263
+          ],
+          "preprocess": [
+            2978,
+            2560
+          ],
+          "detector_tensor": [
+            2976,
+            2560
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": false,
+          "achieved_short": 2560,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 11.348338700001477,
+          "warm_seconds": [
+            9.655769310000323,
+            9.690301571001328
+          ],
+          "warm_mean_seconds": 9.673035440500826
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2976,
+            2560
+          ],
+          [
+            1,
+            3,
+            2976,
+            2560
+          ],
+          [
+            1,
+            3,
+            2976,
+            2560
+          ]
+        ]
+      },
+      {
+        "id": "EN06",
+        "resize": {
+          "original": [
+            1476,
+            1266
+          ],
+          "preprocess": [
+            2985,
+            2560
+          ],
+          "detector_tensor": [
+            2976,
+            2560
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": false,
+          "achieved_short": 2560,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 8.832341534998704,
+          "warm_seconds": [
+            8.450591434000671,
+            9.582335934999719
+          ],
+          "warm_mean_seconds": 9.016463684500195
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2976,
+            2560
+          ],
+          [
+            1,
+            3,
+            2976,
+            2560
+          ],
+          [
+            1,
+            3,
+            2976,
+            2560
+          ]
+        ]
+      },
+      {
+        "id": "EN07",
+        "resize": {
+          "original": [
+            1484,
+            1280
+          ],
+          "preprocess": [
+            2968,
+            2560
+          ],
+          "detector_tensor": [
+            2976,
+            2560
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": false,
+          "achieved_short": 2560,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 6.962678513002174,
+          "warm_seconds": [
+            6.755529607002245,
+            7.0399426450021565
+          ],
+          "warm_mean_seconds": 6.897736126002201
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2976,
+            2560
+          ],
+          [
+            1,
+            3,
+            2976,
+            2560
+          ],
+          [
+            1,
+            3,
+            2976,
+            2560
+          ]
+        ]
+      },
+      {
+        "id": "EN08",
+        "resize": {
+          "original": [
+            1055,
+            3975
+          ],
+          "preprocess": [
+            1087,
+            4096
+          ],
+          "detector_tensor": [
+            1088,
+            4096
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": true,
+          "achieved_short": 1087,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 4.475108875998558,
+          "warm_seconds": [
+            2.995003739000822,
+            3.4183329660008894
+          ],
+          "warm_mean_seconds": 3.2066683525008557
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            1088,
+            4096
+          ],
+          [
+            1,
+            3,
+            1088,
+            4096
+          ],
+          [
+            1,
+            3,
+            1088,
+            4096
+          ]
+        ]
+      },
+      {
+        "id": "EN09",
+        "resize": {
+          "original": [
+            1144,
+            746
+          ],
+          "preprocess": [
+            3926,
+            2560
+          ],
+          "detector_tensor": [
+            3936,
+            2560
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": false,
+          "achieved_short": 2560,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 9.344576182997116,
+          "warm_seconds": [
+            6.927692350000143,
+            6.563836518998869
+          ],
+          "warm_mean_seconds": 6.745764434499506
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            3936,
+            2560
+          ],
+          [
+            1,
+            3,
+            3936,
+            2560
+          ],
+          [
+            1,
+            3,
+            3936,
+            2560
+          ]
+        ]
+      },
+      {
+        "id": "EN10",
+        "resize": {
+          "original": [
+            1470,
+            1258
+          ],
+          "preprocess": [
+            2991,
+            2560
+          ],
+          "detector_tensor": [
+            2976,
+            2560
+          ],
+          "rule": "short2560_cap4096",
+          "target_short": 2560,
+          "long_cap_active": false,
+          "achieved_short": 2560,
+          "interpolation": "INTER_LINEAR"
+        },
+        "timing": {
+          "first_pass_seconds": 8.1792589650031,
+          "warm_seconds": [
+            8.128020965999895,
+            8.463864839999587
+          ],
+          "warm_mean_seconds": 8.295942902999741
+        },
+        "actual_detector_shapes": [
+          [
+            1,
+            3,
+            2976,
+            2560
+          ],
+          [
+            1,
+            3,
+            2976,
+            2560
+          ],
+          [
+            1,
+            3,
+            2976,
+            2560
+          ]
+        ]
+      }
+    ]
+  }
+]

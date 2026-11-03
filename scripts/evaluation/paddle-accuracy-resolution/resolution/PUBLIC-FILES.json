@@ -1,0 +1,42 @@
+[
+  {
+    "file": "PROTOCOL.md",
+    "sha256": "edb1273b7934e9d72b6b87d6aa1481a8c0c9892c51c6682a623cb18d137a8305",
+    "bytes": 1047
+  },
+  {
+    "file": "run_sweep.py",
+    "sha256": "6fbf1f5537f6c303fe67257f5d70643b038f1c9ee6ad61afa58798d33a644bde",
+    "bytes": 9538
+  },
+  {
+    "file": "TIMING-ERRATA.md",
+    "sha256": "2e714204c07caaaa2be9c30e02dcb575b63f3109f1a78473ada124eb116b7ace",
+    "bytes": 471
+  },
+  {
+    "file": "input-shapes.json",
+    "sha256": "f6d25a3f9ef25bc46c01d160b405aebaad4bc82c6aa05fbc57cac533ac8acc3e",
+    "bytes": 25283
+  },
+  {
+    "file": "validation.json",
+    "sha256": "fbdbc1cb9d30c8465c82cba35ac57b46426391d04f46015e1145e525df0ac6a5",
+    "bytes": 2566
+  },
+  {
+    "file": "provenance.json",
+    "sha256": "c377eec5676530d2eb173813cdbda3c7ec9dbabc84517f85c3adbc71a0229023",
+    "bytes": 396
+  },
+  {
+    "file": "model-references.json",
+    "sha256": "8994fa79977def2caaa76bca5c691f738e8da5b39ae2fb40b0be5ed974209737",
+    "bytes": 1067
+  },
+  {
+    "file": "README.md",
+    "sha256": "c2a7acf8d74c4ea7439b4c09a7ae5c4d0b43bdc168be6186c342b0afdbad6a18",
+    "bytes": 1667
+  }
+]

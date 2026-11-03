@@ -1,0 +1,7 @@
+{
+  "normal_stop_pages": 8,
+  "failed_pages": 2,
+  "same_success_subset_reference_characters": 1470,
+  "baseline_CER": 0.2727891156462585,
+  "VL_CER": 0.13129251700680272
+}

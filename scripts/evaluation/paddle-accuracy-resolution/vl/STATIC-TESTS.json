@@ -1,0 +1,70 @@
+{
+  "validation_scope": "仅静态检查和合成字符串测试；未下载文件、未启动模型、未读取真实图片或 GT。",
+  "parser_function_ast_identical_to_original": true,
+  "synthetic_parser_test_count": 10,
+  "static_runtime_contract_test_count": 3,
+  "all_tests_passed": true,
+  "private_absolute_path_scan_passed": true,
+  "forbidden_asset_extension_scan_passed": true,
+  "commands": [
+    {
+      "command": [
+        "python",
+        "-m",
+        "py_compile",
+        "run_eval.py",
+        "parse_spotting.py",
+        "patch_spotting_mmproj.py",
+        "project_for_scoring.py",
+        "test_parser.py",
+        "test_runtime_contract.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "-v",
+        "test_parser.py",
+        "test_runtime_contract.py"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_bare_and_scale (test_parser.ParserTests.test_bare_and_scale) ... ok\ntest_multiple (test_parser.ParserTests.test_multiple) ... ok\ntest_reject_degenerate (test_parser.ParserTests.test_reject_degenerate) ... ok\ntest_reject_empty (test_parser.ParserTests.test_reject_empty) ... ok\ntest_reject_incomplete (test_parser.ParserTests.test_reject_incomplete) ... ok\ntest_reject_invalid_dimensions (test_parser.ParserTests.test_reject_invalid_dimensions) ... ok\ntest_reject_range (test_parser.ParserTests.test_reject_range) ... ok\ntest_reject_unknown_special (test_parser.ParserTests.test_reject_unknown_special) ... ok\ntest_trailing_text_rejects_whole_page (test_parser.ParserTests.test_trailing_text_rejects_whole_page) ... ok\ntest_wrapped (test_parser.ParserTests.test_wrapped) ... ok\ntest_fixed_request_budget (test_runtime_contract.RuntimeContractTests.test_fixed_request_budget) ... ok\ntest_fixed_server_flags (test_runtime_contract.RuntimeContractTests.test_fixed_server_flags) ... ok\ntest_runtime_and_model_paths_separate (test_runtime_contract.RuntimeContractTests.test_runtime_and_model_paths_separate) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.015s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "run_eval.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: run_eval.py [-h] --manifest MANIFEST --models MODELS --runtime RUNTIME\n                   --output OUTPUT --lock LOCK\n\n固定参数的十图本地 Spotting 单遍复现；不自动下载\n\noptions:\n  -h, --help           show this help message and exit\n  --manifest MANIFEST  十图来源清单；相对图片路径按清单所在目录解析\n  --models MODELS      已核验的原始模型与修正后 mmproj 所在目录\n  --runtime RUNTIME    包含 llama-server 的官方运行时目录\n  --output OUTPUT      新的本地输出目录；已有协议文件时拒绝覆盖\n  --lock LOCK          与其他重计算任务共同使用的互斥锁文件\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "patch_spotting_mmproj.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: patch_spotting_mmproj.py [-h] --models MODELS\n\n核验官方 mmproj，并生成只改 max_pixels 的副本\n\noptions:\n  -h, --help       show this help message and exit\n  --models MODELS  原始权重所在目录\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "project_for_scoring.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: project_for_scoring.py [-h] --input INPUT --output OUTPUT\n\n将原始输出投影为供既有评分器读取的最终 Spotting 区域\n\noptions:\n  -h, --help       show this help message and exit\n  --input INPUT    复现运行生成的 predictions.json\n  --output OUTPUT  新的本地投影 JSON 文件\n",
+      "stderr": ""
+    }
+  ]
+}

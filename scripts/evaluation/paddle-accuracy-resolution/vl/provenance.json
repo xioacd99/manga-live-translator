@@ -1,0 +1,24 @@
+{
+  "artifact_type": "公开复现脚本；未在此版本重新推理",
+  "original_runner_sha256": "a26d72d1603a3f752b00f02eae0b8791627d926d0398d8ebaac558cdd63b003e",
+  "original_parser_sha256": "1e2237feaee4ed37ada9545a2d3d7ea5cbb33e764eb863b72211d6532a4779e8",
+  "original_protocol_sha256": "e46115125a2b9612e3d6ef406f9b006f96767227350d8071c70e842c655f8417",
+  "public_version_differences": [
+    "将 manifest、models、runtime、output、lock 改为必传命令行路径参数。",
+    "增加输出目录与锁目录创建；清单相对图片路径按清单目录解析。",
+    "解析器哈希读取脚本目录，而非旧实验输出目录。",
+    "新增中文说明；原解析函数保留，旧固定目录合成示例移至独立单测。",
+    "公开来源清单移除私有绝对路径，保留同十图公开来源、图片 SHA256 和尺寸。",
+    "未修改 CPU 线程、上下文、输出预算、提示词、采样、视觉像素、预处理、坐标映射或失败处理语义。",
+    "用 Python AST 重新排版以便阅读，不改变计算逻辑。",
+    "附加独立的输出结构投影脚本，只删除空 detectorRegions；不修改原 runner 输出。"
+  ],
+  "not_claimed": [
+    "不是原冻结 runner 的相同 SHA256 副本。",
+    "未在公开版本上重跑模型，不能声称新推理得到相同结果。",
+    "本包不附带原图、标注、原始预测、响应、完整 OCR 文本或模型文件。"
+  ],
+  "public_runner_sha256": "c1575c7431df8807587680d10f4b8fbfd7afad3111017bbedbc7068c33a06fe1",
+  "public_parser_sha256": "66ab2b15171d9f7c22b104285f554642e6431e225d85aba1fb0c2b5a258d41c7",
+  "parser_function_ast_identical_to_original": true
+}

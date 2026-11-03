@@ -1,0 +1,191 @@
+{
+  "images_requested": 10,
+  "images_completed": 10,
+  "normal_stop_and_parsed_images": [
+    "EN03",
+    "EN04",
+    "EN05",
+    "EN06",
+    "EN07",
+    "EN08",
+    "EN09",
+    "EN10"
+  ],
+  "truncated_images": [
+    "EN01",
+    "EN02"
+  ],
+  "other_failed_images": [],
+  "parsed_region_total": 461,
+  "model_startup_seconds": 1.975488668998878,
+  "single_pass_request_seconds_mean": 126.28696626080018,
+  "single_pass_request_seconds_median": 113.52839038250022,
+  "single_pass_request_seconds_min": 38.60805943399828,
+  "single_pass_request_seconds_max": 236.4121472750012,
+  "peak_server_rss_bytes": 2916696064,
+  "server_stopped": true,
+  "comparability": "CPU4 vs old CPU1; one pass per distinct image; no repeated warm mean; no end-to-end timing because original RGB/resize/PNG preprocessing was done before timed requests",
+  "quality_status": "Separately scored and independently checked in vl.metrics.json; runtime runner did not read GT",
+  "per_image": [
+    {
+      "id": "EN01",
+      "request_wall_seconds": 228.41180398600045,
+      "finish_reason": "length",
+      "truncated": true,
+      "region_count": 0,
+      "usage": {
+        "completion_tokens": 4096,
+        "prompt_tokens": 1989,
+        "total_tokens": 6085,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": "ValueError: Incomplete generation: finish_reason=length"
+    },
+    {
+      "id": "EN02",
+      "request_wall_seconds": 236.4121472750012,
+      "finish_reason": "length",
+      "truncated": true,
+      "region_count": 0,
+      "usage": {
+        "completion_tokens": 4096,
+        "prompt_tokens": 2027,
+        "total_tokens": 6123,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": "ValueError: Incomplete generation: finish_reason=length"
+    },
+    {
+      "id": "EN03",
+      "request_wall_seconds": 38.60805943399828,
+      "finish_reason": "stop",
+      "truncated": false,
+      "region_count": 27,
+      "usage": {
+        "completion_tokens": 341,
+        "prompt_tokens": 1069,
+        "total_tokens": 1410,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "EN04",
+      "request_wall_seconds": 86.09576711499903,
+      "finish_reason": "stop",
+      "truncated": false,
+      "region_count": 26,
+      "usage": {
+        "completion_tokens": 312,
+        "prompt_tokens": 1981,
+        "total_tokens": 2293,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "EN05",
+      "request_wall_seconds": 132.9680382680017,
+      "finish_reason": "stop",
+      "truncated": false,
+      "region_count": 134,
+      "usage": {
+        "completion_tokens": 1799,
+        "prompt_tokens": 1981,
+        "total_tokens": 3780,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "EN06",
+      "request_wall_seconds": 126.93098381899836,
+      "finish_reason": "stop",
+      "truncated": false,
+      "region_count": 102,
+      "usage": {
+        "completion_tokens": 1384,
+        "prompt_tokens": 1981,
+        "total_tokens": 3365,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "EN07",
+      "request_wall_seconds": 111.32522045299993,
+      "finish_reason": "stop",
+      "truncated": false,
+      "region_count": 40,
+      "usage": {
+        "completion_tokens": 630,
+        "prompt_tokens": 2029,
+        "total_tokens": 2659,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "EN08",
+      "request_wall_seconds": 88.68188959000327,
+      "finish_reason": "stop",
+      "truncated": false,
+      "region_count": 19,
+      "usage": {
+        "completion_tokens": 236,
+        "prompt_tokens": 2014,
+        "total_tokens": 2250,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "EN09",
+      "request_wall_seconds": 97.70419235599911,
+      "finish_reason": "stop",
+      "truncated": false,
+      "region_count": 22,
+      "usage": {
+        "completion_tokens": 269,
+        "prompt_tokens": 2029,
+        "total_tokens": 2298,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": null
+    },
+    {
+      "id": "EN10",
+      "request_wall_seconds": 115.73156031200051,
+      "finish_reason": "stop",
+      "truncated": false,
+      "region_count": 91,
+      "usage": {
+        "completion_tokens": 1178,
+        "prompt_tokens": 1981,
+        "total_tokens": 3159,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "error": null
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "completed": true,
+  "groups": [
+    {
+      "target": 1024,
+      "images": 10,
+      "passes": 30,
+      "stable_regions_all_repeats": true,
+      "mean_first_pass_seconds": 3.828053390799687,
+      "mean_warm_seconds": 3.4913854283995533,
+      "total_wall_seconds": 108.10824247598794,
+      "peak_rss_kib": 976820,
+      "cap_active_ids": [
+        "EN03"
+      ],
+      "import_seconds": 0.4494466010000906,
+      "cached_model_init_seconds": 0.14036594999925,
+      "predictions_sha256": "8a309cab985ebb8ad67ce518695d2d2d4f75f85c68680598a314df0af82e8f34"
+    },
+    {
+      "target": 1536,
+      "images": 10,
+      "passes": 30,
+      "stable_regions_all_repeats": true,
+      "mean_first_pass_seconds": 5.305873181800417,
+      "mean_warm_seconds": 4.857459647200085,
+      "total_wall_seconds": 150.20792476200586,
+      "peak_rss_kib": 1074804,
+      "cap_active_ids": [
+        "EN03",
+        "EN08"
+      ],
+      "import_seconds": 0.4630275400013488,
+      "cached_model_init_seconds": 0.14304790099777165,
+      "predictions_sha256": "aa8f25046f3cbae83874ceb03f8a1b5de2558449ae84275365917236950ac982"
+    },
+    {
+      "target": 2048,
+      "images": 10,
+      "passes": 30,
+      "stable_regions_all_repeats": true,
+      "mean_first_pass_seconds": 7.362404420500025,
+      "mean_warm_seconds": 6.3911930869500795,
+      "total_wall_seconds": 201.44790594400183,
+      "peak_rss_kib": 1430760,
+      "cap_active_ids": [
+        "EN03",
+        "EN08"
+      ],
+      "import_seconds": 0.5250996830000076,
+      "cached_model_init_seconds": 0.15465087000120548,
+      "predictions_sha256": "0f74829f8859882593c4eb64e2f4e00e7c09a566bba00981019f9b2b65cafa9c"
+    },
+    {
+      "target": 2560,
+      "images": 10,
+      "passes": 30,
+      "stable_regions_all_repeats": true,
+      "mean_first_pass_seconds": 8.906347106300382,
+      "mean_warm_seconds": 7.569543956750567,
+      "total_wall_seconds": 240.45435019801516,
+      "peak_rss_kib": 2128972,
+      "cap_active_ids": [
+        "EN03",
+        "EN08"
+      ],
+      "import_seconds": 0.6763658870004292,
+      "cached_model_init_seconds": 0.2136631289977231,
+      "predictions_sha256": "e4fabfc77b5eec78bd71c080435425767562a3415cc42149e83e70fd492029b4"
+    }
+  ],
+  "source_hashes_verified": true,
+  "timing_clarification": "Tensor-shape observation and raw capture are inside measured wall. RSS read is outside wall. RSS is process cumulative high-water KiB, not image-independent. See TIMING-ERRATA.md.",
+  "effective_configs_byte_identical": true,
+  "model_selection_identical": true
+}
