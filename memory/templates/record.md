@@ -1,20 +1,20 @@
-# Record Template
+# 经验记录模板
 
-Copy this template into the relevant category using a descriptive filename. Replace placeholders with evidence from actual work; mark unknown or inapplicable fields explicitly. This template is not an incident report.
+复制到相关分类目录，使用具体文件名。用实际证据替换占位内容，明确哪些内容未知或不适用；模板本身不是事件报告。
 
-- Title: <specific finding or decision>
-- Status: <open | resolved | superseded>
-- Updated: <YYYY-MM-DD, Asia/Shanghai>
-- Scope and environment: <affected components, versions, configuration, and conditions>
-- Symptoms or context: <what was observed or which decision was needed>
-- Evidence: <reproduction steps, sanitized observations, or measured results>
-- Cause: <verified explanation; clearly label any remaining hypothesis>
-- Fix, decision, or practice: <what changed, alternatives tried, and why>
-- Verification: <commands or checks performed, results, and remaining limitations>
-- Applicability: <when this lesson applies and when it does not>
-- References: <relevant public commit, issue, or documentation links>
-- Superseded by: <replacement record if applicable>
+- 标题：<具体发现或决策>
+- 状态：<待解决 | 已解决 | 已被替代>
+- 更新日期：<YYYY-MM-DD，Asia/Shanghai>
+- 范围与环境：<组件、版本、配置和条件>
+- 现象或背景：<实际观察或待决问题>
+- 证据：<复现步骤、脱敏观察或测量结果>
+- 原因：<已验证解释；假设须明确标注>
+- 修复、决策或实践：<修改内容、尝试过的替代方案及原因>
+- 验证：<执行的命令、结果及剩余限制>
+- 适用边界：<适用与不适用的情形>
+- 参考：<公开提交、Issue 或文档链接>
+- 替代记录：<适用时填写后继记录>
 
-Do not include secrets, private logs, or users' manga content.
+默认中文，不包含密钥、私人日志或用户漫画内容。第三方许可证与引用原文保留原样。
 
-[Back to project memory](../../MEMORY.md)
+[返回项目记忆](../../MEMORY.md)

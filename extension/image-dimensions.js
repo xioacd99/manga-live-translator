@@ -15,7 +15,7 @@ function dimensions(width, height) {
   return { width, height };
 }
 
-/** Inspect container/frame headers before decoding. Compressed-payload validity remains the decoder's job. */
+/** 解码前检查容器与帧头；压缩内容是否有效仍由解码器验证。 */
 export function inspectImage(input, mime) {
   const bytes = input instanceof ArrayBuffer ? new Uint8Array(input) : ArrayBuffer.isView(input) ? new Uint8Array(input.buffer, input.byteOffset, input.byteLength) : null;
   if (!bytes || !bytes.length || bytes.length > MAX_BYTES) fail();

@@ -1,43 +1,47 @@
 # Manga Live Translator
 
-High-performance, low-latency online manga translation with natural, context-aware LLM translations.
+面向在线阅读的漫画翻译工具，以高性能、低延迟和自然、理解上下文的大语言模型翻译为目标。
 
-## Status
+## 当前状态
 
-An unreleased dev-branch preview now implements local English OCR, opt-in LLM text translation, reversible browser overlays, and bounded layered caches. The goals below are not measured performance or quality claims. See the [build, usage, verification and limitations guide](docs/development/preview.md).
+尚未发布的 dev 分支预览版已实现本地英文 OCR、需主动启用的大语言模型文本翻译、可撤销的浏览器译文覆盖层，以及容量受限的分层缓存。下列目标不代表已测得的性能或质量结论。构建、使用、验证方法和限制见[开发预览指南](docs/development/preview.md)。
 
-The [synthetic browser integration run](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987) passed with genuine packaged OCR and mocked image/provider boundaries. Live-site and translation-quality validation remain open.
+[合成浏览器集成测试](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987)已通过，使用真实打包的 OCR，并模拟图片获取与模型服务边界。真实网站和翻译质量仍待验证。
 
-## Goals
+## 项目目标
 
-- **High performance and low latency:** minimize the wait between opening a manga page and reading its translation.
-- **Natural LLM translation:** use large language models to produce fluent dialogue that respects context.
-- **Online reading:** make automatic translation convenient for reading manga in the browser.
+- **高性能、低延迟：** 尽量缩短从打开漫画页面到阅读译文的等待时间。
+- **自然的大语言模型翻译：** 利用大语言模型生成流畅、符合上下文的对白。
+- **在线阅读：** 让浏览器中的漫画自动翻译更方便。
 
-## First implementation plan
+## 首版实施计划
 
-Read the [first requirements and implementation plan](docs/plans/v0.1/README.md) for the proposed MVP, architecture, cache design, research sources, evaluation gates, and decisions awaiting review. The plan remains the requirements baseline; the preview guide distinguishes implemented scope from outstanding acceptance gates.
+[首版需求与实施计划](docs/plans/v0.1/README.md)涵盖拟议的 MVP、架构、缓存设计、研究来源、验收门槛和待评审决策。该计划仍是需求基线；预览指南区分已实现范围与尚未完成的验收项。
 
-## Contributing
+## 欢迎贡献
 
-Issues and pull requests are welcome! Share ideas, report problems, or contribute improvements. Read the [issue guide](docs/ISSUES.md) and use the bug or feature form. People, maintainers, dot, and other bots follow the same format.
+欢迎提交 Issue 和 Pull Request，分享想法、报告问题或改进项目！请先阅读 [Issue 指南](docs/ISSUES.md)，使用缺陷或功能建议表单。贡献者、维护者、dot 和其他机器人遵循同一格式。
 
-## Branch workflow
+## 开发语言
 
-Development happens on dev. Run the applicable tests on the final changes, then merge tested work into main for release. Run `npm test`, `npm run test:tooling`, `npm run build` and the synthetic browser smoke as described in the preview guide. Changes on dev are not automatically released; merging or publishing remains an explicit step. See [AGENTS.md](AGENTS.md) for the development workflow.
+开发沟通、新增或修改的文档、代码注释、文档字符串及 Issue 默认使用中文；这取代了之前的仅英文约定。历史英文研究、计划及许可证来源记录按需查阅，不代表本次已将整个项目翻译成中文。标识符、API、命令及第三方原文保持不变；未来需要英文时，另行提供英文文档版本。
 
-## Development knowledge
+## 分支流程
 
-Before development, read this README, [MEMORY.md](MEMORY.md), and [AGENTS.md](AGENTS.md), in that order. MEMORY.md indexes the project's development lessons, pitfalls, decisions, and testing experience.
+开发在 dev 分支进行。针对最终修改运行适用测试，只有获得明确授权后，才将验证通过的工作合并到 main 用于发布。请按预览指南运行 `npm test`、`npm run test:tooling`、`npm run build` 和合成浏览器冒烟测试。dev 上的修改不会自动发布；合并或发布是需要明确授权的独立步骤。完整开发流程见 [AGENTS.md](AGENTS.md)。
 
-## Commit and push checks
+## 开发知识
 
-Each development commit must update PUBLISH.md and a real memory/ record. Versioned commit, merge, and push hooks check this requirement. They are not enabled automatically by cloning. See [installation, behavior, and tests](docs/change-record-hooks.md); opt in per clone with `git config --local core.hooksPath .githooks` after reviewing any existing hooks.
+开发前请依次阅读本 README、[MEMORY.md](MEMORY.md) 和 [AGENTS.md](AGENTS.md)。MEMORY.md 是项目开发经验、陷阱、决策和测试经验的索引。
 
-## Update history
+## 提交与推送检查
 
-See [PUBLISH.md](PUBLISH.md) for changes to the project. Released updates will be recorded by version and date, including additions, improvements, fixes, compatibility changes, and upgrade notes where relevant.
+每个开发提交必须同时更新 PUBLISH.md 和 memory/ 下的一份实际经验记录。仓库中的提交、合并和推送钩子会检查此要求，但克隆仓库不会自动启用。安装方法、行为和测试见[检查钩子指南](docs/change-record-hooks.md)；检查已有钩子后，可在每个克隆中自行执行 `git config --local core.hooksPath .githooks` 启用。
 
-## License
+## 更新历史
 
-Licensed under the [MIT License](LICENSE). You may use, modify, distribute, and use this software commercially, provided you retain the copyright and permission notices. See LICENSE for the full terms, including the warranty disclaimer.
+项目变更见 [PUBLISH.md](PUBLISH.md)。发布更新将按版本和日期记录，并按实际情况说明新增、改进、修复、兼容性变化和升级注意事项。
+
+## 许可证
+
+项目采用 [MIT License](LICENSE)。在保留版权声明和许可声明的前提下，可使用、修改、分发本软件，也可用于商业用途。完整条款及免责声明请参阅 LICENSE；许可证原文保持不变。

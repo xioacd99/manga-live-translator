@@ -1,4 +1,4 @@
-// Geometry uses CSS pixels; OCR boxes remain in the decoded image coordinate space.
+// 布局使用 CSS 像素；OCR 区域保留在解码图像的坐标空间中。
 export function isEligibleImage(image, minimum = 160) {
   return !!image.isConnected && image.complete && image.naturalWidth >= minimum &&
     image.naturalHeight >= minimum && !!(image.currentSrc || image.src);

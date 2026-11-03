@@ -1,31 +1,31 @@
-### Existing issue search
+### 已有 issue 检索
 
-<!-- State the search terms and whether a relevant issue already exists. Add new evidence there instead of opening a duplicate. -->
+<!-- 说明实际使用的搜索词及是否找到相关 issue。优先在已有 issue 中补充新证据，避免重复提交。 -->
 
-### Summary
+### 概要
 
-<!-- Describe one concrete problem or request. Separate observed facts from assumptions. -->
+<!-- 描述一个具体问题或请求，区分观察到的事实与假设。 -->
 
-### Revision or project state
+### 版本或项目状态
 
-<!-- Give a commit SHA, branch and observation date, or an actual released version if one exists. For planning or documentation, say so and identify the affected file. Do not invent an application version. -->
+<!-- 提供提交 SHA、分支及观察日期，或真实已发布版本。规划或文档问题请说明涉及文件，不要编造应用版本。 -->
 
-### Environment
+### 运行环境
 
-<!-- Include relevant OS/browser versions, setup, source and target languages, and provider/model names if applicable. Do not include credentials. For documentation-only issues, explain why runtime details do not apply. -->
+<!-- 说明相关操作系统、浏览器版本、配置、源语言和目标语言，以及适用的服务商和模型名称。不要包含凭据。纯文档问题请解释运行环境为何不适用。 -->
 
-### Steps to reproduce
+### 复现步骤
 
-<!-- Provide numbered steps and a minimal sanitized example. If intermittent, include frequency and what you tried. For documentation, give the file/section and steps to find the problem. -->
+<!-- 提供编号步骤和已脱敏的最小示例。偶发问题请说明频率及已尝试的检查；文档问题请给出文件、小节和定位步骤。 -->
 
-### Expected behavior
+### 预期行为
 
-<!-- Describe the intended result and its basis. -->
+<!-- 描述预期结果及其依据。 -->
 
-### Actual behavior
+### 实际行为
 
-<!-- Describe what you observed, including sanitized errors. Do not claim an unrun test passed. -->
+<!-- 描述实际观察结果和脱敏后的错误信息，不要声称未运行的测试已通过。 -->
 
-### Additional evidence
+### 补充证据
 
-<!-- Optional. -->
+<!-- 可选：提供脱敏日志、截图、链接、测量或技术分析。明确标记假设和未经验证的内容。 -->

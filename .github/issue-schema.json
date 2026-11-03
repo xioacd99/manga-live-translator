@@ -1,19 +1,25 @@
 {
-  "Bug": [
-    "Existing issue search",
-    "Summary",
-    "Revision or project state",
-    "Environment",
-    "Steps to reproduce",
-    "Expected behavior",
-    "Actual behavior"
-  ],
-  "Feature": [
-    "Existing issue search",
-    "Summary",
-    "Problem and use case",
-    "Proposed behavior",
-    "Acceptance criteria",
-    "Alternatives considered"
-  ]
+  "Bug": {
+    "title": "缺陷",
+    "sections": {
+      "已有 issue 检索": "Existing issue search",
+      "概要": "Summary",
+      "版本或项目状态": "Revision or project state",
+      "运行环境": "Environment",
+      "复现步骤": "Steps to reproduce",
+      "预期行为": "Expected behavior",
+      "实际行为": "Actual behavior"
+    }
+  },
+  "Feature": {
+    "title": "功能",
+    "sections": {
+      "已有 issue 检索": "Existing issue search",
+      "概要": "Summary",
+      "问题与使用场景": "Problem and use case",
+      "建议行为": "Proposed behavior",
+      "验收标准": "Acceptance criteria",
+      "考虑过的替代方案": "Alternatives considered"
+    }
+  }
 }

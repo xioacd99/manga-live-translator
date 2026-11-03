@@ -23,7 +23,7 @@ function validateOutput(value, ids) {
   return { translations: ids.map(regionId => ({ regionId, text: found.get(regionId) })) };
 }
 
-// Instantiate only in an extension-owned context. Never serialize this closure.
+// 仅在扩展自己的上下文中实例化，不得序列化此闭包。
 export function createOpenAiAdapter({ apiKey, fetchImpl = globalThis.fetch, timeoutMs = 60000 }) {
   if (typeof apiKey !== 'string' || !apiKey.trim() || /[\r\n]/.test(apiKey)) throw fail('CONFIGURATION', 'An OpenAI API key is required.');
   if (!Number.isFinite(timeoutMs) || timeoutMs < 1 || timeoutMs > 120000) throw fail('CONFIGURATION', 'Invalid provider timeout.');

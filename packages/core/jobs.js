@@ -2,7 +2,7 @@ export function abortError() { return new DOMException('Operation cancelled', 'A
 export function throwIfAborted(signal) { if (signal?.aborted) throw abortError(); }
 export class QueueFullError extends Error { constructor() { super('Work queue is full'); this.name = 'QueueFullError'; } }
 
-/** Concurrency is occupied until an adapter actually settles, even if it ignores abort. */
+/** 即使适配器忽略取消信号，并发槽也要等它真正结束后才释放。 */
 export class BoundedQueue {
   constructor({ concurrency = 1, maxQueue = 16 } = {}) {
     if (!Number.isInteger(concurrency) || concurrency < 1 || !Number.isInteger(maxQueue) || maxQueue < 0) throw new TypeError('Invalid queue limits');
@@ -26,7 +26,7 @@ export class BoundedQueue {
   }
 }
 
-/** Each subscriber owns cancellation; only the last detachment aborts shared work. */
+/** 订阅者独立控制取消；只有最后一个订阅者离开时才取消共享任务。 */
 export class SingleFlight {
   constructor() { this.jobs = new Map(); }
   has(key) { return this.jobs.has(key); }

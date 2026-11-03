@@ -1,27 +1,27 @@
-### Existing issue search
+### 已有 issue 检索
 
-<!-- State the search terms and whether a relevant issue already exists. Add new evidence there instead of opening a duplicate. -->
+<!-- 说明实际使用的搜索词及是否找到相关 issue。优先在已有 issue 中补充新证据，避免重复提交。 -->
 
-### Summary
+### 概要
 
-<!-- Describe one concrete problem or request. Separate observed facts from assumptions. -->
+<!-- 描述一个具体问题或请求，区分观察到的事实与假设。 -->
 
-### Problem and use case
+### 问题与使用场景
 
-<!-- Explain who needs this and the current limitation or inconvenience. -->
+<!-- 说明谁需要此功能，以及当前限制或不便。 -->
 
-### Proposed behavior
+### 建议行为
 
-<!-- Describe the desired experience and scope. Clearly mark proposed behavior as not yet implemented. -->
+<!-- 说明期望的体验和范围，明确标注尚未实现的建议。 -->
 
-### Acceptance criteria
+### 验收标准
 
-<!-- List observable outcomes that would demonstrate success. Avoid unsupported performance claims. -->
+<!-- 列出可观察、可验证的完成条件，不要作出无证据的性能承诺。 -->
 
-### Alternatives considered
+### 考虑过的替代方案
 
-<!-- Describe other approaches or existing workarounds. If none, explain why. -->
+<!-- 描述其他方案或现有替代方法；如尚未找到，请说明原因。 -->
 
-### Additional evidence
+### 补充证据
 
-<!-- Optional. -->
+<!-- 可选：提供脱敏日志、截图、链接、测量或技术分析。明确标记假设和未经验证的内容。 -->

@@ -1,5 +1,7 @@
 # First Implementation Plan
 
+> 语言约定更新（2026-11-03）：本目录保留首版英文研究与方案原文供追溯；新增开发文档、代码注释和 Issue 默认中文，以根目录 AGENTS.md 为准。后续需要英文支持时维护独立文档，不将历史英文材料视为当前语言要求。
+
 Draft 1, 2026-11-03 (Asia/Shanghai). This is a proposed implementation plan, not a released product or a benchmark report. Development belongs on dev; main is unchanged by this plan.
 
 ## Recommendation

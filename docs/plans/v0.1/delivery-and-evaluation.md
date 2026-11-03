@@ -2,7 +2,7 @@
 
 ## Working rules
 
-Read README.md, MEMORY.md and AGENTS.md before work. Develop on dev. Every development commit updates PUBLISH.md and a real memory record with verified findings; write documentation, comments and docstrings in English. Keep main unchanged until a separately authorized tested merge. Use the existing issue structure for humans and bots alike.
+Read README.md, MEMORY.md and AGENTS.md before work. Develop on dev. Every development commit updates PUBLISH.md and a real memory record with verified findings; 新增或修改的文档、注释与文档字符串默认使用中文；语言规范以当前 AGENTS.md 为准。 Keep main unchanged until a separately authorized tested merge. Use the existing issue structure for humans and bots alike.
 
 The current repository has developer-tooling tests, not a translation implementation. The stages below are proposed work packages, not delivered features. Do not write untested performance claims into README or PUBLISH.
 

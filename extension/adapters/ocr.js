@@ -2,7 +2,7 @@ import { createWorker } from 'tesseract.js';
 
 const abortError = () => new DOMException('OCR cancelled.', 'AbortError');
 
-// Paths are supplied by the trusted extension coordinator, never page messages.
+// 路径只能由可信扩展协调层提供，不能取自网页消息。
 export function createOcrAdapter({ workerPath, corePath, langPath, createWorkerImpl = createWorker }) {
   for (const path of [workerPath, corePath, langPath]) {
     if (typeof path !== 'string' || !path || !/^(?:chrome-extension:\/\/|moz-extension:\/\/|file:\/\/|\/(?!\/))/.test(path)) {
@@ -15,7 +15,7 @@ export function createOcrAdapter({ workerPath, corePath, langPath, createWorkerI
   let disposed = false;
   let cancelCurrent;
   const release = () => {
-    // Every caller must wait for the same teardown, including abort and dispose.
+    // 所有调用方（包括取消与销毁）必须等待同一次清理完成。
     if (releasePromise) return releasePromise;
     const pending = workerPromise;
     workerPromise = undefined;
@@ -49,7 +49,7 @@ export function createOcrAdapter({ workerPath, corePath, langPath, createWorkerI
       }
       const worker = await workerPromise;
       if (signal?.aborted || disposed) throw abortError();
-      // Sparse text admits separated bubbles. No orientation/vertical-language claim.
+      // 稀疏文本模式兼容分散气泡，但不代表已经支持方向检测或竖排语言。
       await worker.setParameters({ tessedit_pageseg_mode: '11', user_defined_dpi: '300' });
       if (signal?.aborted || disposed) throw abortError();
       const input = typeof window === 'undefined' ? imageBytes : new Blob([imageBytes]);

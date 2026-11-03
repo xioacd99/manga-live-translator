@@ -1,10 +1,10 @@
-# Development preview: v0.1.0
+# 开发预览版：v0.1.0
 
-This is an unreleased dev-branch implementation, not a Chrome Web Store release or a production-quality translation benchmark.
+这是 dev 分支上尚未发布的实现，不是 Chrome 网上应用店发行版，也不是生产级翻译质量基准。
 
-## Build and test
+## 构建与测试
 
-Use Node.js 22 or later and Python 3. The initial local run used Node 24.22.1.
+使用 Node.js 22 或更高版本及 Python 3。首次本地运行使用 Node 24.22.1。
 
 ```sh
 npm ci --ignore-scripts
@@ -16,49 +16,49 @@ npm run test:browser
 node benchmarks/cache.mjs
 ```
 
-Load the resulting `dist/` directory with Chrome's **Load unpacked** action in `chrome://extensions` after enabling Developer mode. This is a manual installation; no installer changes your browser or Git configuration. The build bundles the OCR worker, WASM, English model and license notices. It checks the pinned model hash and writes an asset manifest. No model CDN is contacted while reading.
+在 `chrome://extensions` 中启用开发者模式后，通过 **加载已解压的扩展程序（Load unpacked）** 加载生成的 `dist/` 目录。这是手动安装，没有安装器替你修改浏览器或 Git 配置。构建会打包 OCR worker、WASM、英文模型及许可证声明，校验固定版本的模型哈希并写入资源清单。阅读过程中不会访问模型 CDN。
 
-## Try the preview
+## 试用预览版
 
-1. Open the extension's options. Enter your own OpenAI API key and a model ID supporting Chat Completions strict JSON schema. No default model or free usage is promised.
-2. Review and accept the text-transmission consent. Optional context and glossary are sent with the dialogue. The API key is kept in Chrome's trusted session storage, not content scripts or sync storage.
-3. Open a public HTTP(S) image reader. Use the extension popup to enable the current site. If images use another CDN origin, explicitly enter that origin too. Chrome asks for those hosts and `api.openai.com`; arbitrary page access is not granted by default.
-4. Click **Translate** on a visible image. Local OCR extracts English text; only text and translation configuration go to OpenAI. Automatic mode is optional and may create additional billable calls for visible images.
-5. Use **Show original** to remove the overlay, or **Read / correct text** to inspect and correct OCR. Corrections accumulate for the same image source and invalidate translation identity without rerunning unchanged OCR.
-6. Use **Clear reading cache** or **Forget key and clear session** when finished. Already transmitted API requests may still be billed after cancellation.
+1. 打开扩展选项，输入自己的 OpenAI API 密钥，以及支持 Chat Completions 严格 JSON schema 的模型 ID。项目不承诺提供默认模型或免费额度。
+2. 阅读并接受文本传输授权。可选的上下文和术语表会与对白一起发送。API 密钥保存在 Chrome 受信任的会话存储中，不放入内容脚本或同步存储。
+3. 打开公开的 HTTP(S) 图片阅读页面，在扩展弹窗中启用当前网站。如果图片来自另一个 CDN 来源，也需明确输入该来源。Chrome 会请求这些主机及 `api.openai.com` 的权限；默认不会授予任意页面访问权。
+4. 在可见图片上点击 **Translate（翻译）**。本地 OCR 提取英文文本；只向 OpenAI 发送文本和翻译配置。自动模式需主动启用，且可能对可见图片产生额外的计费调用。
+5. 使用 **Show original（显示原图）** 移除覆盖层，或使用 **Read / correct text（阅读／修正文本）** 查看并修正 OCR。同一图片来源的修正会累积并使译文缓存标识失效，不会重新执行内容未变的 OCR。
+6. 完成后使用 **Clear reading cache（清除阅读缓存）** 或 **Forget key and clear session（清除密钥及会话）**。已发出的 API 请求即使取消也仍可能计费。
 
-Never paste a production secret into an issue or commit. No key is needed for the automated tests: provider responses are mocked and the image is generated from original bitmap glyphs.
+不要将生产环境密钥粘贴到 Issue 或提交中。自动化测试无需密钥：模型服务响应为模拟数据，图片由原创位图字形生成。以上保留现有界面标签以便定位；文档默认中文不代表扩展界面或整个项目已经完成中文化。
 
-## Implemented boundaries
+## 已实现范围与边界
 
-- One local Tesseract English OCR worker, one decode at a time, and at most two concurrent translations. Bounded pending queues, image bytes and dimensions; malformed image headers are rejected before browser decode.
-- Static PNG, JPEG, BMP and WebP within the validated subset; 4 MiB compressed bytes and 16 million pixels. Unsupported or animated formats are rejected rather than silently processed.
-- Byte-based image hash; independent bounded OCR and translation caches; context, glossary, source corrections, provider/model/account and output configuration participate in keys. Application cache hits are not provider prompt-cache hits.
-- Single-flight work coalescing, subscriber cancellation, generation-fenced clearing and counters distinguishing lookups, hits, misses, coalescing and actual adapter calls.
-- Reversible text-only overlay and accessible text panel. Original pixels remain untouched. No inpainting, image export, whole-chapter crawl, canvas reader extraction, iframe support or authenticated image downloads.
-- Memory-only reading caches. Service-worker interruption may lose an in-flight response; executor/browser restart may discard cache. No automatic paid retry or promise of exactly-once billing. Re-enable/retry manually if interrupted.
-- The first provider adapter uses the fixed OpenAI endpoint. Redirects, arbitrary endpoints and image uploads are not supported. Invalid/missing region IDs, malformed output, refusal and incomplete output are rejected without caching.
-- Public hostname restrictions are defense in depth, not DNS-rebinding protection. Only grant trusted reader/CDN origins. Fetches omit cookies and referrer and reject redirects. Incognito is disabled.
+- 一个本地 Tesseract 英文 OCR worker，每次只解码一张图片，最多并行处理两次翻译。待处理队列、图片字节数和尺寸都有上限；格式错误的图片头会在浏览器解码前被拒绝。
+- 支持已验证子集内的静态 PNG、JPEG、BMP 和 WebP；压缩数据上限为 4 MiB，像素上限为 1600 万。不支持的格式或动画会被拒绝，而不是静默处理。
+- 基于图片字节计算哈希；OCR 缓存与翻译缓存独立且有容量限制。上下文、术语表、原文修正、服务提供方／模型／账户和输出配置都参与缓存键计算。应用缓存命中不等于模型服务的提示缓存命中。
+- 合并同一任务的并发请求（single-flight）、按订阅者取消、通过代次隔离防止清除后旧结果回写；计数器区分查询、命中、未命中、请求合并和实际适配器调用。
+- 可撤销的纯文本覆盖层及支持无障碍访问的文本面板，不修改原始像素。不支持图像修复、图片导出、整章抓取、canvas 阅读器提取、iframe 或需要身份认证的图片下载。
+- 阅读缓存仅保存在内存中。Service worker 中断可能丢失进行中的响应；执行器或浏览器重启可能丢失缓存。没有自动付费重试，也不保证恰好计费一次。中断后需手动重新启用或重试。
+- 首个服务适配器使用固定的 OpenAI 端点。不支持重定向、任意端点或图片上传。区域 ID 无效或缺失、输出格式错误、模型拒绝以及不完整输出会被拒绝且不写入缓存。
+- 公开主机名限制属于纵深防御，不提供 DNS 重绑定防护。只授权可信的阅读网站／CDN 来源。请求不带 Cookie 和 Referer，并拒绝重定向。无痕模式已禁用。
 
-## Verification and limitations
+## 验证结果与限制
 
-The local unit suite includes actual offline OCR on a synthetic English bitmap, cache invalidation/concurrency tests, content lifecycle/geometry tests, provider malformed-response tests, and request security checks. Synthetic core timing is a test fixture measurement, not end-to-end browser latency or manga translation quality.
+本地单元测试包括：对合成英文位图运行真实离线 OCR、缓存失效与并发测试、内容生命周期与几何布局测试、模型服务异常响应测试，以及请求安全检查。合成核心计时只衡量测试夹具，不代表浏览器端到端延迟或漫画翻译质量。
 
-The initial cloud container could not start Chromium because the host denied socket creation, including an isolated-profile retry. The browser smoke is therefore also wired into GitHub Actions, where the [first successful synthetic browser run](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987) passed on commit 1906c1d909023e29a44813ca4ac7635c0346249b (Chromium 141, Ubuntu 24.04). It uses the built extension, genuine packaged OCR, a generated image, a mocked image-acquisition boundary and a mocked provider. Live reader/CDN acquisition is not covered by that synthetic smoke. No live paid provider call, user device run, M4 performance result or real manga corpus quality gate has been completed.
+最初的云容器因宿主环境禁止创建套接字而无法启动 Chromium，使用独立配置目录重试也未成功。因此浏览器冒烟测试同时接入了 GitHub Actions。[首次成功的合成浏览器测试](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987)在提交 1906c1d909023e29a44813ca4ac7635c0346249b 上通过（Chromium 141、Ubuntu 24.04）。测试使用构建后的扩展、真实打包的 OCR、生成的图片，以及模拟的图片获取边界和模型服务。该合成冒烟测试不覆盖真实阅读网站／CDN 的图片获取。目前尚未完成真实付费模型调用、用户设备运行、M4 性能测量或真实漫画语料质量验收。
 
-Outstanding acceptance work includes real reader-site coverage, speech-bubble/panel quality, natural dialogue evaluation, interruption/recovery exercises across Chrome lifecycle states, representative long-scroll memory measurements, Japanese/vertical OCR and a larger licensed benchmark corpus. These are not implied by passing synthetic tests.
+待验收工作包括真实阅读网站覆盖、对白气泡／分镜质量、自然对白评估、Chrome 各生命周期状态下的中断与恢复演练、具有代表性的长滚动阅读内存测量、日文／竖排 OCR，以及更大的已获许可基准语料。合成测试通过不代表这些项目已完成。
 
-See [dependency provenance](dependency-provenance.md), the [approved plan](../plans/v0.1/README.md) and [Issue #1](https://github.com/xioacd99/manga-live-translator/issues/1).
+另见[依赖来源](dependency-provenance.md)、[已批准的计划](../plans/v0.1/README.md)和 [Issue #1](https://github.com/xioacd99/manga-live-translator/issues/1)。
 
-## Current acceptance status
+## 当前验收状态
 
-| Area | Actual evidence | Still open |
+| 范围 | 实际证据 | 待完成 |
 | --- | --- | --- |
-| Repository and application checks | 77 JavaScript tests, 42 Python tooling tests, locked build and full committed-file readback | Broader fuzzing and independent security audit |
-| Browser vertical slice | Real packaged Chromium/Tesseract, synthetic image and mocked acquisition/provider; overlays, correction, context change, warm reuse and forget/reconfigure passed | Real site/CDN fetching, permissions prompt interaction, real reader layouts |
-| Cache correctness | Stage keys, coalescing, per-subscriber cancel, TTL/LRU/byte limits, account isolation, clear fencing and stale cleanup regressions | Persistent content is deliberately absent; full browser process-death acceptance |
-| OCR quality | Original generated English bitmap recognized offline and in packaged browser | Rights-cleared manga corpus, second OCR candidate comparison, Japanese/vertical input, reading-order/quality scoring |
-| Translation quality | Strict schema and error contracts with synthetic provider response | Explicitly authorized paid model smoke and bilingual quality review |
-| Performance and release | Synthetic cache counters/benchmark, bounded implementation, reproducible build | M4 p50/p95/memory measurements, release thresholds, authorized main merge/store publication |
+| 仓库与应用检查 | 77 项 JavaScript 测试、42 项 Python 工具测试、锁定依赖构建，以及全部已提交文件回读 | 更广泛的模糊测试及独立安全审计 |
+| 浏览器端到端功能切片 | 真实打包的 Chromium/Tesseract、合成图片、模拟的获取与模型服务；覆盖层、文本修正、上下文变化、热缓存复用、清除后重新配置均已通过 | 真实网站／CDN 获取、权限弹窗交互、真实阅读器布局 |
+| 缓存正确性 | 分阶段缓存键、请求合并、按订阅者取消、TTL/LRU/字节上限、账户隔离、清除后的代次隔离，以及过期清理回归测试 | 设计上不持久化内容；完整浏览器进程终止场景验收仍未完成 |
+| OCR 质量 | 原创生成的英文位图已在离线环境及打包浏览器中识别 | 权利清晰的漫画语料、第二个 OCR 候选对比、日文／竖排输入、阅读顺序与质量评分 |
+| 翻译质量 | 使用合成模型服务响应验证严格 schema 和错误契约 | 获得明确授权后的付费模型冒烟测试，以及双语质量评审 |
+| 性能与发布 | 合成缓存计数器／基准、有资源上限的实现、可复现构建 | M4 p50/p95/内存测量、发布门槛、获授权的 main 合并及商店发布 |
 
-Successful CI runs preserve an unpacked development build and synthetic screenshot/metrics artifacts for seven days. These are test/build artifacts, not GitHub Releases or store packages. Build locally after artifact expiry.
+成功的 CI 运行会保留未打包的开发构建、合成测试截图及指标产物七天。这些是测试／构建产物，不是 GitHub Releases 或商店安装包。产物过期后请在本地构建。

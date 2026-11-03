@@ -1,64 +1,56 @@
-name: Feature request
-description: Describe a proposed improvement and how to verify it.
-title: '[Feature] '
+name: 功能建议
+description: 说明建议的改进及验证方式。
+title: '[功能] '
 body:
 - type: markdown
   attributes:
-    value: 'Please read [the issue guide](https://github.com/xioacd99/manga-live-translator/blob/main/docs/ISSUES.md).
-      These requirements apply equally to people and bots. AI-assisted reports are welcome when accurate
-      and complete. This is a public tracker: remove secrets, private logs, personal information, and
-      private manga content. Use synthetic or shareable minimal examples. Explain unknown or inapplicable
-      details instead of guessing.'
+    value: '请先阅读 [issue 指南](https://github.com/xioacd99/manga-live-translator/blob/dev/docs/ISSUES.md)。所有人员和机器人遵守同一要求，欢迎准确完整的 AI 辅助报告。这里是公开跟踪器，请移除密钥、个人信息、私密日志和私人漫画内容；使用合成或获准公开的最小示例。未知或不适用的内容请解释原因，不要猜测。main 尚未合并中文校验器时，实际提交请遵循指南中的过渡规则。'
 - type: textarea
   id: search
   attributes:
-    label: Existing issue search
-    description: State the search terms and whether a relevant issue already exists. Add new evidence
-      there instead of opening a duplicate.
+    label: 已有 issue 检索
+    description: 说明实际使用的搜索词及是否找到相关 issue。优先在已有 issue 中补充新证据，避免重复提交。
   validations:
     required: true
 - type: textarea
   id: summary
   attributes:
-    label: Summary
-    description: Describe one concrete problem or request. Separate observed facts from assumptions.
+    label: 概要
+    description: 描述一个具体问题或请求，区分观察到的事实与假设。
   validations:
     required: true
 - type: textarea
   id: problem
   attributes:
-    label: Problem and use case
-    description: Explain who needs this and the current limitation or inconvenience.
+    label: 问题与使用场景
+    description: 说明谁需要此功能，以及当前限制或不便。
   validations:
     required: true
 - type: textarea
   id: proposal
   attributes:
-    label: Proposed behavior
-    description: Describe the desired experience and scope. Clearly mark proposed behavior as not yet
-      implemented.
+    label: 建议行为
+    description: 说明期望的体验和范围，明确标注尚未实现的建议。
   validations:
     required: true
 - type: textarea
   id: acceptance
   attributes:
-    label: Acceptance criteria
-    description: List observable outcomes that would demonstrate success. Avoid unsupported performance
-      claims.
+    label: 验收标准
+    description: 列出可观察、可验证的完成条件，不要作出无证据的性能承诺。
   validations:
     required: true
 - type: textarea
   id: alternatives
   attributes:
-    label: Alternatives considered
-    description: Describe other approaches or existing workarounds. If none, explain why.
+    label: 考虑过的替代方案
+    description: 描述其他方案或现有替代方法；如尚未找到，请说明原因。
   validations:
     required: true
 - type: textarea
   id: evidence
   attributes:
-    label: Additional evidence
-    description: Optional sanitized logs, screenshots, links, measurements, or technical analysis. Identify
-      hypotheses and disclose anything not verified.
+    label: 补充证据
+    description: 可选：提供脱敏日志、截图、链接、测量或技术分析。明确标记假设和未经验证的内容。
   validations:
     required: false

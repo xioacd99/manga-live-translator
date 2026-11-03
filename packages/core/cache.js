@@ -1,6 +1,6 @@
 import { canonicalize } from './keys.js';
 
-/** In-memory only. Values are cloned so callers cannot poison validated entries. */
+/** 仅保存在内存中；通过复制数值防止调用方修改已验证的缓存条目。 */
 export class BoundedCache {
   constructor({ maxEntries = 128, maxBytes = 8 * 1024 * 1024, ttlMs = 30 * 60 * 1000, now = Date.now } = {}) {
     if (!Number.isInteger(maxEntries) || maxEntries < 1 || !Number.isFinite(maxBytes) || maxBytes < 1 || !Number.isFinite(ttlMs) || ttlMs <= 0) throw new TypeError('Invalid cache limits');

@@ -9,3 +9,5 @@ Record techniques supported by actual project experience, including when they ap
 - [Developing on dev before releasing from main](dev-main-workflow.md): branch separation, testing, and explicit merge boundaries.
 
 [Back to development](../README.md)
+
+- [中文默认规范与 Issue 迁移边界](chinese-default-transition.md)：区分 dev 规范更新与 main 线上入口，保留历史兼容。

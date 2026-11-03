@@ -65,7 +65,7 @@ export function installReader({document: doc = globalThis.document, window: win 
   }
   function add(image) {
     const host = node('div'); host.setAttribute('data-mlt-reader', '');
-    // Shadow DOM isolates styles, not secrets. Open mode keeps accessibility and browser tests inspectable.
+    // Shadow DOM 用于隔离样式，不是秘密保护边界；开放模式便于无障碍访问与浏览器测试检查。
     const shadow = host.attachShadow({mode: 'open'});
     const style = node('style', CSS), regions = node('div'), controls = node('div'), panel = node('div');
     regions.className = 'regions'; controls.className = 'controls'; panel.className = 'panel'; panel.hidden = true;
@@ -117,7 +117,7 @@ export function installReader({document: doc = globalThis.document, window: win 
     state.regions.hidden = state.original;
     if (!state.result || state.original || !rect.width || !rect.height) return;
     const css = win.getComputedStyle(state.image);
-    // Rotated/skewed images cannot use axis-aligned OCR rectangles; the text panel stays available.
+    // 旋转或倾斜的图像不能直接套用轴对齐 OCR 矩形，但仍可使用文本面板。
     if (css.transform !== 'none' && css.transform !== '') { state.regions.replaceChildren(); state.layoutKey = null; return; }
     const px = key => parseFloat(css[key]) || 0;
     const left = px('borderLeftWidth') + px('paddingLeft'), top = px('borderTopWidth') + px('paddingTop');
@@ -142,7 +142,7 @@ export function installReader({document: doc = globalThis.document, window: win 
     frame = 0;
     if (!enabled) return;
     if (pageUrl !== win.location.href) {
-      // Navigation requires a fresh user enable action, including SPA changes.
+      // 导航（包括 SPA 路由变化）后需要用户重新启用。
       disable(); return;
     }
     for (const state of states.values()) {
@@ -185,7 +185,7 @@ export function installReader({document: doc = globalThis.document, window: win 
   win.addEventListener('popstate', schedule);
   win.addEventListener('hashchange', schedule);
   doc.addEventListener('load', schedule, true);
-  // currentSrc can change without a DOM mutation; history.pushState also emits no event.
+  // currentSrc 可能在 DOM 未变动时改变；history.pushState 也不会发出导航事件。
   const interval = win.setInterval(schedule, 1000);
   return {enable, disable, destroy() {
     disable(); win.clearInterval(interval); runtime.onMessage.removeListener(onMessage);

@@ -13,7 +13,7 @@ function validateTranslationConfig(config) {
   if (new TextEncoder().encode(canonicalize(config)).byteLength > LIMITS.maxRequestBytes) throw new TypeError('Translation configuration too large');
 }
 
-/** Adapters are injected; this module never performs network requests or persists data. */
+/** 适配器由外部注入；本模块不发起网络请求，也不持久化数据。 */
 export function createPipeline({ ocr, translate, cacheOptions, ocrConcurrency = 1, translationConcurrency = 2, maxQueue = 16 } = {}) {
   if (typeof ocr !== 'function' || typeof translate !== 'function') throw new TypeError('OCR and translation adapters are required');
   const ocrCache = new BoundedCache(cacheOptions), translationCache = new BoundedCache(cacheOptions);
@@ -38,7 +38,7 @@ export function createPipeline({ ocr, translate, cacheOptions, ocrConcurrency = 
   return {
     async run(input, { signal } = {}) {
       throwIfAborted(signal);
-      // Snapshot before the first await: caller mutations must not change effective keys.
+      // 首次 await 前建立快照，避免调用方后续修改影响实际缓存键。
       const { width, height, namespace } = input;
       if (!Number.isInteger(width) || width <= 0 || !Number.isInteger(height) || height <= 0 || width * height > LIMITS.maxPixels) throw new TypeError('Image exceeds dimension budget');
       if (typeof namespace !== 'string' || !namespace.length || namespace.length > 512) throw new TypeError('A bounded cache namespace is required');

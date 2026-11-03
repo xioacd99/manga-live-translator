@@ -34,6 +34,6 @@ export async function readBoundedImage(response, signal) {
 export function toBase64(bytes) { let s=''; for(let n=0;n<bytes.length;n+=32768)s+=String.fromCharCode(...bytes.subarray(n,n+32768)); return btoa(s); }
 export function safeError(error) {
   if(error?.name==='AbortError')return {code:'CANCELLED',message:'Translation cancelled.'};
-  // Only authored, non-provider error messages may be displayed.
+  // 仅展示固定的安全提示，不透传服务提供方或未知异常内容。
   return {code:'FAILED',message:'Could not process this image. Check page permissions, model configuration, image limits, and provider availability. No automatic retry was sent.'};
 }

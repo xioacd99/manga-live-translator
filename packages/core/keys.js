@@ -1,4 +1,4 @@
-/** Canonical JSON deliberately preserves array order, whitespace and language spelling. */
+/** 规范化 JSON 有意保留数组顺序、空白以及语言名称的拼写。 */
 export function canonicalize(value) {
   const seen = new Set();
   function visit(item) {

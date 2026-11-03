@@ -1,10 +1,13 @@
-# Update History
+# 更新记录
 
-This file records completed changes under date-version headings (`YYYY-MM-DD - vX.Y.Z`), with bullet points directly beneath each heading. Dates use Asia/Shanghai.
+每个更新使用日期与版本号标题（`YYYY-MM-DD - vX.Y.Z`），标题下分点记录已完成修改。日期使用 Asia/Shanghai。
 
-Each entry describes the changes made, with additions, improvements, fixes, compatibility changes, and upgrade notes where relevant. Planned features are not listed as completed changes.
+新增记录默认中文，说明实际新增、改进、修复、兼容变化与升级注意事项，不把计划写成已完成。既有英文记录保留用于历史追溯。
 
 ## 2026-11-03 - v0.1.0
+
+- 将后续开发文档、代码注释、文档字符串与 Issue 默认语言改为中文；更新当前开发规范、使用指南与记忆模板，保留历史英文研究、许可证和更新记录，不更改 API 标识或运行时翻译语言。
+- 新 Issue 表单与共享校验器支持中文，保留历史英文结构兼容；main 未合并前按过渡规则提交中文内容，不误称 dev 模板或校验器已替换线上 main 版本。
 
 - Verified the packaged Chromium path with real local OCR and synthetic acquisition/provider boundaries: warm reuse, OCR correction, context invalidation, reversible original display and forget/reconfigure all passed. Recorded exact CI evidence and remaining real-site/model/M4 acceptance gates; added seven-day build and screenshot/metrics artifacts without publishing a release.
 
