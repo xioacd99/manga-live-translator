@@ -12,4 +12,5 @@ Each entry describes the changes made, with additions, improvements, fixes, comp
 - MIT License allowing modification, distribution, and commercial use subject to its terms.
 - This update history, linked from the README, using date-version section headings and direct bullet points.
 - Agent development guidelines covering project goals, evidence-based performance claims, licensing, contributions, and documentation updates.
+- English-only project documentation, code comments, and docstrings are required by the development guidelines; manga and translation languages remain unrestricted.
 - Documentation-only initialization: v0.0.0 identifies this initial documentation record. No software release or Git tag has been published, and no application upgrade procedure exists yet.

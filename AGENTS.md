@@ -7,6 +7,12 @@
 - Keep goals and planned features clearly separate from implemented behavior. The project is currently at an early stage.
 - Support performance claims with reproducible tests. State the test conditions and limitations; never invent benchmark results or publish untested performance numbers.
 
+## Language
+
+- Write all project documentation in English, including README.md, PUBLISH.md, AGENTS.md, and development guides.
+- Write code comments and docstrings in English.
+- This convention does not restrict manga input languages, translation target languages, or non-English content required by test data and fixtures.
+
 ## License and contributions
 
 - Keep the project under the MIT License, allowing modification, distribution, and commercial use under its terms. Preserve the required copyright and permission notices.
