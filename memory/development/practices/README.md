@@ -17,3 +17,5 @@ Record techniques supported by actual project experience, including when they ap
 - [区域准备的缓存与授权边界](region-preparation.md)
 
 - [预训练检测、本地下载与生命周期](pretrained-local-detector.md)
+
+- [中文漫画候选方案的公平比较](chinese-comic-benchmark.md)

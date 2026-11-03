@@ -1,0 +1,46 @@
+{
+  "smoke_exact_bbox_text_confidence_matches_original": {
+    "full": {
+      "DP03": true,
+      "DL01": true
+    },
+    "rec": {
+      "DP03": true,
+      "DL01": true
+    },
+    "inner": {
+      "DP03": true,
+      "DL01": true
+    }
+  },
+  "static_private_path_scan": "passed",
+  "copyright_assets_included": false,
+  "weights_included": false,
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 6098,
+      "sha256": "52f5739e7cabe1739c968481854719951e9ff8bd69c19e08e2b4ad7319bf505d"
+    },
+    {
+      "name": "benchmark.py",
+      "bytes": 6393,
+      "sha256": "ef797921d45ada3192eb279b10c251813186bb21ffc48b0192833f4ee717519f"
+    },
+    {
+      "name": "crop-diagnostics.json",
+      "bytes": 1960,
+      "sha256": "e8b4ccb422dc4b2efa31e94931e86ce4f10b2c56d8df1a849aaca14a3b6b4a25"
+    },
+    {
+      "name": "models.json",
+      "bytes": 1009,
+      "sha256": "6a056feac0bae208697415b8026c8d46ade70f919aed2bccccf0c733ec6883bb"
+    },
+    {
+      "name": "requirements.lock.txt",
+      "bytes": 405,
+      "sha256": "48d451a2d88617cf6f1eb9f33480b768459de4145fd3baba2bd7fff5b7a4ab10"
+    }
+  ]
+}

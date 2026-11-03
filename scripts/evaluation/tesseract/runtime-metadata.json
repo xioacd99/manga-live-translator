@@ -1,0 +1,14 @@
+{
+  "tesseract": "5.5.0",
+  "tesseract_license": "Apache-2.0",
+  "tesseract_license_source": "https://github.com/tesseract-ocr/tesseract/blob/5.5.0/LICENSE",
+  "detector_sha256": "5fe9e4f576e49d4e7e8b0e029d6d3cdc252abd4694113e1cae120e62c931ea79",
+  "detector_bytes": 11120765,
+  "notice": "本目录不含模型、原图或OCR全文。检测权重来源与许可须使用产品仓库原始第三方清单核验。",
+  "detector_repo": "ogkalu/comic-text-and-bubble-detector",
+  "detector_revision": "16e8a622f91fabc6b5b65c96d32d1183f8843546",
+  "detector_url": "https://huggingface.co/ogkalu/comic-text-and-bubble-detector/resolve/16e8a622f91fabc6b5b65c96d32d1183f8843546/detector-v4-s_int8.onnx",
+  "detector_license": "Apache-2.0 as declared in official model card",
+  "detector_license_source": "https://huggingface.co/ogkalu/comic-text-and-bubble-detector/blob/16e8a622f91fabc6b5b65c96d32d1183f8843546/README.md",
+  "production_module_sha256": "54fb5bbaa9eac844a4be4110487cf2036106e71d73e8300ca379c8a54febdfc5"
+}

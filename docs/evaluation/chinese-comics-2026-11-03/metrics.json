@@ -1,0 +1,5247 @@
+[
+  {
+    "scheme": "paddle_db_rec",
+    "normalization": "NFKC; remove Unicode whitespace; preserve punctuation/case/script",
+    "matching": "geometry only, prediction overlap >=0.5 assigned once; strict detection maximum-cardinality IoU matching",
+    "S": 3,
+    "D": 81,
+    "I": 3,
+    "N": 536,
+    "microCER": 0.1623134328358209,
+    "macroCER": 0.19665429583123342,
+    "noPunctuationEdits": {
+      "S": 1,
+      "D": 9,
+      "I": 3,
+      "N": 387
+    },
+    "microCER_no_punctuation": 0.03359173126614987,
+    "exactRegions": 29,
+    "referenceRegions": 44,
+    "images": [
+      {
+        "id": "DP01",
+        "sha256": "2c87906b61cc735dcb55ca82ee0efcb9009c354ec342d23c74d513092c1e108e",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 18,
+        "I": 0,
+        "N": 71,
+        "CER": 0.2535211267605634,
+        "CER_no_punctuation": 0.0784313725490196,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 4,
+          "I": 0,
+          "N": 51
+        },
+        "exactRegions": 2,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 3,
+            "FP": 6,
+            "FN": 1,
+            "precision": 0.3333333333333333,
+            "recall": 0.75,
+            "F1": 0.46153846153846156
+          },
+          "0.5": {
+            "TP": 0,
+            "FP": 9,
+            "FN": 4,
+            "precision": 0.0,
+            "recall": 0.0,
+            "F1": 0.0
+          }
+        },
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DP01-R01",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 15,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP01-R02",
+            "S": 0,
+            "D": 12,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DP01-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 21,
+            "exact": true,
+            "predictionCount": 3
+          },
+          {
+            "id": "DP01-R04",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 23,
+            "exact": false,
+            "predictionCount": 3
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.5334395030004089,
+          "warm_seconds": [
+            0.5443093630001385,
+            0.4750782330011134
+          ],
+          "warm_mean_seconds": 0.509693798000626
+        },
+        "warmMeanSeconds": 0.509693798000626
+      },
+      {
+        "id": "DP02",
+        "sha256": "84f1f5341c8c27d910c1f7073766f9f35831901540e8a26cc7adf6a75c752381",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 0,
+        "I": 0,
+        "N": 18,
+        "CER": 0.0,
+        "CER_no_punctuation": 0.0,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 15
+        },
+        "exactRegions": 2,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 3,
+            "FN": 0,
+            "precision": 0.4,
+            "recall": 1.0,
+            "F1": 0.5714285714285714
+          },
+          "0.5": {
+            "TP": 1,
+            "FP": 4,
+            "FN": 1,
+            "precision": 0.2,
+            "recall": 0.5,
+            "F1": 0.2857142857142857
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DP02-R01",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 13,
+            "exact": true,
+            "predictionCount": 4
+          },
+          {
+            "id": "DP02-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 5,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.4650863599999866,
+          "warm_seconds": [
+            0.4128055229994061,
+            0.4048200930010353
+          ],
+          "warm_mean_seconds": 0.4088128080002207
+        },
+        "warmMeanSeconds": 0.4088128080002207
+      },
+      {
+        "id": "DP03",
+        "sha256": "169e084cc023f2347155b7166bf27c77fe0fded033742b48370a82113cd20f9e",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 0,
+        "I": 3,
+        "N": 12,
+        "CER": 0.25,
+        "CER_no_punctuation": 0.3333333333333333,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 0,
+          "I": 3,
+          "N": 9
+        },
+        "exactRegions": 2,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 3,
+        "detector": {
+          "0.3": {
+            "TP": 3,
+            "FP": 3,
+            "FN": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "F1": 0.6666666666666666
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 4,
+            "FN": 1,
+            "precision": 0.3333333333333333,
+            "recall": 0.6666666666666666,
+            "F1": 0.4444444444444444
+          }
+        },
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP03-R01",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 9,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP03-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 3,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.4083361759985564,
+          "warm_seconds": [
+            0.41783764100000553,
+            0.42499630200109095
+          ],
+          "warm_mean_seconds": 0.42141697150054824
+        },
+        "warmMeanSeconds": 0.42141697150054824
+      },
+      {
+        "id": "DP04",
+        "sha256": "54621d136ac5d3f98552ca950bbdd7bc61b5781865d8831c46e4df2470491379",
+        "fullyAnnotated": true,
+        "S": 1,
+        "D": 20,
+        "I": 0,
+        "N": 75,
+        "CER": 0.28,
+        "CER_no_punctuation": 0.0,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 41
+        },
+        "exactRegions": 1,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 5,
+            "FP": 5,
+            "FN": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "F1": 0.6666666666666666
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 8,
+            "FN": 3,
+            "precision": 0.2,
+            "recall": 0.4,
+            "F1": 0.26666666666666666
+          }
+        },
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DP04-R01",
+            "S": 1,
+            "D": 5,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP04-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 12,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP04-R03",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP04-R04",
+            "S": 0,
+            "D": 3,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP04-R05",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 22,
+            "exact": false,
+            "predictionCount": 2
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.5629830279995076,
+          "warm_seconds": [
+            0.5366458070002409,
+            0.4946443230001023
+          ],
+          "warm_mean_seconds": 0.5156450650001716
+        },
+        "warmMeanSeconds": 0.5156450650001716
+      },
+      {
+        "id": "DP05",
+        "sha256": "f7421b902a7e2905007e421253d6fbcfe36e06530878cdb8013c2a0894964cc5",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 6,
+        "I": 0,
+        "N": 64,
+        "CER": 0.09375,
+        "CER_no_punctuation": 0.0,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 52
+        },
+        "exactRegions": 2,
+        "referenceRegions": 3,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 0,
+            "FP": 11,
+            "FN": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "F1": 0.0
+          },
+          "0.5": {
+            "TP": 0,
+            "FP": 11,
+            "FN": 3,
+            "precision": 0.0,
+            "recall": 0.0,
+            "F1": 0.0
+          }
+        },
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP05-R01",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 16,
+            "exact": false,
+            "predictionCount": 3
+          },
+          {
+            "id": "DP05-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 26,
+            "exact": true,
+            "predictionCount": 4
+          },
+          {
+            "id": "DP05-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 22,
+            "exact": true,
+            "predictionCount": 4
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.5460139959996013,
+          "warm_seconds": [
+            0.49182470300002024,
+            0.4832185760005814
+          ],
+          "warm_mean_seconds": 0.4875216395003008
+        },
+        "warmMeanSeconds": 0.4875216395003008
+      },
+      {
+        "id": "DL01",
+        "sha256": "79a3daff85ba747ce96faf76a969aaec12f1dbe516c5e4b660324a832da9cf21",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 13,
+        "I": 0,
+        "N": 25,
+        "CER": 0.52,
+        "CER_no_punctuation": 0.3076923076923077,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 4,
+          "I": 0,
+          "N": 13
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 1,
+            "FP": 2,
+            "FN": 1,
+            "precision": 0.3333333333333333,
+            "recall": 0.5,
+            "F1": 0.4
+          },
+          "0.5": {
+            "TP": 0,
+            "FP": 3,
+            "FN": 2,
+            "precision": 0.0,
+            "recall": 0.0,
+            "F1": 0.0
+          }
+        },
+        "weakOverlapTargetCount": 1,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DL01-R01",
+            "S": 0,
+            "D": 3,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL01-R02",
+            "S": 0,
+            "D": 10,
+            "I": 0,
+            "N": 10,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.2845018749994779,
+          "warm_seconds": [
+            0.252769172000626,
+            0.2607017820009787
+          ],
+          "warm_mean_seconds": 0.25673547700080235
+        },
+        "warmMeanSeconds": 0.25673547700080235
+      },
+      {
+        "id": "DL02",
+        "sha256": "20341f28f5536c69ff0cc105477d5103c9ba010d7646b0f6324de9c7f6e1ce67",
+        "fullyAnnotated": true,
+        "S": 1,
+        "D": 12,
+        "I": 0,
+        "N": 33,
+        "CER": 0.3939393939393939,
+        "CER_no_punctuation": 0.05555555555555555,
+        "noPunctuationEdits": {
+          "S": 1,
+          "D": 0,
+          "I": 0,
+          "N": 18
+        },
+        "exactRegions": 3,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DL02-R01",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL02-R02",
+            "S": 1,
+            "D": 6,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R04",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R05",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 5,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.30448210000031395,
+          "warm_seconds": [
+            0.30203029299991613,
+            0.2895349950013042
+          ],
+          "warm_mean_seconds": 0.29578264400061016
+        },
+        "warmMeanSeconds": 0.29578264400061016
+      },
+      {
+        "id": "DL03",
+        "sha256": "b5b9316cb15ddc68216a95e23c8a95e5e2028b1fb173ed848ee7a72a0a889143",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 3,
+        "I": 0,
+        "N": 43,
+        "CER": 0.06976744186046512,
+        "CER_no_punctuation": 0.02857142857142857,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 1,
+          "I": 0,
+          "N": 35
+        },
+        "exactRegions": 3,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 3,
+            "FP": 3,
+            "FN": 1,
+            "precision": 0.5,
+            "recall": 0.75,
+            "F1": 0.6
+          },
+          "0.5": {
+            "TP": 1,
+            "FP": 5,
+            "FN": 3,
+            "precision": 0.16666666666666666,
+            "recall": 0.25,
+            "F1": 0.2
+          }
+        },
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DL03-R01",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 12,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL03-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 21,
+            "exact": true,
+            "predictionCount": 3
+          },
+          {
+            "id": "DL03-R03",
+            "S": 0,
+            "D": 3,
+            "I": 0,
+            "N": 3,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL03-R04",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.47664386200085573,
+          "warm_seconds": [
+            0.3849972850002814,
+            0.37177965699993365
+          ],
+          "warm_mean_seconds": 0.37838847100010753
+        },
+        "warmMeanSeconds": 0.37838847100010753
+      },
+      {
+        "id": "DL04",
+        "sha256": "2378b35e949c3d913f3c84853d7c20d84261a0432fe20383b675d67fc700ed9e",
+        "fullyAnnotated": true,
+        "S": 1,
+        "D": 3,
+        "I": 0,
+        "N": 107,
+        "CER": 0.037383177570093455,
+        "CER_no_punctuation": 0.0,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 87
+        },
+        "exactRegions": 6,
+        "referenceRegions": 8,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 7,
+            "FP": 14,
+            "FN": 1,
+            "precision": 0.3333333333333333,
+            "recall": 0.875,
+            "F1": 0.4827586206896552
+          },
+          "0.5": {
+            "TP": 1,
+            "FP": 20,
+            "FN": 7,
+            "precision": 0.047619047619047616,
+            "recall": 0.125,
+            "F1": 0.06896551724137931
+          }
+        },
+        "weakOverlapTargetCount": 8,
+        "detectorTargets": 8,
+        "regions": [
+          {
+            "id": "DL04-R01",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL04-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 11,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL04-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 20,
+            "exact": true,
+            "predictionCount": 4
+          },
+          {
+            "id": "DL04-R04",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 13,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL04-R05",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 11,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL04-R06",
+            "S": 0,
+            "D": 3,
+            "I": 0,
+            "N": 19,
+            "exact": false,
+            "predictionCount": 3
+          },
+          {
+            "id": "DL04-R07",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 17,
+            "exact": true,
+            "predictionCount": 3
+          },
+          {
+            "id": "DL04-R08",
+            "S": 1,
+            "D": 0,
+            "I": 0,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 3
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.8033295950008323,
+          "warm_seconds": [
+            0.9156335179995949,
+            0.7803023420001409
+          ],
+          "warm_mean_seconds": 0.8479679299998679
+        },
+        "warmMeanSeconds": 0.8479679299998679
+      },
+      {
+        "id": "DL05",
+        "sha256": "696f67590f1e800acae15f099c95294f57f65520364dc52d8b8208301da0c642",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 6,
+        "I": 0,
+        "N": 88,
+        "CER": 0.06818181818181818,
+        "CER_no_punctuation": 0.0,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 66
+        },
+        "exactRegions": 8,
+        "referenceRegions": 9,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 7,
+            "FP": 7,
+            "FN": 2,
+            "precision": 0.5,
+            "recall": 0.7777777777777778,
+            "F1": 0.6086956521739131
+          },
+          "0.5": {
+            "TP": 4,
+            "FP": 10,
+            "FN": 5,
+            "precision": 0.2857142857142857,
+            "recall": 0.4444444444444444,
+            "F1": 0.34782608695652173
+          }
+        },
+        "weakOverlapTargetCount": 8,
+        "detectorTargets": 9,
+        "regions": [
+          {
+            "id": "DL05-R01",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 32,
+            "exact": true,
+            "predictionCount": 4
+          },
+          {
+            "id": "DL05-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 11,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL05-R04",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL05-R05",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL05-R06",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R07",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R08",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 15,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL05-R09",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 2,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.5906657889991038,
+          "warm_seconds": [
+            0.5846181139986584,
+            0.5752713269994274
+          ],
+          "warm_mean_seconds": 0.5799447204990429
+        },
+        "warmMeanSeconds": 0.5799447204990429
+      }
+    ],
+    "inputPredictionSHA256": "f56d70a6739f63b4ca3607afe91889eee5422978570bcaa322e480b4d798ac4c",
+    "GT_SHA256": "764cd0ba3b0e2cde475d4df0843821bcdcc16c58c0054ead21a002b6f6bcc891",
+    "warmMeanSeconds": 0.4701909524502298,
+    "warmMedianSeconds": 0.4544693055004245,
+    "detectorEvaluation": "raw line boxes vs paragraph GT: granularity-sensitive diagnostic, not cross-model ranking"
+  },
+  {
+    "scheme": "tesseract-best-whole-psm11",
+    "normalization": "NFKC; remove Unicode whitespace; preserve punctuation/case/script",
+    "matching": "geometry only, prediction overlap >=0.5 assigned once; strict detection maximum-cardinality IoU matching",
+    "S": 144,
+    "D": 183,
+    "I": 226,
+    "N": 536,
+    "microCER": 1.0317164179104477,
+    "macroCER": 1.146274394844917,
+    "noPunctuationEdits": {
+      "S": 109,
+      "D": 91,
+      "I": 217,
+      "N": 387
+    },
+    "microCER_no_punctuation": 1.0775193798449612,
+    "exactRegions": 1,
+    "referenceRegions": 44,
+    "images": [
+      {
+        "id": "DP01",
+        "sha256": "2c87906b61cc735dcb55ca82ee0efcb9009c354ec342d23c74d513092c1e108e",
+        "fullyAnnotated": true,
+        "S": 22,
+        "D": 16,
+        "I": 19,
+        "N": 71,
+        "CER": 0.8028169014084507,
+        "CER_no_punctuation": 0.8823529411764706,
+        "noPunctuationEdits": {
+          "S": 17,
+          "D": 7,
+          "I": 21,
+          "N": 51
+        },
+        "exactRegions": 0,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 12,
+        "detector": null,
+        "weakOverlapTargetCount": 4,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DP01-R01",
+            "S": 6,
+            "D": 2,
+            "I": 2,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 14
+          },
+          {
+            "id": "DP01-R02",
+            "S": 4,
+            "D": 4,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 7
+          },
+          {
+            "id": "DP01-R03",
+            "S": 5,
+            "D": 4,
+            "I": 4,
+            "N": 21,
+            "exact": false,
+            "predictionCount": 20
+          },
+          {
+            "id": "DP01-R04",
+            "S": 7,
+            "D": 6,
+            "I": 1,
+            "N": 23,
+            "exact": false,
+            "predictionCount": 16
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 654.2007529996336,
+              "total_ms": 654.2105370014906,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 663.706167999655,
+              "total_ms": 663.7153920009732,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 665.8079079985619,
+              "total_ms": 665.8160889986902,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.6647657404998317
+      },
+      {
+        "id": "DP02",
+        "sha256": "84f1f5341c8c27d910c1f7073766f9f35831901540e8a26cc7adf6a75c752381",
+        "fullyAnnotated": true,
+        "S": 3,
+        "D": 2,
+        "I": 9,
+        "N": 18,
+        "CER": 0.7777777777777778,
+        "CER_no_punctuation": 0.9333333333333333,
+        "noPunctuationEdits": {
+          "S": 3,
+          "D": 2,
+          "I": 9,
+          "N": 15
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 7,
+        "detector": null,
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DP02-R01",
+            "S": 3,
+            "D": 1,
+            "I": 1,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 13
+          },
+          {
+            "id": "DP02-R02",
+            "S": 0,
+            "D": 1,
+            "I": 1,
+            "N": 5,
+            "exact": false,
+            "predictionCount": 5
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 219.000732999295,
+              "total_ms": 219.00937599875033,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 228.95060699805617,
+              "total_ms": 228.9583889991045,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 221.9105590004474,
+              "total_ms": 221.9195119999349,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.2254389504995197
+      },
+      {
+        "id": "DP03",
+        "sha256": "169e084cc023f2347155b7166bf27c77fe0fded033742b48370a82113cd20f9e",
+        "fullyAnnotated": true,
+        "S": 5,
+        "D": 2,
+        "I": 18,
+        "N": 12,
+        "CER": 2.0833333333333335,
+        "CER_no_punctuation": 2.3333333333333335,
+        "noPunctuationEdits": {
+          "S": 3,
+          "D": 2,
+          "I": 16,
+          "N": 9
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 16,
+        "detector": null,
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP03-R01",
+            "S": 2,
+            "D": 2,
+            "I": 2,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 8
+          },
+          {
+            "id": "DP03-R02",
+            "S": 3,
+            "D": 0,
+            "I": 0,
+            "N": 3,
+            "exact": false,
+            "predictionCount": 3
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 310.4107379987836,
+              "total_ms": 310.4191010016948,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 307.29721499979496,
+              "total_ms": 307.30397499911487,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 346.89825299941003,
+              "total_ms": 346.90659499913454,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.3271052849991247
+      },
+      {
+        "id": "DP04",
+        "sha256": "54621d136ac5d3f98552ca950bbdd7bc61b5781865d8831c46e4df2470491379",
+        "fullyAnnotated": true,
+        "S": 30,
+        "D": 34,
+        "I": 16,
+        "N": 75,
+        "CER": 1.0666666666666667,
+        "CER_no_punctuation": 1.2195121951219512,
+        "noPunctuationEdits": {
+          "S": 20,
+          "D": 9,
+          "I": 21,
+          "N": 41
+        },
+        "exactRegions": 0,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 15,
+        "detector": null,
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DP04-R01",
+            "S": 3,
+            "D": 6,
+            "I": 1,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 7
+          },
+          {
+            "id": "DP04-R02",
+            "S": 12,
+            "D": 0,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 10
+          },
+          {
+            "id": "DP04-R03",
+            "S": 5,
+            "D": 5,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 8
+          },
+          {
+            "id": "DP04-R04",
+            "S": 2,
+            "D": 13,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP04-R05",
+            "S": 8,
+            "D": 10,
+            "I": 0,
+            "N": 22,
+            "exact": false,
+            "predictionCount": 11
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 622.9449879992753,
+              "total_ms": 622.9529909994453,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 600.0785840004683,
+              "total_ms": 600.0864059980959,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 600.4088210016489,
+              "total_ms": 600.4171440005302,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.600251774999313
+      },
+      {
+        "id": "DP05",
+        "sha256": "f7421b902a7e2905007e421253d6fbcfe36e06530878cdb8013c2a0894964cc5",
+        "fullyAnnotated": true,
+        "S": 10,
+        "D": 14,
+        "I": 32,
+        "N": 64,
+        "CER": 0.875,
+        "CER_no_punctuation": 0.8461538461538461,
+        "noPunctuationEdits": {
+          "S": 12,
+          "D": 5,
+          "I": 27,
+          "N": 52
+        },
+        "exactRegions": 0,
+        "referenceRegions": 3,
+        "unmatchedInsertionCharacters": 23,
+        "detector": null,
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP05-R01",
+            "S": 2,
+            "D": 6,
+            "I": 1,
+            "N": 16,
+            "exact": false,
+            "predictionCount": 10
+          },
+          {
+            "id": "DP05-R02",
+            "S": 7,
+            "D": 4,
+            "I": 4,
+            "N": 26,
+            "exact": false,
+            "predictionCount": 22
+          },
+          {
+            "id": "DP05-R03",
+            "S": 1,
+            "D": 4,
+            "I": 4,
+            "N": 22,
+            "exact": false,
+            "predictionCount": 21
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 617.6779179982841,
+              "total_ms": 617.6860700007528,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 629.8441599998623,
+              "total_ms": 629.8517610002309,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 602.0184269994497,
+              "total_ms": 602.0267099998891,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.61593923550006
+      },
+      {
+        "id": "DL01",
+        "sha256": "79a3daff85ba747ce96faf76a969aaec12f1dbe516c5e4b660324a832da9cf21",
+        "fullyAnnotated": true,
+        "S": 4,
+        "D": 21,
+        "I": 6,
+        "N": 25,
+        "CER": 1.24,
+        "CER_no_punctuation": 1.4615384615384615,
+        "noPunctuationEdits": {
+          "S": 4,
+          "D": 9,
+          "I": 6,
+          "N": 13
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 6,
+        "detector": null,
+        "weakOverlapTargetCount": 1,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DL01-R01",
+            "S": 4,
+            "D": 11,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 4
+          },
+          {
+            "id": "DL01-R02",
+            "S": 0,
+            "D": 10,
+            "I": 0,
+            "N": 10,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 137.84699299931526,
+              "total_ms": 137.85573599860072,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 138.2966889999807,
+              "total_ms": 138.30508200079203,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 136.66907200030982,
+              "total_ms": 136.67792499996722,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.1374915035003796
+      },
+      {
+        "id": "DL02",
+        "sha256": "20341f28f5536c69ff0cc105477d5103c9ba010d7646b0f6324de9c7f6e1ce67",
+        "fullyAnnotated": true,
+        "S": 3,
+        "D": 28,
+        "I": 15,
+        "N": 33,
+        "CER": 1.393939393939394,
+        "CER_no_punctuation": 1.7222222222222223,
+        "noPunctuationEdits": {
+          "S": 2,
+          "D": 15,
+          "I": 14,
+          "N": 18
+        },
+        "exactRegions": 0,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 15,
+        "detector": null,
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DL02-R01",
+            "S": 1,
+            "D": 5,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R02",
+            "S": 0,
+            "D": 11,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL02-R03",
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": false,
+            "predictionCount": 4
+          },
+          {
+            "id": "DL02-R04",
+            "S": 0,
+            "D": 7,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL02-R05",
+            "S": 0,
+            "D": 5,
+            "I": 0,
+            "N": 5,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 373.9485040009022,
+              "total_ms": 373.95781799964607,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 388.86712599918246,
+              "total_ms": 388.875268002972,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 381.9589510001242,
+              "total_ms": 381.9670040011406,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.3854211360020563
+      },
+      {
+        "id": "DL03",
+        "sha256": "b5b9316cb15ddc68216a95e23c8a95e5e2028b1fb173ed848ee7a72a0a889143",
+        "fullyAnnotated": true,
+        "S": 13,
+        "D": 5,
+        "I": 36,
+        "N": 43,
+        "CER": 1.255813953488372,
+        "CER_no_punctuation": 1.2857142857142858,
+        "noPunctuationEdits": {
+          "S": 9,
+          "D": 4,
+          "I": 32,
+          "N": 35
+        },
+        "exactRegions": 0,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 32,
+        "detector": null,
+        "weakOverlapTargetCount": 4,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DL03-R01",
+            "S": 5,
+            "D": 1,
+            "I": 1,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 10
+          },
+          {
+            "id": "DL03-R02",
+            "S": 5,
+            "D": 2,
+            "I": 2,
+            "N": 21,
+            "exact": false,
+            "predictionCount": 20
+          },
+          {
+            "id": "DL03-R03",
+            "S": 1,
+            "D": 1,
+            "I": 0,
+            "N": 3,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL03-R04",
+            "S": 2,
+            "D": 1,
+            "I": 1,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 6
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 666.0747730005533,
+              "total_ms": 666.0834659989923,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 657.347378000617,
+              "total_ms": 657.3557099997997,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 717.1685899998993,
+              "total_ms": 717.1764310002327,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.6872660705000162
+      },
+      {
+        "id": "DL04",
+        "sha256": "2378b35e949c3d913f3c84853d7c20d84261a0432fe20383b675d67fc700ed9e",
+        "fullyAnnotated": true,
+        "S": 31,
+        "D": 34,
+        "I": 30,
+        "N": 107,
+        "CER": 0.8878504672897196,
+        "CER_no_punctuation": 0.8505747126436781,
+        "noPunctuationEdits": {
+          "S": 26,
+          "D": 21,
+          "I": 27,
+          "N": 87
+        },
+        "exactRegions": 0,
+        "referenceRegions": 8,
+        "unmatchedInsertionCharacters": 21,
+        "detector": null,
+        "weakOverlapTargetCount": 8,
+        "detectorTargets": 8,
+        "regions": [
+          {
+            "id": "DL04-R01",
+            "S": 0,
+            "D": 3,
+            "I": 3,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 5
+          },
+          {
+            "id": "DL04-R02",
+            "S": 4,
+            "D": 2,
+            "I": 1,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 10
+          },
+          {
+            "id": "DL04-R03",
+            "S": 4,
+            "D": 5,
+            "I": 1,
+            "N": 20,
+            "exact": false,
+            "predictionCount": 11
+          },
+          {
+            "id": "DL04-R04",
+            "S": 3,
+            "D": 2,
+            "I": 1,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 12
+          },
+          {
+            "id": "DL04-R05",
+            "S": 7,
+            "D": 2,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 7
+          },
+          {
+            "id": "DL04-R06",
+            "S": 5,
+            "D": 9,
+            "I": 0,
+            "N": 19,
+            "exact": false,
+            "predictionCount": 9
+          },
+          {
+            "id": "DL04-R07",
+            "S": 6,
+            "D": 4,
+            "I": 3,
+            "N": 17,
+            "exact": false,
+            "predictionCount": 15
+          },
+          {
+            "id": "DL04-R08",
+            "S": 2,
+            "D": 7,
+            "I": 0,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 807.0489269997925,
+              "total_ms": 807.0584509987384,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 800.1008379999548,
+              "total_ms": 800.1093600001186,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 778.4877540003508,
+              "total_ms": 778.4954860005528,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.7893024230003357
+      },
+      {
+        "id": "DL05",
+        "sha256": "696f67590f1e800acae15f099c95294f57f65520364dc52d8b8208301da0c642",
+        "fullyAnnotated": true,
+        "S": 23,
+        "D": 27,
+        "I": 45,
+        "N": 88,
+        "CER": 1.0795454545454546,
+        "CER_no_punctuation": 1.121212121212121,
+        "noPunctuationEdits": {
+          "S": 13,
+          "D": 17,
+          "I": 44,
+          "N": 66
+        },
+        "exactRegions": 1,
+        "referenceRegions": 9,
+        "unmatchedInsertionCharacters": 38,
+        "detector": null,
+        "weakOverlapTargetCount": 8,
+        "detectorTargets": 9,
+        "regions": [
+          {
+            "id": "DL05-R01",
+            "S": 0,
+            "D": 7,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL05-R02",
+            "S": 12,
+            "D": 3,
+            "I": 3,
+            "N": 32,
+            "exact": false,
+            "predictionCount": 28
+          },
+          {
+            "id": "DL05-R03",
+            "S": 1,
+            "D": 8,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R04",
+            "S": 2,
+            "D": 4,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R05",
+            "S": 0,
+            "D": 1,
+            "I": 1,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 6
+          },
+          {
+            "id": "DL05-R06",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL05-R07",
+            "S": 1,
+            "D": 1,
+            "I": 0,
+            "N": 4,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL05-R08",
+            "S": 5,
+            "D": 3,
+            "I": 3,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 14
+          },
+          {
+            "id": "DL05-R09",
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 2,
+            "exact": false,
+            "predictionCount": 2
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "recognition_ms": 919.222010999918,
+              "total_ms": 919.2308249995112,
+              "phase": "first"
+            },
+            {
+              "recognition_ms": 963.4334279987961,
+              "total_ms": 963.440979000181,
+              "phase": "warm1"
+            },
+            {
+              "recognition_ms": 1011.8006459996104,
+              "total_ms": 1011.8091789986938,
+              "phase": "warm2"
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.9876250789994374
+      }
+    ],
+    "inputPredictionSHA256": "47e45c3ded98769167464928dbcd18ddddef9dde09562f492d850d2497c0020f",
+    "GT_SHA256": "764cd0ba3b0e2cde475d4df0843821bcdcc16c58c0054ead21a002b6f6bcc891",
+    "warmMeanSeconds": 0.5420607198500075,
+    "warmMedianSeconds": 0.6080955052496866,
+    "detectorEvaluation": "not applicable: no separate detector; OCR word boxes not compared to paragraph GT"
+  },
+  {
+    "scheme": "rtdetr-tesseract-best-crop2x-psm6",
+    "normalization": "NFKC; remove Unicode whitespace; preserve punctuation/case/script",
+    "matching": "geometry only, prediction overlap >=0.5 assigned once; strict detection maximum-cardinality IoU matching",
+    "S": 130,
+    "D": 119,
+    "I": 65,
+    "N": 536,
+    "microCER": 0.585820895522388,
+    "macroCER": 0.5876052747224689,
+    "noPunctuationEdits": {
+      "S": 116,
+      "D": 59,
+      "I": 48,
+      "N": 387
+    },
+    "microCER_no_punctuation": 0.5762273901808785,
+    "exactRegions": 2,
+    "referenceRegions": 44,
+    "images": [
+      {
+        "id": "DP01",
+        "sha256": "2c87906b61cc735dcb55ca82ee0efcb9009c354ec342d23c74d513092c1e108e",
+        "fullyAnnotated": true,
+        "S": 18,
+        "D": 10,
+        "I": 10,
+        "N": 71,
+        "CER": 0.5352112676056338,
+        "CER_no_punctuation": 0.6078431372549019,
+        "noPunctuationEdits": {
+          "S": 16,
+          "D": 7,
+          "I": 8,
+          "N": 51
+        },
+        "exactRegions": 0,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 4,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DP01-R01",
+            "S": 7,
+            "D": 2,
+            "I": 2,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 14
+          },
+          {
+            "id": "DP01-R02",
+            "S": 4,
+            "D": 0,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 7
+          },
+          {
+            "id": "DP01-R03",
+            "S": 7,
+            "D": 4,
+            "I": 4,
+            "N": 21,
+            "exact": false,
+            "predictionCount": 19
+          },
+          {
+            "id": "DP01-R04",
+            "S": 0,
+            "D": 4,
+            "I": 4,
+            "N": 23,
+            "exact": false,
+            "predictionCount": 15
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 588.3275640010834,
+              "crop_preprocess_ms": 5.542086998000741,
+              "detector_ms": 878.7325890000138,
+              "total_ms": 1472.7425900000308
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 590.0025200005621,
+              "crop_preprocess_ms": 5.304778004065156,
+              "detector_ms": 679.5983660000138,
+              "total_ms": 1275.0003650004737
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 580.4219889994711,
+              "crop_preprocess_ms": 5.22248500213027,
+              "detector_ms": 724.6527200000137,
+              "total_ms": 1310.3864679982662
+            }
+          ]
+        },
+        "warmMeanSeconds": 1.29269341649937
+      },
+      {
+        "id": "DP02",
+        "sha256": "84f1f5341c8c27d910c1f7073766f9f35831901540e8a26cc7adf6a75c752381",
+        "fullyAnnotated": true,
+        "S": 3,
+        "D": 1,
+        "I": 2,
+        "N": 18,
+        "CER": 0.3333333333333333,
+        "CER_no_punctuation": 0.3333333333333333,
+        "noPunctuationEdits": {
+          "S": 3,
+          "D": 1,
+          "I": 1,
+          "N": 15
+        },
+        "exactRegions": 1,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 1,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DP02-R01",
+            "S": 3,
+            "D": 1,
+            "I": 1,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 13
+          },
+          {
+            "id": "DP02-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 5,
+            "exact": true,
+            "predictionCount": 5
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 197.5282250009477,
+              "crop_preprocess_ms": 1.9963630009442568,
+              "detector_ms": 729.0324310013903,
+              "total_ms": 928.6070629997057
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 187.56369699910283,
+              "crop_preprocess_ms": 1.8433720003813505,
+              "detector_ms": 704.3888790013907,
+              "total_ms": 893.841247001913
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 231.63985599763691,
+              "crop_preprocess_ms": 1.8641840014606714,
+              "detector_ms": 710.3191770013909,
+              "total_ms": 943.8719390012811
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.918856593001597
+      },
+      {
+        "id": "DP03",
+        "sha256": "169e084cc023f2347155b7166bf27c77fe0fded033742b48370a82113cd20f9e",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 3,
+        "I": 3,
+        "N": 12,
+        "CER": 0.5,
+        "CER_no_punctuation": 0.6666666666666666,
+        "noPunctuationEdits": {
+          "S": 2,
+          "D": 2,
+          "I": 2,
+          "N": 9
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "F1": 0.8
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "F1": 0.8
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP03-R01",
+            "S": 0,
+            "D": 2,
+            "I": 2,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 9
+          },
+          {
+            "id": "DP03-R02",
+            "S": 0,
+            "D": 1,
+            "I": 1,
+            "N": 3,
+            "exact": false,
+            "predictionCount": 3
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 86.3835569974035,
+              "crop_preprocess_ms": 0.5400330014526844,
+              "detector_ms": 687.6164650005876,
+              "total_ms": 774.5833279994904
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 138.87341200001538,
+              "crop_preprocess_ms": 0.6714800000190735,
+              "detector_ms": 675.9154820005879,
+              "total_ms": 815.5234480008021
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 97.38271700032055,
+              "crop_preprocess_ms": 0.6406229995191097,
+              "detector_ms": 683.1148210005877,
+              "total_ms": 781.1798950010952
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.7983516715009487
+      },
+      {
+        "id": "DP04",
+        "sha256": "54621d136ac5d3f98552ca950bbdd7bc61b5781865d8831c46e4df2470491379",
+        "fullyAnnotated": true,
+        "S": 17,
+        "D": 15,
+        "I": 8,
+        "N": 75,
+        "CER": 0.5333333333333333,
+        "CER_no_punctuation": 0.5609756097560976,
+        "noPunctuationEdits": {
+          "S": 11,
+          "D": 6,
+          "I": 6,
+          "N": 41
+        },
+        "exactRegions": 0,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 1,
+        "detector": {
+          "0.3": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DP04-R01",
+            "S": 2,
+            "D": 0,
+            "I": 2,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 7
+          },
+          {
+            "id": "DP04-R02",
+            "S": 7,
+            "D": 2,
+            "I": 1,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 10
+          },
+          {
+            "id": "DP04-R03",
+            "S": 4,
+            "D": 0,
+            "I": 2,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 8
+          },
+          {
+            "id": "DP04-R04",
+            "S": 2,
+            "D": 1,
+            "I": 2,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 10
+          },
+          {
+            "id": "DP04-R05",
+            "S": 2,
+            "D": 12,
+            "I": 0,
+            "N": 22,
+            "exact": false,
+            "predictionCount": 10
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 490.6458379998803,
+              "crop_preprocess_ms": 2.746109999716282,
+              "detector_ms": 662.7050049996406,
+              "total_ms": 1156.509673999849
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 495.1719049997628,
+              "crop_preprocess_ms": 2.7217230014503,
+              "detector_ms": 683.2844209996392,
+              "total_ms": 1181.277630000316
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 466.6177670005709,
+              "crop_preprocess_ms": 2.9025950022041798,
+              "detector_ms": 728.5589349996408,
+              "total_ms": 1198.1840549986919
+            }
+          ]
+        },
+        "warmMeanSeconds": 1.189730842499504
+      },
+      {
+        "id": "DP05",
+        "sha256": "f7421b902a7e2905007e421253d6fbcfe36e06530878cdb8013c2a0894964cc5",
+        "fullyAnnotated": true,
+        "S": 17,
+        "D": 14,
+        "I": 8,
+        "N": 64,
+        "CER": 0.609375,
+        "CER_no_punctuation": 0.5769230769230769,
+        "noPunctuationEdits": {
+          "S": 18,
+          "D": 6,
+          "I": 6,
+          "N": 52
+        },
+        "exactRegions": 0,
+        "referenceRegions": 3,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 3,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 3,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP05-R01",
+            "S": 1,
+            "D": 7,
+            "I": 1,
+            "N": 16,
+            "exact": false,
+            "predictionCount": 9
+          },
+          {
+            "id": "DP05-R02",
+            "S": 6,
+            "D": 5,
+            "I": 5,
+            "N": 26,
+            "exact": false,
+            "predictionCount": 22
+          },
+          {
+            "id": "DP05-R03",
+            "S": 10,
+            "D": 2,
+            "I": 2,
+            "N": 22,
+            "exact": false,
+            "predictionCount": 21
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 359.8046090025455,
+              "crop_preprocess_ms": 3.1186209991574287,
+              "detector_ms": 752.2594110011069,
+              "total_ms": 1115.257854002988
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 359.3339950013906,
+              "crop_preprocess_ms": 2.6317799985408783,
+              "detector_ms": 726.9157080011064,
+              "total_ms": 1088.986921000629
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 365.6872869953513,
+              "crop_preprocess_ms": 2.699471002444625,
+              "detector_ms": 805.0841380011061,
+              "total_ms": 1173.5388780019948
+            }
+          ]
+        },
+        "warmMeanSeconds": 1.1312628995013119
+      },
+      {
+        "id": "DL01",
+        "sha256": "79a3daff85ba747ce96faf76a969aaec12f1dbe516c5e4b660324a832da9cf21",
+        "fullyAnnotated": true,
+        "S": 5,
+        "D": 15,
+        "I": 0,
+        "N": 25,
+        "CER": 0.8,
+        "CER_no_punctuation": 0.8461538461538461,
+        "noPunctuationEdits": {
+          "S": 5,
+          "D": 6,
+          "I": 0,
+          "N": 13
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DL01-R01",
+            "S": 3,
+            "D": 7,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 5
+          },
+          {
+            "id": "DL01-R02",
+            "S": 2,
+            "D": 8,
+            "I": 0,
+            "N": 10,
+            "exact": false,
+            "predictionCount": 2
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 129.8978360015899,
+              "crop_preprocess_ms": 1.4144919980317354,
+              "detector_ms": 671.8243740004327,
+              "total_ms": 803.187530000585
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 128.21676999889314,
+              "crop_preprocess_ms": 0.9364080000668764,
+              "detector_ms": 674.3642430004329,
+              "total_ms": 803.5578609999866
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 124.13795499876142,
+              "crop_preprocess_ms": 0.7802130002528429,
+              "detector_ms": 721.5712350004342,
+              "total_ms": 846.5310969998118
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.8250444789998992
+      },
+      {
+        "id": "DL02",
+        "sha256": "20341f28f5536c69ff0cc105477d5103c9ba010d7646b0f6324de9c7f6e1ce67",
+        "fullyAnnotated": true,
+        "S": 10,
+        "D": 16,
+        "I": 3,
+        "N": 33,
+        "CER": 0.8787878787878788,
+        "CER_no_punctuation": 0.8888888888888888,
+        "noPunctuationEdits": {
+          "S": 12,
+          "D": 2,
+          "I": 2,
+          "N": 18
+        },
+        "exactRegions": 0,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 1,
+        "detector": {
+          "0.3": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DL02-R01",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL02-R02",
+            "S": 4,
+            "D": 7,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 4
+          },
+          {
+            "id": "DL02-R03",
+            "S": 1,
+            "D": 1,
+            "I": 1,
+            "N": 4,
+            "exact": false,
+            "predictionCount": 4
+          },
+          {
+            "id": "DL02-R04",
+            "S": 5,
+            "D": 1,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 6
+          },
+          {
+            "id": "DL02-R05",
+            "S": 0,
+            "D": 1,
+            "I": 1,
+            "N": 5,
+            "exact": false,
+            "predictionCount": 4
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 273.56173200160265,
+              "crop_preprocess_ms": 1.493666997179389,
+              "detector_ms": 682.1505429992794,
+              "total_ms": 957.3140539979904
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 277.88092900440097,
+              "crop_preprocess_ms": 1.592232996597886,
+              "detector_ms": 710.9638469992806,
+              "total_ms": 990.5237710001547
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 301.9671620000154,
+              "crop_preprocess_ms": 1.4777920041233301,
+              "detector_ms": 679.666687999279,
+              "total_ms": 983.2320429984338
+            }
+          ]
+        },
+        "warmMeanSeconds": 0.9868779069992942
+      },
+      {
+        "id": "DL03",
+        "sha256": "b5b9316cb15ddc68216a95e23c8a95e5e2028b1fb173ed848ee7a72a0a889143",
+        "fullyAnnotated": true,
+        "S": 10,
+        "D": 6,
+        "I": 6,
+        "N": 43,
+        "CER": 0.5116279069767442,
+        "CER_no_punctuation": 0.45714285714285713,
+        "noPunctuationEdits": {
+          "S": 6,
+          "D": 5,
+          "I": 5,
+          "N": 35
+        },
+        "exactRegions": 0,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 4,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DL03-R01",
+            "S": 3,
+            "D": 2,
+            "I": 2,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 11
+          },
+          {
+            "id": "DL03-R02",
+            "S": 4,
+            "D": 3,
+            "I": 3,
+            "N": 21,
+            "exact": false,
+            "predictionCount": 20
+          },
+          {
+            "id": "DL03-R03",
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 3,
+            "exact": false,
+            "predictionCount": 3
+          },
+          {
+            "id": "DL03-R04",
+            "S": 1,
+            "D": 1,
+            "I": 1,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 5
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 440.42965200170875,
+              "crop_preprocess_ms": 5.814764002338052,
+              "detector_ms": 666.5339359990085,
+              "total_ms": 1112.860576997953
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 457.48136700317264,
+              "crop_preprocess_ms": 5.667464002966881,
+              "detector_ms": 719.8744279990078,
+              "total_ms": 1183.108486997533
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 429.4248809963465,
+              "crop_preprocess_ms": 6.287347000092268,
+              "detector_ms": 675.146108999008,
+              "total_ms": 1110.9417219991774
+            }
+          ]
+        },
+        "warmMeanSeconds": 1.1470251044983553
+      },
+      {
+        "id": "DL04",
+        "sha256": "2378b35e949c3d913f3c84853d7c20d84261a0432fe20383b675d67fc700ed9e",
+        "fullyAnnotated": true,
+        "S": 26,
+        "D": 19,
+        "I": 15,
+        "N": 107,
+        "CER": 0.5607476635514018,
+        "CER_no_punctuation": 0.5632183908045977,
+        "noPunctuationEdits": {
+          "S": 21,
+          "D": 16,
+          "I": 12,
+          "N": 87
+        },
+        "exactRegions": 0,
+        "referenceRegions": 8,
+        "unmatchedInsertionCharacters": 1,
+        "detector": {
+          "0.3": {
+            "TP": 8,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 8,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 8,
+        "detectorTargets": 8,
+        "regions": [
+          {
+            "id": "DL04-R01",
+            "S": 1,
+            "D": 2,
+            "I": 1,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 5
+          },
+          {
+            "id": "DL04-R02",
+            "S": 2,
+            "D": 2,
+            "I": 2,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 11
+          },
+          {
+            "id": "DL04-R03",
+            "S": 7,
+            "D": 5,
+            "I": 1,
+            "N": 20,
+            "exact": false,
+            "predictionCount": 11
+          },
+          {
+            "id": "DL04-R04",
+            "S": 1,
+            "D": 2,
+            "I": 2,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 13
+          },
+          {
+            "id": "DL04-R05",
+            "S": 4,
+            "D": 1,
+            "I": 1,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 10
+          },
+          {
+            "id": "DL04-R06",
+            "S": 4,
+            "D": 2,
+            "I": 4,
+            "N": 19,
+            "exact": false,
+            "predictionCount": 13
+          },
+          {
+            "id": "DL04-R07",
+            "S": 5,
+            "D": 4,
+            "I": 3,
+            "N": 17,
+            "exact": false,
+            "predictionCount": 14
+          },
+          {
+            "id": "DL04-R08",
+            "S": 2,
+            "D": 1,
+            "I": 0,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 6
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 883.4330899976194,
+              "crop_preprocess_ms": 4.863075997680426,
+              "detector_ms": 691.1929389981306,
+              "total_ms": 1579.6605319974697
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 877.4897969979793,
+              "crop_preprocess_ms": 4.4893640000373125,
+              "detector_ms": 683.1372299981304,
+              "total_ms": 1565.2834449992515
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 874.5709249973297,
+              "crop_preprocess_ms": 4.340300001204014,
+              "detector_ms": 756.327513998127,
+              "total_ms": 1635.4116639995336
+            }
+          ]
+        },
+        "warmMeanSeconds": 1.6003475544993926
+      },
+      {
+        "id": "DL05",
+        "sha256": "696f67590f1e800acae15f099c95294f57f65520364dc52d8b8208301da0c642",
+        "fullyAnnotated": true,
+        "S": 24,
+        "D": 20,
+        "I": 10,
+        "N": 88,
+        "CER": 0.6136363636363636,
+        "CER_no_punctuation": 0.5454545454545454,
+        "noPunctuationEdits": {
+          "S": 22,
+          "D": 8,
+          "I": 6,
+          "N": 66
+        },
+        "exactRegions": 1,
+        "referenceRegions": 9,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 9,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 9,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 9,
+        "detectorTargets": 9,
+        "regions": [
+          {
+            "id": "DL05-R01",
+            "S": 2,
+            "D": 2,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL05-R02",
+            "S": 9,
+            "D": 5,
+            "I": 5,
+            "N": 32,
+            "exact": false,
+            "predictionCount": 28
+          },
+          {
+            "id": "DL05-R03",
+            "S": 6,
+            "D": 2,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 9
+          },
+          {
+            "id": "DL05-R04",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL05-R05",
+            "S": 0,
+            "D": 1,
+            "I": 1,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 6
+          },
+          {
+            "id": "DL05-R06",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": true,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL05-R07",
+            "S": 0,
+            "D": 1,
+            "I": 1,
+            "N": 4,
+            "exact": false,
+            "predictionCount": 4
+          },
+          {
+            "id": "DL05-R08",
+            "S": 5,
+            "D": 3,
+            "I": 3,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 13
+          },
+          {
+            "id": "DL05-R09",
+            "S": 2,
+            "D": 0,
+            "I": 0,
+            "N": 2,
+            "exact": false,
+            "predictionCount": 2
+          }
+        ],
+        "error": null,
+        "timing": {
+          "runs": [
+            {
+              "phase": "first",
+              "recognition_ms": 595.9139499980956,
+              "crop_preprocess_ms": 3.3961990047246218,
+              "detector_ms": 702.5780270006289,
+              "total_ms": 1302.2490200008979
+            },
+            {
+              "phase": "warm1",
+              "recognition_ms": 600.9650140013546,
+              "crop_preprocess_ms": 3.474805001169443,
+              "detector_ms": 675.9626170006268,
+              "total_ms": 1280.5695190001898
+            },
+            {
+              "phase": "warm2",
+              "recognition_ms": 577.0914229992777,
+              "crop_preprocess_ms": 3.5054849963635206,
+              "detector_ms": 719.919077000628,
+              "total_ms": 1300.6795779997956
+            }
+          ]
+        },
+        "warmMeanSeconds": 1.2906245484999928
+      }
+    ],
+    "inputPredictionSHA256": "ccdfa8706c18b75b78c5171e2a4559b881c58bc9d43110c6689b768ee72b7390",
+    "GT_SHA256": "764cd0ba3b0e2cde475d4df0843821bcdcc16c58c0054ead21a002b6f6bcc891",
+    "warmMeanSeconds": 1.1180815016499666,
+    "warmMedianSeconds": 1.1391440019998336,
+    "detectorEvaluation": "RT-DETR paragraph boxes vs paragraph GT; shared detector reused by these pipelines"
+  },
+  {
+    "scheme": "rtdetr_paddle_rec_only",
+    "normalization": "NFKC; remove Unicode whitespace; preserve punctuation/case/script",
+    "matching": "geometry only, prediction overlap >=0.5 assigned once; strict detection maximum-cardinality IoU matching",
+    "S": 15,
+    "D": 369,
+    "I": 0,
+    "N": 536,
+    "microCER": 0.7164179104477612,
+    "macroCER": 0.6799508306615227,
+    "noPunctuationEdits": {
+      "S": 13,
+      "D": 250,
+      "I": 0,
+      "N": 387
+    },
+    "microCER_no_punctuation": 0.6795865633074936,
+    "exactRegions": 13,
+    "referenceRegions": 44,
+    "images": [
+      {
+        "id": "DP01",
+        "sha256": "2c87906b61cc735dcb55ca82ee0efcb9009c354ec342d23c74d513092c1e108e",
+        "fullyAnnotated": true,
+        "S": 2,
+        "D": 52,
+        "I": 0,
+        "N": 71,
+        "CER": 0.7605633802816901,
+        "CER_no_punctuation": 0.6862745098039216,
+        "noPunctuationEdits": {
+          "S": 1,
+          "D": 34,
+          "I": 0,
+          "N": 51
+        },
+        "exactRegions": 0,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 4,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DP01-R01",
+            "S": 1,
+            "D": 7,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP01-R02",
+            "S": 1,
+            "D": 10,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP01-R03",
+            "S": 0,
+            "D": 16,
+            "I": 0,
+            "N": 21,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP01-R04",
+            "S": 0,
+            "D": 19,
+            "I": 0,
+            "N": 23,
+            "exact": false,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.11985004799862509,
+          "warm_seconds": [
+            0.12146181199932471,
+            0.10234073500032537
+          ],
+          "warm_mean_seconds": 0.11190127349982504,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 856.2493640000001,
+                "total_ms": 865.2382440000001
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 656.8865580000002,
+                "total_ms": 666.1040210000001
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 702.886966,
+                "total_ms": 711.158375
+              }
+            ],
+            "preprocess_ms": 13.494345000013709
+          }
+        },
+        "warmMeanSeconds": 0.8140268164998388
+      },
+      {
+        "id": "DP02",
+        "sha256": "84f1f5341c8c27d910c1f7073766f9f35831901540e8a26cc7adf6a75c752381",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 9,
+        "I": 0,
+        "N": 18,
+        "CER": 0.5,
+        "CER_no_punctuation": 0.5333333333333333,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 8,
+          "I": 0,
+          "N": 15
+        },
+        "exactRegions": 1,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DP02-R01",
+            "S": 0,
+            "D": 9,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP02-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 5,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.06685064500015869,
+          "warm_seconds": [
+            0.04907026000000769,
+            0.05367972200110671
+          ],
+          "warm_mean_seconds": 0.0513749910005572,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 706.5729589999996,
+                "total_ms": 718.2140609999997
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 675.7454419999999,
+                "total_ms": 693.5705090000001
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 688.0113169999995,
+                "total_ms": 699.5008070000003
+              }
+            ],
+            "preprocess_ms": 10.818370001390576
+          }
+        },
+        "warmMeanSeconds": 0.758729019001948
+      },
+      {
+        "id": "DP03",
+        "sha256": "169e084cc023f2347155b7166bf27c77fe0fded033742b48370a82113cd20f9e",
+        "fullyAnnotated": true,
+        "S": 1,
+        "D": 4,
+        "I": 0,
+        "N": 12,
+        "CER": 0.4166666666666667,
+        "CER_no_punctuation": 0.4444444444444444,
+        "noPunctuationEdits": {
+          "S": 1,
+          "D": 3,
+          "I": 0,
+          "N": 9
+        },
+        "exactRegions": 1,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "F1": 0.8
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "F1": 0.8
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP03-R01",
+            "S": 1,
+            "D": 4,
+            "I": 0,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP03-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 3,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.0523731070006761,
+          "warm_seconds": [
+            0.05203606900067825,
+            0.05294737000076566
+          ],
+          "warm_mean_seconds": 0.052491719500721956,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 668.1800929999999,
+                "total_ms": 678.9030499999999
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 657.5941480000001,
+                "total_ms": 667.2020670000002
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 667.1625280000007,
+                "total_ms": 674.401406
+              }
+            ],
+            "preprocess_ms": 8.713415000587702
+          }
+        },
+        "warmMeanSeconds": 0.7320068710013097
+      },
+      {
+        "id": "DP04",
+        "sha256": "54621d136ac5d3f98552ca950bbdd7bc61b5781865d8831c46e4df2470491379",
+        "fullyAnnotated": true,
+        "S": 4,
+        "D": 52,
+        "I": 0,
+        "N": 75,
+        "CER": 0.7466666666666667,
+        "CER_no_punctuation": 0.5609756097560976,
+        "noPunctuationEdits": {
+          "S": 4,
+          "D": 19,
+          "I": 0,
+          "N": 41
+        },
+        "exactRegions": 0,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DP04-R01",
+            "S": 0,
+            "D": 10,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP04-R02",
+            "S": 2,
+            "D": 7,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP04-R03",
+            "S": 2,
+            "D": 8,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP04-R04",
+            "S": 0,
+            "D": 9,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP04-R05",
+            "S": 0,
+            "D": 18,
+            "I": 0,
+            "N": 22,
+            "exact": false,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.12799984800039965,
+          "warm_seconds": [
+            0.12207094000041252,
+            0.125161878999279
+          ],
+          "warm_mean_seconds": 0.12361640949984576,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 650.6352219999999,
+                "total_ms": 653.5742120000004
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 670.3235370000002,
+                "total_ms": 674.1536279999991
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 716.605286,
+                "total_ms": 719.4281420000007
+              }
+            ],
+            "preprocess_ms": 9.130792999640107
+          }
+        },
+        "warmMeanSeconds": 0.8295380874994858
+      },
+      {
+        "id": "DP05",
+        "sha256": "f7421b902a7e2905007e421253d6fbcfe36e06530878cdb8013c2a0894964cc5",
+        "fullyAnnotated": true,
+        "S": 1,
+        "D": 63,
+        "I": 0,
+        "N": 64,
+        "CER": 1.0,
+        "CER_no_punctuation": 1.0,
+        "noPunctuationEdits": {
+          "S": 1,
+          "D": 51,
+          "I": 0,
+          "N": 52
+        },
+        "exactRegions": 0,
+        "referenceRegions": 3,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 3,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 3,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP05-R01",
+            "S": 1,
+            "D": 15,
+            "I": 0,
+            "N": 16,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP05-R02",
+            "S": 0,
+            "D": 26,
+            "I": 0,
+            "N": 26,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP05-R03",
+            "S": 0,
+            "D": 22,
+            "I": 0,
+            "N": 22,
+            "exact": false,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.08706742599861172,
+          "warm_seconds": [
+            0.08115725700008625,
+            0.07968844900096883
+          ],
+          "warm_mean_seconds": 0.08042285300052754,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 724.263035,
+                "total_ms": 731.8193499999998
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 702.6609800000006,
+                "total_ms": 706.4756469999993
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 774.8020660000002,
+                "total_ms": 784.644076999999
+              }
+            ],
+            "preprocess_ms": 20.440061001107097
+          }
+        },
+        "warmMeanSeconds": 0.8464227760016338
+      },
+      {
+        "id": "DL01",
+        "sha256": "79a3daff85ba747ce96faf76a969aaec12f1dbe516c5e4b660324a832da9cf21",
+        "fullyAnnotated": true,
+        "S": 1,
+        "D": 22,
+        "I": 0,
+        "N": 25,
+        "CER": 0.92,
+        "CER_no_punctuation": 0.8461538461538461,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 11,
+          "I": 0,
+          "N": 13
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DL01-R01",
+            "S": 1,
+            "D": 12,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL01-R02",
+            "S": 0,
+            "D": 10,
+            "I": 0,
+            "N": 10,
+            "exact": false,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.05803093599934073,
+          "warm_seconds": [
+            0.056224899999506306,
+            0.057101948999843444
+          ],
+          "warm_mean_seconds": 0.056663424499674875,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 655.2147540000005,
+                "total_ms": 658.4724029999998
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 657.5105860000003,
+                "total_ms": 661.0122719999999
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 705.3906400000014,
+                "total_ms": 708.2192640000012
+              }
+            ],
+            "preprocess_ms": 13.351971000432968
+          }
+        },
+        "warmMeanSeconds": 0.7546311635001084
+      },
+      {
+        "id": "DL02",
+        "sha256": "20341f28f5536c69ff0cc105477d5103c9ba010d7646b0f6324de9c7f6e1ce67",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 17,
+        "I": 0,
+        "N": 33,
+        "CER": 0.5151515151515151,
+        "CER_no_punctuation": 0.2777777777777778,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 5,
+          "I": 0,
+          "N": 18
+        },
+        "exactRegions": 3,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DL02-R01",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R02",
+            "S": 0,
+            "D": 11,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R04",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R05",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 5,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.11845862700101861,
+          "warm_seconds": [
+            0.12254130699875532,
+            0.12773680100144702
+          ],
+          "warm_mean_seconds": 0.12513905400010117,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 668.8087569999989,
+                "total_ms": 675.6713689999997
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 700.3705950000003,
+                "total_ms": 704.4846730000008
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 669.3235629999999,
+                "total_ms": 673.1875139999993
+              }
+            ],
+            "preprocess_ms": 6.4791739992797375
+          }
+        },
+        "warmMeanSeconds": 0.8204543214993809
+      },
+      {
+        "id": "DL03",
+        "sha256": "b5b9316cb15ddc68216a95e23c8a95e5e2028b1fb173ed848ee7a72a0a889143",
+        "fullyAnnotated": true,
+        "S": 3,
+        "D": 24,
+        "I": 0,
+        "N": 43,
+        "CER": 0.627906976744186,
+        "CER_no_punctuation": 0.6571428571428571,
+        "noPunctuationEdits": {
+          "S": 3,
+          "D": 20,
+          "I": 0,
+          "N": 35
+        },
+        "exactRegions": 2,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 4,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DL03-R01",
+            "S": 1,
+            "D": 8,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL03-R02",
+            "S": 2,
+            "D": 16,
+            "I": 0,
+            "N": 21,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL03-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 3,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL03-R04",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.11090316899935715,
+          "warm_seconds": [
+            0.10808958199959307,
+            0.10441786100091122
+          ],
+          "warm_mean_seconds": 0.10625372150025214,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 650.1640470000002,
+                "total_ms": 657.1314550000006
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 705.9960260000007,
+                "total_ms": 710.471947
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 661.1506909999989,
+                "total_ms": 665.7436280000002
+              }
+            ],
+            "preprocess_ms": 9.402480999007821
+          }
+        },
+        "warmMeanSeconds": 0.80376398999926
+      },
+      {
+        "id": "DL04",
+        "sha256": "2378b35e949c3d913f3c84853d7c20d84261a0432fe20383b675d67fc700ed9e",
+        "fullyAnnotated": true,
+        "S": 3,
+        "D": 73,
+        "I": 0,
+        "N": 107,
+        "CER": 0.7102803738317757,
+        "CER_no_punctuation": 0.6551724137931034,
+        "noPunctuationEdits": {
+          "S": 3,
+          "D": 54,
+          "I": 0,
+          "N": 87
+        },
+        "exactRegions": 1,
+        "referenceRegions": 8,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 8,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 8,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 8,
+        "detectorTargets": 8,
+        "regions": [
+          {
+            "id": "DL04-R01",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL04-R02",
+            "S": 0,
+            "D": 4,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL04-R03",
+            "S": 0,
+            "D": 20,
+            "I": 0,
+            "N": 20,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL04-R04",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL04-R05",
+            "S": 0,
+            "D": 7,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL04-R06",
+            "S": 1,
+            "D": 14,
+            "I": 0,
+            "N": 19,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL04-R07",
+            "S": 0,
+            "D": 15,
+            "I": 0,
+            "N": 17,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL04-R08",
+            "S": 2,
+            "D": 7,
+            "I": 0,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.22555267099960474,
+          "warm_seconds": [
+            0.2729391890006809,
+            0.2500057230008679
+          ],
+          "warm_mean_seconds": 0.2614724560007744,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 672.7153099999996,
+                "total_ms": 685.3365310000008
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 670.2750049999995,
+                "total_ms": 677.2808220000006
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 743.9700090000006,
+                "total_ms": 750.4711059999972
+              }
+            ],
+            "preprocess_ms": 5.8564079981297255
+          }
+        },
+        "warmMeanSeconds": 0.9812048279989031
+      },
+      {
+        "id": "DL05",
+        "sha256": "696f67590f1e800acae15f099c95294f57f65520364dc52d8b8208301da0c642",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 53,
+        "I": 0,
+        "N": 88,
+        "CER": 0.6022727272727273,
+        "CER_no_punctuation": 0.6818181818181818,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 45,
+          "I": 0,
+          "N": 66
+        },
+        "exactRegions": 5,
+        "referenceRegions": 9,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 9,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 9,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 9,
+        "detectorTargets": 9,
+        "regions": [
+          {
+            "id": "DL05-R01",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 7,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R02",
+            "S": 0,
+            "D": 32,
+            "I": 0,
+            "N": 32,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R03",
+            "S": 0,
+            "D": 5,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R04",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 6,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R05",
+            "S": 0,
+            "D": 3,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R06",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R07",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 4,
+            "exact": true,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R08",
+            "S": 0,
+            "D": 13,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R09",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 2,
+            "exact": true,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.2806388950011751,
+          "warm_seconds": [
+            0.28640692600129114,
+            0.2636351820001437
+          ],
+          "warm_mean_seconds": 0.2750210540007174,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 676.1009169999998,
+                "total_ms": 687.0245260000011
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 654.2150820000024,
+                "total_ms": 660.4091159999989
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 696.0608259999972,
+                "total_ms": 704.3655760000001
+              }
+            ],
+            "preprocess_ms": 15.553501000627875
+          }
+        },
+        "warmMeanSeconds": 0.9729619010013448
+      }
+    ],
+    "inputPredictionSHA256": "747a145444479510a7834a9bca590cc99dc4478f27b4d298f42fa6c5a4e4aca3",
+    "GT_SHA256": "764cd0ba3b0e2cde475d4df0843821bcdcc16c58c0054ead21a002b6f6bcc891",
+    "warmMeanSeconds": 0.8313739774003214,
+    "warmMedianSeconds": 0.8172405689996098,
+    "detectorEvaluation": "RT-DETR paragraph boxes vs paragraph GT; shared detector reused by these pipelines"
+  },
+  {
+    "scheme": "rtdetr_paddle_inner_db_rec",
+    "normalization": "NFKC; remove Unicode whitespace; preserve punctuation/case/script",
+    "matching": "geometry only, prediction overlap >=0.5 assigned once; strict detection maximum-cardinality IoU matching",
+    "S": 16,
+    "D": 313,
+    "I": 8,
+    "N": 536,
+    "microCER": 0.628731343283582,
+    "macroCER": 0.6714654329222102,
+    "noPunctuationEdits": {
+      "S": 22,
+      "D": 183,
+      "I": 3,
+      "N": 387
+    },
+    "microCER_no_punctuation": 0.537467700258398,
+    "exactRegions": 3,
+    "referenceRegions": 44,
+    "images": [
+      {
+        "id": "DP01",
+        "sha256": "2c87906b61cc735dcb55ca82ee0efcb9009c354ec342d23c74d513092c1e108e",
+        "fullyAnnotated": true,
+        "S": 5,
+        "D": 32,
+        "I": 2,
+        "N": 71,
+        "CER": 0.5492957746478874,
+        "CER_no_punctuation": 0.47058823529411764,
+        "noPunctuationEdits": {
+          "S": 4,
+          "D": 18,
+          "I": 2,
+          "N": 51
+        },
+        "exactRegions": 0,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 4,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DP01-R01",
+            "S": 0,
+            "D": 14,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DP01-R02",
+            "S": 0,
+            "D": 9,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP01-R03",
+            "S": 5,
+            "D": 3,
+            "I": 2,
+            "N": 21,
+            "exact": false,
+            "predictionCount": 6
+          },
+          {
+            "id": "DP01-R04",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 23,
+            "exact": false,
+            "predictionCount": 3
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 2.6087537109997356,
+          "warm_seconds": [
+            2.101059541999348,
+            2.294690308001009
+          ],
+          "warm_mean_seconds": 2.1978749250001783,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 856.2493640000001,
+                "total_ms": 865.2382440000001
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 656.8865580000002,
+                "total_ms": 666.1040210000001
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 702.886966,
+                "total_ms": 711.158375
+              }
+            ],
+            "preprocess_ms": 13.494345000013709
+          }
+        },
+        "warmMeanSeconds": 2.900000468000192
+      },
+      {
+        "id": "DP02",
+        "sha256": "84f1f5341c8c27d910c1f7073766f9f35831901540e8a26cc7adf6a75c752381",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 7,
+        "I": 0,
+        "N": 18,
+        "CER": 0.3888888888888889,
+        "CER_no_punctuation": 0.3333333333333333,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 5,
+          "I": 0,
+          "N": 15
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DP02-R01",
+            "S": 0,
+            "D": 2,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 3
+          },
+          {
+            "id": "DP02-R02",
+            "S": 0,
+            "D": 5,
+            "I": 0,
+            "N": 5,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 1.2649284760009323,
+          "warm_seconds": [
+            1.1122774649993517,
+            0.9471463070003665
+          ],
+          "warm_mean_seconds": 1.029711885999859,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 706.5729589999996,
+                "total_ms": 718.2140609999997
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 675.7454419999999,
+                "total_ms": 693.5705090000001
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 688.0113169999995,
+                "total_ms": 699.5008070000003
+              }
+            ],
+            "preprocess_ms": 10.818370001390576
+          }
+        },
+        "warmMeanSeconds": 1.7370659140012499
+      },
+      {
+        "id": "DP03",
+        "sha256": "169e084cc023f2347155b7166bf27c77fe0fded033742b48370a82113cd20f9e",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 12,
+        "I": 0,
+        "N": 12,
+        "CER": 1.0,
+        "CER_no_punctuation": 1.0,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 9,
+          "I": 0,
+          "N": 9
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "F1": 0.8
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 1,
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "F1": 0.8
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP03-R01",
+            "S": 0,
+            "D": 9,
+            "I": 0,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DP03-R02",
+            "S": 0,
+            "D": 3,
+            "I": 0,
+            "N": 3,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 0.7548410740000691,
+          "warm_seconds": [
+            0.7109447100010584,
+            0.7309635279998474
+          ],
+          "warm_mean_seconds": 0.7209541190004529,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 668.1800929999999,
+                "total_ms": 678.9030499999999
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 657.5941480000001,
+                "total_ms": 667.2020670000002
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 667.1625280000007,
+                "total_ms": 674.401406
+              }
+            ],
+            "preprocess_ms": 8.713415000587702
+          }
+        },
+        "warmMeanSeconds": 1.4004692705010406
+      },
+      {
+        "id": "DP04",
+        "sha256": "54621d136ac5d3f98552ca950bbdd7bc61b5781865d8831c46e4df2470491379",
+        "fullyAnnotated": true,
+        "S": 2,
+        "D": 73,
+        "I": 0,
+        "N": 75,
+        "CER": 1.0,
+        "CER_no_punctuation": 1.0,
+        "noPunctuationEdits": {
+          "S": 1,
+          "D": 40,
+          "I": 0,
+          "N": 41
+        },
+        "exactRegions": 0,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DP04-R01",
+            "S": 0,
+            "D": 13,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DP04-R02",
+            "S": 0,
+            "D": 12,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DP04-R03",
+            "S": 2,
+            "D": 11,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DP04-R04",
+            "S": 0,
+            "D": 15,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DP04-R05",
+            "S": 0,
+            "D": 22,
+            "I": 0,
+            "N": 22,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 2.152184934999241,
+          "warm_seconds": [
+            2.047420049999346,
+            2.043506152000191
+          ],
+          "warm_mean_seconds": 2.0454631009997684,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 650.6352219999999,
+                "total_ms": 653.5742120000004
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 670.3235370000002,
+                "total_ms": 674.1536279999991
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 716.605286,
+                "total_ms": 719.4281420000007
+              }
+            ],
+            "preprocess_ms": 9.130792999640107
+          }
+        },
+        "warmMeanSeconds": 2.7513847789994084
+      },
+      {
+        "id": "DP05",
+        "sha256": "f7421b902a7e2905007e421253d6fbcfe36e06530878cdb8013c2a0894964cc5",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 6,
+        "I": 0,
+        "N": 64,
+        "CER": 0.09375,
+        "CER_no_punctuation": 0.0,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 52
+        },
+        "exactRegions": 2,
+        "referenceRegions": 3,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 3,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 3,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 3,
+        "detectorTargets": 3,
+        "regions": [
+          {
+            "id": "DP05-R01",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 16,
+            "exact": false,
+            "predictionCount": 3
+          },
+          {
+            "id": "DP05-R02",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 26,
+            "exact": true,
+            "predictionCount": 6
+          },
+          {
+            "id": "DP05-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 22,
+            "exact": true,
+            "predictionCount": 4
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 1.123791584999708,
+          "warm_seconds": [
+            1.2423305339998478,
+            1.2335905890013237
+          ],
+          "warm_mean_seconds": 1.2379605615005858,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 724.263035,
+                "total_ms": 731.8193499999998
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 702.6609800000006,
+                "total_ms": 706.4756469999993
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 774.8020660000002,
+                "total_ms": 784.644076999999
+              }
+            ],
+            "preprocess_ms": 20.440061001107097
+          }
+        },
+        "warmMeanSeconds": 2.0039604845016923
+      },
+      {
+        "id": "DL01",
+        "sha256": "79a3daff85ba747ce96faf76a969aaec12f1dbe516c5e4b660324a832da9cf21",
+        "fullyAnnotated": true,
+        "S": 0,
+        "D": 25,
+        "I": 0,
+        "N": 25,
+        "CER": 1.0,
+        "CER_no_punctuation": 1.0,
+        "noPunctuationEdits": {
+          "S": 0,
+          "D": 13,
+          "I": 0,
+          "N": 13
+        },
+        "exactRegions": 0,
+        "referenceRegions": 2,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 2,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 2,
+        "detectorTargets": 2,
+        "regions": [
+          {
+            "id": "DL01-R01",
+            "S": 0,
+            "D": 15,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL01-R02",
+            "S": 0,
+            "D": 10,
+            "I": 0,
+            "N": 10,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 1.5319861170009972,
+          "warm_seconds": [
+            1.3492942980010412,
+            1.255040824000389
+          ],
+          "warm_mean_seconds": 1.302167561000715,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 655.2147540000005,
+                "total_ms": 658.4724029999998
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 657.5105860000003,
+                "total_ms": 661.0122719999999
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 705.3906400000014,
+                "total_ms": 708.2192640000012
+              }
+            ],
+            "preprocess_ms": 13.351971000432968
+          }
+        },
+        "warmMeanSeconds": 2.0001353000011486
+      },
+      {
+        "id": "DL02",
+        "sha256": "20341f28f5536c69ff0cc105477d5103c9ba010d7646b0f6324de9c7f6e1ce67",
+        "fullyAnnotated": true,
+        "S": 1,
+        "D": 29,
+        "I": 0,
+        "N": 33,
+        "CER": 0.9090909090909091,
+        "CER_no_punctuation": 0.8888888888888888,
+        "noPunctuationEdits": {
+          "S": 1,
+          "D": 15,
+          "I": 0,
+          "N": 18
+        },
+        "exactRegions": 0,
+        "referenceRegions": 5,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 5,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 5,
+        "detectorTargets": 5,
+        "regions": [
+          {
+            "id": "DL02-R01",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL02-R02",
+            "S": 0,
+            "D": 11,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL02-R03",
+            "S": 0,
+            "D": 2,
+            "I": 0,
+            "N": 4,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL02-R04",
+            "S": 0,
+            "D": 7,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL02-R05",
+            "S": 1,
+            "D": 3,
+            "I": 0,
+            "N": 5,
+            "exact": false,
+            "predictionCount": 2
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 4.151584630999423,
+          "warm_seconds": [
+            3.998497941000096,
+            3.6548062649999338
+          ],
+          "warm_mean_seconds": 3.826652103000015,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 668.8087569999989,
+                "total_ms": 675.6713689999997
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 700.3705950000003,
+                "total_ms": 704.4846730000008
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 669.3235629999999,
+                "total_ms": 673.1875139999993
+              }
+            ],
+            "preprocess_ms": 6.4791739992797375
+          }
+        },
+        "warmMeanSeconds": 4.521967370499294
+      },
+      {
+        "id": "DL03",
+        "sha256": "b5b9316cb15ddc68216a95e23c8a95e5e2028b1fb173ed848ee7a72a0a889143",
+        "fullyAnnotated": true,
+        "S": 3,
+        "D": 19,
+        "I": 0,
+        "N": 43,
+        "CER": 0.5116279069767442,
+        "CER_no_punctuation": 0.45714285714285713,
+        "noPunctuationEdits": {
+          "S": 3,
+          "D": 13,
+          "I": 0,
+          "N": 35
+        },
+        "exactRegions": 0,
+        "referenceRegions": 4,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 4,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 4,
+        "detectorTargets": 4,
+        "regions": [
+          {
+            "id": "DL03-R01",
+            "S": 1,
+            "D": 10,
+            "I": 0,
+            "N": 12,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL03-R02",
+            "S": 0,
+            "D": 2,
+            "I": 0,
+            "N": 21,
+            "exact": false,
+            "predictionCount": 5
+          },
+          {
+            "id": "DL03-R03",
+            "S": 0,
+            "D": 2,
+            "I": 0,
+            "N": 3,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL03-R04",
+            "S": 2,
+            "D": 5,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 1
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 3.005894542000533,
+          "warm_seconds": [
+            2.7579075610010477,
+            2.6970135060000757
+          ],
+          "warm_mean_seconds": 2.7274605335005617,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 650.1640470000002,
+                "total_ms": 657.1314550000006
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 705.9960260000007,
+                "total_ms": 710.471947
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 661.1506909999989,
+                "total_ms": 665.7436280000002
+              }
+            ],
+            "preprocess_ms": 9.402480999007821
+          }
+        },
+        "warmMeanSeconds": 3.4249708019995695
+      },
+      {
+        "id": "DL04",
+        "sha256": "2378b35e949c3d913f3c84853d7c20d84261a0432fe20383b675d67fc700ed9e",
+        "fullyAnnotated": true,
+        "S": 2,
+        "D": 52,
+        "I": 2,
+        "N": 107,
+        "CER": 0.5233644859813084,
+        "CER_no_punctuation": 0.4482758620689655,
+        "noPunctuationEdits": {
+          "S": 2,
+          "D": 36,
+          "I": 1,
+          "N": 87
+        },
+        "exactRegions": 1,
+        "referenceRegions": 8,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 8,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 8,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 8,
+        "detectorTargets": 8,
+        "regions": [
+          {
+            "id": "DL04-R01",
+            "S": 0,
+            "D": 7,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL04-R02",
+            "S": 0,
+            "D": 8,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL04-R03",
+            "S": 0,
+            "D": 0,
+            "I": 0,
+            "N": 20,
+            "exact": true,
+            "predictionCount": 5
+          },
+          {
+            "id": "DL04-R04",
+            "S": 1,
+            "D": 10,
+            "I": 0,
+            "N": 13,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL04-R05",
+            "S": 1,
+            "D": 8,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 2
+          },
+          {
+            "id": "DL04-R06",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 19,
+            "exact": false,
+            "predictionCount": 3
+          },
+          {
+            "id": "DL04-R07",
+            "S": 0,
+            "D": 4,
+            "I": 2,
+            "N": 17,
+            "exact": false,
+            "predictionCount": 4
+          },
+          {
+            "id": "DL04-R08",
+            "S": 0,
+            "D": 9,
+            "I": 0,
+            "N": 9,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 4.38892171200132,
+          "warm_seconds": [
+            4.409446357998604,
+            4.266405358999691
+          ],
+          "warm_mean_seconds": 4.337925858499148,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 672.7153099999996,
+                "total_ms": 685.3365310000008
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 670.2750049999995,
+                "total_ms": 677.2808220000006
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 743.9700090000006,
+                "total_ms": 750.4711059999972
+              }
+            ],
+            "preprocess_ms": 5.8564079981297255
+          }
+        },
+        "warmMeanSeconds": 5.057658230497276
+      },
+      {
+        "id": "DL05",
+        "sha256": "696f67590f1e800acae15f099c95294f57f65520364dc52d8b8208301da0c642",
+        "fullyAnnotated": true,
+        "S": 3,
+        "D": 58,
+        "I": 4,
+        "N": 88,
+        "CER": 0.7386363636363636,
+        "CER_no_punctuation": 0.6818181818181818,
+        "noPunctuationEdits": {
+          "S": 11,
+          "D": 34,
+          "I": 0,
+          "N": 66
+        },
+        "exactRegions": 0,
+        "referenceRegions": 9,
+        "unmatchedInsertionCharacters": 0,
+        "detector": {
+          "0.3": {
+            "TP": 9,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          },
+          "0.5": {
+            "TP": 9,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1": 1.0
+          }
+        },
+        "weakOverlapTargetCount": 9,
+        "detectorTargets": 9,
+        "regions": [
+          {
+            "id": "DL05-R01",
+            "S": 0,
+            "D": 7,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL05-R02",
+            "S": 0,
+            "D": 5,
+            "I": 4,
+            "N": 32,
+            "exact": false,
+            "predictionCount": 6
+          },
+          {
+            "id": "DL05-R03",
+            "S": 2,
+            "D": 9,
+            "I": 0,
+            "N": 11,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R04",
+            "S": 0,
+            "D": 6,
+            "I": 0,
+            "N": 6,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL05-R05",
+            "S": 1,
+            "D": 6,
+            "I": 0,
+            "N": 7,
+            "exact": false,
+            "predictionCount": 1
+          },
+          {
+            "id": "DL05-R06",
+            "S": 0,
+            "D": 4,
+            "I": 0,
+            "N": 4,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL05-R07",
+            "S": 0,
+            "D": 4,
+            "I": 0,
+            "N": 4,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL05-R08",
+            "S": 0,
+            "D": 15,
+            "I": 0,
+            "N": 15,
+            "exact": false,
+            "predictionCount": 0
+          },
+          {
+            "id": "DL05-R09",
+            "S": 0,
+            "D": 2,
+            "I": 0,
+            "N": 2,
+            "exact": false,
+            "predictionCount": 0
+          }
+        ],
+        "error": null,
+        "timing": {
+          "first_pass_seconds": 4.4509642609991715,
+          "warm_seconds": [
+            4.474754574999679,
+            4.153525368999908
+          ],
+          "warm_mean_seconds": 4.3141399719997935,
+          "timing_scope": "image_decode+crop+Paddle only; add RTDETR detector time separately",
+          "upstream_detector_timing": {
+            "runs": [
+              {
+                "phase": "first",
+                "inference_ms": 676.1009169999998,
+                "total_ms": 687.0245260000011
+              },
+              {
+                "phase": "warm1",
+                "inference_ms": 654.2150820000024,
+                "total_ms": 660.4091159999989
+              },
+              {
+                "phase": "warm2",
+                "inference_ms": 696.0608259999972,
+                "total_ms": 704.3655760000001
+              }
+            ],
+            "preprocess_ms": 15.553501000627875
+          }
+        },
+        "warmMeanSeconds": 5.0120808190004205
+      }
+    ],
+    "inputPredictionSHA256": "11ddd5a87e4875ca9b6ea4f78e688cc5060c655335633413e809c06d698b0d89",
+    "GT_SHA256": "764cd0ba3b0e2cde475d4df0843821bcdcc16c58c0054ead21a002b6f6bcc891",
+    "warmMeanSeconds": 3.0809693438001293,
+    "warmMedianSeconds": 2.8256926234998003,
+    "detectorEvaluation": "RT-DETR paragraph boxes vs paragraph GT; shared detector reused by these pipelines"
+  }
+]

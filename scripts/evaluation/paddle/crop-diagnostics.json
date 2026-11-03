@@ -1,0 +1,140 @@
+[
+  {
+    "id": "DP03",
+    "bbox": {
+      "x": 29,
+      "y": 13,
+      "width": 104,
+      "height": 61
+    },
+    "original_crop_wh": [
+      104,
+      61
+    ],
+    "preprocess_wh": [
+      104,
+      61
+    ],
+    "db_tensor_shape": [
+      1,
+      3,
+      736,
+      1248
+    ],
+    "db_boxes_count": 1,
+    "rec_raw_count": 1,
+    "rec_scores": [
+      0.36363
+    ],
+    "recognized_lengths": [
+      1
+    ],
+    "text_filter_threshold": 0.5
+  },
+  {
+    "id": "DP03",
+    "bbox": {
+      "x": 398,
+      "y": 74,
+      "width": 60,
+      "height": 32
+    },
+    "original_crop_wh": [
+      60,
+      32
+    ],
+    "preprocess_wh": [
+      60,
+      32
+    ],
+    "db_tensor_shape": [
+      1,
+      3,
+      736,
+      1376
+    ],
+    "db_boxes_count": 2,
+    "rec_raw_count": 2,
+    "rec_scores": [
+      0.06291,
+      0.0
+    ],
+    "recognized_lengths": [
+      1,
+      0
+    ],
+    "text_filter_threshold": 0.5
+  },
+  {
+    "id": "DL01",
+    "bbox": {
+      "x": 219,
+      "y": 220,
+      "width": 106,
+      "height": 71
+    },
+    "original_crop_wh": [
+      106,
+      71
+    ],
+    "preprocess_wh": [
+      106,
+      71
+    ],
+    "db_tensor_shape": [
+      1,
+      3,
+      736,
+      1088
+    ],
+    "db_boxes_count": 7,
+    "rec_raw_count": 7,
+    "rec_scores": [
+      0.17148,
+      0.10176,
+      0.39571,
+      0.0,
+      0.33391,
+      0.28148,
+      0.0
+    ],
+    "recognized_lengths": [
+      1,
+      1,
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "text_filter_threshold": 0.5
+  },
+  {
+    "id": "DL01",
+    "bbox": {
+      "x": 555,
+      "y": 420,
+      "width": 33,
+      "height": 126
+    },
+    "original_crop_wh": [
+      33,
+      126
+    ],
+    "preprocess_wh": [
+      33,
+      126
+    ],
+    "db_tensor_shape": [
+      1,
+      3,
+      2816,
+      736
+    ],
+    "db_boxes_count": 0,
+    "rec_raw_count": 0,
+    "rec_scores": [],
+    "recognized_lengths": [],
+    "text_filter_threshold": 0.5
+  }
+]

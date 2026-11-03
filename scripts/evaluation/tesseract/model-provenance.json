@@ -1,0 +1,26 @@
+{
+  "repo": "tesseract-ocr/tessdata_best",
+  "commit": "e12c65a915945e4c28e237a9b52bc4a8f39a0cec",
+  "files": {
+    "chi_sim.traineddata": {
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/e12c65a915945e4c28e237a9b52bc4a8f39a0cec/chi_sim.traineddata",
+      "bytes": 13077423,
+      "sha256": "4fef2d1306c8e87616d4d3e4c6c67faf5d44be3342290cf8f2f0f6e3aa7e735b"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/e12c65a915945e4c28e237a9b52bc4a8f39a0cec/LICENSE",
+      "bytes": 10173,
+      "sha256": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9"
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/e12c65a915945e4c28e237a9b52bc4a8f39a0cec/README.md",
+      "bytes": 470,
+      "sha256": "08c87523fb799c5bae6380f6ffa1a823494ab78f63906d7255dddd7671f94a5f"
+    },
+    "chi_sim_vert.traineddata": {
+      "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_best/e12c65a915945e4c28e237a9b52bc4a8f39a0cec/chi_sim_vert.traineddata",
+      "bytes": 13077507,
+      "sha256": "ea672a78157199c333aa12ec4e74550077689b545df5fc770903716850c8b2e5"
+    }
+  }
+}

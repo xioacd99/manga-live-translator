@@ -31,3 +31,5 @@
 - [区域准备的缓存与授权边界](memory/development/practices/region-preparation.md)
 
 - [预训练检测、本地下载与生命周期](memory/development/practices/pretrained-local-detector.md)
+
+- [中文漫画候选方案的公平比较](memory/development/practices/chinese-comic-benchmark.md)
