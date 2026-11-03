@@ -6,6 +6,8 @@ Each entry describes the changes made, with additions, improvements, fixes, comp
 
 ## 2026-11-03 - v0.1.0
 
+- Fixed asynchronous OCR teardown so replacement work cannot overlap a worker still terminating; serialized OCR across account-specific pipelines, protected replacement job identities from stale cleanup, and added lifecycle regressions plus fail-fast browser diagnostics. Unified the image pixel budget at 16 million.
+
 - Pinned extension CI to Ubuntu 24.04 after the first run proved that the rolling Ubuntu 26.04 image is unsupported by the locked Playwright version. Unit tests and build passed on that first run; browser setup failed before browser tests ran.
 
 - Added an unreleased MV3 development preview with locally bundled English OCR, opt-in fixed-endpoint LLM text translation, reversible overlays, original-image toggle and cumulative OCR corrections.

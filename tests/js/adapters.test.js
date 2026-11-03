@@ -97,3 +97,43 @@ test('OCR cancellation terminates active worker and permits a fresh retry', asyn
   assert.equal(spawned, 2);
   await adapter.dispose();
 });
+
+test('OCR abort and dispose both await shared asynchronous worker termination', async () => {
+  let finishTermination, started, spawned = 0, settled = false;
+  const terminated = new Promise(resolve => { finishTermination = resolve; });
+  const ready = new Promise(resolve => { started = resolve; });
+  const adapter = createOcrAdapter({ ...paths, createWorkerImpl: async () => {
+    spawned++;
+    return { setParameters: async () => {}, terminate: () => terminated, recognize: async () => { started(); return new Promise(() => {}); } };
+  } });
+  const controller = new AbortController();
+  const input = { imageBytes: new Uint8Array([1]), width: 100, height: 100 };
+  const pending = adapter.recognize({ ...input, signal: controller.signal }).catch(error => { settled = true; return error; });
+  await ready; controller.abort();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(settled, false, 'recognition retains the resource slot until termination');
+  await assert.rejects(adapter.recognize(input), /one active recognition/);
+  let disposed = false;
+  const disposing = adapter.dispose().then(() => { disposed = true; });
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(disposed, false);
+  assert.equal(spawned, 1);
+  finishTermination();
+  assert.equal((await pending).name, 'AbortError'); await disposing;
+  assert.equal(disposed, true);
+});
+
+test('OCR cancellation while setting parameters never dispatches recognize afterward', async () => {
+  let finishParameters, started, calls = 0;
+  const parameters = new Promise(resolve => { finishParameters = resolve; });
+  const ready = new Promise(resolve => { started = resolve; });
+  const adapter = createOcrAdapter({ ...paths, createWorkerImpl: async () => ({
+    setParameters: async () => { started(); await parameters; }, terminate: async () => {},
+    recognize: async () => { calls++; return { data: { blocks: [] } }; },
+  }) });
+  const controller = new AbortController();
+  const pending = adapter.recognize({ imageBytes: new Uint8Array([1]), width: 100, height: 100, signal: controller.signal });
+  await ready; controller.abort(); await assert.rejects(pending, { name: 'AbortError' });
+  finishParameters(); await new Promise(resolve => setImmediate(resolve));
+  assert.equal(calls, 0); await adapter.dispose();
+});

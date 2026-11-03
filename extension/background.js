@@ -71,7 +71,7 @@ async function handle(message,sender) {
     const abort=()=>{chrome.runtime.sendMessage({target:'executor',type:'CANCEL',id}).catch(()=>{});};controller.signal.addEventListener('abort',abort,{once:true});
     try { return await callExecutor({type:'RUN',id,tabId:sender.tab.id,imageBase64:toBase64(bytes),mime,namespace:grant.origin,corrections:message.corrections},{signal:controller.signal,expectedGeneration:startedGeneration}); }
     finally {controller.signal.removeEventListener('abort',abort);}
-  } finally {clearTimeout(timer);fetches.delete(id);}
+  } finally {clearTimeout(timer);if(fetches.get(id)?.controller===controller)fetches.delete(id);}
 }
 chrome.runtime.onMessage.addListener((message,sender,reply)=>{
   if(message?.target==='executor')return;

@@ -30,3 +30,9 @@ Chromium launch failed in the cloud host with socket creation denied, including 
 ## CI operating-system pin
 
 [First CI run](https://github.com/xioacd99/manga-live-translator/actions/runs/41580639361) passed all 73 JavaScript and 42 Python tests and the build. Browser installation failed because ubuntu-latest resolved to Ubuntu 26.04, unsupported by pinned Playwright 1.56.1. Pinning Ubuntu 24.04 aligns the runner with that browser tool's supported dependency installer; it is not a browser success claim. Keep runner and browser-tool versions compatible when upgrading.
+
+## Asynchronous worker teardown and job identity
+
+An isolated regression reproduced cancellation settling before asynchronous worker termination: the abort path cleared workerPromise, and a second cleanup saw no worker to await. A shared release promise now keeps the adapter busy until teardown completes. A module-level OCR queue spans account-specific pipelines so switching accounts cannot overlap old/new worker lifetimes.
+
+A separate reproduction showed an old RUN finalizer deleting a replacement job with the same request ID after reconfiguration. Cleanup now checks object identity before deletion; background fetch cleanup similarly checks controller identity. Late successful responses also pass a post-await generation fence before reaching content. These findings are covered by lifecycle tests, not inferred from the browser CI result.

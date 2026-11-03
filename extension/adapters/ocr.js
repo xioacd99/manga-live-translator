@@ -10,15 +10,20 @@ export function createOcrAdapter({ workerPath, corePath, langPath, createWorkerI
     }
   }
   let workerPromise;
+  let releasePromise;
   let busy = false;
   let disposed = false;
   let cancelCurrent;
-  const release = async () => {
+  const release = () => {
+    // Every caller must wait for the same teardown, including abort and dispose.
+    if (releasePromise) return releasePromise;
     const pending = workerPromise;
     workerPromise = undefined;
-    if (pending) {
+    if (!pending) return Promise.resolve();
+    releasePromise = (async () => {
       try { await (await pending).terminate(); } catch { /* Failed workers have no reusable state. */ }
-    }
+    })().finally(() => { releasePromise = undefined; });
+    return releasePromise;
   };
   async function recognize({ imageBytes, width, height, config = {}, signal }) {
     if (disposed) throw new Error('OCR adapter is disposed.');
@@ -46,6 +51,7 @@ export function createOcrAdapter({ workerPath, corePath, langPath, createWorkerI
       if (signal?.aborted || disposed) throw abortError();
       // Sparse text admits separated bubbles. No orientation/vertical-language claim.
       await worker.setParameters({ tessedit_pageseg_mode: '11', user_defined_dpi: '300' });
+      if (signal?.aborted || disposed) throw abortError();
       const input = typeof window === 'undefined' ? imageBytes : new Blob([imageBytes]);
       const { data } = await worker.recognize(input, {}, { blocks: true, text: true });
       if (signal?.aborted || disposed) throw abortError();

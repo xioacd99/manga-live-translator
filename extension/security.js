@@ -1,5 +1,5 @@
 export const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
-export const MAX_PIXELS = 16 * 1024 * 1024;
+export const MAX_PIXELS = 16_000_000;
 export function publicHttpUrl(value) {
   if (typeof value !== 'string' || value.length > 8192) throw new Error('Invalid URL.');
   const url = new URL(value);

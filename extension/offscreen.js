@@ -4,13 +4,14 @@ import {createOpenAiAdapter,OPENAI_ENDPOINT,PROMPT_VERSION,SCHEMA_VERSION} from 
 import {MAX_IMAGE_BYTES,MAX_PIXELS,safeError} from './security.js';
 import {inspectImage} from './image-dimensions.js';
 const decodes=new BoundedQueue({concurrency:1,maxQueue:15});
+const recognition=new BoundedQueue({concurrency:1,maxQueue:15});
 let config=null; let pipeline=null; const jobs=new Map();
 const makeOcr=()=>createOcrAdapter({workerPath:chrome.runtime.getURL('vendor/worker.min.js'),corePath:chrome.runtime.getURL('vendor/core'),langPath:chrome.runtime.getURL('vendor/lang')});
 let ocr=makeOcr();
 function reset(next) {
   for(const job of jobs.values())job.controller.abort(); jobs.clear();
   if(config&&next&&config.accountNamespace===next.accountNamespace){config=next;return;}
-  pipeline?.clear();config=next; pipeline=next?createPipeline({ocr:input=>ocr.recognize(input),translate:createOpenAiAdapter({apiKey:next.apiKey}),cacheOptions:{maxEntries:128,maxBytes:8*1024*1024,ttlMs:30*60*1000}}):null;
+  pipeline?.clear();config=next; pipeline=next?createPipeline({ocr:input=>recognition.run(()=>ocr.recognize(input),{signal:input.signal}),translate:createOpenAiAdapter({apiKey:next.apiKey}),cacheOptions:{maxEntries:128,maxBytes:8*1024*1024,ttlMs:30*60*1000}}):null;
 }
 async function handle(m) {
   if(m.type==='CONFIGURE'){reset(m.settings);return {ok:true};}
@@ -22,7 +23,7 @@ async function handle(m) {
   if(m.type==='METRICS')return {ok:true,metrics:pipeline?.diagnostics()||{}};
   if(m.type!=='RUN'||!pipeline||!config)throw new Error('Configure translation first.');
   if(jobs.size>=16||jobs.has(m.id)||typeof m.imageBase64!=='string'||m.imageBase64.length>Math.ceil(MAX_IMAGE_BYTES*4/3)+4)throw new Error('Image queue or size limit.');
-  const controller=new AbortController(); jobs.set(m.id,{controller,tabId:m.tabId});
+  const controller=new AbortController(); const job={controller,tabId:m.tabId};jobs.set(m.id,job);
   const active=pipeline;const current=config;let bitmap;
   try {
     const bytes=Uint8Array.from(atob(m.imageBase64),c=>c.charCodeAt(0));
@@ -41,7 +42,7 @@ async function handle(m) {
     controller.signal.throwIfAborted();
     const byId=new Map(result.translations.map(r=>[r.regionId,r.text]));
     return {ok:true,result:{width,height,regions:result.regions.map(r=>({id:r.regionId,text:r.sourceText,translation:byId.get(r.regionId),box:r.bbox,confidence:r.confidence}))},metrics:{...active.diagnostics(),durationMs:Math.round(performance.now()-started)}};
-  } finally {bitmap?.close();jobs.delete(m.id);}
+  } finally {bitmap?.close();if(jobs.get(m.id)===job)jobs.delete(m.id);}
 }
 chrome.runtime.onMessage.addListener((m,sender,reply)=>{
   if(m?.target!=='executor'||sender.id!==chrome.runtime.id||sender.tab||sender.url && sender.url!==chrome.runtime.getURL('background.js'))return;
