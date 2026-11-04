@@ -39,3 +39,5 @@
 - [Paddle英文型号比较经验](memory/development/practices/paddle-english-model-comparison.md)
 
 - [Python 常驻服务与浏览器算法接线](memory/development/practices/native-pipeline-integration.md)
+
+- [浏览器拥有的本机 OCR 生命周期](memory/development/practices/browser-owned-ocr-lifecycle.md)

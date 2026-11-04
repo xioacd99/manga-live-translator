@@ -17,6 +17,7 @@ dependencies = [
 
 [project.scripts]
 manga-local-ocr = "manga_local_ocr.__main__:main"
+manga-local-ocr-install-host = "manga_local_ocr.install_native_host:main"
 
 [tool.setuptools.packages.find]
 include = ["manga_local_ocr*"]

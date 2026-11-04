@@ -65,6 +65,39 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+  native-lifecycle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - name: Install extension and lightweight native host without inference dependencies
+        run: |
+          npm ci --ignore-scripts
+          python3 -m venv .venv-lifecycle
+          .venv-lifecycle/bin/python -m pip install --no-deps -e services/local-ocr
+          npm run build
+      - name: Install Chromium for actual Native Messaging integration
+        run: npx playwright install --with-deps chromium
+      - name: Test real native process ownership and browser-window lifecycle
+        env:
+          MLT_NATIVE_PYTHON: .venv-lifecycle/bin/python
+        run: |
+          node --test tests/browser/native-lifecycle.test.mjs
+          node tests/browser/native-lifecycle.mjs
+      - name: Preserve actual Native Messaging lifecycle evidence separately
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: real-native-messaging-lifecycle-evidence
+          path: artifacts/native-lifecycle*.json
+          if-no-files-found: warn
+          retention-days: 7
+
   real-native-models:
     if: github.event_name == 'workflow_dispatch' && inputs.run_native_models
     runs-on: ubuntu-24.04

@@ -31,3 +31,5 @@ Record techniques supported by actual project experience, including when they ap
 - [英文OCR追加精度验证](ocr-accuracy-followup.md)：负结果、置信度选择、桥接与模型许可边界。
 
 - [Python 常驻服务与浏览器算法接线](native-pipeline-integration.md)：模型身份、状态竞争、缓存分层与保守排版边界。
+
+- [浏览器拥有的本机 OCR 生命周期](browser-owned-ocr-lifecycle.md)：Native Messaging、实例隔离、退出回收与显式安装边界。

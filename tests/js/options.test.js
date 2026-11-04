@@ -89,3 +89,32 @@ test('选项页恢复非敏感配置，不从状态载入密钥或默认为再�
   assert.equal(h.el('key').value, ''); assert.equal(h.el('local-token').value, '');
   assert.equal(h.el('consent').checked, false); assert.equal(h.el('local-consent').checked, false);
 });
+
+
+test('选择自动管理不要求令牌，保存才同步请求本机权限且不发送启动或下载', async () => {
+  const h = await harness();
+  h.el('local-mode').value='managed';h.el('local-mode').onchange();
+  assert.equal(h.el('manual-local-fields').hidden,true);assert.equal(h.el('local-token').required,false);assert.equal(h.el('local-token').disabled,true);
+  h.el('local-consent').checked=true;
+  const pending=h.submit(true);
+  assert.equal(h.calls[1].kind,'permission');assert.deepEqual([...h.calls[1].args.permissions],['nativeMessaging']);
+  await pending;
+  assert.deepEqual(h.calls[2].message.settings,{localOcr:{mode:'managed',enabled:true,consent:true},readingDirection:'ltr'});
+  assert.equal(h.calls.some(call=>['MLT_UI_ENABLE','MLT_UI_MODEL_DOWNLOAD'].includes(call.message?.type)),false);
+  assert.match(h.el('local-status').textContent,/自动管理/);
+});
+
+test('管理模式权限拒绝不保存，切换回手动清令牌和图片授权', async () => {
+  const h=await harness({permission:async()=>false});
+  h.el('local-mode').value='managed';h.el('local-mode').onchange();h.el('local-consent').checked=true;
+  await h.submit(true);assert.equal(h.calls.length,2);assert.match(h.el('local-status').textContent,/未授予/);
+  h.el('local-token').value='do-not-retain';h.el('local-mode').value='manual';h.el('local-mode').onchange();
+  assert.equal(h.el('local-token').value,'');assert.equal(h.el('local-consent').checked,false);assert.equal(h.el('local-token').required,true);assert.equal(h.el('local-token').disabled,false);
+});
+
+test('恢复已保存管理模式不读取令牌、不请求新权限、不启动', async () => {
+  const h=await harness({send:async()=>({ok:true,localConfigured:true,localOcr:{mode:'managed',token:'do-not-load'},readingDirection:'rtl'})});
+  assert.equal(h.el('local-mode').value,'managed');assert.equal(h.el('manual-local-fields').hidden,true);
+  assert.equal(h.el('local-token').value,'');assert.equal(h.el('local-consent').checked,false);assert.equal(h.calls.length,1);
+  assert.match(h.el('local-status').textContent,/已记住自动管理/);
+});

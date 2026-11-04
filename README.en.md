@@ -14,6 +14,8 @@ Manga translation for online reading, aiming for low latency and natural, contex
 
 Unreleased `dev` preview: a Chrome extension calls an authenticated Python service on 127.0.0.1. Full-page PP-OCRv6 medium1536 and the report's FP32 RT-DETR run locally. Optional DeepSeek/OpenAI translation sends ordered text only after explicit consent. See [setup](services/local-ocr/README.md) and the [eight algorithm modules](README.md#八个算法模块) in the canonical Chinese README.
 
+After one-time installation of the Native Messaging host and explicit permission, managed mode starts the local service on Enable and releases it when the last normal browser window closes or the browser exits. Separate browser connections use separate ports and tokens. Manual services remain user-managed. The installer supports macOS/Linux; Windows uses manual mode. See [lifecycle boundaries](docs/development/native-lifecycle.md). Translation API keys remain session-only.
+
 Modules: (1) text detection/OCR, (2) bubble detection, (3) grouping/reading order, (4) context/text translation, (5) exact layered caching, (6) small-window prefetch, (7) conservative solid-color cleanup, (8) measured adaptive typesetting. Complex backgrounds and insufficient space keep the original image and use full-text cards. No Magpie integration, image upload to providers, automatic paid retries, or production/M4 quality claim.
 
 The former Tesseract/WASM browser tests are historical. New browser smoke uses a real browser with synthetic loopback HTTP and mocked text-provider responses, not real-model quality evidence. See [current validation and limits](docs/development/native-pipeline.md).

@@ -3,11 +3,11 @@
 <p>仅显式启用当前页面。图片从已授权来源获取，检测与 OCR 在本机运行，不上传图片。点击翻译或勾选自动翻译后，对白文本发送到 所选翻译服务，可能产生 API 费用。</p>
 <section aria-label="Python 本地 OCR 与气泡模型">
 <h2>Python 本地 OCR 与气泡模型</h2>
-<p>先启动 Python 服务并在设置中填写地址和令牌。首次主动下载 PP-OCRv6 medium 三份权重与报告所用 RT-DETR，完成 SHA-256 校验后缓存本机。仅下载模型时访问 ModelScope / Hugging Face，不上传漫画；OCR 与气泡检测由环回服务运行。详见 README 的安装与许可清单。</p>
+<p>先在设置中选择自动管理或手动服务。自动管理需一次性安装 Native Messaging 宿主；点击启用页面或准备模型时才启动，关闭最后一个普通浏览器窗口时停止。手动模式请自行启动并填写地址和令牌。首次主动下载 PP-OCRv6 medium 三份权重与报告所用 RT-DETR，完成 SHA-256 校验后缓存本机。仅下载模型时访问 ModelScope / Hugging Face，不上传漫画；OCR 与气泡检测由环回服务运行。详见 README 的安装与许可清单。</p>
 <p id="modelStatus" role="status" aria-live="polite">正在检查本地模型…</p>
 <progress id="modelProgress" aria-label="模型下载进度"></progress>
 <button id="modelDownload" disabled>下载并准备模型</button><button id="modelCancel" disabled>取消模型准备</button>
-<p>下载出错或取消后可重试；关闭此面板不取消后台下载。模型就绪后，请再次点击“启用当前页面”。整图 OCR 模式只跳过气泡检测，不跳过 OCR 模型。</p>
+<p>下载出错或取消后可重试；关闭此面板不取消后台下载；自动管理模式关闭最后一个普通浏览器窗口会终止服务和下载。模型就绪后，请再次点击“启用当前页面”。整图 OCR 模式只跳过气泡检测，不跳过 OCR 模型。</p>
 </section>
 <label>额外图片 CDN 来源（可选，每行一个）<textarea id="origins" placeholder="https://images.example.com"></textarea></label>
 <label><input type="checkbox" id="auto"> 自动翻译当前可见图片（发送文本到 所选翻译服务，可能计费）</label>

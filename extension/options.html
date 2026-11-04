@@ -5,13 +5,17 @@
 <h1>本地 OCR 与翻译设置</h1>
 <p>开发预览版。先配置本机 OCR，再按需配置远程文本翻译。只准备本地识别结果无需大语言模型密钥。</p>
 <h2>1. 本机 OCR 服务</h2>
-<p>将图片像素发送到这台电脑上的 PaddleOCR / RT-DETR 服务。服务须单独安装并运行；不会把图片上传给 DeepSeek 或 OpenAI。模型下载由本机服务管理，需要在弹窗主动开始。</p>
+<p>将图片像素发送到这台电脑上的 PaddleOCR / RT-DETR 服务。服务须单独安装；自动管理模式由扩展在点击启用时启动，关闭最后一个普通浏览器窗口时停止。手动模式由你自行运行；不会把图片上传给 DeepSeek 或 OpenAI。模型下载由本机服务管理，需要在弹窗主动开始。</p>
 <form id="local-settings-form"><fieldset id="local-fields" disabled><legend>本机服务连接</legend>
+<label>启动方式<select id="local-mode"><option value="manual">手动服务：已有地址和令牌</option><option value="managed">自动管理：点击启用时启动，关浏览器时停止</option></select></label>
+<p id="local-mode-note">手动服务不会被扩展关闭。自动管理须先按安装指南注册 Native Messaging 宿主，再授权本机通信权限。</p>
+<div id="manual-local-fields">
 <label>服务地址（仅允许 127.0.0.1 和明确端口）<input id="local-endpoint" type="url" value="http://127.0.0.1:8787" maxlength="40" required></label>
 <label>本机服务 Bearer 令牌（32–128 位字母、数字、下划线或连字符，仅本次浏览器会话）<input id="local-token" type="password" autocomplete="off" minlength="32" maxlength="128" required></label>
+</div>
 <label>阅读方向<select id="reading-direction"><option value="ltr">LTR：从左到右</option><option value="rtl">RTL：从右到左</option></select></label>
-<label><input id="local-consent" type="checkbox" required> 我允许扩展在准备或翻译图片时，将所选图片的像素发送到上述本机服务。</label>
-<p>Chrome 的回环主机权限覆盖该地址的所有端口；扩展只访问你保存的具体端口。令牌和图片不会转发到页面脚本。</p>
+<label><input id="local-consent" type="checkbox" required> 我允许扩展在准备或翻译图片时，将所选图片的像素发送到所选本机服务；自动管理模式允许扩展在我点击启用或准备模型时启动已安装的服务。</label>
+<p>Chrome 的回环主机权限覆盖该地址的所有端口；手动模式只访问保存的具体端口；自动管理只访问宿主新分配的临时端口。令牌和图片不会转发到页面脚本。</p>
 <button id="save-local" type="submit">保存本机 OCR 设置</button></fieldset></form>
 <pre id="local-status" role="status" aria-live="polite"></pre>
 <h2>2. 远程文本翻译（可选）</h2>
@@ -28,6 +32,6 @@
 <label><input id="consent" type="checkbox" required> <span id="remote-consent-label">我允许在翻译或启用自动翻译时向 DeepSeek 发送上述文本，并了解可能产生 API 费用。</span></label>
 <button id="save-remote" type="submit">Save for this session</button></fieldset></form>
 <pre id="status" role="status" aria-live="polite"></pre>
-<p>两类密钥只保存在扩展受信任的会话存储中，不同步或主动写入持久存储。重启浏览器会清除密钥与阅读缓存；本机下载的模型文件独立保留。设备遭入侵时，浏览器扩展无法保证密钥安全。无痕模式不可用。</p>
+<p>两类密钥只保存在扩展受信任的会话存储中，不同步或主动写入持久存储。自动管理模式只持久保存启动方式、阅读方向和本机图片授权，不保存服务令牌、端口或漫画。重启浏览器会清除远程密钥、手动服务令牌与阅读缓存；本机下载的模型文件独立保留。设备遭入侵时，浏览器扩展无法保证密钥安全。无痕模式不可用。</p>
 <button id="forget" type="button" disabled>Forget key and clear session</button>
 <script src="options.js"></script></body></html>

@@ -14,7 +14,9 @@
 
 这是 **dev 开发预览版**，尚未发布。当前方案为 Chrome 扩展 + 本机 Python 常驻服务：PaddleOCR 识别整页，RT-DETR 检测气泡，扩展归组、排序、请求可选文本翻译并显示可撤销译文。不会把漫画图片发送给翻译提供方；DeepSeek / OpenAI 文本翻译必须单独配置并授权，可能计费。
 
-先按 [Python 服务安装指南](services/local-ocr/README.md) 启动服务，再构建扩展并在设置中填写 `http://127.0.0.1:8787` 与本机令牌。首次主动下载四份模型共 **307,816,501 字节，约 293.6 MiB**，SHA-256 校验后缓存；状态轮询不触发模型下载。详见[开发预览指南](docs/development/preview.md)。
+先按 [Python 服务安装指南](services/local-ocr/README.md) 安装依赖和一次性的 Native Messaging 宿主，在扩展设置中选择自动管理。之后点击启用/自动翻译时启动本地 OCR，关闭最后一个普通浏览器窗口或退出浏览器时回收本次服务。扩展不能直接执行任意本机程序，宿主安装与新增权限需要用户明确操作。也保留手动服务地址/令牌模式，扩展不关闭用户自行启动的服务。详见[启动与退出边界](docs/development/native-lifecycle.md)。
+
+首次主动下载四份模型共 **307,816,501 字节，约 293.6 MiB**，SHA-256 校验后缓存；状态轮询不启动宿主或触发模型下载。详见[开发预览指南](docs/development/preview.md)。
 
 ## 八个算法模块
 

@@ -1,29 +1,74 @@
 # 本地原生 OCR 服务
 
-这是需单独安装、手动启动的 Python 伴随服务，不是零安装的浏览器内推理。只监听 `127.0.0.1`，不接受远程图片 URL，不向模型站点或翻译服务发送漫画。下载器只请求下面四份固定的公共权重；OCR/气泡检测只使用本地已校验资产。
+这是需单独安装一次的 Python 伴随程序，不是零安装的浏览器内推理。推荐通过 Chrome Native Messaging 点击启用时启动、随浏览器关闭而停止；也保留手动启动模式。只监听 `127.0.0.1`，不接受远程图片 URL，不向模型站点或翻译服务发送漫画。下载器只请求下面四份固定公共权重；OCR/气泡检测只使用本地已校验资产。
 
-## 安装和首次使用
+## 安装一次，浏览器按需启动
 
-需要 Python **3.12 或 3.13**。当前真实验证环境是 Linux x86_64/Python 3.12/CPU；尚未验证 Windows、macOS 或 Apple M4 性能。若当前平台没有这些固定版本的 wheel，不要悄悄换版本，应作为兼容性问题另行验证。
+需要 Python **3.12 或 3.13**。当前真实模型验证环境是 Linux x86_64/Python 3.12/CPU；macOS 安装路径与启动脚本通过夹具验证，但尚未在真实 macOS/Apple M4 上运行。Native Messaging 安装器目前支持 **macOS/Linux 的 Chrome、Chromium、Chrome for Testing**；Windows 用户暂用下方手动模式，不宣称已验证 Windows 安装器或性能。若平台没有固定版本的 wheel，不要悄悄换版本。
 
-在仓库根目录执行：
+1. 在仓库根目录建立保留在固定位置的 Python 环境并安装：
 
 ```sh
 python3.12 -m venv .venv-local-ocr
 . .venv-local-ocr/bin/activate
 python -m pip install -r services/local-ocr/requirements.lock.txt -e services/local-ocr
+```
+
+2. 构建并加载扩展，从 `chrome://extensions` 复制此扩展真实的 32 位 ID。以下示例 ID 必须替换。先查看计划，再由用户主动执行注册：
+
+```sh
+manga-local-ocr-install-host --extension-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --browser chrome --dry-run
+manga-local-ocr-install-host --extension-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --browser chrome
+```
+
+安装器只写当前用户下的三份文件：固定 Python 启动脚本、私有配置和浏览器 `NativeMessagingHosts` 清单。`--dry-run` 不创建目录或文件；真正注册会允许清单内的确切扩展启动本机伴随程序，必须由用户明确执行，扩展不会暗中安装它。不会注册系统服务、登录项或开机任务，不会启动 OCR 或下载模型。不需要 `sudo`。
+
+`--browser chromium` 和 `--browser chrome-for-testing` 选择相应浏览器。使用非默认用户数据目录时，可显式传入 `--manifest-dir /absolute/profile/NativeMessagingHosts`；`--data-dir` 指定该浏览器专用启动器目录，`--cache-dir` 指定共享模型目录。多个确实获准的扩展可重复传 `--extension-id`；不接受通配来源。已有内容不同的注册或文件会报错，**不会覆盖另一个扩展的注册**。需要改变 ID、缓存目录或 Python 环境时，先核对并手动移除旧的三份文件，再重跑安装器。不要删除仍在使用的 Python 环境或移动可编辑安装的仓库。
+
+3. 在扩展设置“启动方式”中选择“自动管理：点击启用时启动，关浏览器时停止”，明确允许扩展启动本机服务与发送像素。保存模式只请求所需权限，不启动服务。点击“启用当前页面”时，扩展建立 Native Messaging 长连接，浏览器创建专属于此连接的 Python 进程。它自动选择空闲环回端口并向受信任扩展返回新随机令牌，**无需手动填写端口或复制令牌**。首次主动点击“下载并准备模型”仍须下载并校验约 **293.56 MiB**；该按钮也会按需启动托管服务。若点击启用时模型尚未就绪，扩展会提示准备模型，完成后需重新启用。打开弹窗、查询状态、取消操作或浏览器启动本身均不启动服务，不触发下载。
+4. 模型首次使用时加载并在该进程内驻留。Native Messaging 连接关闭、扩展停止连接或浏览器退出时，伴随进程最多尝试 250ms 清理，然后退出，正在运行的本进程推理也随进程终止。普通 HTTP `/cancel` 仍只能丢弃结果，不能中断 ORT 内核。扩展也会在最后一个普通浏览器窗口关闭时主动断开，因此后台模式或仅剩扩展弹窗不会继续保持 OCR；还有其他普通窗口时不提前终止。忘记凭据、撤销权限或改变服务模式也会断开。
+5. 后续启动复用同一模型磁盘缓存，但不复用旧进程令牌、端口或漫画结果。不同浏览器/配置文件各自拥有进程、随机令牌和端口，关闭其中一个不会杀掉另一个或手动启动的服务。共享缓存的并行下载可能重复请求，但用独立临时文件和校验后的原子改名，不会删除另一个进程的临时文件。
+
+用户级清单默认位置：
+
+- macOS Chrome：`~/Library/Application Support/Google/Chrome/NativeMessagingHosts/com.manga_live_translator.local_ocr.json`。
+- Linux Chrome：`${XDG_CONFIG_HOME:-~/.config}/google-chrome/NativeMessagingHosts/com.manga_live_translator.local_ocr.json`。
+- Chromium 使用相应 `Chromium` / `chromium` 目录；Chrome for Testing 使用 `Google/ChromeForTesting` / `google-chrome-for-testing`。Chrome for Testing 146 以前的版本使用 Chrome 的位置，旧版本须明确指定正确目录。
+
+若要卸载，先停用自动翻译并退出浏览器，再删除安装器输出的该浏览器清单与对应启动器目录里的 `config.json`、`manga-local-ocr-host`。模型缓存单独保留，可由用户选择删除。不要移除其他应用或浏览器的注册。
+
+## 手动启动模式（保留兼容）
+
+调试或暂不支持自动安装的平台可以显式启动：
+
+```sh
 manga-local-ocr --extension-id aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 ```
 
-把示例 ID 替换为 `chrome://extensions` 中此扩展的真实 32 位 ID；多个已批准扩展可重复传入 `--extension-id`。服务不允许 `*`、普通网页 Origin、`null`、`localhost` Host 或远程监听地址。Windows 可在 PowerShell 用 `.venv-local-ocr\Scripts\Activate.ps1` 激活环境。
+Windows 可在 PowerShell 用 `.venv-local-ocr\Scripts\Activate.ps1` 激活环境。以下规则仅适用于手动模式：
 
 1. 首次启动生成随机 256-bit Bearer 令牌，**不会下载模型**。终端只显示服务地址和令牌文件路径，不显示令牌值。
-2. 在本机打开该令牌文件，将值粘贴到扩展的本地服务令牌设置。不要把令牌写进 URL、仓库、截图或聊天。POSIX 文件权限必须是 `0600`；Windows 应使用当前用户私有目录与 ACL。
+2. 在本机打开该令牌文件，将值粘贴到扩展手动服务设置。不要把令牌写进 URL、仓库、截图或聊天。POSIX 文件权限必须是 `0600`；Windows 应使用当前用户私有目录与 ACL。
 3. 服务地址默认 `http://127.0.0.1:8787`。可用 `--port` 改端口，扩展设置须一致。浏览器若要求局域网/本地网络权限，需由用户按浏览器提示批准；HTTP CORS 头不代替浏览器权限。
-4. 在扩展中主动选择下载模型；状态接口持续提供逐模型和总字节进度。四份权重总计 **307,816,501 字节（约 293.56 MiB）**。已下载且 SHA-256 正确的模型会复用。OCR 三模型合计 139,334,970 字节，其余为 FP32 RT-DETR。
-5. 图片只在进程内暂存，处理后释放引用。服务不保存图片、OCR 全文、访问日志或错误 traceback。它不持久保存阅读结果，也不自动启动系统服务。按 Ctrl+C 停止；首次识别另有模型初始化成本。
+4. 在扩展中主动下载模型；状态接口提供逐模型和总字节进度。四份权重总计 **307,816,501 字节（约 293.56 MiB）**，其中 OCR 三模型 139,334,970 字节，其余为 FP32 RT-DETR。已下载且 SHA-256 正确的模型会复用。
+5. 手动服务不受浏览器生命周期管理；按 Ctrl+C 停止。扩展不会因为浏览器退出而杀掉用户自行运行的服务。
 
-默认缓存目录：Linux `${XDG_CACHE_HOME:-~/.cache}/manga-live-translator/local-ocr/models`，macOS `~/Library/Caches/manga-live-translator/local-ocr/models`，Windows `%LOCALAPPDATA%\manga-live-translator\local-ocr\models`。可用 `--cache-dir` 指定。令牌位于同名应用数据目录：Linux `${XDG_DATA_HOME:-~/.local/share}`，macOS `~/Library/Application Support`，Windows `%LOCALAPPDATA%`，后接 `manga-live-translator/local-ocr/token`；可用 `--token-file` 指定。
+两种模式均不允许 `*`、普通网页 Origin、`null`、`localhost` Host 或远程监听地址。图片只在进程内暂存，处理后释放引用；不持久保存阅读结果、图片、OCR 全文、访问日志或错误 traceback。
+
+两种模式共用默认缓存目录：Linux `${XDG_CACHE_HOME:-~/.cache}/manga-live-translator/local-ocr/models`，macOS `~/Library/Caches/manga-live-translator/local-ocr/models`，Windows `%LOCALAPPDATA%\manga-live-translator\local-ocr\models`。手动令牌位于同名应用数据目录：Linux `${XDG_DATA_HOME:-~/.local/share}`，macOS `~/Library/Application Support`，Windows `%LOCALAPPDATA%`，后接 `manga-live-translator/local-ocr/token`；手动 CLI 可用 `--token-file` 指定。托管令牌只存在进程和受信任扩展会话内，不写入令牌文件。启动器配置默认在该应用数据目录的 `native-host/<browser>/` 下。
+
+## Native Messaging v1 契约
+
+固定主机名 `com.manga_live_translator.local_ocr`。安装清单和私有配置均保存精确的 `chrome-extension://<32位ID>/` 允许列表；调用来源必须逐字匹配，不接受前缀、网页、通配或额外 URL 字段。HTTP Origin 使用不带末尾 `/` 的同一扩展来源。
+
+- 每条消息使用 UTF-8 JSON 和本机字节序的 32-bit 长度前缀，最多 **1024 字节**。拒绝空/过长/截断帧、重复 JSON 键、非标准数值、非对象消息及额外字段。
+- 扩展发送 `{"type":"start"}`，服务返回 `{"type":"ready","endpoint":"http://127.0.0.1:<临时端口>","token":"<本连接随机令牌>"}`。`ready` 指 HTTP 已启动，不代表模型已下载或初始化。同一连接重复 start 返回原端点与令牌。
+- `{"type":"stop"}` 或 stdin EOF 终止整个所属进程，没有必需的 stop 回复。坏帧也关闭连接并退出。只接受 start/stop，不接受端口、命令、路径、模型 URL、任意参数或文件操作。
+- 原生服务与 HTTP/推理线程在同一进程中，不脱离浏览器启动后台守护服务。初始化或写响应卡住时仍由独立输入线程观察断连；不按 PID、进程名或固定端口去查杀其他服务。
+- 协议 stdout 使用独立文件描述符；Python 和原生库的普通 stdout/stderr 被隔离，不让日志污染长度帧，也不把图片/文字/令牌写进浏览器日志。错误统一表现为连接关闭，不暴露异常细节。
+- 强制终止或等待取消超时可能遗留当前下载的 `.download-*.part`。已校验模型继续复用；退出时不扫描删除共享目录里的临时文件。只有确认所有服务已停止后，用户才可手动清理遗留 `.part`。
+
+协议和注册路径参考 [Chrome 官方 Native Messaging 文档](https://developer.chrome.com/docs/extensions/develop/concepts/native-messaging)。Native Messaging 能限制哪些扩展由浏览器启动主机，但不能抵御同一用户权限下的恶意本机程序。
 
 ## 四份模型、两个推理模块
 
@@ -79,11 +124,11 @@ PYTHONPATH=services/local-ocr python services/local-ocr/tests/smoke_real_models.
 
 ### 本次开发验证（2026-11-04）
 
-- 39 项协议/安全/生命周期测试通过，其中 5 项走真实环回 HTTP，但推理使用合成替身。
+- 65 项协议/安全/生命周期/安装器测试通过，其中新增 26 项覆盖 Native Messaging 子进程、断连、隔离和临时目录安装计划。原有 5 项及新增生命周期测试走真实环回 HTTP，阻塞推理使用合成替身，不冒充真实 ORT 中断的实测。
 - [真实模型合成图 HTTP 冒烟摘要](evidence/native-real-model-smoke.json)：固定四份资产实际加载，原创 `HELLO WORLD` 识别通过，真实 RT-DETR 调用完成；不等于真实浏览器集成验收。
 - [原十图精确回归摘要](evidence/native-regression-10.json)：新服务的 680 个 OCR 行在文字、bbox、polygon、置信度与原常驻 Python 基线逐项一致；126 个气泡框/置信度与原 FP32 RT-DETR 实测逐项一致。原冻结 GT 独立复算 CER 13.4537%、WER 39.6552%，没有声称改进原有识字率。
 - EN09 历史文件名为 `.jpg`，实际字节是 PNG；首次测试脚本错误发送 JPEG MIME 被服务正确拒绝。修正测试请求后对同一字节继续验证，未删除失败样本，也未放宽生产格式检查。原图、GT 和预测全文均未加入仓库。
-- 完成 source wheel 构建；没有验证所有平台安装器、macOS/M4 性能、翻译质量或气泡像素级分割。
+- 原生 HTTP 服务已完成 source wheel 构建；Native Messaging 的 macOS 安装路径仅做夹具校验，Windows 自动安装未实现。未验证 macOS/M4 性能、真实翻译质量或气泡像素级分割。
 
 ## 许可证与固定来源
 

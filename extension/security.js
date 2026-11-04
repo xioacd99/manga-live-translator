@@ -3,6 +3,18 @@ export const MAX_PIXELS = 16_000_000;
 export const DEFAULT_LOCAL_OCR_ENDPOINT = 'http://127.0.0.1:8787';
 // Chrome 主机权限不能按端口限定；实际请求仍由精确回环地址校验约束。
 export const LOCAL_OCR_ORIGIN_PERMISSION = 'http://127.0.0.1/*';
+const LOCAL_OCR_ERRORS = {
+  LOCAL_NATIVE_PERMISSION: '请在用户点击时授予本机通信和环回服务权限。',
+  LOCAL_NATIVE_UNAVAILABLE: '无法启动本机 OCR。请先按安装指南注册 Native Messaging 宿主，确认扩展 ID 后再点击重试。',
+  LOCAL_NATIVE_TIMEOUT: '本机 OCR 启动超时，已断开连接。请检查安装后再次点击启用。',
+  LOCAL_NATIVE_DISCONNECTED: '本机 OCR 已断开。请重新点击启用当前页面，不会自动重启服务。',
+  LOCAL_NATIVE_PROTOCOL: '本机 OCR 启动响应无效，已断开连接。请检查宿主版本与安装。',
+  LOCAL_MODELS_REQUIRED: '本机 OCR 已启动，但模型尚未就绪。请点击“下载并准备模型”，完成后重新启用。',
+  LOCAL_OCR_STOPPED: '本机 OCR 未运行，请在普通浏览器窗口中重新点击启用。',
+};
+export class LocalOcrError extends Error {
+  constructor(code) { super(LOCAL_OCR_ERRORS[code] || '本机 OCR 不可用。'); this.code = Object.hasOwn(LOCAL_OCR_ERRORS, code) ? code : 'LOCAL_NATIVE_UNAVAILABLE'; }
+}
 const TRANSLATION_PROVIDERS = {
   deepseek: { endpoint: 'https://api.deepseek.com/chat/completions', defaultModel: 'deepseek-flash' },
   openai: { endpoint: 'https://api.openai.com/v1/chat/completions', defaultModel: '' },
@@ -30,12 +42,14 @@ export function validateLocalOcrSettings(settings) {
   if (!record(settings) || !record(settings.localOcr)) throw new Error('Invalid local OCR configuration.');
   const local = settings.localOcr;
   if (local.enabled !== true || local.consent !== true) throw new Error('Authorize sending image pixels to the local OCR service first.');
+  const readingDirection = settings.readingDirection === undefined ? 'ltr' : settings.readingDirection;
+  if (!['ltr', 'rtl'].includes(readingDirection)) throw new Error('Choose LTR or RTL reading order.');
+  if (local.mode === 'managed') return {localOcr: {mode: 'managed', enabled: true, consent: true}, readingDirection};
+  if (local.mode !== undefined && local.mode !== 'manual') throw new Error('Choose managed or manual local OCR.');
   // 不接受 URL 归一化别名、IPv6、DNS、路径、查询参数或嵌入式凭据。
   const match = typeof local.endpoint === 'string' && /^http:\/\/127\.0\.0\.1:([1-9][0-9]{0,4})\/?$/.exec(local.endpoint);
   if (!match || Number(match[1]) > 65535 || Number(match[1]) < 1024) throw new Error('Use an explicit http://127.0.0.1:PORT local OCR address.');
   if (typeof local.token !== 'string' || !/^[A-Za-z0-9_-]{32,128}$/.test(local.token)) throw new Error('Enter the local OCR service token (32–128 letters, digits, underscores or hyphens).');
-  const readingDirection = settings.readingDirection === undefined ? 'ltr' : settings.readingDirection;
-  if (!['ltr', 'rtl'].includes(readingDirection)) throw new Error('Choose LTR or RTL reading order.');
   return { localOcr: { endpoint: `http://127.0.0.1:${match[1]}`, token: local.token, enabled: true, consent: true }, readingDirection };
 }
 export function publicHttpUrl(value) {
@@ -71,6 +85,7 @@ export async function readBoundedImage(response, signal) {
 }
 export function toBase64(bytes) { let s=''; for(let n=0;n<bytes.length;n+=32768)s+=String.fromCharCode(...bytes.subarray(n,n+32768)); return btoa(s); }
 export function safeError(error) {
+  if(error instanceof LocalOcrError)return {code:error.code,message:LOCAL_OCR_ERRORS[error.code]};
   if(error?.name==='AbortError')return {code:'CANCELLED',message:'Translation cancelled.'};
   // 仅展示固定的安全提示，不透传服务提供方或未知异常内容。
   return {code:'FAILED',message:'Could not process this image. Check page permissions, model configuration, image limits, and provider availability. No automatic retry was sent.'};

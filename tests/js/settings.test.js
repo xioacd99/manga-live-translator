@@ -35,3 +35,12 @@ test('远程同意不能代替本机同意，提供方和文本预算不能绕�
   for (const patch of [{ consent: false }, { consent: 'true' }, { provider: '__proto__' }, { provider: 'constructor' }, { provider: 'custom' }, { endpoint: 'https://evil.invalid' }, { apiKey: 'short' }, { apiKey: 'x'.repeat(513) }, { apiKey: 'header\ninjection' }, { model: '' }, { model: 'contains space' }, { targetLanguage: ' ' }, { targetLanguage: 'x'.repeat(81) }, { context: 'x'.repeat(4001) }, { glossary: 'x'.repeat(4001) }, { context: {} }]) assert.throws(() => validateTranslationSettings({ ...remote, ...patch }));
   assert.throws(() => validateTranslationSettings({ ...local, apiKey: remote.apiKey }));
 });
+
+
+test('管理配置仅保留非敏感偏好，拒绝未知模式与缺少像素同意', () => {
+  const managed={localOcr:{mode:'managed',enabled:true,consent:true},readingDirection:'rtl'};
+  assert.deepEqual(validateLocalOcrSettings({...managed,localOcr:{...managed.localOcr,token:local.localOcr.token,endpoint:local.localOcr.endpoint}}),managed);
+  assert.throws(()=>validateLocalOcrSettings({...local,localOcr:{...local.localOcr,mode:'other'}}));
+  assert.throws(()=>validateLocalOcrSettings({...managed,localOcr:{...managed.localOcr,consent:false}}));
+  assert.throws(()=>validateLocalOcrSettings({...managed,readingDirection:'auto'}));
+});

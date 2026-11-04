@@ -5,7 +5,7 @@ import {readFile} from 'node:fs/promises';
 import {preparationSettings} from '../../extension/content/scheduler.js';
 const source = (await readFile(new URL('../../extension/popup.js', import.meta.url), 'utf8')).replace(/^import .*;\n/, '');
 const tick = () => new Promise(resolve => setImmediate(resolve));
-function harness(initial = {phase: 'idle', loaded: 0, total: null}) {
+function harness(initial = {phase: 'idle', loaded: 0, total: null}, {mode='manual',configured=false,permissionRequest,sendMessage}={}) {
   const elements = new Map(), sends = [], permissions = [], timers = new Map(), listeners = new Map();
   let timerId = 0, model = initial, permission = true;
   const element = id => {
@@ -14,8 +14,8 @@ function harness(initial = {phase: 'idle', loaded: 0, total: null}) {
   };
   const context = vm.createContext({preparationSettings, document: {getElementById: element}, window: {addEventListener(type, fn) { listeners.set(type, fn); }},
     setTimeout(fn, ms) { timers.set(++timerId, {fn, ms}); return timerId; }, clearTimeout(id) { timers.delete(id); },
-    chrome: {tabs: {query: async () => [{id: 1, url: 'https://reader.example/chapter'}]}, permissions: {request(args) { permissions.push(args); return Promise.resolve(permission); }}, runtime: {
-      openOptionsPage() {}, async sendMessage(message) { sends.push(message); if (message.type === 'MLT_UI_MODEL_STATUS') return {ok: true, model}; if (message.type === 'MLT_UI_STATUS') return {ok: true, configured: false, localConfigured:true}; return {ok: true}; },
+    chrome: {tabs: {query: async () => [{id: 1, url: 'https://reader.example/chapter'}]}, permissions: {request(args) { permissions.push(args); return permissionRequest ? permissionRequest(args) : Promise.resolve(permission); }}, runtime: {
+      openOptionsPage() {}, async sendMessage(message) { sends.push(message); if (message.type === 'MLT_UI_MODEL_STATUS') return {ok: true, model}; if (message.type === 'MLT_UI_STATUS') return {ok: true, configured, localConfigured:true, localOcr:{mode}}; return sendMessage ? sendMessage(message) : {ok: true}; },
     }}, URL, console});
   vm.runInContext(source, context);
   return {element, sends, permissions, timers, listeners, setModel(next) { model = next; }, denyPermission() { permission = false; }, async poll(next) { model = next; const timer = [...timers].find(([, value]) => value.ms === 1000); assert.ok(timer); timers.delete(timer[0]); await timer[1].fn(); }};
@@ -78,4 +78,47 @@ test('错误、取消可重试，关闭面板停止轮询且不自行取消后�
   h.listeners.get('pagehide')();
   assert.equal(h.timers.size, 0);
   assert.equal(h.sends.filter(message => message.type === 'MLT_UI_MODEL_CANCEL').length, 1);
+});
+
+
+test('管理模式忽略停止或过时模型状态，点击时同步请求本机权限再启用', async () => {
+  for (const phase of ['stopped','idle','error','checking']) {
+    const h = harness({phase},{mode:'managed',configured:true}); await tick();
+    h.element('auto').checked = true;
+    const pending = h.element('enable').onclick();
+    assert.equal(h.permissions.length,1);
+    assert.deepEqual([...h.permissions[0].permissions],['nativeMessaging']);
+    await pending;
+    assert.equal(h.sends.filter(message=>message.type==='MLT_UI_ENABLE').length,1);
+    assert.equal(h.sends.find(message=>message.type==='MLT_UI_ENABLE').auto,true);
+    assert.equal(h.sends.some(message=>message.type==='MLT_UI_MODEL_DOWNLOAD'),false);
+  }
+});
+
+test('管理模式准备模型也显式申请本机权限，拒绝不会发启动命令', async () => {
+  const h = harness({phase:'stopped'},{mode:'managed'}); await tick();
+  await h.element('modelDownload').onclick();
+  assert.deepEqual([...h.permissions[0].permissions],['nativeMessaging']);
+  assert.equal(h.sends.filter(message=>message.type==='MLT_UI_MODEL_DOWNLOAD').length,1);
+  const denied = harness({phase:'stopped'},{mode:'managed'}); await tick();denied.denyPermission();
+  await denied.element('enable').onclick();
+  assert.equal(denied.sends.some(message=>message.type==='MLT_UI_ENABLE'),false);
+  assert.match(denied.element('status').textContent,/未授予/);
+});
+
+test('启用点击等待权限时重复点击不重复请求；失败后允许用户重试', async () => {
+  let allow;const permission = new Promise(resolve=>{allow=resolve;});
+  const h = harness({phase:'stopped'},{mode:'managed',permissionRequest:()=>permission,sendMessage:async()=>({ok:false,error:{message:'请先安装本机宿主'}})}); await tick();
+  const first=h.element('enable').onclick();await h.element('enable').onclick();
+  assert.equal(h.permissions.length,1);assert.equal(h.element('enable').disabled,true);
+  allow(true);await first;
+  assert.equal(h.sends.filter(message=>message.type==='MLT_UI_ENABLE').length,1);
+  assert.match(h.element('status').textContent,/请先安装/);assert.equal(h.element('enable').disabled,false);
+  await h.element('enable').onclick();assert.equal(h.permissions.length,2);
+});
+
+test('手动模式点击不请求本机通信权限', async () => {
+  const h = harness({phase:'ready'});await tick();
+  await h.element('enable').onclick();assert.equal(h.permissions[0].permissions,undefined);
+  await h.element('modelDownload').onclick();assert.equal(h.permissions[1].permissions,undefined);
 });

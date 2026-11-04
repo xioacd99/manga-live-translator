@@ -1,11 +1,27 @@
-import {validateImageRequest, publicHttpUrl, readBoundedImage, toBase64, safeError,validateTranslationSettings,validateLocalOcrSettings,LOCAL_OCR_ORIGIN_PERMISSION} from './security.js';
+import {validateImageRequest, publicHttpUrl, readBoundedImage, toBase64, safeError,validateTranslationSettings,validateLocalOcrSettings,LOCAL_OCR_ORIGIN_PERMISSION,LocalOcrError} from './security.js';
 import {preparationSettings,reserveRequest} from './preparation-policy.js';
+import {createNativeOcrLifecycle} from './native-ocr.js';
 let creating; let mutations=Promise.resolve(); let generation=0; const fetches=new Map();
 const tabFences=new Map();
 function tabFence(tabId){if(!tabFences.has(tabId))tabFences.set(tabId,{cancelled:false});return tabFences.get(tabId);}
 function cancelTab(tabId){const fence=tabFences.get(tabId);if(fence)fence.cancelled=true;tabFences.delete(tabId);for(const entry of fetches.values())if(entry.tabId===tabId)entry.controller.abort();}
 function invalidate(){generation++;for(const entry of fetches.values())entry.controller.abort();}
-const storageReady=chrome.storage.session.setAccessLevel({accessLevel:'TRUSTED_CONTEXTS'});
+const nativeOcr=createNativeOcrLifecycle({runtime:chrome.runtime,onDisconnected:()=>{
+  invalidate();
+  mutate(async()=>{await storageReady;if(nativeOcr.phase!=='stopped')return;await pauseGrants();await ensureExecutor();}).catch(()=>{});
+}});
+const storageReady=(async()=>{
+  await chrome.storage.session.setAccessLevel({accessLevel:'TRUSTED_CONTEXTS'});
+  await chrome.storage.local?.setAccessLevel?.({accessLevel:'TRUSTED_CONTEXTS'});
+  if((await chrome.storage.session.get('localSettings')).localSettings)return;
+  const saved=(await chrome.storage.local?.get('managedLocalSettings'))?.managedLocalSettings;
+  if(!saved)return;
+  try{
+    const next=validateLocalOcrSettings(saved);
+    if(next.localOcr.mode!=='managed'||!await chrome.permissions.contains({permissions:['nativeMessaging'],origins:[LOCAL_OCR_ORIGIN_PERMISSION]}))throw new Error();
+    await chrome.storage.session.set({localSettings:next});
+  }catch{await chrome.storage.local?.remove('managedLocalSettings');}
+})();
 function mutate(work){const result=mutations.then(work);mutations=result.catch(()=>{});return result;}
 async function executor() {
   if(await chrome.offscreen.hasDocument())return;
@@ -22,25 +38,49 @@ async function pauseGrants(reset=true) {
   }
 }
 async function localSettings(){return (await chrome.storage.session.get('localSettings')).localSettings;}
+async function executorLocalSettings(){
+  const local=await localSettings();
+  if(local?.localOcr?.mode!=='managed')return local;
+  const credentials=nativeOcr.credentials;
+  return credentials?{...local,localOcr:{...credentials,enabled:true,consent:true}}:null;
+}
+function checkGeneration(expected){if(expected!==generation)throw new DOMException('Session changed','AbortError');}
+async function startManaged(local,expectedGeneration){
+  if(local?.localOcr?.mode!=='managed')return;
+  if(!await chrome.permissions.contains({permissions:['nativeMessaging'],origins:[LOCAL_OCR_ORIGIN_PERMISSION]}))throw new LocalOcrError('LOCAL_NATIVE_PERMISSION');
+  const windows=await chrome.windows.getAll({windowTypes:['normal']});
+  checkGeneration(expectedGeneration);
+  if(!windows.some(window=>window.type==='normal'))throw new LocalOcrError('LOCAL_OCR_STOPPED');
+  await nativeOcr.start();
+  checkGeneration(expectedGeneration);
+}
 const providerOrigin=s=>s?.provider==='openai'?'https://api.openai.com':'https://api.deepseek.com';
-async function ensureExecutor(){const expectedGeneration=generation;const [remote,local]=await Promise.all([settings(),localSettings()]);return callExecutor({type:'ENSURE_CONFIG',settings:remote||null,localSettings:local||null},{expectedGeneration});}
+async function ensureExecutor(){const expectedGeneration=generation;const [remote,local]=await Promise.all([settings(),executorLocalSettings()]);return callExecutor({type:'ENSURE_CONFIG',settings:remote||null,localSettings:local||null},{expectedGeneration});}
 async function settings(){return (await chrome.storage.session.get('settings')).settings;}
 async function getGrant(tabId){return (await chrome.storage.session.get(`tab:${tabId}`))[`tab:${tabId}`];}
-async function handle(message,sender) {
+async function handle(message,sender,requestedGeneration=generation) {
   await storageReady;
   if(!message||typeof message!=='object')throw new Error('Invalid message.');
   if(message.type.startsWith('MLT_UI_')) {
     if(!trustedUi(sender))throw new Error('Trusted extension UI required.');
+    if(['MLT_UI_ENABLE','MLT_UI_MODEL_DOWNLOAD'].includes(message.type))checkGeneration(requestedGeneration);
     if(['MLT_UI_MODEL_STATUS','MLT_UI_MODEL_CANCEL','MLT_UI_MODEL_DOWNLOAD'].includes(message.type)){
       const expectedGeneration=generation;
-      if(!await localSettings()){if(message.type==='MLT_UI_MODEL_STATUS')return {ok:true,model:{phase:'idle',loaded:0,total:null}};throw new Error('请先配置本地 OCR 服务。');}
+      const local=await localSettings();
+      if(!local){if(message.type==='MLT_UI_MODEL_STATUS')return {ok:true,model:{phase:'idle',loaded:0,total:null}};throw new Error('请先配置本地 OCR 服务。');}
       if(!await chrome.permissions.contains({origins:[LOCAL_OCR_ORIGIN_PERMISSION]}))throw new Error('请授予本地服务权限。');
+      if(message.type==='MLT_UI_MODEL_DOWNLOAD')await startManaged(local,expectedGeneration);
+      else if(local.localOcr.mode==='managed'&&!nativeOcr.credentials)return {ok:true,model:{phase:nativeOcr.phase==='starting'?'checking':'stopped',loaded:0,total:null}};
+      checkGeneration(expectedGeneration);
       await ensureExecutor();return callExecutor({type:message.type.replace('MLT_UI_','')},{expectedGeneration});
     }
     if(message.type==='MLT_UI_LOCAL_CONFIGURE'){
       const next=validateLocalOcrSettings(message.settings);
-      if(!await chrome.permissions.contains({origins:[LOCAL_OCR_ORIGIN_PERMISSION]}))throw new Error('请授予本地服务权限。');
-      invalidate();await pauseGrants();await chrome.storage.session.set({localSettings:next});await ensureExecutor();return {ok:true};
+      if(!await chrome.permissions.contains({origins:[LOCAL_OCR_ORIGIN_PERMISSION],...(next.localOcr.mode==='managed'?{permissions:['nativeMessaging']}:{})})){await pauseGrants();await ensureExecutor();throw new LocalOcrError('LOCAL_NATIVE_PERMISSION');}
+      invalidate();nativeOcr.stop();await pauseGrants();
+      if(next.localOcr.mode==='managed')await chrome.storage.local?.set({managedLocalSettings:next});
+      else await chrome.storage.local?.remove('managedLocalSettings');
+      await chrome.storage.session.set({localSettings:next});await ensureExecutor();return {ok:true};
     }
     if(message.type==='MLT_UI_CONFIGURE') {
       const s=validateTranslationSettings(message.settings),old=await settings();
@@ -50,22 +90,27 @@ async function handle(message,sender) {
       await chrome.storage.session.set({settings:config});await ensureExecutor();return {ok:true};
     }
     if(message.type==='MLT_UI_STATUS') {
-      const s=await settings(),l=await localSettings(); return {ok:true,configured:!!s,provider:s?.provider||'deepseek',model:s?.model||'',targetLanguage:s?.targetLanguage||'Simplified Chinese',context:s?.context||'',glossary:s?.glossary||'',localConfigured:!!l,localOcr:l?{endpoint:l.localOcr.endpoint,enabled:l.localOcr.enabled}:undefined,readingDirection:l?.readingDirection||'ltr'};
+      const s=await settings(),l=await localSettings(); return {ok:true,configured:!!s,provider:s?.provider||'deepseek',model:s?.model||'',targetLanguage:s?.targetLanguage||'Simplified Chinese',context:s?.context||'',glossary:s?.glossary||'',localConfigured:!!l,localOcr:l?{mode:l.localOcr.mode||'manual',endpoint:l.localOcr.endpoint,enabled:l.localOcr.enabled,phase:l.localOcr.mode==='managed'?nativeOcr.phase:undefined}:undefined,readingDirection:l?.readingDirection||'ltr'};
     }
     if(message.type==='MLT_UI_CLEAR') {invalidate();await pauseGrants();await callExecutor({type:'CLEAR'});return {ok:true};}
-    if(message.type==='MLT_UI_FORGET') {invalidate();await pauseGrants();await chrome.storage.session.clear();await callExecutor({type:'FORGET'});return {ok:true};}
+    if(message.type==='MLT_UI_FORGET') {invalidate();nativeOcr.stop();await pauseGrants();await chrome.storage.local?.remove('managedLocalSettings');await chrome.storage.session.clear();await callExecutor({type:'FORGET'});return {ok:true};}
     if(message.type==='MLT_UI_ENABLE') {
-      const s=await settings();const l=await localSettings();if(!l)throw new Error('请先配置 Python 本地 OCR 服务。'); const preparation=preparationSettings(message.settings);
+      const expectedGeneration=generation;const s=await settings();const l=await localSettings();if(!l)throw new Error('请先配置 Python 本地 OCR 服务。'); const preparation=preparationSettings(message.settings);
       if(!s&&(message.auto===true||preparation.remotePrefetchEnabled))throw new Error('Configure the provider before remote translation.');
-      {await ensureExecutor();const status=await callExecutor({type:'MODEL_STATUS'});if(status.model?.phase!=='ready')throw new Error('请先下载并准备本地 OCR 和气泡模型。');}
       const tab=await chrome.tabs.get(message.tabId); if(tab.incognito)throw new Error('Incognito is not supported.');
       const origin=publicHttpUrl(tab.url).origin;
       const imageOrigins=[origin,...(message.imageOrigins||[]).map(v=>publicHttpUrl(v).origin)];
       if(imageOrigins.length>6)throw new Error('Enable at most five additional image hosts.');
       for(const host of [...imageOrigins,...(s?[providerOrigin(s)]:[]),'http://127.0.0.1'])if(!await chrome.permissions.contains({origins:[`${host}/*`]}))throw new Error('Grant the requested host permissions first.');
+      await startManaged(l,expectedGeneration);
+      await ensureExecutor();
+      const modelStatus=await callExecutor({type:'MODEL_STATUS'},{expectedGeneration});
+      if(modelStatus.model?.phase!=='ready')throw new LocalOcrError('LOCAL_MODELS_REQUIRED');
+      checkGeneration(expectedGeneration);
       await chrome.storage.session.set({[`tab:${tab.id}`]:{origin,pageUrl:tab.url.split('#')[0],imageOrigins:[...new Set(imageOrigins)],preparation,prepareRemaining:preparation.prepareBudget,remoteRemaining:preparation.remotePrefetchBudget,auto:message.auto===true,paused:false}});
       await ensureExecutor();
-      await chrome.scripting.executeScript({target:{tabId:tab.id},files:['content.js']});
+      checkGeneration(expectedGeneration);await chrome.scripting.executeScript({target:{tabId:tab.id},files:['content.js']});
+      checkGeneration(expectedGeneration);
       await chrome.tabs.sendMessage(tab.id,{type:'MLT_ENABLE',auto:message.auto===true,settings:preparation});return {ok:true};
     }
     if(message.type==='MLT_UI_PAUSE') {
@@ -112,7 +157,7 @@ async function handle(message,sender) {
     const response=await fetch(image.href,{credentials:'omit',redirect:'error',referrerPolicy:'no-referrer',signal:controller.signal,cache:'no-cache'});
     const {bytes,mime}=await readBoundedImage(response,controller.signal); controller.signal.throwIfAborted();
     if(startedGeneration!==generation||fence.cancelled)throw new DOMException('Session changed','AbortError');
-    await callExecutor({type:'ENSURE_CONFIG',settings:config||null,localSettings:await localSettings()||null},{signal:controller.signal,expectedGeneration:startedGeneration}); controller.signal.throwIfAborted();
+    await callExecutor({type:'ENSURE_CONFIG',settings:config||null,localSettings:await executorLocalSettings()||null},{signal:controller.signal,expectedGeneration:startedGeneration}); controller.signal.throwIfAborted();
     const abort=()=>{chrome.runtime.sendMessage({target:'executor',type:'CANCEL',id}).catch(()=>{});};controller.signal.addEventListener('abort',abort,{once:true});
     try { return await callExecutor({type:localOnly?'PREPARE':'RUN',detectorMode:grant.preparation.detectorMode,id,tabId:sender.tab.id,imageBase64:toBase64(bytes),mime,namespace:grant.origin,corrections:message.corrections},{signal:controller.signal,expectedGeneration:startedGeneration}); }
     finally {controller.signal.removeEventListener('abort',abort);}
@@ -121,12 +166,30 @@ async function handle(message,sender) {
 chrome.runtime.onMessage.addListener((message,sender,reply)=>{
   if(message?.target==='executor')return;
   if(typeof message?.type!=='string'||!message.type.startsWith('MLT_'))return;
+  if(trustedUi(sender)){
+    if(message.type==='MLT_UI_FORGET'){invalidate();nativeOcr.stop();}
+    if(message.type==='MLT_UI_LOCAL_CONFIGURE'){try{validateLocalOcrSettings(message.settings);invalidate();nativeOcr.stop();}catch{}}
+  }
+  const requestedGeneration=generation;
   const readOnly=['MLT_UI_STATUS','MLT_UI_MODEL_STATUS','MLT_UI_METRICS'].includes(message.type);
-  const operation=message.type.startsWith('MLT_UI_')&&!readOnly?mutate(()=>handle(message,sender)):handle(message,sender);
+  const operation=message.type.startsWith('MLT_UI_')&&!readOnly?mutate(()=>handle(message,sender,requestedGeneration)):handle(message,sender,requestedGeneration);
   operation.then(reply,error=>reply({ok:false,error:safeError(error)}));return true;
 });
 chrome.tabs.onRemoved.addListener(tabId=>{cancelTab(tabId);mutate(async()=>{await chrome.storage.session.remove(`tab:${tabId}`);cancelTab(tabId);await callExecutor({type:'CANCEL_TAB',tabId});}).catch(()=>{});});
-chrome.permissions.onRemoved.addListener(()=>{invalidate();mutate(async()=>{await pauseGrants();await chrome.storage.session.remove(['settings','localSettings']);await callExecutor({type:'FORGET'});}).catch(()=>{});});
+chrome.permissions.onRemoved.addListener(()=>{invalidate();nativeOcr.stop();mutate(async()=>{await storageReady;await pauseGrants();await chrome.storage.local?.remove('managedLocalSettings');await chrome.storage.session.remove(['settings','localSettings']);await callExecutor({type:'FORGET'});}).catch(()=>{});});
 
 // 同源页面导航也使旧授权失效，不能把站点授权当作每个新章节的预处理同意。
 chrome.tabs.onUpdated?.addListener((tabId,change)=>{if(!change.url)return;cancelTab(tabId);mutate(async()=>{const grant=await getGrant(tabId);if(grant&&change.url.split('#')[0]!==grant.pageUrl){await chrome.storage.session.remove(`tab:${tabId}`);for(const entry of fetches.values())if(entry.tabId===tabId)entry.controller.abort();await callExecutor({type:'CANCEL_TAB',tabId});}}).catch(()=>{});});
+
+// 即使 Chrome 继续运行后台应用，关闭最后一个普通窗口也结束扩展拥有的 OCR 进程。
+let windowLifecycleRevision=0;
+chrome.windows?.onCreated?.addListener(()=>{windowLifecycleRevision++;});
+chrome.windows?.onRemoved.addListener(()=>{
+  const revision=++windowLifecycleRevision;
+  chrome.windows.getAll({windowTypes:['normal']}).then(windows=>{
+    if(revision!==windowLifecycleRevision)return;
+    if(windows.some(window=>window.type==='normal'))return;
+    invalidate();nativeOcr.stop();
+    return mutate(async()=>{await storageReady;if(nativeOcr.phase!=='stopped')return;await pauseGrants();await ensureExecutor();});
+  }).catch(()=>{});
+});

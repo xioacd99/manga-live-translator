@@ -1,3 +1,4 @@
+import {createNativeOcrLifecycle} from '../../extension/native-ocr.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
@@ -29,7 +30,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
     permissions: { contains: async () => true, onRemoved: { addListener: fn => { permissionRemoved = fn; } } },
     scripting: { executeScript: async args => { scripts.push(args); } },
   };
-  vm.runInNewContext(source, { ...security, ...preparation, structuredClone, chrome, crypto: webcrypto, fetch: fetchImpl, URL, DOMException, AbortController, setTimeout, clearTimeout, btoa, console });
+  vm.runInNewContext(source, { createNativeOcrLifecycle, ...security, ...preparation, structuredClone, chrome, crypto: webcrypto, fetch: fetchImpl, URL, DOMException, AbortController, setTimeout, clearTimeout, btoa, console });
   const ui = { id, url: `chrome-extension://${id}/options.html` };
   const page = { id, url: 'https://reader.example.com/chapter', tab: { id: 1, url: 'https://reader.example.com/chapter' }, frameId: 0 };
   const send = (message, sender = ui) => new Promise(resolve => { const accepted = listener(message, sender, resolve); if (accepted !== true) resolve(undefined); });
@@ -71,7 +72,7 @@ test('background config and forget mutations serialize; forget clears credential
   await configured.promise;
   const pendingForget = h.send({ type: 'MLT_UI_FORGET' });
   await tick(); assert.equal(h.sent.some(m => m.type === 'FORGET'), false);
-  release.resolve(); assert.equal((await pendingConfig).ok, true); assert.equal((await pendingForget).ok, true);
+  release.resolve(); assert.equal((await pendingConfig).error.code, 'CANCELLED'); assert.equal((await pendingForget).ok, true);
   assert.deepEqual(h.store, {});
   assert.deepEqual(h.sent.map(m => m.type), ['ENSURE_CONFIG', 'FORGET']);
   assert.equal((await h.send({ type: 'MLT_UI_STATUS' })).configured, false);

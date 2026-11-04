@@ -3,6 +3,7 @@
  "description":"Local OCR and opt-in LLM translation with reversible overlays and exact result caching.",
  "minimum_chrome_version":"116",
  "permissions":["activeTab","scripting","storage","offscreen"],
+ "optional_permissions":["nativeMessaging"],
  "optional_host_permissions":["https://*/*","http://*/*"],
  "background":{"service_worker":"background.js"},
  "action":{"default_popup":"popup.html"},

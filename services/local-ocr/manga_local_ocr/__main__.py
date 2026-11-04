@@ -9,27 +9,8 @@ import sys
 
 from .config import DEFAULT_PORT
 from .models import ModelStore
+from .paths import default_cache_dir, default_token_file
 from .server import BoundedServer, Gateway
-
-
-def default_cache_dir():
-    if sys.platform == "win32":
-        base = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
-    elif sys.platform == "darwin":
-        base = Path.home() / "Library" / "Caches"
-    else:
-        base = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache"))
-    return base / "manga-live-translator" / "local-ocr" / "models"
-
-
-def default_token_file():
-    if sys.platform == "win32":
-        base = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
-    elif sys.platform == "darwin":
-        base = Path.home() / "Library" / "Application Support"
-    else:
-        base = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share"))
-    return base / "manga-live-translator" / "local-ocr" / "token"
 
 
 def read_or_create_token(path):
