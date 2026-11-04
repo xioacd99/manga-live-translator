@@ -15,18 +15,19 @@ function harness(initial = {phase: 'idle', loaded: 0, total: null}) {
   const context = vm.createContext({preparationSettings, document: {getElementById: element}, window: {addEventListener(type, fn) { listeners.set(type, fn); }},
     setTimeout(fn, ms) { timers.set(++timerId, {fn, ms}); return timerId; }, clearTimeout(id) { timers.delete(id); },
     chrome: {tabs: {query: async () => [{id: 1, url: 'https://reader.example/chapter'}]}, permissions: {request(args) { permissions.push(args); return Promise.resolve(permission); }}, runtime: {
-      openOptionsPage() {}, async sendMessage(message) { sends.push(message); if (message.type === 'MLT_UI_MODEL_STATUS') return {ok: true, model}; if (message.type === 'MLT_UI_STATUS') return {ok: true, configured: false}; return {ok: true}; },
+      openOptionsPage() {}, async sendMessage(message) { sends.push(message); if (message.type === 'MLT_UI_MODEL_STATUS') return {ok: true, model}; if (message.type === 'MLT_UI_STATUS') return {ok: true, configured: false, localConfigured:true}; return {ok: true}; },
     }}, URL, console});
   vm.runInContext(source, context);
   return {element, sends, permissions, timers, listeners, setModel(next) { model = next; }, denyPermission() { permission = false; }, async poll(next) { model = next; const timer = [...timers].find(([, value]) => value.ms === 1000); assert.ok(timer); timers.delete(timer[0]); await timer[1].fn(); }};
 }
-test('模型下载默认不执行，区域启用需就绪，整图模式不需要模型或提供商', async () => {
+test('模型下载默认不执行，整图与气泡模式均需本地模型就绪，但不要求远端提供商', async () => {
   const h = harness(); await tick();
   assert.equal(h.sends.some(message => message.type === 'MLT_UI_MODEL_DOWNLOAD'), false);
   await h.element('enable').onclick();
   assert.match(h.element('status').textContent, /下载并准备模型/);
   assert.equal(h.permissions.length, 0);
   h.element('wholeImage').checked = true;
+  await h.poll({phase:'ready',loaded:100,total:100});
   await h.element('enable').onclick();
   const request = h.sends.find(message => message.type === 'MLT_UI_ENABLE');
   assert.equal(request.settings.detectorMode, 'whole-image');
@@ -35,7 +36,7 @@ test('模型下载默认不执行，区域启用需就绪，整图模式不需�
 test('用户点击先请求指定下载权限，权限被拒不启动，重试只发送下载命令', async () => {
   const h = harness(); await tick();
   await h.element('modelDownload').onclick();
-  assert.deepEqual([...h.permissions[0].origins], ['https://huggingface.co/*', 'https://cas-bridge.xethub.hf.co/*']);
+  assert.deepEqual([...h.permissions[0].origins], ['http://127.0.0.1/*']);
   assert.equal(h.sends.filter(message => message.type === 'MLT_UI_MODEL_DOWNLOAD').length, 1);
   const denied = harness(); await tick(); denied.denyPermission();
   await denied.element('modelDownload').onclick();

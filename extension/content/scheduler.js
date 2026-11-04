@@ -24,7 +24,7 @@ export function selectPreparationJobs(candidates, {settings, localUsed = 0, remo
   const ordered = candidates.slice(0, MAX_IMAGES).map((item, index) => ({...item, index})).sort((a, b) => a.priority - b.priority || a.index - b.index);
   for (const item of ordered) {
     if (jobs.length >= MAX_PENDING - pending) break;
-    if (item.pending || item.translated || item.priority === 3) continue;
+    if (item.pending || item.translated || item.priority >= 2) continue;
     if (settings.prepareEnabled && !item.prepared && !item.prepareAttempted && localLeft > 0) { jobs.push({id: item.id, kind: 'prepare'}); localLeft--; }
     else if (settings.remotePrefetchEnabled && !item.translateAttempted && remoteLeft > 0) { jobs.push({id: item.id, kind: 'prefetch'}); remoteLeft--; }
   }

@@ -27,7 +27,7 @@ test('可见优先、邻近其次、其余最后；相同优先级保持发现�
   assert.equal(imagePriority(rect(2400), viewport), 2);
 });
 test('两项并发、发现上限、独立预算、暂停和隐藏均受限', () => {
-  const candidates = Array.from({length: 100}, (_, id) => candidate(id, id >= MAX_IMAGES ? 0 : 2));
+  const candidates = Array.from({length: 100}, (_, id) => candidate(id, id >= MAX_IMAGES ? 0 : 1));
   assert.equal(selectPreparationJobs(candidates, {settings: local}).length, 2);
   assert.equal(selectPreparationJobs(candidates, {settings: local, pending: 1}).length, 1);
   assert.equal(selectPreparationJobs(candidates, {settings: local, pending: 2}).length, 0);
@@ -140,3 +140,5 @@ test('清空通知移除已准备标记，重新启用才重新准备', async ()
   assert.equal(h.sends.filter(message => message.type === 'MLT_PREPARE').length, 2);
   h.api.destroy();
 });
+
+ test('远离视口的图片不消耗预读预算，滚动进入邻近窗口后才处理',()=>{assert.deepEqual(selectPreparationJobs([candidate('far',2)],{settings:local}),[]);assert.deepEqual(selectPreparationJobs([candidate('far',1)],{settings:local}),[{id:'far',kind:'prepare'}]);});

@@ -1,3 +1,5 @@
+> 当前架构更新（2026-11-04）：以下浏览器 Tesseract / WASM 资产清单保留用于旧版追溯；当前 `scripts/build.mjs` 不再打包这些OCR运行时/权重。Python Paddle与FP32 RT-DETR的固定版本、完整哈希、许可全文和来源见 [services/local-ocr](../../services/local-ocr/README.md)。Node旧依赖保留供历史回归测试，不代表当前浏览器调用它们。
+
 # MVP dependency and model provenance
 
 Checked 2026-11-03. Project-authored source remains MIT. Third-party assets retain their own licenses; the distribution must include their notices rather than relabel them MIT. The package lock pins resolved packages and integrity values. No ImageTrans or other GPL/AGPL implementation was copied.

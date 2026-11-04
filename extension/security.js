@@ -1,5 +1,43 @@
 export const MAX_IMAGE_BYTES = 4 * 1024 * 1024;
 export const MAX_PIXELS = 16_000_000;
+export const DEFAULT_LOCAL_OCR_ENDPOINT = 'http://127.0.0.1:8787';
+// Chrome 主机权限不能按端口限定；实际请求仍由精确回环地址校验约束。
+export const LOCAL_OCR_ORIGIN_PERMISSION = 'http://127.0.0.1/*';
+const TRANSLATION_PROVIDERS = {
+  deepseek: { endpoint: 'https://api.deepseek.com/chat/completions', defaultModel: 'deepseek-flash' },
+  openai: { endpoint: 'https://api.openai.com/v1/chat/completions', defaultModel: '' },
+};
+const record = value => value !== null && typeof value === 'object' && !Array.isArray(value) && Object.getPrototypeOf(value) === Object.prototype;
+function settingsText(value, maximum, fallback = '') {
+  const text = value === undefined ? fallback : value;
+  if (typeof text !== 'string' || text.length > maximum) throw new Error('Invalid settings text or length limit exceeded.');
+  return text;
+}
+export function validateTranslationSettings(settings) {
+  if (!record(settings) || settings.consent !== true) throw new Error('Authorize sending dialogue to the selected provider first.');
+  const provider = settings.provider ?? 'deepseek';
+  if (typeof provider !== 'string' || !Object.hasOwn(TRANSLATION_PROVIDERS, provider)) throw new Error('Unsupported translation provider.');
+  const { endpoint, defaultModel } = TRANSLATION_PROVIDERS[provider];
+  if (settings.endpoint !== undefined && settings.endpoint !== endpoint) throw new Error('Only the fixed provider endpoint is supported.');
+  if (typeof settings.apiKey !== 'string' || !/^[\x21-\x7e]{10,512}$/.test(settings.apiKey)) throw new Error('Enter a valid provider API key.');
+  const model = settings.model === undefined ? defaultModel : settings.model;
+  if (typeof model !== 'string' || !/^[a-zA-Z0-9._:-]{1,100}$/.test(model)) throw new Error('Enter a supported provider model ID.');
+  const targetLanguage = settingsText(settings.targetLanguage, 80, 'Simplified Chinese').trim();
+  if (!targetLanguage) throw new Error('Enter a target language.');
+  return { provider, endpoint, apiKey: settings.apiKey, model, targetLanguage, sourceLanguage: 'English', context: settingsText(settings.context, 4000), glossary: settingsText(settings.glossary, 4000), consent: true };
+}
+export function validateLocalOcrSettings(settings) {
+  if (!record(settings) || !record(settings.localOcr)) throw new Error('Invalid local OCR configuration.');
+  const local = settings.localOcr;
+  if (local.enabled !== true || local.consent !== true) throw new Error('Authorize sending image pixels to the local OCR service first.');
+  // 不接受 URL 归一化别名、IPv6、DNS、路径、查询参数或嵌入式凭据。
+  const match = typeof local.endpoint === 'string' && /^http:\/\/127\.0\.0\.1:([1-9][0-9]{0,4})\/?$/.exec(local.endpoint);
+  if (!match || Number(match[1]) > 65535 || Number(match[1]) < 1024) throw new Error('Use an explicit http://127.0.0.1:PORT local OCR address.');
+  if (typeof local.token !== 'string' || !/^[A-Za-z0-9_-]{32,128}$/.test(local.token)) throw new Error('Enter the local OCR service token (32–128 letters, digits, underscores or hyphens).');
+  const readingDirection = settings.readingDirection === undefined ? 'ltr' : settings.readingDirection;
+  if (!['ltr', 'rtl'].includes(readingDirection)) throw new Error('Choose LTR or RTL reading order.');
+  return { localOcr: { endpoint: `http://127.0.0.1:${match[1]}`, token: local.token, enabled: true, consent: true }, readingDirection };
+}
 export function publicHttpUrl(value) {
   if (typeof value !== 'string' || value.length > 8192) throw new Error('Invalid URL.');
   const url = new URL(value);

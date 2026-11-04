@@ -9,7 +9,8 @@ import * as preparation from '../../extension/preparation-policy.js';
 const source = (await readFile(new URL('../../extension/background.js', import.meta.url), 'utf8')).replace(/^import[^\n]+\n/gm, '');
 const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; };
 const tick = () => new Promise(resolve => setImmediate(resolve));
-const config = { consent: true, apiKey: 'synthetic-not-a-real-key', model: 'test-model', targetLanguage: 'Simplified Chinese' };
+const config = { provider: 'openai', consent: true, apiKey: 'synthetic-not-a-real-key', model: 'test-model', targetLanguage: 'Simplified Chinese' };
+const localConfig = { localOcr: { endpoint: 'http://127.0.0.1:8787', token: 'synthetic-local-service-token-123456789', enabled: true, consent: true }, readingDirection: 'ltr' };
 const request = { type: 'MLT_TRANSLATE', requestId: 'request1', imageUrl: 'https://reader.example.com/image.png', width: 800, height: 160 };
 function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), { headers: { 'content-type': 'image/png' } }), sendImpl, storageGate = Promise.resolve(), permissions = async () => true } = {}) {
   const store = {}, sent = [], scripts = [], tabMessages = [], accesses = [];
@@ -21,7 +22,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
       setAccessLevel: async value => { accesses.push(value); await storageGate; },
       get: async key => key === null ? structuredClone(store) : ({ [key]: structuredClone(store[key]) }),
       set: async values => { Object.assign(store, structuredClone(values)); },
-      remove: async key => { delete store[key]; }, clear: async () => { for (const key of Object.keys(store)) delete store[key]; },
+      remove: async key => { for (const name of Array.isArray(key) ? key : [key]) delete store[name]; }, clear: async () => { for (const key of Object.keys(store)) delete store[key]; },
     } },
     offscreen: { hasDocument: async () => true, createDocument: async () => {} },
     tabs: { get: async tabId => ({ id: tabId, url: 'https://reader.example.com/chapter', incognito: false }), sendMessage: async (...args) => { tabMessages.push(args); }, onRemoved: { addListener: fn => { tabRemoved = fn; } }, onUpdated: { addListener: fn => { tabUpdated = fn; } } },
@@ -33,6 +34,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
   const page = { id, url: 'https://reader.example.com/chapter', tab: { id: 1, url: 'https://reader.example.com/chapter' }, frameId: 0 };
   const send = (message, sender = ui) => new Promise(resolve => { const accepted = listener(message, sender, resolve); if (accepted !== true) resolve(undefined); });
   const enable = async () => {
+    assert.equal((await send({ type: 'MLT_UI_LOCAL_CONFIGURE', settings: localConfig })).ok, true);
     assert.equal((await send({ type: 'MLT_UI_CONFIGURE', settings: config })).ok, true);
     assert.equal((await send({ type: 'MLT_UI_ENABLE', tabId: 1 })).ok, true);
   };
@@ -41,9 +43,12 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
 
 const localSettings = { prepareEnabled: true, prepareBudget: 2, remotePrefetchEnabled: false, remotePrefetchBudget: 0, detectorMode: 'regions' };
 const localRequest = (id = 'local1') => ({ ...request, type: 'MLT_PREPARE', requestId: id });
-const enableLocal = h => h.send({ type: 'MLT_UI_ENABLE', tabId: 1, settings: localSettings });
+const enableLocal = async h => {
+  if (!h.store.localSettings) assert.equal((await h.send({ type: 'MLT_UI_LOCAL_CONFIGURE', settings: localConfig })).ok, true);
+  return h.send({ type: 'MLT_UI_ENABLE', tabId: 1, settings: localSettings });
+};
 
-test('本地准备不需要模型配置或模型权限，执行器仅收到 PREPARE', async () => {
+test('本地准备只需本机服务配置，无需远程提供方密钥或权限', async () => {
   const checks = [];
   const h = harness({ permissions: async value => { checks.push(value); return !value.origins.some(origin => origin.includes('openai')); } });
   assert.equal((await enableLocal(h)).ok, true);
@@ -164,31 +169,48 @@ test('旧章节的延迟暂停请求不能暂停当前章节授权', async () =>
   assert.equal((await h.send(localRequest(), h.page)).ok, true);
 });
 
-test('模型下载仅可信UI可发起且需两个固定来源权限，不能注入下载URL', async () => {
-  let granted = false; const checks = [];
+test('模型下载仅可信 UI 可发起且需要本机服务权限，不能注入下载 URL', async () => {
+  let granted = true; const checks = [];
   const h = harness({ permissions: async args => { checks.push(args.origins); return granted; } });
+  assert.equal((await h.send({ type: 'MLT_UI_LOCAL_CONFIGURE', settings: localConfig })).ok, true);
   assert.equal((await h.send({ type: 'MLT_UI_MODEL_DOWNLOAD' }, h.page)).ok, false);
+  granted = false;
   assert.equal((await h.send({ type: 'MLT_UI_MODEL_DOWNLOAD' })).ok, false);
   assert.equal(h.sent.some(m => m.type === 'MODEL_DOWNLOAD'), false);
   granted = true;
   assert.equal((await h.send({ type: 'MLT_UI_MODEL_DOWNLOAD', url: 'https://evil.invalid/model', apiKey: 'private' })).ok, true);
-  assert.deepEqual(Array.from(checks.at(-1)), ['https://huggingface.co/*', 'https://cas-bridge.xethub.hf.co/*']);
+  assert.deepEqual(Array.from(checks.at(-1)), ['http://127.0.0.1/*']);
   const forwarded = h.sent.find(m => m.type === 'MODEL_DOWNLOAD'); assert.deepEqual(Object.keys(forwarded).sort(), ['target', 'type']);
   assert.equal((await h.send({ type: 'MLT_UI_MODEL_CANCEL' })).ok, true);
   assert.equal(h.sent.at(-1).type, 'MODEL_CANCEL');
 });
 
-test('模型未就绪时禁止区域模式授权，整图OCR仍可独立启用', async () => {
+test('本机模型未就绪时，区域和整图 OCR 都不能绕过准备检查', async () => {
   const h = harness({ sendImpl: async message => ({ ok: true, ...(message.type === 'MODEL_STATUS' ? { model: { phase: 'loading' } } : {}) }) });
   assert.equal((await enableLocal(h)).ok, false); assert.equal(h.store['tab:1'], undefined); assert.equal(h.scripts.length, 0);
-  assert.equal((await h.send({ type: 'MLT_UI_ENABLE', tabId: 1, settings: { ...localSettings, detectorMode: 'whole-image' } })).ok, true);
-  assert.equal(h.store['tab:1'].preparation.detectorMode, 'whole-image');
+  assert.equal((await h.send({ type: 'MLT_UI_ENABLE', tabId: 1, settings: { ...localSettings, detectorMode: 'whole-image' } })).ok, false);
+  assert.equal(h.store['tab:1'], undefined);
   assert.equal(h.sent.some(m => m.type === 'MODEL_DOWNLOAD'), false);
 });
 
-test('模型状态查询不要求下载权限也不发起下载，网页不能查询或取消', async () => {
+test('未配置本机服务时，状态查询不访问网络；网页不能查询或取消', async () => {
   const h = harness({ permissions: async () => false });
   for (const type of ['MLT_UI_MODEL_STATUS', 'MLT_UI_MODEL_CANCEL']) assert.equal((await h.send({ type }, h.page)).ok, false);
-  assert.equal((await h.send({ type: 'MLT_UI_MODEL_STATUS' })).ok, true);
-  assert.equal(h.sent.length, 1); assert.equal(h.sent[0].type, 'MODEL_STATUS');
+  const result = await h.send({ type: 'MLT_UI_MODEL_STATUS' });
+  assert.equal(result.ok, true); assert.equal(result.model.phase, 'idle');
+  assert.equal(h.sent.length, 0);
+});
+
+test('本机配置不允许来自网页，状态和页面消息不能泄漏本机令牌', async () => {
+  const h = harness();
+  assert.equal((await h.send({ type: 'MLT_UI_LOCAL_CONFIGURE', settings: localConfig }, h.page)).ok, false);
+  assert.equal(h.store.localSettings, undefined);
+  await enableLocal(h);
+  const status = await h.send({ type: 'MLT_UI_STATUS' });
+  assert.equal(status.localConfigured, true); assert.equal(status.configured, false);
+  assert.equal(status.localOcr.endpoint, localConfig.localOcr.endpoint);
+  assert.equal(JSON.stringify(status).includes(localConfig.localOcr.token), false);
+  assert.equal(JSON.stringify(h.tabMessages).includes(localConfig.localOcr.token), false);
+  h.revoke(); await tick();
+  assert.equal(h.store.localSettings, undefined);
 });

@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "scope": "real_models_loopback_http",
+  "syntheticFixture": true,
+  "results": {
+    "ocr": {
+      "regionCount": 1,
+      "wallSeconds": 11.243996230998164,
+      "revision": "ocr-v1-26032409315715bc37027caa135048ca7212c5078f7bccd2b805af0419ba688d"
+    },
+    "detect": {
+      "regionCount": 1,
+      "wallSeconds": 2.270750350999151,
+      "revision": "detector-v1-a201f364339d128addf33752813e9e6032fe6482de09cbdad6bb25584e71b258"
+    }
+  },
+  "models": [
+    {
+      "id": "v6_medium_det",
+      "sha256": "92078b7355007ccfffcd4c8cd441a3afd4538904d06881b29a155e1e679907c2",
+      "bytes": 62119454
+    },
+    {
+      "id": "v6_medium_rec",
+      "sha256": "eef444829dbbe18d7fea59a3f6eb75647518d2b3a9568d27c92e42940204894b",
+      "bytes": 76629984
+    },
+    {
+      "id": "legacy_cls",
+      "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+      "bytes": 585532
+    },
+    {
+      "id": "rtdetr_bubble",
+      "sha256": "065744e91c0594ad8663aa8b870ce3fb27222942eded5a3cc388ce23421bd195",
+      "bytes": 168481531
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 dist/
 artifacts/
 __pycache__/
@@ -7,3 +7,9 @@ __pycache__/
 .env.*
 
 .test-models/
+
+.venv/
+.local-ocr/
+.venv-*/
+services/local-ocr/build/
+services/local-ocr/*.egg-info/

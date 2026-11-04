@@ -1,6 +1,7 @@
-import { canonicalize, sha256, detectionKey, ocrKey, translationKey } from './keys.js';
+import { canonicalize, sha256, hashKey, detectionKey, ocrKey, translationKey } from './keys.js';
 import { BoundedCache } from './cache.js';
 import { BoundedQueue, SingleFlight, throwIfAborted } from './jobs.js';
+import { groupTextLines, normalizeGroupingConfig } from './grouping.js';
 import { LIMITS, validateOCRResult, validateRegions, validateTranslationResult } from './schema.js';
 
 const TRANSLATION_FIELDS = ['sourceLanguage','targetLanguage','provider','endpoint','accountNamespace','model','modelRevision','promptVersion','schemaVersion','glossary','glossaryRevision','style','context','contextRevision','generation','adapterRevision'];
@@ -73,13 +74,14 @@ export function createPipeline({ detect, ocr, translate, cacheOptions, detection
       if (typeof translate !== 'function') throw new TypeError('Translation adapter is required');
       validateTranslationConfig(translation);
     }
+    const groupingConfig = normalizeGroupingConfig(structuredClone(input.groupingConfig ?? null));
     const sourceEdits = structuredClone(input.sourceEdits ?? {});
     if (Object.getPrototypeOf(sourceEdits) !== Object.prototype) throw new TypeError('Expected source edit map');
-    return { width, height, namespace, imageBytes, config, detectionConfig, detectionEnabled, translation, sourceEdits,
+    return { width, height, namespace, imageBytes, config, detectionConfig, detectionEnabled, translation, sourceEdits, groupingConfig,
       detectionGeneration: detectionCache.generation, ocrGeneration: ocrCache.generation, translationGeneration: translationCache.generation };
   }
   async function recognize(state, signal) {
-    const { width, height, namespace, imageBytes, config, detectionConfig, detectionEnabled, detectionGeneration, ocrGeneration, sourceEdits } = state;
+    const { width, height, namespace, imageBytes, config, detectionConfig, detectionEnabled, detectionGeneration, ocrGeneration, sourceEdits, groupingConfig } = state;
     const imageHash = await sha256(imageBytes);
     let detection = null, detectedKey = null;
     if (detectionEnabled) {
@@ -88,18 +90,22 @@ export function createPipeline({ detect, ocr, translate, cacheOptions, detection
         work: sharedSignal => detect({ imageBytes: imageBytes.slice(), width, height, config: structuredClone(detectionConfig), signal: sharedSignal }),
         validate: value => validateDetectionResult(value, { width, height }) });
     }
-    // 缓存同时绑定检测配置与实际裁剪几何，不能仅依赖候选框编号。
-    const effectiveConfig = detection ? { ...config, regions: detection.regions, detectorRevision: detection.detectorRevision } : config;
+    // 旧裁剪识别绑定检测几何；整图 OCR 的气泡仅供下游聚合，不失效原始行缓存。
+    const groupingEnabled = groupingConfig?.enabled === true;
+    const cropDetection = groupingEnabled ? null : detection;
+    const effectiveConfig = cropDetection ? { ...config, regions: cropDetection.regions, detectorRevision: cropDetection.detectorRevision } : config;
     const recognitionKey = await ocrKey({ imageHash, width, height, namespace, ocrConfig: effectiveConfig,
-      ...(detection ? { detection: { config: detectionConfig, result: detection } } : {}) });
+      ...(cropDetection ? { detection: { config: detectionConfig, result: cropDetection } } : {}) });
     const result = await stage({ key: recognitionKey, cache: ocrCache, generation: ocrGeneration, queue: ocrQueue, kind: 'ocr', signal,
-      work: sharedSignal => ocr({ imageBytes: imageBytes.slice(), width, height, config: structuredClone(effectiveConfig), detection: structuredClone(detection), signal: sharedSignal }),
+      work: sharedSignal => ocr({ imageBytes: imageBytes.slice(), width, height, config: structuredClone(effectiveConfig), detection: structuredClone(cropDetection), signal: sharedSignal }),
       validate: value => validateOCRResult(value, { width, height }) });
-    for (const id of Object.keys(sourceEdits)) if (!result.regions.some(region => region.regionId === id)) throw new TypeError('Source edit has unknown region ID');
-    const regions = validateRegions(result.regions.map(region => Object.hasOwn(sourceEdits, region.regionId)
+    const grouped = groupingEnabled ? await groupTextLines({ regions: result.regions, detection, width, height, readingDirection: groupingConfig.readingDirection }) : result;
+    const groupingKey = groupingEnabled ? await hashKey({ cacheSchema: 1, stage: 'grouping', ocrKey: recognitionKey, config: groupingConfig, detection, regions: grouped.regions }) : null;
+    for (const id of Object.keys(sourceEdits)) if (!grouped.regions.some(region => region.regionId === id)) throw new TypeError('Source edit has unknown region ID');
+    const regions = validateRegions(grouped.regions.map(region => Object.hasOwn(sourceEdits, region.regionId)
       ? { ...region, sourceText: sourceEdits[region.regionId], sourceRevision: (region.sourceRevision ?? 0) + 1 } : region), { width, height });
     throwIfAborted(signal);
-    return { regions, imageHash, ocrKey: recognitionKey, detectionKey: detectedKey, detection };
+    return { regions, imageHash, ocrKey: recognitionKey, detectionKey: detectedKey, detection, ...(groupingEnabled ? { groupingKey, grouping: grouped.grouping } : {}) };
   }
   return {
     async prepare(input, { signal } = {}) {
@@ -114,7 +120,7 @@ export function createPipeline({ detect, ocr, translate, cacheOptions, detection
       const { regions } = prepared;
       const request = { ...translation, namespace, regions: regions.map(({ regionId, sourceText, readingOrder, sourceRevision = 0 }) => ({ regionId, sourceText, readingOrder, sourceRevision })) };
       if (new TextEncoder().encode(canonicalize(request)).byteLength > LIMITS.maxRequestBytes) throw new TypeError('Translation request too large');
-      const resultKey = await translationKey(request);
+      const resultKey = await translationKey({ ...request, ...(prepared.groupingKey ? { groupingKey: prepared.groupingKey } : {}) });
       const translated = regions.length ? await stage({ key: resultKey, cache: translationCache, generation: translationGeneration, queue: translationQueue, kind: 'translation', signal,
         work: sharedSignal => translate(structuredClone(request), { signal: sharedSignal }), validate: value => validateTranslationResult(value, regions) }) : { translations: [] };
       throwIfAborted(signal);

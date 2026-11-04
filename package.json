@@ -8,7 +8,7 @@
     "build": "node scripts/build.mjs",
     "test": "node --test tests/js/*.test.js",
     "test:tooling": "python3 -m unittest discover -s tests -v",
-    "test:browser": "node scripts/prepare-test-model.mjs && node tests/browser/smoke.mjs"
+    "test:browser": "node --test tests/browser/*.test.mjs && node tests/browser/smoke.mjs"
   },
   "dependencies": {
     "@tesseract.js-data/eng": "1.0.0",

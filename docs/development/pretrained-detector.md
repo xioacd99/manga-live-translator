@@ -1,3 +1,5 @@
+> 历史实现说明：2026-11-04起，默认改为Python常驻PP-OCRv6 medium1536及报告同款FP32 RT-DETR。当前行为与验收见 [本地流水线](native-pipeline.md)，以下旧WASM/裁框OCR内容不再代表默认路径。
+
 # 本地预训练漫画区域检测
 
 更新：2026-11-03（Asia/Shanghai）。dev 预览实现，尚未发布；不是质量或设备性能验收结论。

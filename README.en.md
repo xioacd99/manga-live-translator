@@ -12,9 +12,11 @@ Manga translation for online reading, aiming for low latency and natural, contex
 
 ## Current status
 
-The unreleased preview on the `dev` branch implements local English OCR, opt-in LLM text translation, a reversible browser translation overlay, and capacity-limited layered caches. The goals below are not measured performance or quality claims. See the [development preview guide](docs/development/preview.md) for build and usage instructions, verification, and limitations.
+Unreleased `dev` preview: a Chrome extension calls an authenticated Python service on 127.0.0.1. Full-page PP-OCRv6 medium1536 and the report's FP32 RT-DETR run locally. Optional DeepSeek/OpenAI translation sends ordered text only after explicit consent. See [setup](services/local-ocr/README.md) and the [eight algorithm modules](README.md#八个算法模块) in the canonical Chinese README.
 
-A [synthetic browser integration test](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987) passed with real packaged OCR and mocked image acquisition and model-service boundaries. Real website compatibility and translation quality remain to be validated.
+Modules: (1) text detection/OCR, (2) bubble detection, (3) grouping/reading order, (4) context/text translation, (5) exact layered caching, (6) small-window prefetch, (7) conservative solid-color cleanup, (8) measured adaptive typesetting. Complex backgrounds and insufficient space keep the original image and use full-text cards. No Magpie integration, image upload to providers, automatic paid retries, or production/M4 quality claim.
+
+The former Tesseract/WASM browser tests are historical. New browser smoke uses a real browser with synthetic loopback HTTP and mocked text-provider responses, not real-model quality evidence. See [current validation and limits](docs/development/native-pipeline.md).
 
 ## Project goals
 
@@ -56,4 +58,4 @@ The project uses the [MIT License](LICENSE). You may use, modify, distribute, an
 
 ## Experimental page preparation
 
-See the [Chinese Issue #2 implementation guide](docs/development/issue-2.md) for region OCR and bounded, opt-in page preparation. Prefetch is disabled by default. Region detection now uses a pretrained RT-DETR model with local CPU/WASM inference. The user initiates the first 11,120,765-byte model download; verified weights are cached locally, while runtime code is packaged with the extension. No comic images are uploaded for detection. See the [model, privacy, and evaluation notes](docs/development/pretrained-detector.md). Known synthetic false positives remain; real-comic quality and M4 performance are unverified.
+Prefetch is disabled by default and bounded to loaded visible/nearby images. Local preparation and remote text translation require separate permissions and budgets. Python model downloads are explicit and SHA-256-verified; four assets total about293.6MiB. [Current preview guide](docs/development/preview.md).

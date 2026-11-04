@@ -29,3 +29,5 @@ Record techniques supported by actual project experience, including when they ap
 - [Paddle组件矩阵与官方导出适配](paddle-component-matrix.md)：分辨率非单调、字典与裁框分辨率的一致性。
 
 - [英文OCR追加精度验证](ocr-accuracy-followup.md)：负结果、置信度选择、桥接与模型许可边界。
+
+- [Python 常驻服务与浏览器算法接线](native-pipeline-integration.md)：模型身份、状态竞争、缓存分层与保守排版边界。

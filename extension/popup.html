@@ -1,20 +1,20 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>Manga Live Translator</title><link rel="stylesheet" href="ui.css"></head><body>
 <h1>Manga Live Translator</h1><p id="config">正在读取设置…</p>
-<p>仅显式启用当前页面。图片从已授权来源获取，检测与 OCR 在本机运行，不上传图片。点击翻译或勾选自动翻译后，对白文本发送到 OpenAI，可能产生 API 费用。</p>
-<section aria-label="本地气泡检测模型">
-<h2>本地气泡检测模型</h2>
-<p>RT-DETR 权重来自 <a href="https://huggingface.co/ogkalu/comic-text-and-bubble-detector" target="_blank" rel="noopener noreferrer">Hugging Face 模型仓库</a>，约 11.1 MB（11,120,765 字节），Apache-2.0 许可。首次使用区域检测前请下载并准备模型，之后使用本地缓存。下载会访问 huggingface.co 及其固定存储来源 cas-bridge.xethub.hf.co。此步骤只下载模型，不上传漫画或对白，不需要翻译服务密钥。</p>
+<p>仅显式启用当前页面。图片从已授权来源获取，检测与 OCR 在本机运行，不上传图片。点击翻译或勾选自动翻译后，对白文本发送到 所选翻译服务，可能产生 API 费用。</p>
+<section aria-label="Python 本地 OCR 与气泡模型">
+<h2>Python 本地 OCR 与气泡模型</h2>
+<p>先启动 Python 服务并在设置中填写地址和令牌。首次主动下载 PP-OCRv6 medium 三份权重与报告所用 RT-DETR，完成 SHA-256 校验后缓存本机。仅下载模型时访问 ModelScope / Hugging Face，不上传漫画；OCR 与气泡检测由环回服务运行。详见 README 的安装与许可清单。</p>
 <p id="modelStatus" role="status" aria-live="polite">正在检查本地模型…</p>
 <progress id="modelProgress" aria-label="模型下载进度"></progress>
 <button id="modelDownload" disabled>下载并准备模型</button><button id="modelCancel" disabled>取消模型准备</button>
-<p>下载出错或取消后可重试；关闭此面板不取消后台下载。模型就绪后，请再次点击“启用当前页面”。也可选整图 OCR 跳过此模型。</p>
+<p>下载出错或取消后可重试；关闭此面板不取消后台下载。模型就绪后，请再次点击“启用当前页面”。整图 OCR 模式只跳过气泡检测，不跳过 OCR 模型。</p>
 </section>
 <label>额外图片 CDN 来源（可选，每行一个）<textarea id="origins" placeholder="https://images.example.com"></textarea></label>
-<label><input type="checkbox" id="auto"> 自动翻译当前可见图片（发送文本到 OpenAI，可能计费）</label>
+<label><input type="checkbox" id="auto"> 自动翻译当前可见图片（发送文本到 所选翻译服务，可能计费）</label>
 <label><input type="checkbox" id="prepare"> 提前获取当前页面图片并本地检测 / OCR（不发送远端翻译）</label>
 <label>本地提前准备预算（1–20 张）<input id="prepareBudget" type="number" min="1" max="20" step="1" value="8"></label>
-<label><input type="checkbox" id="remotePrefetch"> 我同意提前把尚未阅读图片中的对白文本发送到 OpenAI 翻译，并承担 API 费用</label>
+<label><input type="checkbox" id="remotePrefetch"> 我同意提前把尚未阅读图片中的对白文本发送到 所选翻译服务 翻译，并承担 API 费用</label>
 <label>远端提前翻译预算（开启时须填写 1–20 张）<input id="remoteBudget" type="number" min="0" max="20" step="1" value="0"></label>
-<label><input type="checkbox" id="wholeImage"> 显式使用整图 OCR 基线（默认优先区域检测，必要时整图回退）</label>
-<p>提前处理默认关闭。最多发现 80 张已加载图片、同时处理 2 项，按可见、邻近、其余顺序调度。隐藏页面、暂停或导航会取消处理；返回后请重新启用。预算按开始的图片任务计数，失败和取消也占用预算，不代表费用上限；可见自动翻译和手动翻译不计入预取预算。</p>
-<button id="enable">启用当前页面</button><button id="pause">暂停处理</button><button id="disable">关闭当前页面</button><button id="settings">翻译服务设置</button><button id="clear">清空阅读缓存</button><button id="metrics">显示计数</button><pre id="status" role="status"></pre><script src="popup.js"></script></body></html>
+<label><input type="checkbox" id="wholeImage"> 跳过气泡检测，仅用整页 Paddle OCR + 几何归组</label>
+<p>提前处理默认关闭。最多发现 80 张已加载图片、同时处理 2 项，只按可见、邻近的小窗口动态调度，不提前处理远处图片。隐藏页面、暂停或导航会取消处理；返回后请重新启用。预算按开始的图片任务计数，失败和取消也占用预算，不代表费用上限；可见自动翻译和手动翻译不计入预取预算。</p>
+<button id="enable">启用当前页面</button><button id="pause">暂停处理</button><button id="disable">关闭当前页面</button><button id="settings">OCR / 翻译设置</button><button id="clear">清空阅读缓存</button><button id="metrics">显示计数</button><pre id="status" role="status"></pre><script src="popup.js"></script></body></html>

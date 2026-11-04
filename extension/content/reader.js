@@ -1,3 +1,4 @@
+import {fitTranslation, isSafeRendering} from './typesetting.js';
 import {imageGeometry, projectBox, isEligibleImage, isCurrentRequest} from './geometry.js';
 
 import {MAX_IMAGES, MAX_PENDING, preparationSettings, imagePriority, selectPreparationJobs} from './scheduler.js';
@@ -8,8 +9,14 @@ const CSS = `
 button { border: 1px solid #8795ac; border-radius: 4px; padding: 4px 7px; background: white; color: #172135; font: 12px/1.4 system-ui, sans-serif; cursor: pointer; }
 button:focus-visible, textarea:focus-visible { outline: 3px solid #ffb433; outline-offset: 1px; }
 button:disabled { opacity: .6; cursor: wait; }
-.regions { position: absolute; overflow: hidden; pointer-events: none; }
-.region { position: absolute; padding: 3px; border: 1px solid #64748b; border-radius: 5px; background: #fff; color: #111; overflow: hidden; white-space: pre-wrap; overflow-wrap: anywhere; font: 14px/1.35 system-ui, sans-serif; pointer-events: auto; cursor: pointer; }
+.regions { position: absolute; overflow: visible; pointer-events: none; }
+.region { position: absolute; margin: 0; padding: 0; border: 0; border-radius: 0; color: #111; white-space: pre; font-family: system-ui, sans-serif; font-weight: 400; pointer-events: auto; cursor: pointer; }
+.source-indicator { position: absolute; border: 1px dashed #2563eb; background: transparent; pointer-events: none; }
+.source-indicator::before { content: attr(data-source-label); position: absolute; left: 0; bottom: 100%; color: #2563eb; font: 10px/1.2 system-ui, sans-serif; }
+.sidecar { position: absolute; width: 280px; max-height: 60vh; overflow: auto; display: grid; gap: 6px; pointer-events: auto; }
+.sidecar .region { position: static; width: 100%; padding: 8px; background: #fff; color: #111; border: 1px solid #64748b; border-radius: 5px; font: 14px/1.5 system-ui, sans-serif; white-space: pre-wrap; overflow-wrap: anywhere; text-align: left; }
+
+.sidecar .region::before { content: attr(data-source-label) " · "; color: #2563eb; font-weight: 600; }
 .panel { position: absolute; left: 0; top: 42px; max-width: min(440px, 90vw); max-height: 65vh; width: 440px; overflow: auto; padding: 12px; background: #fff; color: #111; box-shadow: 0 4px 22px #0006; border: 2px solid #334155; border-radius: 8px; pointer-events: auto; font: 14px/1.5 system-ui, sans-serif; }
 .panel p { white-space: pre-wrap; overflow-wrap: anywhere; }
 .panel label { display: block; margin-top: 12px; }
@@ -27,6 +34,9 @@ export function installReader({document: doc = globalThis.document, window: win 
   const send = async message => runtime.sendMessage(message);
   const button = (label, callback) => { const el = node('button', label); el.type = 'button'; el.addEventListener('click', callback); return el; };
   const source = image => image.currentSrc || image.src;
+  let textContext;
+  try { textContext = doc.createElement('canvas').getContext?.('2d'); } catch {}
+  const measure = textContext ? (text, size) => { textContext.font = `${size}px system-ui, sans-serif`; return textContext.measureText(text).width; } : undefined;
   const visible = image => { const r = image.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.bottom > 0 && r.right > 0 && r.top < win.innerHeight && r.left < win.innerWidth; };
 
   function cancel(state, label = 'Cancelled. A sent provider request may still be billed.') {
@@ -39,22 +49,27 @@ export function installReader({document: doc = globalThis.document, window: win 
   function dispose(state) {
     cancel(state, ''); resize.unobserve(state.image); state.host.remove(); states.delete(state.image);
   }
+  // 同账号上下文或翻译模型变化只失效输出，保留同图已确认的源文本校正。
+  function invalidate(state, label = 'Settings changed. Select Translate.') {
+    cancel(state, label);
+    state.prepared = false; state.prepareAttempted = false;
+    state.result = null; state.renderedResult = null; state.layoutKey = null; state.attempted = false; state.original = false;
+    state.regions.replaceChildren(); state.regions.hidden = false; state.sidecar = null; state.sidecarBelow = false;
+    state.panel.replaceChildren(); state.panel.hidden = true;
+    state.toggle.textContent = 'Show original'; state.toggle.hidden = state.details.hidden = true;
+  }
   function reset(state) {
-    cancel(state, 'Image changed. Select Translate.');
+    invalidate(state, 'Image changed. Select Translate.');
     state.sourceVersion = `${session}:${++serial}`;
     state.imageUrl = source(state.image);
     state.corrections = Object.create(null);
-    state.prepared = false; state.prepareAttempted = false;
-    state.result = null; state.renderedResult = null; state.layoutKey = null; state.attempted = false; state.original = false;
-    state.regions.replaceChildren(); state.panel.hidden = true;
-    state.toggle.hidden = state.details.hidden = true;
   }
   function openPanel(state) {
     if (!state.result) return;
     state.panel.replaceChildren(button('Close text panel', () => { state.panel.hidden = true; }));
     const corrections = Object.create(null);
-    for (const region of state.result.regions) {
-      const label = node('label', `Source ${region.id}${typeof region.confidence === 'number' && region.confidence < 0.7 ? ' · Low OCR confidence' : ''}`);
+    for (const [index, region] of state.result.regions.entries()) {
+      const label = node('label', `Source ${index + 1}${typeof region.confidence === 'number' && region.confidence < 0.7 ? ' · Low OCR confidence' : ''}`);
       const input = node('textarea'); input.value = state.corrections[region.id] ?? region.text ?? ''; input.maxLength = 8000;
       input.addEventListener('input', () => { corrections[region.id] = input.value; });
       label.append(input); state.panel.append(label, node('p', region.translation));
@@ -132,7 +147,8 @@ export function installReader({document: doc = globalThis.document, window: win 
   }
   function layout(state) {
     const rect = state.image.getBoundingClientRect();
-    state.host.hidden = !visible(state.image);
+    const belowVisible = !state.original && state.sidecarBelow && rect.right > 0 && rect.left < win.innerWidth && rect.bottom < win.innerHeight && rect.bottom + 8 + (state.sidecar?.offsetHeight || 0) > 0;
+    state.host.hidden = !visible(state.image) && !belowVisible;
     Object.assign(state.host.style, {left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px`});
     state.regions.hidden = state.original;
     if (!state.result || state.original || !rect.width || !rect.height) return;
@@ -144,20 +160,55 @@ export function installReader({document: doc = globalThis.document, window: win 
     const width = rect.width - left - px('borderRightWidth') - px('paddingRight');
     const height = rect.height - top - px('borderBottomWidth') - px('paddingBottom');
     Object.assign(state.regions.style, {left: `${left}px`, top: `${top}px`, width: `${width}px`, height: `${height}px`});
-    const key = [width, height, left, top, css.objectFit, css.objectPosition].join('|');
+    const positionSidecar = sidecar => {
+      const rightSpace = win.innerWidth - rect.right - 12, leftSpace = rect.left - 12;
+      // 优先放到图像旁；窄视口放在图像下方，不覆盖当前原图，完整文本仍可由控制按钮打开。
+      const sideTop = `${Math.max(0, 8 - rect.top - top)}px`;
+      state.sidecarBelow = rightSpace < 160 && leftSpace < 160;
+      const sideWidth = Math.max(120, Math.min(280, Math.max(rightSpace, leftSpace)));
+      Object.assign(sidecar.style, rightSpace >= 160 ? {left: `${width + 8}px`, top: sideTop, width: `${Math.min(280, rightSpace)}px`} : leftSpace >= 160 ? {left: `${-sideWidth - left - 8}px`, top: sideTop, width: `${sideWidth}px`} : {left: '0px', top: `${height + 8}px`, width: `${Math.min(440, width)}px`});
+    };
+    // 页面纵向滚动只更新侧栏位置，不重建节点或丢失焦点、内部滚动位置。
+    if (state.sidecar) positionSidecar(state.sidecar);
+    const key = [width, height, left, top, rect.left, win.innerWidth, win.innerHeight, css.objectFit, css.objectPosition].join('|');
     if (state.renderedResult === state.result && state.layoutKey === key) return;
+    const scrollTop = state.renderedResult === state.result ? (state.sidecar?.scrollTop || 0) : 0;
     state.renderedResult = state.result; state.layoutKey = key;
     state.regions.replaceChildren();
     const geometry = imageGeometry(width, height, state.result.width, state.result.height, css.objectFit, css.objectPosition);
-    for (const region of state.result.regions) {
-      const box = projectBox(region.box, geometry); if (!box) continue;
+    const sidecar = node('div'); sidecar.className = 'sidecar';
+    sidecar.setAttribute('role', 'region'); sidecar.setAttribute('aria-label', 'Translations beside the original image');
+    positionSidecar(sidecar);
+    for (const [index, region] of state.result.regions.entries()) {
+      const sourceLabel = String(index + 1);
+      const box = projectBox(region.box, geometry);
+      const rendering = region.rendering;
+      const safe = isSafeRendering(rendering, region) ? projectBox(rendering.safeBox, geometry) : null;
+      // object-fit:cover 裁掉安全框的一部分时，禁止擦除剩下的原文。
+      const complete = safe && Math.abs(safe.width - rendering.safeBox.width * geometry.scaleX) < .01 && Math.abs(safe.height - rendering.safeBox.height * geometry.scaleY) < .01;
+      const fit = complete ? fitTranslation(region.translation, {width: safe.width, height: safe.height, measure}) : {mode: 'side-panel'};
       const text = button(region.translation, () => openPanel(state)); text.className = 'region';
-      text.title = 'Open full translation and source text';
-      text.setAttribute('aria-label', `${region.translation}. Open full text and corrections.`);
-      Object.assign(text.style, {left: `${box.x}px`, top: `${box.y}px`, width: `${box.width}px`, height: `${box.height}px`});
-      state.regions.append(text);
+      text.title = `Source ${region.id}: ${region.text}. Open full translation and source text`;
+      text.setAttribute('aria-label', `Source ${sourceLabel}: ${region.translation}. Open full text and corrections.`);
+      if (fit.mode === 'overlay') {
+        text.textContent = fit.lines.join('\n');
+        const color = rendering.color, brightness = color[0] * .299 + color[1] * .587 + color[2] * .114;
+        Object.assign(text.style, {left: `${safe.x}px`, top: `${safe.y}px`, width: `${safe.width}px`, height: `${safe.height}px`, background: `rgb(${color.join(',')})`, color: brightness >= 128 ? '#111' : '#fff', fontSize: `${fit.fontSize}px`, lineHeight: `${fit.lineHeight}`, padding: `${fit.padding}px`, textAlign: 'center'});
+        state.regions.append(text);
+      } else {
+        if (box) {
+          const indicator = node('div'); indicator.className = 'source-indicator'; indicator.setAttribute('aria-hidden', 'true'); indicator.setAttribute('data-source-id', region.id); indicator.setAttribute('data-source-label', sourceLabel);
+          Object.assign(indicator.style, {left: `${box.x}px`, top: `${box.y}px`, width: `${box.width}px`, height: `${box.height}px`});
+          state.regions.append(indicator);
+        }
+        text.setAttribute('data-source-id', region.id); text.setAttribute('data-source-label', sourceLabel);
+        sidecar.append(text);
+      }
     }
+    state.sidecar = sidecar;
+    if (sidecar.children.length) { state.regions.append(sidecar); sidecar.scrollTop = scrollTop; }
   }
+
   function scan() {
     frame = 0;
     if (!enabled) return;
@@ -211,7 +262,7 @@ export function installReader({document: doc = globalThis.document, window: win 
   function onMessage(message, _sender, reply) {
     if (message?.type === 'MLT_ENABLE') { try { enable(message.auto, message.settings); reply?.({ok: true}); } catch (error) { reply?.({ok: false, error: {message: error.message}}); } }
     else if (message?.type === 'MLT_DISABLE') { disable(); reply?.({ok: true}); }
-    else if (message?.type === 'MLT_PAUSE') { paused = true; auto = false; for (const state of states.values()) { if (message.reset === true) reset(state); cancel(state, '已暂停。已发送的远端请求仍可能计费。'); } reply?.({ok: true}); }
+    else if (message?.type === 'MLT_PAUSE') { paused = true; auto = false; for (const state of states.values()) { if (message.reset === true) reset(state); else if (message.invalidate === true) invalidate(state); cancel(state, '已暂停。已发送的远端请求仍可能计费。'); } reply?.({ok: true}); }
   }
   runtime.onMessage.addListener(onMessage);
   win.addEventListener('scroll', schedule, {passive: true, capture: true});

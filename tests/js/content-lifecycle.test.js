@@ -108,3 +108,41 @@ test('successive corrections are cumulative, retries preserve them, and source c
   assert.notEqual(h.sends.at(-1).sourceVersion, previousVersion);
   h.api.destroy();
 });
+
+
+test('同账号设置失效取消旧任务并清除输出，重新启用保留同图校正和源身份', async () => {
+  const h = harness(); h.api.enable(); h.flush(); h.click('Translate'); await h.finish();
+  h.click('Read / correct text');
+  const input = h.all.findLast(el => el.tag === 'textarea');
+  input.value = 'Persist this correction'; input.handlers.input(); h.click('Translate corrected source'); await h.finish();
+  const previousVersion = h.sends.at(-1).sourceVersion;
+  h.click('Translate'); const pending = h.sends.at(-1);
+  let reply;
+  h.runtime.onMessage.listener({type: 'MLT_PAUSE', reset: false, invalidate: true}, {}, value => { reply = value; });
+  assert.deepEqual(reply, {ok: true});
+  assert.equal(h.sends.at(-1).type, 'MLT_CANCEL'); assert.equal(h.sends.at(-1).requestId, pending.requestId);
+  const container = h.all.find(el => el.className === 'regions'), panel = h.all.find(el => el.className === 'panel');
+  assert.deepEqual(container.children, []); assert.equal(panel.hidden, true); assert.deepEqual(panel.children, []);
+  assert.equal(h.all.find(el => el.textContent === 'Read / correct text').hidden, true);
+  await h.finish(); assert.deepEqual(container.children, []);
+  const before = h.sends.length; h.click('Translate'); assert.equal(h.sends.length, before);
+  h.api.enable(true); h.flush();
+  assert.equal(h.sends.at(-1).type, 'MLT_TRANSLATE');
+  assert.equal(h.sends.at(-1).sourceVersion, previousVersion);
+  assert.deepEqual(h.sends.at(-1).corrections, {r1: 'Persist this correction'});
+  await h.finish(); h.api.destroy();
+});
+
+test('账号或本地设置完整重置优先于失效，清除校正并更新源身份', async () => {
+  const h = harness(); h.api.enable(); h.flush(); h.click('Translate'); await h.finish();
+  h.click('Read / correct text');
+  const input = h.all.findLast(el => el.tag === 'textarea');
+  input.value = 'Old account correction'; input.handlers.input(); h.click('Translate corrected source'); await h.finish();
+  const previousVersion = h.sends.at(-1).sourceVersion;
+  h.runtime.onMessage.listener({type: 'MLT_PAUSE', reset: true, invalidate: true}, {}, () => {});
+  assert.deepEqual(h.all.find(el => el.className === 'regions').children, []);
+  h.api.enable(true); h.flush();
+  assert.equal(h.sends.at(-1).type, 'MLT_TRANSLATE'); assert.equal(h.sends.at(-1).corrections, undefined);
+  assert.notEqual(h.sends.at(-1).sourceVersion, previousVersion);
+  await h.finish(); h.api.destroy();
+});

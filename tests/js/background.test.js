@@ -9,7 +9,8 @@ import * as preparation from '../../extension/preparation-policy.js';
 const source = (await readFile(new URL('../../extension/background.js', import.meta.url), 'utf8')).replace(/^import[^\n]+\n/gm, '');
 const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; };
 const tick = () => new Promise(resolve => setImmediate(resolve));
-const config = { consent: true, apiKey: 'synthetic-not-a-real-key', model: 'test-model', targetLanguage: 'Simplified Chinese' };
+const config = { provider: 'openai', consent: true, apiKey: 'synthetic-not-a-real-key', model: 'test-model', targetLanguage: 'Simplified Chinese' };
+const localConfig = { localOcr: { endpoint: 'http://127.0.0.1:8787', token: 'synthetic-local-service-token-123456789', enabled: true, consent: true }, readingDirection: 'ltr' };
 const request = { type: 'MLT_TRANSLATE', requestId: 'request1', imageUrl: 'https://reader.example.com/image.png', width: 800, height: 160 };
 function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), { headers: { 'content-type': 'image/png' } }), sendImpl, storageGate = Promise.resolve() } = {}) {
   const store = {}, sent = [], scripts = [], tabMessages = [], accesses = [];
@@ -21,7 +22,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
       setAccessLevel: async value => { accesses.push(value); await storageGate; },
       get: async key => key === null ? structuredClone(store) : ({ [key]: structuredClone(store[key]) }),
       set: async values => { Object.assign(store, structuredClone(values)); },
-      remove: async key => { delete store[key]; }, clear: async () => { for (const key of Object.keys(store)) delete store[key]; },
+      remove: async key => { for (const name of Array.isArray(key) ? key : [key]) delete store[name]; }, clear: async () => { for (const key of Object.keys(store)) delete store[key]; },
     } },
     offscreen: { hasDocument: async () => true, createDocument: async () => {} },
     tabs: { get: async tabId => ({ id: tabId, url: 'https://reader.example.com/chapter', incognito: false }), sendMessage: async (...args) => { tabMessages.push(args); }, onRemoved: { addListener: fn => { tabRemoved = fn; } } },
@@ -33,6 +34,7 @@ function harness({ fetchImpl = async () => new Response(new Uint8Array([1, 2]), 
   const page = { id, url: 'https://reader.example.com/chapter', tab: { id: 1, url: 'https://reader.example.com/chapter' }, frameId: 0 };
   const send = (message, sender = ui) => new Promise(resolve => { const accepted = listener(message, sender, resolve); if (accepted !== true) resolve(undefined); });
   const enable = async () => {
+    assert.equal((await send({ type: 'MLT_UI_LOCAL_CONFIGURE', settings: localConfig })).ok, true);
     assert.equal((await send({ type: 'MLT_UI_CONFIGURE', settings: config })).ok, true);
     assert.equal((await send({ type: 'MLT_UI_ENABLE', tabId: 1 })).ok, true);
   };
@@ -64,14 +66,14 @@ test('background waits for trusted-only session storage initialization', async (
 
 test('background config and forget mutations serialize; forget clears credentials and grants', async () => {
   const configured = deferred(), release = deferred();
-  const h = harness({ sendImpl: async message => { if (message.type === 'CONFIGURE') { configured.resolve(); await release.promise; } return { ok: true }; } });
+  const h = harness({ sendImpl: async message => { if (message.type === 'ENSURE_CONFIG') { configured.resolve(); await release.promise; } return { ok: true }; } });
   const pendingConfig = h.send({ type: 'MLT_UI_CONFIGURE', settings: config });
   await configured.promise;
   const pendingForget = h.send({ type: 'MLT_UI_FORGET' });
   await tick(); assert.equal(h.sent.some(m => m.type === 'FORGET'), false);
   release.resolve(); assert.equal((await pendingConfig).ok, true); assert.equal((await pendingForget).ok, true);
   assert.deepEqual(h.store, {});
-  assert.deepEqual(h.sent.map(m => m.type), ['CONFIGURE', 'FORGET']);
+  assert.deepEqual(h.sent.map(m => m.type), ['ENSURE_CONFIG', 'FORGET']);
   assert.equal((await h.send({ type: 'MLT_UI_STATUS' })).configured, false);
 });
 
@@ -151,4 +153,48 @@ test('configure rotates account namespace only when key changes', async () => {
   assert.equal(h.store.settings.accountNamespace, first);
   await h.send({ type: 'MLT_UI_CONFIGURE', settings: { ...config, apiKey: 'another-synthetic-key' } });
   assert.notEqual(h.store.settings.accountNamespace, first);
+});
+
+test('挂起的模型状态查询不能阻塞暂停和清除会话', async () => {
+  const entered = deferred(), release = deferred(); let block = false;
+  const h = harness({ sendImpl: async message => {
+    if (block && message.type === 'MODEL_STATUS') { entered.resolve(); await release.promise; }
+    return { ok: true, model: { phase: 'ready' } };
+  } });
+  await h.enable(); block = true;
+  const pendingStatus = h.send({ type: 'MLT_UI_MODEL_STATUS' }); await entered.promise;
+  try {
+    const pause = h.send({ type: 'MLT_UI_PAUSE', tabId: 1 });
+    await tick();
+    assert.equal(h.store['tab:1'].paused, true);
+    assert.equal((await pause).ok, true);
+    const forget = h.send({ type: 'MLT_UI_FORGET' });
+    await tick();
+    assert.deepEqual(h.store, {});
+    assert.ok(h.sent.some(message => message.type === 'FORGET'));
+    assert.equal((await forget).ok, true);
+  } finally { release.resolve(); }
+  const lateStatus = await pendingStatus;
+  assert.equal(lateStatus.ok, false); assert.equal(lateStatus.error.code, 'CANCELLED');
+});
+
+test('模型状态准备期间的旧设置快照不能在忘记后恢复执行器凭据', async () => {
+  const h = harness(); await h.enable();
+  const entered = deferred(), release = deferred(); const get = h.chrome.storage.session.get;
+  let hold = true;
+  h.chrome.storage.session.get = async key => {
+    const value = await get(key);
+    if (key === 'settings' && hold) { hold = false; entered.resolve(); await release.promise; }
+    return value;
+  };
+  const previousEnsures = h.sent.filter(message => message.type === 'ENSURE_CONFIG').length;
+  const pending = h.send({ type: 'MLT_UI_MODEL_STATUS' }); await entered.promise;
+  try {
+    assert.equal((await h.send({ type: 'MLT_UI_FORGET' })).ok, true);
+  } finally { release.resolve(); }
+  const result = await pending;
+  assert.equal(result.ok, false); assert.equal(result.error.code, 'CANCELLED');
+  assert.deepEqual(h.store, {});
+  assert.equal(h.sent.filter(message => message.type === 'ENSURE_CONFIG').length, previousEnsures);
+  assert.equal(h.sent.at(-1).type, 'FORGET');
 });

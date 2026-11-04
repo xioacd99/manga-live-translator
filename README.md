@@ -12,11 +12,35 @@
 
 ## 当前状态
 
-尚未发布的 dev 分支预览版已实现本地英文 OCR、需主动启用的大语言模型文本翻译、可撤销的浏览器译文覆盖层，以及容量受限的分层缓存。下列目标不代表已测得的性能或质量结论。构建、使用、验证方法和限制见[开发预览指南](docs/development/preview.md)。
+这是 **dev 开发预览版**，尚未发布。当前方案为 Chrome 扩展 + 本机 Python 常驻服务：PaddleOCR 识别整页，RT-DETR 检测气泡，扩展归组、排序、请求可选文本翻译并显示可撤销译文。不会把漫画图片发送给翻译提供方；DeepSeek / OpenAI 文本翻译必须单独配置并授权，可能计费。
 
-[合成浏览器集成测试](https://github.com/xioacd99/manga-live-translator/actions/runs/41581846987)已通过，使用真实打包的 OCR，并模拟图片获取与模型服务边界。真实网站和翻译质量仍待验证。
+先按 [Python 服务安装指南](services/local-ocr/README.md) 启动服务，再构建扩展并在设置中填写 `http://127.0.0.1:8787` 与本机令牌。首次主动下载四份模型共 **307,816,501 字节，约 293.6 MiB**，SHA-256 校验后缓存；状态轮询不触发模型下载。详见[开发预览指南](docs/development/preview.md)。
 
-实验性区域检测已切换为预训练 RT-DETR：首次由用户触发下载约 11.1 MB 权重并缓存，之后本地 CPU/WASM 推理；运行时代码打包，模型不打包，不上传漫画图片。来源、隐私和已观察误检见[预训练检测说明](docs/development/pretrained-detector.md)。区域 OCR 与有预算的当前页提前处理见 [Issue #2 实现说明](docs/development/issue-2.md)。预取默认关闭，检测不代表经过真实漫画质量验收。
+## 八个算法模块
+
+![当前八模块与隐私边界](docs/development/assets/native-pipeline.svg)
+
+下表是当前代码选择，不是模型质量排名；每项均可独立替换并更新修订及回归测试。
+
+| 模块 | 当前算法 / 方案 | 实现入口与优化边界 |
+| --- | --- | --- |
+| 1. 文字检测与 OCR | Python RapidOCR 3.10.0 + ONNX Runtime 1.23.2，PP-OCRv6 medium 检测/识别 + 旧版180°分类器；短边1536、长边上限4096、单线程CPU | [本地引擎](services/local-ocr/manga_local_ocr/engine.py)、[固定配置和资产哈希](services/local-ocr/manga_local_ocr/config.py)。整页运行，保留行框、置信度和原始坐标；不再使用浏览器 WASM OCR。 |
+| 2. 气泡检测 | 与本轮报告相同的 FP32 RT-DETR `detector.onnx`，RGB/PIL 640×640、类别0、阈值0.5 | 同一本地引擎，权重168,481,531字节；不是旧11.1MB int8模型。仅气泡框，无真实像素轮廓/分镜分割。可显式跳过，OCR仍整页执行。 |
+| 3. 归组与阅读顺序 | 行中心 + ≥85%包含率分配气泡，最小嵌套框优先；递归 XY-cut + 重叠行排序，页面LTR/RTL可选 | [grouping.js](packages/core/grouping.js)。稳定组ID保留成员行与原坐标；歧义和框外字幕独立保留。几何分区不是检测到的分镜，RTL不反转英文句子。 |
+| 4. 上下文与翻译 | 默认 DeepSeek V4.1 Flash（API型号 `deepseek-flash`）JSON Object，按整页有序文本组请求；本地严格验证所有ID；可选上下文/术语表 | [DeepSeek适配器](extension/adapters/deepseek.js)。按用户选择默认 `deepseek-flash`，界面可见实际API型号；保留OpenAI适配器。无自动付费重试、无图片/VLM调用；未实现角色记忆/自动跨页摘要。 |
+| 5. 精确缓存 | SHA-256内容身份、分阶段键、LRU/TTL/字节上限、single-flight、清除代次隔离 | [流水线](packages/core/pipeline.js)、[键](packages/core/keys.js)。原始OCR不因气泡/顺序/上下文改变而重跑；归组几何/修订、原文编辑、提供方/账户/模型/术语/上下文参与译文身份。默认会话内存，不持久保存漫画。 |
+| 6. 小窗口预读 | 当前已加载图片，视口优先、邻近其次，滚动后重排，远处不启动；本地与远端独立预算 | [调度器](extension/content/scheduler.js)。默认关闭，最多80图、2个在途任务；Python推理串行。远端提前翻译单独授权，不跨章抓取或预测翻页；并非研究模拟器的完整自适应策略。 |
+| 7. 背景清理 | 实际不透明像素检查 + 保守纯色矩形覆盖 | [typesetting.js](extension/content/typesetting.js)。仅当气泡内文字框外颜色一致且源区不密集时，用实测颜色覆盖文字联合框；不是分割mask/Telea/LaMa。复杂背景、未知证据直接保留原图，使用独立译文卡片。 |
+| 8. 自适应排版 | 浏览器 `measureText`、递减字号搜索、折行与中英标点约束、最小12px | 同上及[阅读器](extension/content/reader.js)。字号过小、溢出或图片裁切则改用完整译文卡片，不静默截字；支持原图切换与文本修正。 |
+
+图片来源授权、4MiB/1600万像素预算、环回Bearer/Host/Origin校验和明确错误处理是各模块共用的安全边界。模型为本机下载，扩展不接受网页指定服务地址或任意转发请求。Magpie 未接入：当前直接使用固定 DeepSeek / OpenAI 文本端点。
+
+## 验证与已知限制
+
+- 本机服务沿用已测的 medium1536 参数；新服务复核10/10图输出与旧基线完全一致，重新评分CER13.45%、WER39.66%。约23.22秒/图是此前云CPU原生服务结果，**不是这次全部八模块的端到端成绩，也不是M4性能承诺**。
+- 本轮RT-DETR研究仅有3页、36个助手粗标主体框，未独立人工复核；归组、修复与排版研究包含合成/真值条件，不能转写为产品准确率。
+- 新的实际模型检查、单元/工具测试和 Chromium/CI状态集中记录于[本次集成验收](docs/development/native-pipeline.md)。合成HTTP/LLM夹具只验证接线，不代表真实翻译质量。没有付费请求或私有漫画外发。
+- 复杂背景保留原图是刻意的安全回退。文字框内的绘画仍可能与字形混淆，低置信度OCR、错误气泡归属和复杂阅读顺序仍需人工修正。
 
 ## 项目目标
 

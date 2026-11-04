@@ -4,6 +4,13 @@ on:
     branches: [dev]
   pull_request:
     branches: [dev, main]
+  workflow_dispatch:
+    inputs:
+      run_native_models:
+        description: '显式下载约 308 MB 固定模型，运行真实 Python OCR/检测冒烟（非漫画质量验收）'
+        required: false
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -17,17 +24,27 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
       - name: Check runtime
         run: node --version && npm --version && python3 --version
       - name: Install locked dependencies
         run: npm ci --ignore-scripts
       - name: Test application and repository tooling
         run: npm test && npm run test:tooling
+      - name: Test Python gateway protocol without model downloads
+        env:
+          PYTHONPATH: services/local-ocr
+        run: |
+          python3 -m venv .venv-protocol
+          .venv-protocol/bin/python -m pip install "$(grep '^pillow==' services/local-ocr/requirements.lock.txt)"
+          .venv-protocol/bin/python -m unittest discover -s services/local-ocr/tests -v
       - name: Build self-contained extension
         run: npm run build
-      - name: Install Chromium for synthetic browser test
+      - name: Install Chromium for synthetic browser integration
         run: npx playwright install --with-deps chromium
-      - name: Test real local OCR and mocked provider in Chromium
+      - name: Test Chromium and real loopback HTTP with synthetic OCR and provider responses
         run: npm run test:browser
       - name: Print synthetic cache benchmark
         run: node benchmarks/cache.mjs
@@ -35,7 +52,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: synthetic-browser-evidence
+          name: synthetic-native-http-browser-evidence
           path: artifacts/
           if-no-files-found: ignore
           retention-days: 7
@@ -46,4 +63,30 @@ jobs:
           name: manga-live-translator-dev-preview
           path: dist/
           if-no-files-found: error
+          retention-days: 7
+
+  real-native-models:
+    if: github.event_name == 'workflow_dispatch' && inputs.run_native_models
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install pinned Python CPU runtime
+        run: |
+          python3 --version
+          python3 -m venv .venv-native
+          .venv-native/bin/python -m pip install -r services/local-ocr/requirements.lock.txt
+      - name: Explicitly download fixed models and test actual OCR and detection
+        env:
+          PYTHONPATH: services/local-ocr
+        run: .venv-native/bin/python services/local-ocr/tests/smoke_real_models.py --download --output artifacts/native-real-model-smoke.json
+      - name: Preserve genuine model evidence separately
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: real-python-model-smoke-evidence
+          path: artifacts/native-real-model-smoke.json
+          if-no-files-found: warn
           retention-days: 7

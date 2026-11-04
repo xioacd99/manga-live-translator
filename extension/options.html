@@ -1,4 +1,33 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Translation settings</title><link rel="stylesheet" href="ui.css"></head><body>
-<h1>Translation settings</h1><p>Development preview. Local English OCR; your extracted text is sent to the fixed OpenAI API endpoint. Images are never uploaded. API usage may cost money.</p>
-<form id="settings-form"><label>OpenAI API key (this browser session only)<input id="key" type="password" autocomplete="off" required></label><label>OpenAI model supporting strict JSON schema<input id="model" placeholder="Enter your supported model ID" required></label><label>Target language<input id="target" value="Simplified Chinese" required></label><label>Optional dialogue context (sent with translation)<textarea id="context" maxlength="4000"></textarea></label><label>Optional glossary (sent with translation)<textarea id="glossary" maxlength="4000"></textarea></label><label><input id="consent" type="checkbox" required> I authorize sending extracted dialogue to OpenAI when I translate or enable automatic translation, and understand API charges may apply.</label><button>Save for this session</button></form>
-<p>Keys are not synced or stored on disk by this extension. Browser extensions cannot guarantee absolute protection from a compromised device. A browser restart clears the key and reading cache. Model assets are bundled locally. Incognito is disabled.</p><button id="forget">Forget key and clear session</button><pre id="status" role="status"></pre><script src="options.js"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>本地 OCR 与翻译设置</title><link rel="stylesheet" href="ui.css"></head>
+<body>
+<h1>本地 OCR 与翻译设置</h1>
+<p>开发预览版。先配置本机 OCR，再按需配置远程文本翻译。只准备本地识别结果无需大语言模型密钥。</p>
+<h2>1. 本机 OCR 服务</h2>
+<p>将图片像素发送到这台电脑上的 PaddleOCR / RT-DETR 服务。服务须单独安装并运行；不会把图片上传给 DeepSeek 或 OpenAI。模型下载由本机服务管理，需要在弹窗主动开始。</p>
+<form id="local-settings-form"><fieldset id="local-fields" disabled><legend>本机服务连接</legend>
+<label>服务地址（仅允许 127.0.0.1 和明确端口）<input id="local-endpoint" type="url" value="http://127.0.0.1:8787" maxlength="40" required></label>
+<label>本机服务 Bearer 令牌（32–128 位字母、数字、下划线或连字符，仅本次浏览器会话）<input id="local-token" type="password" autocomplete="off" minlength="32" maxlength="128" required></label>
+<label>阅读方向<select id="reading-direction"><option value="ltr">LTR：从左到右</option><option value="rtl">RTL：从右到左</option></select></label>
+<label><input id="local-consent" type="checkbox" required> 我允许扩展在准备或翻译图片时，将所选图片的像素发送到上述本机服务。</label>
+<p>Chrome 的回环主机权限覆盖该地址的所有端口；扩展只访问你保存的具体端口。令牌和图片不会转发到页面脚本。</p>
+<button id="save-local" type="submit">保存本机 OCR 设置</button></fieldset></form>
+<pre id="local-status" role="status" aria-live="polite"></pre>
+<h2>2. 远程文本翻译（可选）</h2>
+<p>翻译时只发送识别文本、你填入的上下文和术语表，以及翻译配置。API 调用可能产生费用；取消或超时不代表已发送的请求不会计费。失败不会自动重试。</p>
+<form id="settings-form"><fieldset id="remote-fields" disabled><legend>文本翻译提供方</legend>
+<label>提供方<select id="provider"><option value="deepseek">DeepSeek V4.1 Flash（默认）</option><option value="openai">OpenAI（兼容旧配置）</option></select></label>
+<p id="provider-endpoint">固定地址：https://api.deepseek.com/chat/completions</p>
+<label>提供方 API 密钥（仅本次浏览器会话）<input id="key" type="password" autocomplete="off" minlength="10" maxlength="512" required></label>
+<label>模型 ID<input id="model" value="deepseek-flash" maxlength="100" required></label>
+<p id="model-note">默认使用 DeepSeek V4.1 Flash，实际 API 模型名为 deepseek-flash。使用 JSON Object 输出并在本地校验全部区域 ID；项目未进行真实付费 API 验证。</p>
+<label>目标语言<input id="target" value="Simplified Chinese" maxlength="80" required></label>
+<label>可选对白上下文（与翻译一起发送，最多 4000 字符）<textarea id="context" maxlength="4000"></textarea></label>
+<label>可选术语表（与翻译一起发送，最多 4000 字符）<textarea id="glossary" maxlength="4000"></textarea></label>
+<label><input id="consent" type="checkbox" required> <span id="remote-consent-label">我允许在翻译或启用自动翻译时向 DeepSeek 发送上述文本，并了解可能产生 API 费用。</span></label>
+<button id="save-remote" type="submit">Save for this session</button></fieldset></form>
+<pre id="status" role="status" aria-live="polite"></pre>
+<p>两类密钥只保存在扩展受信任的会话存储中，不同步或主动写入持久存储。重启浏览器会清除密钥与阅读缓存；本机下载的模型文件独立保留。设备遭入侵时，浏览器扩展无法保证密钥安全。无痕模式不可用。</p>
+<button id="forget" type="button" disabled>Forget key and clear session</button>
+<script src="options.js"></script></body></html>

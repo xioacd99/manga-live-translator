@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "manga-local-ocr"
+version = "0.1.0"
+description = "Authenticated loopback PaddleOCR and RT-DETR gateway"
+requires-python = ">=3.12,<3.14"
+license = "MIT"
+license-files = ["LICENSE", "notices/*.txt"]
+dependencies = [
+  "rapidocr==3.10.0", "onnxruntime==1.23.2", "numpy==2.5.4",
+  "opencv-python-headless==5.0.0.93", "pillow==13.0.0",
+  "omegaconf==2.4.0", "pyclipper==1.4.0", "shapely==2.2.0",
+]
+
+[project.scripts]
+manga-local-ocr = "manga_local_ocr.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["manga_local_ocr*"]
