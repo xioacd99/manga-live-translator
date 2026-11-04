@@ -52,13 +52,16 @@ try {
   const deadline = Date.now() + 20000;
   while ((!worker || !probeWorker) && Date.now() < deadline) {
     for (const candidate of context.serviceWorkers()) {
-      const name = await candidate.evaluate(() => chrome.runtime.getManifest().name);
+      if(!candidate.url().startsWith('chrome-extension://')||!candidate.url().endsWith('/background.js'))continue;
+      // worker 出现早于扩展 API 绑定就绪时，不把启动瞬间当作产品故障。
+      const name = await candidate.evaluate(() => globalThis.chrome?.runtime?.getManifest?.()?.name).catch(()=>null);
+      if(typeof name!=='string')continue;
       if (name.endsWith('Synthetic HTTP integration')) worker = candidate;
       if (name.endsWith('Missing loopback permission probe')) probeWorker = candidate;
     }
     if (!worker || !probeWorker) await new Promise(resolve => setTimeout(resolve, 100));
   }
-  assert.ok(worker && probeWorker, 'Both the integration and permission-negative extensions must start');
+  assert.ok(worker && probeWorker, 'Both extension APIs must become ready; observed workers: '+context.serviceWorkers().map(item=>item.url()).join(', '));
   const id = new URL(worker.url()).host, probeId = new URL(probeWorker.url()).host;
   service.setExtensionId(id);
   evidence.browser = context.browser()?.version(); evidence.realBrowser = true;

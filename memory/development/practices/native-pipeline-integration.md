@@ -11,3 +11,7 @@
 - 验证：`npm test`、`npm run test:tooling`、`npm run build`、Python服务协议单测与独立真实模型检查。浏览器本地启动被宿主Unix套接字限制阻止；CI合成HTTP/LLM接线测试与真实模型分开，不冒充真实网站/翻译质量。
 - 适用边界：英文静态图片，当前本机Linux CPU证据；未做M4/CoreML、现代漫画独立人工GT、真实付费DeepSeek调用。HTTP取消不保证立即终止ORT内核，服务串行锁仍可能忙。
 - 参考：[当前流水线](../../../docs/development/native-pipeline.md)、[服务契约](../../../services/local-ocr/README.md)、[八模块清单](../../../README.md)。
+
+## CI 启动时序证据
+
+首次新版 [CI](https://github.com/xioacd99/manga-live-translator/actions/runs/41772081049) 已实际启动Chromium，但枚举服务工作线程时 `chrome.runtime` 尚不可读；没有进入设置流程。夹具现在只检查扩展background.js，并在20秒截止内等待API，不再直接解引用。超时仍失败并列出线程URL；本地受限环境无法替代CI验证这条时序。
